@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.add-invoice-btn {
+    background-color: #38AE29;
+    color: #fff;
+    border: 1px solid #fff;
+}
+
+.add-invoice-btn:hover {
+    background-color: #fff;
+    color: #38AE29;
+    border: 1px solid #38AE29;
+}
+
+input, textarea {
+    padding: 0 5px;
+}
+
+/* Sidebar.css */
+
+.sidebar {
+    background-color: #38ae29;
+    color: white;
+    width: 64px;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    transition: width 0.3s ease-in-out;
+}
+
+.sidebar.closed {
+    width: 12px;
+}
+
+.toggle-btn {
+    margin-bottom: 1rem;
+    background-color: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+li.font-bold {
+    font-weight: bold;
+}
+
+.remove-btn {
+    background-color: #FF0000;
+    padding: 5px 5px;
+    margin-left: 5px;
+    color: #fff;
+    font-size: 15px;
+    margin-top: 8px;
+}
+
+.add-item-btn {
+    background-color: #38AE29;
+    color: #fff;
+    padding: 10px 10px;
+    margin-bottom: 15px;
+}
