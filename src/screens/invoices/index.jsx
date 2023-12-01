@@ -1,11 +1,14 @@
 // src/components/Invoices.js
 import { useState, useEffect } from 'react';
 import Sidebar from "../../components/sidebar/index.jsx";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {axiosClient} from "../../libs/axiosClient.js";
+import {IoEyeOutline} from "react-icons/io5";
 
 const Invoices = () => {
     const [invoices, setInvoices] = useState([]);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const getAllInvoices = async () => {
@@ -47,7 +50,10 @@ const Invoices = () => {
                                     key={invoice?.id}
                                     className="bg-white p-4 rounded-md shadow-md"
                                 >
-                                    <h2 className="text-lg font-semibold mb-2">{invoice?.quote_number}</h2>
+                                    <div className="flex justify-between items-center cursor-pointer">
+                                        <h2 className="text-lg font-semibold mb-2">{invoice?.quote_number}</h2>
+                                        <p onClick={() => navigate(`/preview-invoice/${invoice?.id}`)}><IoEyeOutline size={16}/></p>
+                                    </div>
                                     <p className="text-gray-600">
                                         <b>Client:</b> {invoice?.client_name}
                                         <br />
