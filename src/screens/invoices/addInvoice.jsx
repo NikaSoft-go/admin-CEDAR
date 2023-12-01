@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Sidebar from '../../components/sidebar/index.jsx';
 import Button from '../../components/button/index.jsx';
 import ResponsibilityTable from "../../components/invoices/tableA.jsx";
 import {IoMdAddCircleOutline} from "react-icons/io";
 import {FiTrash2} from "react-icons/fi";
+import {axiosClient} from "../../libs/axiosClient.js";
+import {toast} from "react-toastify";
+import {useNavigate} from "react-router-dom";
 
 const AddInvoicePage = () => {
     // Your form logic goes here
@@ -12,6 +15,8 @@ const AddInvoicePage = () => {
     const [costItems, setCostItems] = useState([
         { item: '', scope: '', quantity: '', unitPrice: '', totalCost: '' },
     ]);
+
+    const navigate = useNavigate();
 
     const responsibilitiesInitials = [
         { category: "Customer's Responsibility", values: ['Responsibility 1', 'Responsibility 2'] },
@@ -26,6 +31,24 @@ const AddInvoicePage = () => {
             ]
         },
     ]
+
+    const [state, setState] = useState({});
+
+    const handleChange = (e) => {
+        setState({
+            ...state,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const invoiceData = {
+        ...state,
+        scope: scopeItems,
+        resources: resourceItems,
+        costs: costItems,
+        responsibilities: responsibilitiesInitials,
+        terms: termsInitials,
+    };
 
     const handleAddScope = () => {
         setScopeItems([...scopeItems, '']);
@@ -66,6 +89,24 @@ const AddInvoicePage = () => {
         setCostItems(updatedCostItems);
     };
 
+    const handleAddInvoice = async (e) => {
+        e.preventDefault();
+        if (!invoiceData.invoice_type) {
+            toast.error("Invoice type is required")
+            return;
+        }
+        try {
+            const response = await axiosClient.post('/invoices/add-invoice/', {
+                invoiceData
+            });
+            toast.success(response.data.message);
+            navigate('/invoices')
+        } catch (err) {
+            console.log(err);
+            toast.error(err.response.data.message);
+        }
+    }
+
     return (
         <div className="flex h-screen bg-gray-100">
             <Sidebar />
@@ -74,8 +115,36 @@ const AddInvoicePage = () => {
                     <div className="p-4">
                         <h1 className="text-2xl font-semibold mb-4">Add Invoice</h1>
                         {/* Add Invoice Form (Example) */}
-                        <form>
+                        <form onSubmit={handleAddInvoice}>
                             <div className="mb-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                                {/* Invoice Name */}
+                                <div>
+                                    <label className="block text-gray-700 text-md font-bold mb-2">Invoice Name:</label>
+                                    <input
+                                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        type="text"
+                                        placeholder="Invoice Name"
+                                        name="invoice_name"
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                </div>
+
+                                {/* Invoice Type */}
+                                <div>
+                                    <label className="block text-gray-700 text-md font-bold mb-2">Invoice Type:</label>
+                                    <select
+                                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        name="invoice_type"
+                                        onChange={handleChange}
+                                        required
+                                    >
+                                        <option>Select an invoice type</option>
+                                        <option value="NDT">NDT</option>
+                                        <option value="DPI">DPI</option>
+                                    </select>
+                                </div>
+
                                 {/* Date */}
                                 <div>
                                     <label className="block text-gray-700 text-md font-bold mb-2">Date:</label>
@@ -83,6 +152,9 @@ const AddInvoicePage = () => {
                                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         type="date"
                                         placeholder="Date"
+                                        name="invoice_date"
+                                        onChange={handleChange}
+                                        required
                                     />
                                 </div>
 
@@ -93,6 +165,9 @@ const AddInvoicePage = () => {
                                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         type="text"
                                         placeholder="Client Name"
+                                        name="client_name"
+                                        onChange={handleChange}
+                                        required
                                     />
                                 </div>
 
@@ -103,6 +178,9 @@ const AddInvoicePage = () => {
                                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         type="text"
                                         placeholder="Prepared By"
+                                        name="prepared_by"
+                                        onChange={handleChange}
+                                        required
                                     />
                                 </div>
 
@@ -112,6 +190,9 @@ const AddInvoicePage = () => {
                                     <textarea
                                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         placeholder="Requirements"
+                                        name="requirements"
+                                        onChange={handleChange}
+                                        required
                                     />
                                 </div>
                             </div>
@@ -131,6 +212,7 @@ const AddInvoicePage = () => {
                                                 updatedScopeItems[index] = e.target.value;
                                                 setScopeItems(updatedScopeItems);
                                             }}
+                                            required
                                         />
                                         <button
                                             type="button"
@@ -165,6 +247,7 @@ const AddInvoicePage = () => {
                                                 updatedResourceItems[index] = e.target.value;
                                                 setResourceItems(updatedResourceItems);
                                             }}
+                                            required
                                         />
                                         <button
                                             type="button"
@@ -207,6 +290,7 @@ const AddInvoicePage = () => {
                                                     className="w-full p-1"
                                                     placeholder="Item"
                                                     value={cost.item}
+                                                    required
                                                     onChange={(e) => handleCostItemChange(index, 'item', e.target.value)}
                                                 />
                                             </td>
@@ -216,6 +300,7 @@ const AddInvoicePage = () => {
                                                     className="w-full p-1"
                                                     placeholder="Scope"
                                                     value={cost.scope}
+                                                    required
                                                     onChange={(e) => handleCostItemChange(index, 'scope', e.target.value)}
                                                 />
                                             </td>
@@ -228,6 +313,7 @@ const AddInvoicePage = () => {
                                                     onChange={(e) =>
                                                         handleCostItemChange(index, 'quantity', e.target.value)
                                                     }
+                                                    required
                                                 />
                                             </td>
                                             <td className="border p-2">
@@ -239,6 +325,7 @@ const AddInvoicePage = () => {
                                                     onChange={(e) =>
                                                         handleCostItemChange(index, 'unitPrice', e.target.value)
                                                     }
+                                                    required
                                                 />
                                             </td>
                                             <td className="border p-2">
@@ -250,6 +337,7 @@ const AddInvoicePage = () => {
                                                     onChange={(e) =>
                                                         handleCostItemChange(index, 'totalCost', e.target.value)
                                                     }
+                                                    required
                                                 />
                                             </td>
                                             <td className="border p-2">

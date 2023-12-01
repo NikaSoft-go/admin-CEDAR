@@ -4,6 +4,7 @@ import LoginPage from "./screens/login/index.jsx";
 // import Home from "./screens/home/index.jsx";
 import Invoices from "./screens/invoices/index.jsx";
 import AddInvoice from "./screens/invoices/addInvoice.jsx";
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 

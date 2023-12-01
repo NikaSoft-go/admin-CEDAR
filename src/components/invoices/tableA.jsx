@@ -59,6 +59,7 @@ const ResponsibilityTable = ({ column1, initalItems }) => {
                                 value={row.category}
                                 onChange={(e) => handleCategoryChange(rowIndex, e.target.value)}
                                 placeholder="Category"
+                                required
                             />
                             {responsibilities.length > 1 && (
                                 <button
@@ -79,6 +80,7 @@ const ResponsibilityTable = ({ column1, initalItems }) => {
                                         value={value}
                                         onChange={(e) => handleValueChange(rowIndex, valueIndex, e.target.value)}
                                         placeholder="Responsibility"
+                                        required
                                     />
                                     {row.values.length > 1 && (
                                         <button

@@ -37,7 +37,7 @@ const Sidebar = () => {
             className={`bg-[#38AE29] text-white w-${isSidebarOpen ? '64' : '12'} flex flex-col p-4 transition-all ease-in-out duration-300`}
         >
             <button className="mb-4" onClick={toggleSidebar}>
-                {isSidebarOpen ? <FiChevronLeft /> : <FiChevronRight />}
+                {isSidebarOpen ? <FiChevronLeft size={25} /> : <FiChevronRight size={25}/>}
             </button>
             <h1 className="text-2xl font-semibold mb-4">
                 {isSidebarOpen &&

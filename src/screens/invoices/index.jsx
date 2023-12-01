@@ -2,18 +2,23 @@
 import { useState, useEffect } from 'react';
 import Sidebar from "../../components/sidebar/index.jsx";
 import {Link} from "react-router-dom";
+import {axiosClient} from "../../libs/axiosClient.js";
 
 const Invoices = () => {
     const [invoices, setInvoices] = useState([]);
 
     useEffect(() => {
-        // Simulating fetching invoice data (replace with actual data retrieval)
-        const mockInvoices = [
-            { id: 1, title: 'Invoice 001', amount: 500, status: 'Paid' },
-            { id: 2, title: 'Invoice 002', amount: 750, status: 'Pending' },
-            { id: 3, title: 'Invoice 003', amount: 1200, status: 'Unpaid' },
-        ];
-        setInvoices(mockInvoices);
+        const getAllInvoices = async () => {
+            try {
+                const response = await axiosClient.get('/invoices/get-invoices/');
+                setInvoices(response.data.data);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        getAllInvoices();
+
     }, []);
 
     const totalInvoices = invoices.length;
@@ -39,14 +44,16 @@ const Invoices = () => {
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                             {invoices.map((invoice) => (
                                 <div
-                                    key={invoice.id}
+                                    key={invoice?.id}
                                     className="bg-white p-4 rounded-md shadow-md"
                                 >
-                                    <h2 className="text-lg font-semibold mb-2">{invoice.title}</h2>
+                                    <h2 className="text-lg font-semibold mb-2">{invoice?.quote_number}</h2>
                                     <p className="text-gray-600">
-                                        Amount: ${invoice.amount}
+                                        <b>Client:</b> {invoice?.client_name}
                                         <br />
-                                        Status: {invoice.status}
+                                        <b>Date:</b> {invoice?.invoice_date}
+                                        <br />
+                                        <b>Prepared by:</b> {invoice?.prepared_by}
                                     </p>
                                 </div>
                             ))}
