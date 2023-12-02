@@ -4,17 +4,22 @@ import Sidebar from "../../components/sidebar/index.jsx";
 import {Link, useNavigate} from "react-router-dom";
 import {axiosClient} from "../../libs/axiosClient.js";
 import {IoEyeOutline} from "react-icons/io5";
+import {useDispatch} from "react-redux";
+import {setInvoiceData} from "../../redux/slices/invoiceSlice.js";
 
 const Invoices = () => {
     const [invoices, setInvoices] = useState([]);
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     useEffect(() => {
         const getAllInvoices = async () => {
             try {
                 const response = await axiosClient.get('/invoices/get-invoices/');
-                setInvoices(response.data.data);
+                const data = response.data.data;
+                setInvoices(data);
+                dispatch(setInvoiceData(data));
             } catch (error) {
                 console.error(error);
             }

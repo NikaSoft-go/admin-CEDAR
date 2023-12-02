@@ -534,12 +534,25 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
+.my-3 {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
 .mb-2 {
   margin-bottom: 0.5rem;
 }
 
 .mb-4 {
   margin-bottom: 1rem;
+}
+
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+
+.mb-\[17px\] {
+  margin-bottom: 17px;
 }
 
 .ml-2 {
@@ -562,6 +575,14 @@ video {
   margin-top: 1rem;
 }
 
+.mt-\[60px\] {
+  margin-top: 60px;
+}
+
+.mt-\[-5px\] {
+  margin-top: -5px;
+}
+
 .block {
   display: block;
 }
@@ -582,12 +603,36 @@ video {
   height: 120px;
 }
 
+.h-\[8px\] {
+  height: 8px;
+}
+
 .h-screen {
   height: 100vh;
 }
 
+.h-\[15px\] {
+  height: 15px;
+}
+
+.h-\[20px\] {
+  height: 20px;
+}
+
+.h-\[30px\] {
+  height: 30px;
+}
+
+.h-\[50px\] {
+  height: 50px;
+}
+
 .w-96 {
   width: 24rem;
+}
+
+.w-\[100\%\] {
+  width: 100%;
 }
 
 .w-\[180px\] {
@@ -596,6 +641,10 @@ video {
 
 .w-full {
   width: 100%;
+}
+
+.w-\[70\%\] {
+  width: 70%;
 }
 
 .flex-1 {
@@ -626,6 +675,10 @@ video {
 
 .items-center {
   align-items: center;
+}
+
+.justify-start {
+  justify-content: flex-start;
 }
 
 .justify-center {
@@ -669,9 +722,19 @@ video {
   background-color: rgb(0 70 3 / var(--tw-bg-opacity));
 }
 
+.bg-\[\#248917\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(36 137 23 / var(--tw-bg-opacity));
+}
+
 .bg-\[\#38AE29\] {
   --tw-bg-opacity: 1;
   background-color: rgb(56 174 41 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#3bf123\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(59 241 35 / var(--tw-bg-opacity));
 }
 
 .bg-gray-100 {
@@ -730,6 +793,16 @@ video {
   padding-bottom: 0.5rem;
 }
 
+.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.px-\[100px\] {
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
 .text-center {
   text-align: center;
 }
@@ -747,6 +820,18 @@ video {
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
+}
+
+.text-\[13px\] {
+  font-size: 13px;
+}
+
+.text-\[15px\] {
+  font-size: 15px;
+}
+
+.text-\[14px\] {
+  font-size: 14px;
 }
 
 .font-bold {
@@ -894,6 +979,97 @@ li.font-bold {
   color: #fff;
   padding: 10px 10px;
   margin-bottom: 15px;
+}
+
+/* TableWithHeader.css */
+
+.table-container {
+  width: 100%;
+}
+
+.custom-table {
+  width: 96%;
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+  margin: 50px 2% 0 2%;
+}
+
+.header-cell {
+  /*background-color: #fff;*/
+  color: #000;
+  padding: 10px;
+  text-align: left;
+  font-size: 20px;
+}
+
+.data-cell {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.preview-sticker {
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+  padding: 10px;
+}
+
+.space-out {
+  height: 306px;
+  background-color: #38AE29;
+}
+
+.pdf-image {
+  width: 100%;
+  height: 100%;
+}
+
+.banner-image {
+  height: 100%;
+  width: 100%;
+}
+
+.page-head {
+  background-color: #3bf123;
+  width: 100%;
+  height: 140px;
+  padding: 0 10px;
+  margin-bottom: 5px;
+}
+
+.pdf-logo-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.pdf-logo {
+  width: 150px;
+  height: 100px;
+}
+
+.pdf-banner-text {
+  color: #1b3953;
+  font-weight: 700;
+}
+
+.page-head-spacer {
+  background-color: #3bf123;
+  height: 5px;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.sub-page-head {
+  background-color: #1b3953;
+  height: 100px;
+  margin-bottom: 30px;
+  padding: 10px 30px;
+}
+
+.sub-page-head .sub-page-text {
+  color: #fff;
+  font-size: 16px;
 }
 
 .hover\:border-\[1\.5px\]:hover {

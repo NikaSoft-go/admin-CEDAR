@@ -3,9 +3,11 @@ import storage from "redux-persist/lib/storage";
 import {combineReducers} from "redux";
 import {FLUSH, PAUSE, PERSIST, persistReducer, PURGE, REGISTER, REHYDRATE,} from "redux-persist";
 import userReducer from "./slices/userSlice";
+import invoiceReducer from "./slices/invoiceSlice";
 
 const reducers = combineReducers({
     user: userReducer,
+    invoice: invoiceReducer
 });
 
 const persistConfig = {
@@ -17,7 +19,7 @@ const persistedReducer = persistReducer(persistConfig, reducers);
 
 const store = configureStore({
     reducer: persistedReducer,
-    devTools: process.env.NODE_ENV !== "production",
+    devTools: import.meta.env.NODE_ENV !== "production",
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
             serializableCheck: {
