@@ -1,5 +1,6 @@
 import LogoImage from "../../assets/logo.png";
-import {GoDotFill} from "react-icons/go";
+import Scope from "../../assets/scope.jpg";
+import Resources from "../../assets/resources.jpg";
 
 const PageTwo = ({ data }) => {
     return (
@@ -39,67 +40,13 @@ const PageTwo = ({ data }) => {
                     <p className="text-left my-3 text-[13px] font-bold">
                         Scope: NDT & LT on fabricated suction Piles
                     </p>
-                    <div className="flex justify-between">
-                        <div className="bg-[#DCDDDF] w-[49.2%] py-2 px-3">
-                            <div className="flex items-start">
-                                <div className="h-[100%] mr-2">
-                                    <GoDotFill size={10} className="mt-1"/>
-                                </div>
-                                <div>
-                                    <ul className="text-[13px]"><b>NON-DESTRUCTIVE TESTING</b></ul>
-                                    <li className="text-[13px]">a) 130m weld linear length - Ultrasonic Testing</li>
-                                    <li className="text-[13px]">b) 250m weld linear length - Magnetic Particle</li>
-                                    <li className="text-[13px]">c) 15 x Welded Joints - Radiographic Testing</li>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="bg-[#DCDDDF] w-[50.2%] py-2 px-3">
-                            <div className="flex items-start">
-                                <div className="h-[100%] mr-2">
-                                    <GoDotFill size={10} className="mt-1"/>
-                                </div>
-                                <div>
-                                    <ul className="text-[13px]"><b>LOAD TESTING</b></ul>
-                                    <li className="text-[13px]">a) Load Testing to 50T</li>
-                                    <li className="text-[13px]">b) Loadcell</li>
-                                    <li className="text-[13px]">c) Manifold Frame to top section</li>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <img src={Scope} alt="" className="w-[100%]"/>
                 </div>
                 <div className="requirements mb-6">
-                    <div className="header-text bg-[#288068] py-1 text-center font-bold">
+                    <div className="header-text mb-3 bg-[#288068] py-1 text-center font-bold">
                         <p className="text-[12px] text-white font-bold">Resources</p>
                     </div>
-                    <div>
-                        <table className="resources-table">
-                            <thead>
-                                <tr>
-                                    <th>Ref</th>
-                                    <th>Resource/Equipment</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>2 x NDT Personnel : UT, MT, RT L2 (ISO9712)</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Load Testing Engineers</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Project Manager (Office Based)</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>UT Set & Probes, MT Yoke & Inverter, IR 192 Gamma Source & accessories</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <img src={Resources} alt="" className="w-[100%]"/>
                 </div>
                 <div className="requirements mt-6 mb-6">
                     <div className="header-text bg-[#288068] py-1 text-center font-bold">
