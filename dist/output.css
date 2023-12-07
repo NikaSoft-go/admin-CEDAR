@@ -544,6 +544,11 @@ video {
   margin-right: 1.25rem;
 }
 
+.mx-8 {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
 .my-1 {
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
@@ -884,6 +889,11 @@ video {
   color: rgb(0 70 3 / var(--tw-text-opacity));
 }
 
+.text-\[blue\] {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 255 / var(--tw-text-opacity));
+}
+
 .text-blue-600 {
   --tw-text-opacity: 1;
   color: rgb(37 99 235 / var(--tw-text-opacity));
@@ -907,6 +917,10 @@ video {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.underline {
+  text-decoration-line: underline;
 }
 
 .shadow {
@@ -1114,7 +1128,8 @@ li.font-bold {
   background-color: #38ae29;
 }
 
-.resources-table {
+.resources-table,
+.responsibilities-table {
   width: 100%;
   margin-top: 5px;
 }
@@ -1127,7 +1142,9 @@ li.font-bold {
 
 .resources-table,
 .resources-table th,
-.resources-table td {
+.resources-table td,
+.responsibilities-table th,
+.responsibilities-table td{
   border: 1px solid #ccc;
 }
 
@@ -1202,6 +1219,24 @@ li.font-bold {
   align-items: center;
 }
 
+.responsibilities-table th {
+  padding-bottom: 8px;
+  background-color: #288068;
+  color: #fff;
+  font-size: 12px;
+}
+
+.responsibilities-table td {
+  padding-left: 8px;
+  padding-bottom: 8px;
+  font-size: 13px;
+}
+
+.terms td:first-child {
+  background: #288068;
+  color: #fff;
+}
+
 .hover\:border-\[1\.5px\]:hover {
   border-width: 1.5px;
 }
@@ -1237,4 +1272,3 @@ li.font-bold {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
-

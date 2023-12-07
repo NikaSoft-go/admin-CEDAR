@@ -7,7 +7,7 @@ import {LuPenLine} from "react-icons/lu";
 
 const PageTwo = ({ data }) => {
     return (
-        <div>
+        <div className="mb-6">
             <div className="page-head">
                 <div className="pdf-logo-wrapper">
                     <img src={LogoImage} alt="" className="pdf-logo"/>

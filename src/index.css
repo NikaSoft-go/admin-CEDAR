@@ -181,7 +181,8 @@ li.font-bold {
     background-color: #38ae29;
 }
 
-.resources-table {
+.resources-table,
+.responsibilities-table {
     width: 100%;
     margin-top: 5px;
 }
@@ -194,7 +195,9 @@ li.font-bold {
 
 .resources-table,
 .resources-table th,
-.resources-table td {
+.resources-table td,
+.responsibilities-table th,
+.responsibilities-table td{
     border: 1px solid #ccc;
 }
 
@@ -269,3 +272,20 @@ li.font-bold {
     align-items: center;
 }
 
+.responsibilities-table th {
+    padding-bottom: 8px;
+    background-color: #288068;
+    color: #fff;
+    font-size: 12px;
+}
+
+.responsibilities-table td {
+    padding-left: 8px;
+    padding-bottom: 8px;
+    font-size: 13px;
+}
+
+.terms td:first-child {
+    background: #288068;
+    color: #fff;
+}
