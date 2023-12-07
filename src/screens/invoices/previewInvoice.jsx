@@ -6,6 +6,7 @@ import {useSelector} from "react-redux";
 import PageOne from "./pageOne.jsx";
 import PageTwo from "./pageTwo.jsx";
 import PageThree from "./pageThree.jsx";
+import PageFour from "./pageFour.jsx";
 
 
 export default function PDFPages() {
@@ -57,6 +58,9 @@ export default function PDFPages() {
                     </div>
                     <div id="pdf-content-page-3">
                         <PageThree data={invoice}/>
+                    </div>
+                    <div id="pdf-content-page-4">
+                        <PageFour data={invoice}/>
                     </div>
                 </main>
             </div>

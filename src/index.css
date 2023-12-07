@@ -149,9 +149,10 @@ li.font-bold {
 }
 
 .pdf-banner-text {
-    color: #004603;
+    color: #fff;
     font-weight: 700;
     margin-top: -5px;
+    font-size: 13px;
 }
 
 .page-head-spacer {

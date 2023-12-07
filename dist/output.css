@@ -534,6 +534,18 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
+.fixed {
+  position: fixed;
+}
+
+.sticky {
+  position: sticky;
+}
+
+.bottom-0 {
+  bottom: 0px;
+}
+
 .mx-12 {
   margin-left: 3rem;
   margin-right: 3rem;
@@ -552,6 +564,11 @@ video {
 .my-1 {
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
+}
+
+.my-12 {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
 }
 
 .mb-1 {
@@ -602,6 +619,26 @@ video {
   margin-top: 25px;
 }
 
+.mb-\[300px\] {
+  margin-bottom: 300px;
+}
+
+.mt-12 {
+  margin-top: 3rem;
+}
+
+.mb-\[400px\] {
+  margin-bottom: 400px;
+}
+
+.mb-\[700px\] {
+  margin-bottom: 700px;
+}
+
+.mb-\[600px\] {
+  margin-bottom: 600px;
+}
+
 .block {
   display: block;
 }
@@ -642,6 +679,14 @@ video {
   height: 100vh;
 }
 
+.h-\[100px\] {
+  height: 100px;
+}
+
+.max-h-\[100px\] {
+  max-height: 100px;
+}
+
 .w-96 {
   width: 24rem;
 }
@@ -664,6 +709,10 @@ video {
 
 .w-full {
   width: 100%;
+}
+
+.w-\[100px\] {
+  width: 100px;
 }
 
 .flex-1 {
@@ -1096,9 +1145,10 @@ li.font-bold {
 }
 
 .pdf-banner-text {
-  color: #004603;
+  color: #fff;
   font-weight: 700;
   margin-top: -5px;
+  font-size: 13px;
 }
 
 .page-head-spacer {
