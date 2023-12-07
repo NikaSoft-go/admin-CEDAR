@@ -188,7 +188,6 @@ const PageTwo = ({ data }) => {
                 </div>
             </div>
             <div className="cover-bottom">
-                <div className="cover-bottom-header w-[100%] h-[8px]"></div>
                 <div className="cover-bottom-content px-3">
                     <img src={LogoImage} className="pdf-logo"/>
                 </div>
@@ -196,37 +195,37 @@ const PageTwo = ({ data }) => {
             <div className="mt-2 mx-5 mb-3 flex justify-between w-[100%]">
                 <div className="flex justify-start items-center">
                     <div className="circle">
-                        <GiRotaryPhone size={25} fill="#288068"/>
+                        <GiRotaryPhone size={18} fill="#288068"/>
                     </div>
                     <div className="ml-2">
-                        <p className="text-[12px]">+233 (0) 54 279 5320</p>
-                        <p className="text-[12px]">+233 (0) 54 307 1604</p>
+                        <p className="text-[11px]">+233 (0) 54 279 5320</p>
+                        <p className="text-[11px]">+233 (0) 54 307 1604</p>
                     </div>
                 </div>
                 <div className="flex justify-start items-center">
                     <div className="circle">
-                        <FaGlobe size={25} fill="#288068"/>
+                        <FaGlobe size={18} fill="#288068"/>
                     </div>
                     <div className="ml-2">
-                        <p className="text-[12px]">https://www.cedarcompanylimited.com</p>
+                        <p className="text-[11px]">https://www.cedarcompanylimited.com</p>
                     </div>
                 </div>
                 <div className="flex justify-start items-center">
                     <div className="circle">
-                        <IoLocationSharp size={25} fill="#288068"/>
+                        <IoLocationSharp size={18} fill="#288068"/>
                     </div>
                     <div className="ml-2">
-                        <p className="text-[12px]">West-Tanakrom, Western region</p>
-                        <p className="text-[12px]">Ghana, West Africa</p>
+                        <p className="text-[11px]">West-Tanakrom, Western region</p>
+                        <p className="text-[11px]">Ghana, West Africa</p>
                     </div>
                 </div>
                 <div className="flex justify-around items-center mx-12">
                     <div className="circle">
-                        <LuPenLine size={25} fill="#288068"/>
+                        <LuPenLine size={18} fill="#288068"/>
                     </div>
                     <div className="ml-2">
-                        <p className="text-[12px]">Reg No.</p>
-                        <p className="text-[12px]">Tin: </p>
+                        <p className="text-[11px]">Reg No.</p>
+                        <p className="text-[11px]">Tin: </p>
                     </div>
                 </div>
             </div>
