@@ -15,7 +15,7 @@ const Sidebar = () => {
         {
             route: '/invoices',
             subRoutes: ['/invoices', '/add-invoice'],
-            name: 'Invoices',
+            name: 'Job Quotation',
             icon: <FiFileText size={24} />,
         },
         {

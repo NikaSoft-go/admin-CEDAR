@@ -7,9 +7,6 @@ import PageOne from "./pageOne.jsx";
 import PageTwo from "./pageTwo.jsx";
 
 
-
-
-
 export default function PDFPages() {
     const navigate = useNavigate();
     const invoices = useSelector(store => store.invoice);

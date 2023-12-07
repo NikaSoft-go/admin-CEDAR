@@ -91,7 +91,7 @@ li.font-bold {
     width: 96%;
     border-collapse: collapse;
     border: 1px solid #ccc;
-    margin: 50px 2% 0 2%;
+    margin: 20px 2% 0 2%;
 }
 
 .header-cell {
@@ -122,11 +122,11 @@ li.font-bold {
 
 .pdf-image {
     width: 100%;
-    height: 100%;
+    height: 520px;
 }
 
 .banner-image {
-    height: 100%;
+    height: 250px;
     width: 100%;
 }
 
@@ -183,7 +183,7 @@ li.font-bold {
 
 .resources-table {
     width: 100%;
-    margin-top: 15px;
+    margin-top: 5px;
 }
 
 .resources-table td:first-child,
@@ -195,13 +195,13 @@ li.font-bold {
 .resources-table,
 .resources-table th,
 .resources-table td {
-    border: 1px solid;
+    border: 1px solid #ccc;
 }
 
 .resources-table td,
 .cost-table td {
-    font-size: 13px;
-    padding: 5px;
+    font-size: 12px;
+    padding: 1px 2px 5px;
     text-align: center;
 }
 
@@ -215,18 +215,19 @@ li.font-bold {
 .resources-table th,
 .cost-table th{
     font-size: 13px;
+    margin-bottom: 10px;
 }
 
 .cost-table {
     width: 100%;
-    margin-top: 15px;
+    margin-top: 10px;
 }
 
 
 .cost-table,
 .cost-table th,
 .cost-table td {
-    border: 1px solid;
+    border: 1px solid #ccc;
 }
 
 .cost-table th {
@@ -253,3 +254,18 @@ li.font-bold {
     padding-left: 30px;
     padding-right: 30px;
 }
+
+.circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border-right: 2px solid #ccc; /* Set a transparent border initially */
+    position: relative;
+    border-left: 2px solid #288068;
+    border-bottom: 2px solid #288068;
+    border-top: 2px solid #288068;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+

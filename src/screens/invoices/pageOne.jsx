@@ -1,4 +1,4 @@
-import PDFCoverImage from "../../assets/pdf_cover.png";
+import PDFCoverImage from "../../assets/pdf_cover.jpg";
 import BannerCard from "../../assets/banner.jpg";
 import TableWithHeader from "../../components/pdfComponents/coverPageTable.jsx";
 import LogoImage from "../../assets/logo.png";
@@ -12,7 +12,7 @@ const PageOne = ({ data }) => {
             <div className="cover-bottom mt-[25px]">
                 <div className="cover-bottom-header w-[100%] h-[8px]"></div>
                 <div className="cover-bottom-content px-3">
-                    <img src={LogoImage} className="pdf-logo"/>
+                    <img src={LogoImage} className="pdf-logo" alt=""/>
                 </div>
             </div>
         </div>

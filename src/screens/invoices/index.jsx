@@ -37,16 +37,16 @@ const Invoices = () => {
             <div className="flex-1 flex flex-col overflow-hidden">
                 <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
                     <div className="p-4">
-                        <h1 className="text-2xl font-semibold mb-4">Invoices</h1>
+                        <h1 className="text-2xl font-semibold mb-4">Job Quotations</h1>
                         <div className="mb-4 flex justify-between items-center">
                             <p className="text-gray-600">
-                                Total Invoices: <span className="font-bold">{totalInvoices}</span>
+                                Total Job Quotations: <span className="font-bold">{totalInvoices}</span>
                             </p>
                             <Link
                                 to="/add-invoice"
                                 className="add-invoice-btn font-bold py-2 px-4 rounded"
                             >
-                                Add Invoice
+                                Add Job Quotation
                             </Link>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

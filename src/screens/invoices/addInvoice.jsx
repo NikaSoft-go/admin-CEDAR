@@ -113,17 +113,17 @@ const AddInvoicePage = () => {
             <div className="flex-1 flex flex-col overflow-hidden">
                 <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
                     <div className="p-4">
-                        <h1 className="text-2xl font-semibold mb-4">Add Invoice</h1>
+                        <h1 className="text-2xl font-semibold mb-4">Add Job Quotation</h1>
                         {/* Add Invoice Form (Example) */}
                         <form onSubmit={handleAddInvoice}>
                             <div className="mb-4 grid grid-cols-1 md:grid-cols-2 gap-4">
                                 {/* Invoice Name */}
                                 <div>
-                                    <label className="block text-gray-700 text-md font-bold mb-2">Invoice Name:</label>
+                                    <label className="block text-gray-700 text-md font-bold mb-2">Job Quotation Name:</label>
                                     <input
                                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         type="text"
-                                        placeholder="Invoice Name"
+                                        placeholder="Job Quotation Name"
                                         name="invoice_name"
                                         onChange={handleChange}
                                         required
@@ -132,7 +132,7 @@ const AddInvoicePage = () => {
 
                                 {/* Invoice Type */}
                                 <div>
-                                    <label className="block text-gray-700 text-md font-bold mb-2">Invoice Type:</label>
+                                    <label className="block text-gray-700 text-md font-bold mb-2">Job Quotation Type:</label>
                                     <select
                                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         name="invoice_type"
@@ -380,7 +380,7 @@ const AddInvoicePage = () => {
                                 />
                             </div>
 
-                            <Button>Add Invoice</Button>
+                            <Button>Add Job Quotation</Button>
                         </form>
                     </div>
                 </main>
