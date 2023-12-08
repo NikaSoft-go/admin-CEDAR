@@ -6,6 +6,7 @@ import {IoLocationSharp} from "react-icons/io5";
 import {LuPenLine} from "react-icons/lu";
 
 const PageTwo = ({ data }) => {
+    console.log(data);
     return (
         <div className="mb-6">
             <div className="page-head">
@@ -46,32 +47,21 @@ const PageTwo = ({ data }) => {
                         Scope: NDT & LT on fabricated suction Piles
                     </p>
                     <div className="flex justify-between">
-                        <div className="bg-[#DCDDDF] w-[49.2%] py-2 px-3">
+                        {data?.scope?.map((elt, index) =>
+                            <div className="bg-[#DCDDDF] w-[49.2%] py-2 px-3" key={index}>
                             <div className="flex items-start">
                                 <div className="h-[100%] mr-2">
                                     <GoDotFill size={10} className="mt-1"/>
                                 </div>
                                 <div>
-                                    <ul className="text-[11.5px]"><b>NON-DESTRUCTIVE TESTING</b></ul>
-                                    <li className="text-[11.5px]">a) 130m weld linear length - Ultrasonic Testing</li>
-                                    <li className="text-[11.5px]">b) 250m weld linear length - Magnetic Particle</li>
-                                    <li className="text-[11.5px]">c) 15 x Welded Joints - Radiographic Testing</li>
+                                    <ul className="text-[11.5px]"><b>{elt?.category}</b></ul>
+                                    {elt?.values?.map((innerElt, index) =>
+                                        <li className="text-[11.5px]" key={index}>{innerElt}</li>
+                                    )}
                                 </div>
                             </div>
                         </div>
-                        <div className="bg-[#DCDDDF] w-[50.2%] py-2 px-3">
-                            <div className="flex items-start">
-                                <div className="h-[100%] mr-2">
-                                    <GoDotFill size={10} className="mt-1"/>
-                                </div>
-                                <div>
-                                    <ul className="text-[11.5px]"><b>LOAD TESTING</b></ul>
-                                    <li className="text-[11.5px]">a) Load Testing to 50T</li>
-                                    <li className="text-[11.5px]">b) Loadcell</li>
-                                    <li className="text-[11.5px]">c) Manifold Frame to top section</li>
-                                </div>
-                            </div>
-                        </div>
+                        )}
                     </div>
                 </div>
                 <div className="requirements mb-3">
@@ -94,22 +84,12 @@ const PageTwo = ({ data }) => {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>2 x NDT Personnel : UT, MT, RT L2 (ISO9712)</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Load Testing Engineers</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Project Manager (Office Based)</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>UT Set & Probes, MT Yoke & Inverter, IR 192 Gamma Source & accessories</td>
-                                </tr>
+                                {data?.resources?.map((elt, index) =>
+                                    <tr key={index}>
+                                        <td>{index + 1}</td>
+                                        <td>{elt}</td>
+                                    </tr>
+                                )}
                             </tbody>
                         </table>
                     </div>
@@ -146,42 +126,15 @@ const PageTwo = ({ data }) => {
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Inspection Personnel - 2 man team (based on 6 days working)</td>
-                                <td>Lumpsum</td>
-                                <td>10</td>
-                                <td>USD 9,288.50</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>
-                                    IR 192 Gamma Source & Accessories (based on 5 days working)
-                                    MT / UT Sets & Accessories
-                                </td>
-                                <td>Lumpsum</td>
-                                <td>10</td>
-                                <td>USD 9,288.50</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>
-                                    Consumables:
-                                    RT Films (100x400mm) x15
-                                    Processing Chemicals : Developer & Fixer x 1
-                                    NDT Consumables (White Contrast/Black Ink/Solvent) x 25
-                                </td>
-                                <td>Lumpsum</td>
-                                <td>10</td>
-                                <td>USD 9,288.50</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Load Testing Engineers + 50T Waterbag and Load Cell</td>
-                                <td>Lumpsum</td>
-                                <td>10</td>
-                                <td>USD 9,288.50</td>
-                            </tr>
+                            {data?.costs?.map((elt, index) =>
+                                <tr key={index}>
+                                    <td>{elt?.item}</td>
+                                    <td>{elt?.scope}</td>
+                                    <td>{elt?.quantity}</td>
+                                    <td>{elt?.unitPrice}</td>
+                                    <td>{elt?.totalCost}</td>
+                                </tr>
+                            )}
                             </tbody>
                         </table>
                     </div>

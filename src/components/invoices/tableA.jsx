@@ -1,9 +1,7 @@
-import { useState } from 'react';
 import {FiTrash2} from "react-icons/fi";
 import {IoMdAddCircleOutline} from "react-icons/io";
 
-const ResponsibilityTable = ({ column1, initalItems }) => {
-    const [responsibilities, setResponsibilities] = useState(initalItems);
+const ResponsibilityTable = ({ responsibilities, setResponsibilities, column1 }) => {
 
     const handleAddRow = () => {
         setResponsibilities([...responsibilities, { category: '', values: [''] }]);
