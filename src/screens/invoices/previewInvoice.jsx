@@ -13,7 +13,15 @@ export default function PDFPages() {
     const navigate = useNavigate();
     const invoices = useSelector(store => store.invoice);
     const { id } = useParams();
-    const invoice = invoices.data?.find(invoice => invoice.id === Number(id));
+    let invoice = invoices.data?.find(invoice => invoice.id === Number(id));
+    invoice = {
+        ...invoice,
+        scope: JSON.parse(invoice.scope),
+        resources: JSON.parse(invoice.resources),
+        costs: JSON.parse(invoice.costs),
+        responsibilities: JSON.parse(invoice.responsibilities),
+        terms: JSON.parse(invoice.terms)
+    }
     // Function to generate a single PDF by combining the content of all pages
     const generateCombinedPDF = () => {
         const combinedContent = [];

@@ -13,6 +13,11 @@ const Invoices = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
+    const previewInvoice = (e, id) => {
+        e.stopPropagation()
+        navigate(`/preview-invoice/${id}`);
+    }
+
     useEffect(() => {
         const getAllInvoices = async () => {
             try {
@@ -54,10 +59,13 @@ const Invoices = () => {
                                 <div
                                     key={invoice?.id}
                                     className="bg-white p-4 rounded-md shadow-md"
+                                    onClick={() => navigate(`/invoice/update/${invoice?.id}`)}
                                 >
                                     <div className="flex justify-between items-center cursor-pointer">
                                         <h2 className="text-lg font-semibold mb-2">{invoice?.quote_number}</h2>
-                                        <p onClick={() => navigate(`/preview-invoice/${invoice?.id}`)}><IoEyeOutline size={16}/></p>
+                                        <p onClick={(e) => previewInvoice(e, invoice?.id)}>
+                                            <IoEyeOutline size={16}/>
+                                        </p>
                                     </div>
                                     <p className="text-gray-600">
                                         <b>Client:</b> {invoice?.client_name}

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {useEffect, useState} from 'react';
 import Sidebar from '../../components/sidebar/index.jsx';
 import Button from '../../components/button/index.jsx';
 import ResponsibilityTable from "../../components/invoices/tableA.jsx";
@@ -6,164 +6,34 @@ import {IoMdAddCircleOutline} from "react-icons/io";
 import {FiTrash2} from "react-icons/fi";
 import {axiosClient} from "../../libs/axiosClient.js";
 import {toast} from "react-toastify";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import SignatureUpload from "../../components/signatureUpload/index.jsx";
 
-const AddInvoicePage = () => {
+const EditInvoicePage = () => {
+    const { id } = useParams();
     // Your form logic goes here
-    const scopeInitials = [
-        {
-            category: "NON-DESTRUCTIVE TESTING",
-            values: [
-                'a) 130m weld linear length - Ultrasonic Testing',
-                'b) 250m weld linear length - Magnetic Particle',
-                'c) 15 x Welded Joints - Radiographic Testing'
-            ]
-        },
-        {
-            category: "LOAD TESTING",
-            values: [
-                'a) Load Testing to 50T',
-                'b) Loadcell',
-                'c) Manifold Frame to top section'
-            ]
-        },
-    ]
-    const responsibilitiesInitials = [
-        {
-            category: "Customer's Responsibility",
-            values: [
-                'Site specific inductions and access to work areas.',
-                'Scaffolding (No ladders to be used on site).',
-                'QC to go with technicians to locate & identify welds',
-                'All welds to be tested to be clearly marked and flagged with tape.',
-                'Running water, drainage and electricity to be provided at Darkroom facility.',
-                'Certified electrician to connect up power to Darkroom',
-                'Ablution facilities',
-                'Lighting for after-hours work if required.',
-                'Crane (if lifting and reorientation of equipment required).',
-                'Issue Purchase Order to APEX ALS.',
-            ]
-        },
-        {
-            category: "APEX Responsibilities",
-            values: [
-                'Provide Component Personnel for specified task(s).',
-                'Provide Flights, Visas, Accommodation, Transfers and Equipment logistics at cost +5% to client.',
-                'Provide PPR, equipment and consumables for the task of conduction scope as required.',
-            ]
-        },
-    ]
-    const termsInitials = [
-        {
-            category: "General",
-            values: [
-                'Refer to General Terms and Conditions here, notwithstanding',
-            ]
-        },
-        {
-            category: "Payment Terms",
-            values: [
-                '30 days from invoice',
-            ]
-        },
-        {
-            category: "Lead Time",
-            values: [
-                '2 weeks',
-            ]
-        },
-        {
-            category: "Equipment & Consumables",
-            values: [
-                'All equipment Duties, Excess will charged to client at cost +5%. ' +
-                'Consumables logistics (where applicable) will be charged to client at cost +5%.',
-            ]
-        },
 
-        {
-            category: "Note(s)",
-            values: [
-                'N/A'
-            ]
-        },
-        {
-            category: "Durations",
-            values: [
-                'Estimated duration for the proposed scope in: 5 days working (excluding Load Testing). ' +
-                'Note: Estimated durations are a best guess based on previous experience in the field ' +
-                'and do not take into account any operational or weather delays. Should there be an ' +
-                'extension of the proposed scope duration due to delays outside of APEX control, then ' +
-                'the team & equipment day rate of USD 1,124.50 shall apply (excluding Load Testing). ' +
-                'These days will be verified on the timesheets',
-            ]
-        },
-        {
-            category: "Exclusion 1",
-            values: [
-                'Price Quoted for services rendered directly to Wayoe Engineering & Construction ' +
-                'and excludes; WHT 7.5%, GETFL/NHIL 5%, Covid 1% and VAT. These will be included at the ' +
-                'date of invoicing.',
-            ]
-        },
-        {
-            category: "Exclusion 2",
-            values: [
-                'Price excludes all Access Equipment if work at height required. These to be supplied ' +
-                'by Wayoe Engineering & Construction.',
-            ]
-        },
-        {
-            category: "Validity",
-            values: [
-                'The quote is valid for 30 days.',
-            ]
-        },
-    ]
+    const [scopeItems, setScopeItems] = useState([]);
+    const [responsibilities, setResponsibilities] = useState([]);
+    const [terms, setTerms] = useState([]);
+    const [resourceItems, setResourceItems] = useState([]);
+    const [costItems, setCostItems] = useState([]);
     const [signature, setSignature] = useState(null);
-
-    const [scopeItems, setScopeItems] = useState(scopeInitials);
-    const [responsibilities, setResponsibilities] = useState(responsibilitiesInitials);
-    const [terms, setTerms] = useState(termsInitials);
-    const [resourceItems, setResourceItems] = useState([
-        '2 x NDT Personnel : UT, MT, RT L2 (ISO9712)',
-        'Load Testing Engineers',
-        'Project Manager (Office Based)',
-        'UT Set & Probes, MT Yoke & Inverter, IR 192 Gamma Source & accessories'
-    ]);
-    const [costItems, setCostItems] = useState([
-        {
-            item: 1,
-            scope: 'Inspection Personnel - 2 man team (based on 6 days working)',
-            quantity: 'Lumpsum', unitPrice: '10', totalCost: 'USD 9,288.50'
-        },
-        {
-            item: 2,
-            scope: 'IR 192 Gamma Source & Accessories (based on 5 days working) MT / UT Sets & Accessories',
-            quantity: 'Lumpsum', unitPrice: '10', totalCost: 'USD 9,288.50'
-        },
-        {
-            item: 3,
-            scope: 'Consumables:RT Films (100x400mm) x15 Processing Chemicals : Developer & Fixer x 1 NDT Consumables (White Contrast/Black Ink/Solvent) x 25',
-            quantity: 'Lumpsum', unitPrice: '10', totalCost: 'USD 9,288.50'
-        },
-        {
-            item: 4,
-            scope: 'Load Testing Engineers + 50T Waterbag and Load Cell',
-            quantity: 'Lumpsum', unitPrice: '10', totalCost: 'USD 9,288.50'
-        },
-    ]);
-
+    const [defaultSignatureUrl, setDefaultSignatureUrl]= useState(null);
     const navigate = useNavigate();
 
-    const [state, setState] = useState({});
-
-    const handleChange = (e) => {
-        setState({
-            ...state,
-            [e.target.name]: e.target.value
-        })
-    }
+    const [state, setState] = useState({
+        invoice_date: "",
+        invoice_type: "",
+        client_name: "",
+        invoice_name: "",
+        requirements: "",
+        prepared_by: "",
+        mobile_phone_one: "",
+        mobile_phone_two: "",
+        last_words: "",
+        email: ""
+    });
 
     const invoiceData = {
         ...state,
@@ -173,6 +43,13 @@ const AddInvoicePage = () => {
         responsibilities: JSON.stringify(responsibilities),
         terms: JSON.stringify(terms),
     };
+
+    const handleChange = (e) => {
+        setState({
+            ...state,
+            [e.target.name]: e.target.value
+        })
+    }
 
     const handleAddResource = () => {
         setResourceItems([...resourceItems, '']);
@@ -203,7 +80,7 @@ const AddInvoicePage = () => {
         setCostItems(updatedCostItems);
     };
 
-    const handleAddInvoice = async (e) => {
+    const updateJobQuotation = async (e) => {
         e.preventDefault();
         if (!invoiceData.invoice_type) {
             toast.error("Invoice type is required")
@@ -218,17 +95,66 @@ const AddInvoicePage = () => {
 
             // Add signature image
             formData.append('signature', signature);
-            const response = await axiosClient.post(
-                '/invoices/add-invoice/',
+            const response = await axiosClient.patch(
+                `/invoices/update-invoice/${id}/`,
                 formData
             );
             toast.success(response.data.message);
             navigate('/invoices')
         } catch (err) {
-            console.log(err);
-            toast.error(err.response.data.message);
+            console.error(err);
         }
     }
+
+    useEffect(() => {
+        if (id) {
+            const getInvoice = async () => {
+                try {
+                    const response = await axiosClient.get(`/invoices/get-invoice/${id}/`);
+                    const {
+                        invoice_name,
+                        invoice_type,
+                        invoice_date,
+                        prepared_by,
+                        client_name,
+                        requirements,
+                        scope,
+                        resources,
+                        terms,
+                        costs,
+                        email,
+                        last_words,
+                        mobile_phone_one,
+                        mobile_phone_two,
+                        responsibilities,
+                        signature
+                    }  = response.data.data;
+                    setState({
+                        invoice_name,
+                        invoice_type,
+                        invoice_date,
+                        prepared_by,
+                        client_name ,
+                        requirements,
+                        mobile_phone_one,
+                        mobile_phone_two,
+                        last_words,
+                        email
+                    });
+                    setScopeItems(JSON.parse(scope));
+                    setResourceItems(JSON.parse(resources));
+                    setTerms(JSON.parse(terms));
+                    setResponsibilities(JSON.parse(responsibilities));
+                    setCostItems(JSON.parse(costs));
+                    setDefaultSignatureUrl(signature);
+                } catch (err) {
+                    console.error(err);
+                }
+            }
+            getInvoice();
+        }
+
+    }, [id]);
 
     return (
         <div className="flex h-screen bg-gray-100">
@@ -236,9 +162,9 @@ const AddInvoicePage = () => {
             <div className="flex-1 flex flex-col overflow-hidden">
                 <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
                     <div className="p-4">
-                        <h1 className="text-2xl font-semibold mb-4">Add Job Quotation</h1>
+                        <h1 className="text-2xl font-semibold mb-4">Update Job Quotation</h1>
                         {/* Add Invoice Form (Example) */}
-                        <form onSubmit={handleAddInvoice}>
+                        <form onSubmit={updateJobQuotation}>
                             <div className="mb-4 grid grid-cols-1 md:grid-cols-2 gap-4">
                                 {/* Invoice Name */}
                                 <div>
@@ -248,6 +174,7 @@ const AddInvoicePage = () => {
                                         type="text"
                                         placeholder="Job Quotation Name"
                                         name="invoice_name"
+                                        value={state.invoice_name}
                                         onChange={handleChange}
                                         required
                                     />
@@ -259,6 +186,7 @@ const AddInvoicePage = () => {
                                     <select
                                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         name="invoice_type"
+                                        value={state.invoice_type}
                                         onChange={handleChange}
                                         required
                                     >
@@ -276,6 +204,7 @@ const AddInvoicePage = () => {
                                         type="date"
                                         placeholder="Date"
                                         name="invoice_date"
+                                        value={state.invoice_date}
                                         onChange={handleChange}
                                         required
                                     />
@@ -289,6 +218,7 @@ const AddInvoicePage = () => {
                                         type="text"
                                         placeholder="Client Name"
                                         name="client_name"
+                                        value={state.client_name}
                                         onChange={handleChange}
                                         required
                                     />
@@ -302,11 +232,11 @@ const AddInvoicePage = () => {
                                         type="text"
                                         placeholder="Prepared By"
                                         name="prepared_by"
+                                        value={state.prepared_by}
                                         onChange={handleChange}
                                         required
                                     />
                                 </div>
-
 
                                 {/* Email Address */}
 
@@ -317,6 +247,7 @@ const AddInvoicePage = () => {
                                         type="email"
                                         placeholder="Email"
                                         name="email"
+                                        value={state.email}
                                         onChange={handleChange}
                                         required
                                     />
@@ -330,6 +261,7 @@ const AddInvoicePage = () => {
                                         type="text"
                                         placeholder="Mobile Phone 1"
                                         name="mobile_phone_one"
+                                        value={state.mobile_phone_one}
                                         onChange={handleChange}
                                         required
                                     />
@@ -343,6 +275,7 @@ const AddInvoicePage = () => {
                                         type="text"
                                         placeholder="Mobile Phone 2"
                                         name="mobile_phone_two"
+                                        value={state.mobile_phone_two}
                                         onChange={handleChange}
                                         required
                                     />
@@ -355,6 +288,7 @@ const AddInvoicePage = () => {
                                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         placeholder="Footnote"
                                         name="last_words"
+                                        value={state.last_words}
                                         onChange={handleChange}
                                         required
                                     />
@@ -367,11 +301,11 @@ const AddInvoicePage = () => {
                                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         placeholder="Requirements"
                                         name="requirements"
+                                        value={state.requirements}
                                         onChange={handleChange}
                                         required
                                     />
                                 </div>
-
                             </div>
 
                             {/* Scope */}
@@ -379,7 +313,6 @@ const AddInvoicePage = () => {
                                 <label className="block text-gray-700 text-md font-bold mb-2">Scope:</label>
                                 <ResponsibilityTable
                                     column1="Scope"
-                                    initalItems={scopeInitials}
                                     responsibilities={scopeItems}
                                     setResponsibilities={setScopeItems}
                                 />
@@ -388,7 +321,7 @@ const AddInvoicePage = () => {
                             {/* Resources */}
                             <div className="mb-4">
                                 <label className="block text-gray-700 text-md font-bold mb-2">Resources:</label>
-                                {resourceItems.map((resource, index) => (
+                                {resourceItems?.map((resource, index) => (
                                     <div key={index} className="flex items-center mb-2">
                                         <input
                                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mr-2"
@@ -520,7 +453,6 @@ const AddInvoicePage = () => {
                                 <label className="block text-gray-700 text-md font-bold mb-2">Responsibilities</label>
                                 <ResponsibilityTable
                                     column1="Responsibilities"
-                                    initalItems={responsibilitiesInitials}
                                     responsibilities={responsibilities}
                                     setResponsibilities={setResponsibilities}
                                 />
@@ -531,7 +463,6 @@ const AddInvoicePage = () => {
                                 <label className="block text-gray-700 text-md font-bold mb-2">Terms</label>
                                 <ResponsibilityTable
                                     column1="Terms"
-                                    initalItems={termsInitials}
                                     responsibilities={terms}
                                     setResponsibilities={setTerms}
                                 />
@@ -542,11 +473,11 @@ const AddInvoicePage = () => {
                                 <SignatureUpload
                                     signature={signature}
                                     setSignature={setSignature}
+                                    defaultSignatureUrl={defaultSignatureUrl}
                                 />
                             </div>
 
-
-                            <Button>Add Job Quotation</Button>
+                            <Button>Update Job Quotation</Button>
                         </form>
                     </div>
                 </main>
@@ -555,4 +486,4 @@ const AddInvoicePage = () => {
     );
 };
 
-export default AddInvoicePage;
+export default EditInvoicePage;

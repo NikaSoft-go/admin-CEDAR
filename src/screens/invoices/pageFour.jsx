@@ -22,16 +22,16 @@ const PageFour = ({ data }) => {
                 <div className="bottom-cards">
                     <div className="signature">
                         <img src={SignatureImage} alt="" className="max-h-[100px]"/>
-                        <p className="mt-2 font-bold text-[13px]">Nick Ames</p>
+                        <p className="mt-2 font-bold text-[13px]">{data?.presented_by}</p>
                         <p className="text-[13px]">Technical Manager</p>
-                        <p className="text-[13px] text-[blue] underline">example@gmail.com</p>
+                        <p className="text-[13px] text-[blue] underline">{data?.email}</p>
                         <p className="text-[13px]">+23300000000000</p>
                     </div>
                 </div>
             </div>
             <div className="cover-bottom">
                 <div className="cover-bottom-content px-3">
-                    <img src={LogoImage} className="pdf-logo"/>
+                    <img src={LogoImage} className="pdf-logo" alt="" />
                 </div>
             </div>
             <div className="mt-2 mx-5 mb-3 flex justify-between w-[100%]">
@@ -40,8 +40,8 @@ const PageFour = ({ data }) => {
                         <GiRotaryPhone size={18} fill="#288068"/>
                     </div>
                     <div className="ml-2">
-                        <p className="text-[11px]">+233 (0) 54 279 5320</p>
-                        <p className="text-[11px]">+233 (0) 54 307 1604</p>
+                        <p className="text-[11px]">{data?.mobile_phone_one}</p>
+                        <p className="text-[11px]">{data?.mobile_phone_two}</p>
                     </div>
                 </div>
                 <div className="flex justify-start items-center">

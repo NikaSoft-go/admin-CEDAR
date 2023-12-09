@@ -6,6 +6,7 @@ import Invoices from "./screens/invoices/index.jsx";
 import AddInvoice from "./screens/invoices/addInvoice.jsx";
 import 'react-toastify/dist/ReactToastify.css';
 import PDFPages from "./screens/invoices/previewInvoice.jsx";
+import EditInvoicePage from "./screens/invoices/editInvoice.jsx";
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
         <Route path="/invoices" element={<Invoices/>}/>
         <Route path="/add-invoice" element={<AddInvoice/>}/>
         <Route path="/preview-invoice/:id" element={<PDFPages/>}/>
+        <Route path="/invoice/update/:id" element={<EditInvoicePage/>}/>
         {/*<Route path="/reports" element={<Reports/>}/>*/}
         {/*<Route path="/profile" element={<Home/>}/>*/}
       </Routes>
