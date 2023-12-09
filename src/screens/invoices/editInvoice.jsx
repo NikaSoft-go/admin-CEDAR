@@ -31,6 +31,8 @@ const EditInvoicePage = () => {
         prepared_by: "",
         mobile_phone_one: "",
         mobile_phone_two: "",
+        presenter_phone: "",
+        presenter_role: "",
         last_words: "",
         email: ""
     });
@@ -127,7 +129,9 @@ const EditInvoicePage = () => {
                         mobile_phone_one,
                         mobile_phone_two,
                         responsibilities,
-                        signature
+                        signature,
+                        presenter_role,
+                        presenter_phone
                     }  = response.data.data;
                     setState({
                         invoice_name,
@@ -139,7 +143,9 @@ const EditInvoicePage = () => {
                         mobile_phone_one,
                         mobile_phone_two,
                         last_words,
-                        email
+                        email,
+                        presenter_role,
+                        presenter_phone
                     });
                     setScopeItems(JSON.parse(scope));
                     setResourceItems(JSON.parse(resources));
@@ -276,6 +282,34 @@ const EditInvoicePage = () => {
                                         placeholder="Mobile Phone 2"
                                         name="mobile_phone_two"
                                         value={state.mobile_phone_two}
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                </div>
+
+                                {/* Presenter Role */}
+                                <div>
+                                    <label className="block text-gray-700 text-md font-bold mb-2">Presenter Role</label>
+                                    <input
+                                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        type="text"
+                                        placeholder="Presenter Role"
+                                        name="presenter_role"
+                                        value={state.presenter_role}
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                </div>
+
+                                {/* Presenter Phone */}
+                                <div>
+                                    <label className="block text-gray-700 text-md font-bold mb-2">Presenter Phone</label>
+                                    <input
+                                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        type="text"
+                                        placeholder="Presenter Phone"
+                                        name="presenter_phone"
+                                        value={state.presenter_phone}
                                         onChange={handleChange}
                                         required
                                     />

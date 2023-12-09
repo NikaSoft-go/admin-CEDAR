@@ -3,7 +3,7 @@ import {GiRotaryPhone} from "react-icons/gi";
 import {FaGlobe} from "react-icons/fa";
 import {IoLocationSharp} from "react-icons/io5";
 import {LuPenLine} from "react-icons/lu";
-import SignatureImage from "../../assets/signature.png";
+import {getImageFullPath} from "../../utils/index.js";
 
 const PageFour = ({ data }) => {
     return (
@@ -16,16 +16,17 @@ const PageFour = ({ data }) => {
             </div>
             <div className="page-head-spacer"></div>
             <div className="mx-8 mt-12 mb-[600px]">
-                <p className="text-center text-[13px] font-bold">Thank you for considering APEX AIS, I remain available to readily address any questions
-                you may have.</p>
-                <p className="text-[13px] mt-3">Regards,</p>
+                <p className="text-center text-[13px] font-bold">
+                    {data?.last_words}
+                </p>
+                <p className="text-[13px] mt-3 mb-3">Regards,</p>
                 <div className="bottom-cards">
                     <div className="signature">
-                        <img src={SignatureImage} alt="" className="max-h-[100px]"/>
+                        <img src={getImageFullPath(data?.signature)} alt="" className="max-h-[100px]"/>
                         <p className="mt-2 font-bold text-[13px]">{data?.presented_by}</p>
-                        <p className="text-[13px]">Technical Manager</p>
+                        <p className="text-[13px]">{data?.presenter_role}</p>
                         <p className="text-[13px] text-[blue] underline">{data?.email}</p>
-                        <p className="text-[13px]">+23300000000000</p>
+                        <p className="text-[13px]">{data?.presenter_phone}</p>
                     </div>
                 </div>
             </div>

@@ -348,6 +348,32 @@ const AddInvoicePage = () => {
                                     />
                                 </div>
 
+                                {/* Presenter Role */}
+                                <div>
+                                    <label className="block text-gray-700 text-md font-bold mb-2">Presenter Role</label>
+                                    <input
+                                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        type="text"
+                                        placeholder="Presenter Role"
+                                        name="presenter_role"
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                </div>
+
+                                {/* Presenter Phone */}
+                                <div>
+                                    <label className="block text-gray-700 text-md font-bold mb-2">Presenter Phone</label>
+                                    <input
+                                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        type="text"
+                                        placeholder="Presenter Phone"
+                                        name="presenter_phone"
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                </div>
+
                                 {/* Footnote */}
                                 <div className="mb-3">
                                     <label className="block text-gray-700 text-md font-bold mb-2">Footnote:</label>
