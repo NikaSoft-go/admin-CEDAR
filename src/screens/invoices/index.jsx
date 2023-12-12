@@ -6,8 +6,9 @@ import {axiosClient} from "../../libs/axiosClient.js";
 import {IoEyeOutline} from "react-icons/io5";
 import {useDispatch} from "react-redux";
 import {setInvoiceData} from "../../redux/slices/invoiceSlice.js";
+import {BsTrash} from "react-icons/bs";
 
-const Invoices = () => {
+const JobQuotations = () => {
     const [invoices, setInvoices] = useState([]);
 
     const navigate = useNavigate();
@@ -15,7 +16,7 @@ const Invoices = () => {
 
     const previewInvoice = (e, id) => {
         e.stopPropagation()
-        navigate(`/preview-invoice/${id}`);
+        navigate(`/preview-job-quotation/${id}`);
     }
 
     useEffect(() => {
@@ -48,7 +49,7 @@ const Invoices = () => {
                                 Total Job Quotations: <span className="font-bold">{totalInvoices}</span>
                             </p>
                             <Link
-                                to="/add-invoice"
+                                to="/add-job-quotation"
                                 className="add-invoice-btn font-bold py-2 px-4 rounded"
                             >
                                 Add Job Quotation
@@ -59,13 +60,16 @@ const Invoices = () => {
                                 <div
                                     key={invoice?.id}
                                     className="bg-white p-4 rounded-md shadow-md"
-                                    onClick={() => navigate(`/invoice/update/${invoice?.id}`)}
+                                    onClick={() => navigate(`/job-quotation/update/${invoice?.id}`)}
                                 >
                                     <div className="flex justify-between items-center cursor-pointer">
                                         <h2 className="text-lg font-semibold mb-2">{invoice?.quote_number}</h2>
-                                        <p onClick={(e) => previewInvoice(e, invoice?.id)}>
-                                            <IoEyeOutline size={16}/>
-                                        </p>
+                                        <div className="flex">
+                                            <p onClick={(e) => previewInvoice(e, invoice?.id)}>
+                                                <IoEyeOutline size={16} fill="#288068" />
+                                            </p>
+                                            <BsTrash className="ml-3" fill="red" />
+                                        </div>
                                     </div>
                                     <p className="text-gray-600">
                                         <b>Client:</b> {invoice?.client_name}
@@ -84,4 +88,4 @@ const Invoices = () => {
     );
 };
 
-export default Invoices;
+export default JobQuotations;

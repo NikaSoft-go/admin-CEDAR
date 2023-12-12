@@ -21,13 +21,6 @@ const Sidebar = () => {
     }
 
     let routes = [
-        // {
-        //     id: "job-quotation",
-        //     route: '/reports',
-        //     subRoutes: ['/reports'],
-        //     name: 'Reports',
-        //     icon: <FiBarChart size={24} />,
-        // },
         {
             id: 'profile',
             route: '/profile',
@@ -47,9 +40,9 @@ const Sidebar = () => {
 
     if (user.user_role === 1) {
         routes.unshift({
-            id: "invoices",
-            route: '/invoices',
-            subRoutes: ['/invoices', '/add-invoice'],
+            id: "job-quotation",
+            route: '/job-quotation',
+            subRoutes: ['/job-quotation', '/add-quotation'],
             name: 'Job Quotation',
             icon: <FiFileText size={24} />,
         })

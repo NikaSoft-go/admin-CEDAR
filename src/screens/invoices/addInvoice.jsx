@@ -9,7 +9,7 @@ import {toast} from "react-toastify";
 import {useNavigate} from "react-router-dom";
 // import SignatureUpload from "../../components/signatureUpload/index.jsx";
 
-const AddInvoicePage = () => {
+const AddJobQuotationsPage = () => {
     // Your form logic goes here
     const scopeInitials = [
         {
@@ -223,7 +223,7 @@ const AddInvoicePage = () => {
                 formData
             );
             toast.success(response.data.message);
-            navigate('/invoices')
+            navigate('/job-quotation')
         } catch (err) {
             console.log(err);
             toast.error(err.response.data.message);
@@ -581,4 +581,4 @@ const AddInvoicePage = () => {
     );
 };
 
-export default AddInvoicePage;
+export default AddJobQuotationsPage;

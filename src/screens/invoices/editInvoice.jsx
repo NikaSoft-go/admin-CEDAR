@@ -9,7 +9,7 @@ import {toast} from "react-toastify";
 import {useNavigate, useParams} from "react-router-dom";
 // import SignatureUpload from "../../components/signatureUpload/index.jsx";
 
-const EditInvoicePage = () => {
+const EditJobQuotationsPage = () => {
     const { id } = useParams();
     // Your form logic goes here
 
@@ -102,7 +102,7 @@ const EditInvoicePage = () => {
                 formData
             );
             toast.success(response.data.message);
-            navigate('/invoices')
+            navigate('/job-quotation')
         } catch (err) {
             console.error(err);
         }
@@ -520,4 +520,4 @@ const EditInvoicePage = () => {
     );
 };
 
-export default EditInvoicePage;
+export default EditJobQuotationsPage;
