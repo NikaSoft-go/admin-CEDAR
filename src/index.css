@@ -290,3 +290,9 @@ li.font-bold {
     background: #288068;
     color: #fff;
 }
+
+.bottom-card-images {
+    max-width: 200px;
+    max-height: 130px;
+    margin-right: 20px;
+}

@@ -3,7 +3,10 @@ import {GiRotaryPhone} from "react-icons/gi";
 import {FaGlobe} from "react-icons/fa";
 import {IoLocationSharp} from "react-icons/io5";
 import {LuPenLine} from "react-icons/lu";
-import {getImageFullPath} from "../../utils/index.js";
+// import {getImageFullPath} from "../../utils/index.js";
+import Signature from "../../assets/signature.png";
+import CardOneImage from "../../assets/card_1.jpg";
+import CardTwoImage from "../../assets/card_2.jpg";
 
 const PageFour = ({ data }) => {
     return (
@@ -15,19 +18,21 @@ const PageFour = ({ data }) => {
                 <p className="pdf-banner-text">Quote No.: {data?.quote_number}</p>
             </div>
             <div className="page-head-spacer"></div>
-            <div className="mx-8 mt-12 mb-[600px]">
+            <div className="mx-8 mt-12 mb-[570px]">
                 <p className="text-center text-[13px] font-bold">
                     {data?.last_words}
                 </p>
                 <p className="text-[13px] mt-3 mb-3">Regards,</p>
-                <div className="bottom-cards">
+                <div className="bottom-cards flex">
                     <div className="signature">
-                        <img src={getImageFullPath(data?.signature)} alt="" className="max-h-[100px]"/>
+                        <img src={Signature} alt="" className="bottom-card-images"/>
                         <p className="mt-2 font-bold text-[13px]">{data?.presented_by}</p>
                         <p className="text-[13px]">{data?.presenter_role}</p>
                         <p className="text-[13px] text-[blue] underline">{data?.email}</p>
                         <p className="text-[13px]">{data?.presenter_phone}</p>
                     </div>
+                    <img src={CardOneImage} alt="" className="bottom-card-images" />
+                    <img src={CardTwoImage} alt="" className="bottom-card-images" />
                 </div>
             </div>
             <div className="cover-bottom">

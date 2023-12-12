@@ -5,6 +5,7 @@ export const initialState = {
     refresh_token: "",
     first_name: "",
     last_name: "",
+    user_role: "",
 };
 
 export const userSlice = createSlice({
@@ -14,12 +15,16 @@ export const userSlice = createSlice({
         setUserData: (state, action) => {
             Object.assign(state, action.payload);
         },
+        resetUserData: (state) => {
+            Object.assign(state, initialState);
+        }
     },
 });
 
 // Action creators are generated for each case reducer function
 export const {
     setUserData,
+    resetUserData
 } = userSlice.actions;
 
 export default userSlice.reducer;

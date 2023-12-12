@@ -1,36 +1,69 @@
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { FiChevronLeft, FiChevronRight, FiFileText, FiBarChart, FiUser } from 'react-icons/fi';
+import {FiChevronLeft, FiChevronRight, FiFileText, FiUser, FiLogOut} from 'react-icons/fi';
+import {useDispatch, useSelector} from "react-redux";
+import {resetUserData} from "../../redux/slices/userSlice.js";
 
 const Sidebar = () => {
+    const user = useSelector((store) => store.user);
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
     const navigate = useNavigate();
     const location = useLocation();
+    const dispatch = useDispatch();
 
     const toggleSidebar = () => {
         setIsSidebarOpen(!isSidebarOpen);
     };
 
-    const routes = [
+    const logoutUser = () => {
+        dispatch(resetUserData());
+        navigate('/');
+    }
+
+    let routes = [
+        // {
+        //     id: "job-quotation",
+        //     route: '/reports',
+        //     subRoutes: ['/reports'],
+        //     name: 'Reports',
+        //     icon: <FiBarChart size={24} />,
+        // },
         {
-            route: '/invoices',
-            subRoutes: ['/invoices', '/add-invoice'],
-            name: 'Job Quotation',
-            icon: <FiFileText size={24} />,
-        },
-        {
-            route: '/reports',
-            subRoutes: ['/reports'],
-            name: 'Reports',
-            icon: <FiBarChart size={24} />,
-        },
-        {
+            id: 'profile',
             route: '/profile',
             subRoutes: ['/profile'],
             name: 'Profile',
             icon: <FiUser size={24} />,
         },
+        {
+            id: 'logout',
+            route: '/logout',
+            subRoutes: ['/logout'],
+            name: 'Logout',
+            icon: <FiLogOut size={24} />,
+            callback: logoutUser
+        },
     ];
+
+    if (user.user_role === 1) {
+        routes.unshift({
+            id: "invoices",
+            route: '/invoices',
+            subRoutes: ['/invoices', '/add-invoice'],
+            name: 'Job Quotation',
+            icon: <FiFileText size={24} />,
+        })
+    }
+
+    const excludedRoutes = ['logout']
+
+    const handleNavigate = (route, id, callback) => {
+        if (excludedRoutes.includes(id)) {
+            callback();
+        } else {
+            navigate(route);
+        }
+    }
 
     return (
         <div
@@ -52,7 +85,7 @@ const Sidebar = () => {
                         className={`cursor-pointer flex items-center ${
                             elt.subRoutes.includes(location.pathname) ? 'font-bold' : ''
                         } mb-2`}
-                        onClick={() => navigate(elt.route)}
+                        onClick={() => handleNavigate(elt?.route, elt?.id, elt?.callback)}
                         key={index}
                     >
                         {elt.icon} {isSidebarOpen && <span className="ml-2">{elt.name}</span>}

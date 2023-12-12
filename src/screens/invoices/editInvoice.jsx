@@ -7,7 +7,7 @@ import {FiTrash2} from "react-icons/fi";
 import {axiosClient} from "../../libs/axiosClient.js";
 import {toast} from "react-toastify";
 import {useNavigate, useParams} from "react-router-dom";
-import SignatureUpload from "../../components/signatureUpload/index.jsx";
+// import SignatureUpload from "../../components/signatureUpload/index.jsx";
 
 const EditInvoicePage = () => {
     const { id } = useParams();
@@ -18,8 +18,8 @@ const EditInvoicePage = () => {
     const [terms, setTerms] = useState([]);
     const [resourceItems, setResourceItems] = useState([]);
     const [costItems, setCostItems] = useState([]);
-    const [signature, setSignature] = useState(null);
-    const [defaultSignatureUrl, setDefaultSignatureUrl]= useState(null);
+    // const [signature, setSignature] = useState(null);
+    // const [defaultSignatureUrl, setDefaultSignatureUrl]= useState(null);
     const navigate = useNavigate();
 
     const [state, setState] = useState({
@@ -96,7 +96,7 @@ const EditInvoicePage = () => {
             });
 
             // Add signature image
-            formData.append('signature', signature);
+            // formData.append('signature', signature);
             const response = await axiosClient.patch(
                 `/invoices/update-invoice/${id}/`,
                 formData
@@ -129,7 +129,7 @@ const EditInvoicePage = () => {
                         mobile_phone_one,
                         mobile_phone_two,
                         responsibilities,
-                        signature,
+                        // signature,
                         presenter_role,
                         presenter_phone
                     }  = response.data.data;
@@ -152,7 +152,7 @@ const EditInvoicePage = () => {
                     setTerms(JSON.parse(terms));
                     setResponsibilities(JSON.parse(responsibilities));
                     setCostItems(JSON.parse(costs));
-                    setDefaultSignatureUrl(signature);
+                    // setDefaultSignatureUrl(signature);
                 } catch (err) {
                     console.error(err);
                 }
@@ -502,14 +502,14 @@ const EditInvoicePage = () => {
                                 />
                             </div>
 
-                            <div className="container mx-auto p-4">
-                                <label className="block text-gray-700 text-md font-bold mb-2">Signature upload</label>
-                                <SignatureUpload
-                                    signature={signature}
-                                    setSignature={setSignature}
-                                    defaultSignatureUrl={defaultSignatureUrl}
-                                />
-                            </div>
+                            {/*<div className="container mx-auto p-4">*/}
+                            {/*    <label className="block text-gray-700 text-md font-bold mb-2">Signature upload</label>*/}
+                            {/*    <SignatureUpload*/}
+                            {/*        signature={signature}*/}
+                            {/*        setSignature={setSignature}*/}
+                            {/*        defaultSignatureUrl={defaultSignatureUrl}*/}
+                            {/*    />*/}
+                            {/*</div>*/}
 
                             <Button>Update Job Quotation</Button>
                         </form>

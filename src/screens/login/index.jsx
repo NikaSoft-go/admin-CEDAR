@@ -19,8 +19,9 @@ export default function LoginPage () {
             const response = await axiosClient.post('/auth/login/', {
                 username, password
             });
-            dispatch(setUserData(response.data.data));
-            navigate('/invoices');
+            const userData = response.data.data;
+            dispatch(setUserData(userData));
+            navigate(userData?.user_role === 1 ? '/invoices' : '/profile');
         } catch (err) {
             console.log(err);
         }

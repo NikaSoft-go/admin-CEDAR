@@ -7,7 +7,7 @@ import {FiTrash2} from "react-icons/fi";
 import {axiosClient} from "../../libs/axiosClient.js";
 import {toast} from "react-toastify";
 import {useNavigate} from "react-router-dom";
-import SignatureUpload from "../../components/signatureUpload/index.jsx";
+// import SignatureUpload from "../../components/signatureUpload/index.jsx";
 
 const AddInvoicePage = () => {
     // Your form logic goes here
@@ -120,7 +120,7 @@ const AddInvoicePage = () => {
             ]
         },
     ]
-    const [signature, setSignature] = useState(null);
+    // const [signature, setSignature] = useState(null);
 
     const [scopeItems, setScopeItems] = useState(scopeInitials);
     const [responsibilities, setResponsibilities] = useState(responsibilitiesInitials);
@@ -217,7 +217,7 @@ const AddInvoicePage = () => {
             });
 
             // Add signature image
-            formData.append('signature', signature);
+            // formData.append('signature', signature);
             const response = await axiosClient.post(
                 '/invoices/add-invoice/',
                 formData
@@ -563,13 +563,13 @@ const AddInvoicePage = () => {
                                 />
                             </div>
 
-                            <div className="container mx-auto p-4">
-                                <label className="block text-gray-700 text-md font-bold mb-2">Signature upload</label>
-                                <SignatureUpload
-                                    signature={signature}
-                                    setSignature={setSignature}
-                                />
-                            </div>
+                            {/*<div className="container mx-auto p-4">*/}
+                            {/*    <label className="block text-gray-700 text-md font-bold mb-2">Signature upload</label>*/}
+                            {/*    <SignatureUpload*/}
+                            {/*        signature={signature}*/}
+                            {/*        setSignature={setSignature}*/}
+                            {/*    />*/}
+                            {/*</div>*/}
 
 
                             <Button>Add Job Quotation</Button>
