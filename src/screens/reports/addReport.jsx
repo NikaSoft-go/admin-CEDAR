@@ -465,7 +465,7 @@ const AddReport = () => {
 
                             </div>
 
-                            <h3 className="font-bold mb-4">Quality Controller</h3>
+                            <h3 className="font-bold mb-4">Quality Control</h3>
                             <div className="mb-10 grid grid-cols-1 md:grid-cols-2 gap-4">
                                 {/* Issuer name */}
                                 <div>

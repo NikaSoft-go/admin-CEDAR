@@ -21,7 +21,7 @@ export default function LoginPage () {
             });
             const userData = response.data.data;
             dispatch(setUserData(userData));
-            navigate(userData?.user_role === 1 ? '/job-quotation' : '/profile');
+            navigate(userData?.user_role === 1 ? '/job-quotation' : '/reports');
         } catch (err) {
             console.log(err);
         }
