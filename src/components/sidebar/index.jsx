@@ -22,6 +22,13 @@ const Sidebar = () => {
 
     let routes = [
         {
+            id: 'reports',
+            route: '/reports',
+            subRoutes: ['/reports', '/add-report'],
+            name: 'Reports',
+            icon: <FiUser size={24} />,
+        },
+        {
             id: 'profile',
             route: '/profile',
             subRoutes: ['/profile'],

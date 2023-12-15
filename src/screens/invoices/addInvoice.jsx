@@ -265,6 +265,8 @@ const AddJobQuotationsPage = () => {
                                         <option>Select an invoice type</option>
                                         <option value="NDT">NDT</option>
                                         <option value="DPI">DPI</option>
+                                        <option value="MPI">MPI</option>
+                                        <option value="Lifting Inspection">Lifting Inspection</option>
                                     </select>
                                 </div>
 
