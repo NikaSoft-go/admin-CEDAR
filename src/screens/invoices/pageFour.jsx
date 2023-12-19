@@ -61,7 +61,7 @@ const PageFour = ({ data }) => {
                         <FaGlobe size={18} fill="#288068"/>
                     </div>
                     <div className="ml-2">
-                        <p className="text-[11px]">https://www.cedarcompanylimited.com</p>
+                        <p className="text-[11px]">https://www.cedarinspectionventures.com</p>
                     </div>
                 </div>
                 <div className="flex justify-start items-center">
