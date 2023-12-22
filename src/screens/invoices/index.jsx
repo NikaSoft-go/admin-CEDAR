@@ -7,6 +7,7 @@ import {IoEyeOutline} from "react-icons/io5";
 import {useDispatch} from "react-redux";
 import {setInvoiceData} from "../../redux/slices/invoiceSlice.js";
 import {BsTrash} from "react-icons/bs";
+import {toast} from "react-toastify";
 
 const JobQuotations = () => {
     const [invoices, setInvoices] = useState([]);
@@ -19,20 +20,30 @@ const JobQuotations = () => {
         navigate(`/preview-job-quotation/${id}`);
     }
 
-    useEffect(() => {
-        const getAllInvoices = async () => {
-            try {
-                const response = await axiosClient.get('/invoices/get-invoices/');
-                const data = response.data.data;
-                setInvoices(data);
-                dispatch(setInvoiceData(data));
-            } catch (error) {
-                console.error(error);
-            }
+    const deleteInvoice = async (e, id) => {
+        e.stopPropagation()
+        try {
+            const response = await axiosClient.delete(`/invoices/delete-invoice/${id}`);
+            toast.success(response.data?.message);
+            getAllInvoices();
+        } catch (e) {
+            console.error(e);
         }
+    }
 
+    const getAllInvoices = async () => {
+        try {
+            const response = await axiosClient.get('/invoices/get-invoices/');
+            const data = response.data.data;
+            setInvoices(data);
+            dispatch(setInvoiceData(data));
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    useEffect(() => {
         getAllInvoices();
-
     }, []);
 
     const totalInvoices = invoices.length;
@@ -69,7 +80,7 @@ const JobQuotations = () => {
                                                 <IoEyeOutline size={16} fill="#288068
                                                 " />
                                             </p>
-                                            <BsTrash className="ml-3" fill="red" />
+                                            <BsTrash className="ml-3" fill="red" onClick={(e) => deleteInvoice(e, invoice?.id)} />
                                         </div>
                                     </div>
                                     <p className="text-gray-600">

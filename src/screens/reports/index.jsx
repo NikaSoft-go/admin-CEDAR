@@ -7,9 +7,10 @@ import {IoEyeOutline} from "react-icons/io5";
 import {useDispatch} from "react-redux";
 import {setInvoiceData} from "../../redux/slices/invoiceSlice.js";
 import {BsTrash} from "react-icons/bs";
+import {toast} from "react-toastify";
 
 const Reports = () => {
-    const [invoices, setInvoices] = useState([]);
+    const [reports, setReports] = useState([]);
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -19,23 +20,33 @@ const Reports = () => {
         navigate(`/preview-job-quotation/${id}`);
     }
 
-    useEffect(() => {
-        const getAllInvoices = async () => {
-            try {
-                const response = await axiosClient.get('/invoices/get-invoices/');
-                const data = response.data.data;
-                setInvoices(data);
-                dispatch(setInvoiceData(data));
-            } catch (error) {
-                console.error(error);
-            }
+    const deleteReport = async (e, id) => {
+        e.stopPropagation()
+        try {
+            const response = await axiosClient.delete(`/reports/delete-report/${id}`);
+            toast.success(response.data?.message);
+            getAllReports();
+        } catch (e) {
+            console.error(e);
         }
+    }
 
-        getAllInvoices();
+    const getAllReports = async () => {
+        try {
+            const response = await axiosClient.get('/reports/get-reports/');
+            const data = response.data.data;
+            setReports(data);
+            dispatch(setInvoiceData(data));
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
+    useEffect(() => {
+        getAllReports();
     }, []);
 
-    const totalInvoices = invoices.length;
+    const totalReports = reports.length;
 
     return (
         <div className="flex h-screen bg-gray-100">
@@ -46,7 +57,7 @@ const Reports = () => {
                         <h1 className="text-2xl font-semibold mb-4">Reports</h1>
                         <div className="mb-4 flex justify-between items-center">
                             <p className="text-gray-600">
-                                Total Reports: <span className="font-bold">{totalInvoices}</span>
+                                Total Reports: <span className="font-bold">{totalReports}</span>
                             </p>
                             <Link
                                 to="/add-report"
@@ -56,28 +67,28 @@ const Reports = () => {
                             </Link>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                            {invoices.map((invoice) => (
+                            {reports.map((report) => (
                                 <div
-                                    key={invoice?.id}
+                                    key={report?.id}
                                     className="bg-white p-4 rounded-md shadow-md"
-                                    onClick={() => navigate(`/job-quotation/update/${invoice?.id}`)}
+                                    onClick={() => navigate(`/report/update/${report?.id}`)}
                                 >
                                     <div className="flex justify-between items-center cursor-pointer">
-                                        <h2 className="text-lg font-semibold mb-2">{invoice?.quote_number}</h2>
+                                        <h2 className="text-lg font-semibold mb-2">{report?.work_order}</h2>
                                         <div className="flex">
-                                            <p onClick={(e) => previewInvoice(e, invoice?.id)}>
+                                            <p onClick={(e) => previewInvoice(e, report?.id)}>
                                                 <IoEyeOutline size={16} fill="#288068
                                                 " />
                                             </p>
-                                            <BsTrash className="ml-3" fill="red" />
+                                            <BsTrash className="ml-3" fill="red" onClick={(e) => deleteReport(e, report?.id)} />
                                         </div>
                                     </div>
                                     <p className="text-gray-600">
-                                        <b>Client:</b> {invoice?.client_name}
+                                        <b>Client:</b> {report?.client_name}
                                         <br />
-                                        <b>Date:</b> {invoice?.invoice_date}
+                                        <b>Date:</b> {report?.examination_date}
                                         <br />
-                                        <b>Prepared by:</b> {invoice?.prepared_by}
+                                        <b>Inspected by:</b> {JSON.parse(report?.issuer || "{}")?.name}
                                     </p>
                                 </div>
                             ))}

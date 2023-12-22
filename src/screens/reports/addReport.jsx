@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import Sidebar from '../../components/sidebar/index.jsx';
 import Button from '../../components/button/index.jsx';
 import ResponsibilityTable from "../../components/invoices/tableA.jsx";
@@ -9,51 +9,72 @@ import {toast} from "react-toastify";
 import {useNavigate} from "react-router-dom";
 import {
     bladeDetailInitial, bodyDetailInitial,
-    boxDimensionInitial,
-    emptyAssetsDetails,
-    emptyDimensionDetails,
-    pinDimensionInitial, reportTypeDataInitial
+    consumablesInitial, emptyAssetsDetails,
+    emptyDimensionDetails, getDimensionData,
+    returnAssetsData, returnReportDataType,
 } from "../../utils/data.js";
+import MultiSelect from "../../components/multiSelect/index.jsx";
+import MultiSelectFile from "../../components/multiFileSelect/index.jsx";
 // import SignatureUpload from "../../components/signatureUpload/index.jsx";
 
 const AddReport = () => {
     // const [signature, setSignature] = useState(null);
+    const keyItems = [
+        "ACP - Accept",
+        "DPI - Dye Penetrant Inspection",
+        "DIM - Dimensional",
+        "PT - Pitted Thread",
+        "GT - Galled Thread",
+        "SD - Seal Damaged",
+    ];
 
-    const [reportTypeData, setReportTypeData] = useState(reportTypeDataInitial);
-    const [assetDetails, setAssetsDetails] = useState([
-        {
-            type: "String Stabilizer",
-            serial_number: 'SDT 9759 (SBD 88158)',
-            model: '-',
-            description: 'STRING STABILIZER',
-            size: '15 3/4 in',
-            material: 'Non Mag'
-        },
-    ]);
-    const [dimensionOneDetails, setDimensionOneDetails] = useState(boxDimensionInitial);
-    const [dimensionTwoDetails, setDimensionTwoDetails] = useState(pinDimensionInitial);
+    const [selectedOptions, setSelectedOptions] = useState([]);
+    const [images, setImages] = useState([]);
+    const [reportTypeData, setReportTypeData] = useState([]);
+    const [consumablesData, setConsumablesData] = useState(consumablesInitial);
+    const [assetDetails, setAssetsDetails] = useState([]);
+    const [dimensionOneDetails, setDimensionOneDetails] = useState([]);
+    const [dimensionTwoDetails, setDimensionTwoDetails] = useState([]);
     const [bodyDetails, setBodyDetails] = useState(bodyDetailInitial);
     const [bladeDetails, setBladeDetails] = useState(bladeDetailInitial);
     const [showSections, setShowSections] = useState({
         bodyDetails: true,
-        bladeDetails: true
+        bladeDetails: true,
+        dimensionOne: true,
+        dimensionTwo: true
     });
 
     const navigate = useNavigate();
 
     const [state, setState] = useState({});
+    const [issuerInfo, setIssuerInfo] = useState({});
+    const [reviewerInfo, setReviewrInfo] = useState({});
 
-    const handleChange = (e) => {
-        setState({
-            ...state,
+    const reportData = {
+        ...state,
+        issuer: JSON.stringify(issuerInfo),
+        quality_controller: JSON.stringify(reviewerInfo),
+        asset_details: JSON.stringify(assetDetails),
+        dimension_one: JSON.stringify(dimensionOneDetails),
+        dimension_two: JSON.stringify(dimensionTwoDetails),
+        body: JSON.stringify(bodyDetails),
+        blade: JSON.stringify(bladeDetails),
+        report_type_data: JSON.stringify(reportTypeData),
+        consumables: JSON.stringify(consumablesData),
+        keys: JSON.stringify(selectedOptions),
+    }
+
+    const handleChange = (e, items=state, setItems=setState) => {
+        setItems({
+            ...items,
             [e.target.name]: e.target.value
         })
     }
 
-    const invoiceData = {
-        ...state,
-        costs: JSON.stringify(assetDetails),
+    const handleFilesSelect = (files) => {
+        setImages(files);
     };
+
 
     const handleAddTableItem = (setFunc, items, emptyItems) => {
         setFunc([
@@ -74,32 +95,58 @@ const AddReport = () => {
         setItems(updatedCostItems);
     };
 
-    const handleAddInvoice = async (e) => {
+    const handleAddReport = async (e) => {
         e.preventDefault();
-        if (!invoiceData.invoice_type) {
-            toast.error("Invoice type is required")
+        if (!reportData.report_type) {
+            toast.error("Report type is required")
             return;
         }
         try {
             const formData = new FormData();
             // create form-data
-            Object.entries(invoiceData).forEach(([key, value]) => {
+            Object.entries(reportData).forEach(([key, value]) => {
                 formData.append(key, value);
             });
 
             // Add signature image
-            // formData.append('signature', signature);
+            images.forEach(function(image) {
+                formData.append('images[]', image);
+            });
             const response = await axiosClient.post(
-                '/invoices/add-invoice/',
+                '/reports/add-report/',
                 formData
             );
             toast.success(response.data.message);
-            navigate('/job-quotation')
+            navigate('/reports')
         } catch (err) {
             console.log(err);
             toast.error(err.response.data.message);
         }
     }
+
+    const handleMultiSelectChange = (selected) => {
+        setSelectedOptions(selected);
+    };
+
+    useEffect(() => {
+        if (state.report_type) {
+            setReportTypeData(returnReportDataType(state.report_type, "data"));
+            setAssetsDetails(returnAssetsData(state.report_type))
+        }
+    }, [state.report_type]);
+
+    useEffect(() => {
+        if (state.dimension_one_name) {
+            setDimensionOneDetails(getDimensionData(state.dimension_one_name));
+        }
+    }, [state.dimension_one_name]);
+
+    useEffect(() => {
+        if (state.dimension_two_name) {
+            setDimensionTwoDetails(getDimensionData(state.dimension_two_name));
+        }
+    }, [state.dimension_two_name]);
+
 
     return (
         <div className="flex h-screen bg-gray-100">
@@ -109,7 +156,7 @@ const AddReport = () => {
                     <div className="p-4">
                         <h1 className="text-2xl font-semibold mb-4">Add Report</h1>
                         {/* Add Invoice Form (Example) */}
-                        <form onSubmit={handleAddInvoice}>
+                        <form onSubmit={handleAddReport}>
                             <h3 className="font-bold mb-4">Client Details</h3>
                             <div className="mb-10 grid grid-cols-1 md:grid-cols-2 gap-4">
                                 {/* Client Name */}
@@ -125,7 +172,7 @@ const AddReport = () => {
                                     />
                                 </div>
 
-                                {/* Client Name */}
+                                {/* Client Address */}
                                 <div>
                                     <label className="block text-gray-700 text-md font-bold mb-2">Client
                                         Address:</label>
@@ -192,7 +239,6 @@ const AddReport = () => {
                                         placeholder="Contract"
                                         name="contract"
                                         onChange={handleChange}
-                                        required
                                     />
                                 </div>
 
@@ -205,7 +251,6 @@ const AddReport = () => {
                                         placeholder="Work Order"
                                         name="work_order"
                                         onChange={handleChange}
-                                        required
                                     />
                                 </div>
 
@@ -219,7 +264,6 @@ const AddReport = () => {
                                         placeholder="Purchase Order"
                                         name="purchase_order"
                                         onChange={handleChange}
-                                        required
                                     />
                                 </div>
 
@@ -246,7 +290,6 @@ const AddReport = () => {
                                         placeholder="Rig"
                                         name="rig"
                                         onChange={handleChange}
-                                        required
                                     />
                                 </div>
                             </div>
@@ -261,19 +304,6 @@ const AddReport = () => {
                                         type="text"
                                         placeholder="Report Number"
                                         name="report_number"
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                </div>
-
-                                {/* Revision */}
-                                <div>
-                                    <label className="block text-gray-700 text-md font-bold mb-2">Revision:</label>
-                                    <input
-                                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                        type="text"
-                                        placeholder="Revision"
-                                        name="revision"
                                         onChange={handleChange}
                                         required
                                     />
@@ -303,7 +333,6 @@ const AddReport = () => {
                                         placeholder="Date of Next Examination"
                                         name="next_examination_date"
                                         onChange={handleChange}
-                                        required
                                     />
                                 </div>
 
@@ -371,7 +400,6 @@ const AddReport = () => {
                                         placeholder="Drawing Number"
                                         name="drawing_number"
                                         onChange={handleChange}
-                                        required
                                     />
                                 </div>
 
@@ -413,38 +441,54 @@ const AddReport = () => {
                                         required
                                     >
                                         <option>Select a report type</option>
-                                        <option value="NDT">NDT</option>
-                                        <option value="DPI">DPI</option>
                                         <option value="MPI">MPI</option>
+                                        <option value="DPI without connections">DPI without connections</option>
+                                        <option value="DPI with connections">DPI with connections</option>
+                                        <option value="Ultrasonic Inspection">Ultrasonic Thickness</option>
                                         <option value="Lifting Inspection">Lifting Inspection</option>
+                                    </select>
+                                </div>
+
+                                {/* Report Status */}
+                                <div>
+                                    <label className="block text-gray-700 text-md font-bold mb-2">Report Status:</label>
+                                    <select
+                                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        name="report_status"
+                                        onChange={handleChange}
+                                        required
+                                    >
+                                        <option>Select a report status</option>
+                                        <option value="Accepted">Accepted</option>
+                                        <option value="Rejected">Rejected</option>
                                     </select>
                                 </div>
                             </div>
 
-                            <h3 className="font-bold mb-4">Issuer</h3>
+                            <h3 className="font-bold mb-4">Inspected by</h3>
                             <div className="mb-10 grid grid-cols-1 md:grid-cols-2 gap-4">
                                 {/* Issuer name */}
                                 <div>
-                                    <label className="block text-gray-700 text-md font-bold mb-2">Issuer name:</label>
+                                    <label className="block text-gray-700 text-md font-bold mb-2">Inspector name:</label>
                                     <input
                                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         type="text"
-                                        placeholder="Issuer name"
+                                        placeholder="Inspector"
                                         name="name"
-                                        onChange={handleChange}
+                                        onChange={(e) => handleChange(e, issuerInfo, setIssuerInfo)}
                                         required
                                     />
                                 </div>
 
                                 {/* Issue date */}
                                 <div>
-                                    <label className="block text-gray-700 text-md font-bold mb-2">Issue date:</label>
+                                    <label className="block text-gray-700 text-md font-bold mb-2">Inspection date:</label>
                                     <input
                                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         type="date"
-                                        placeholder="Issue date"
+                                        placeholder="Inspection date"
                                         name="date"
-                                        onChange={handleChange}
+                                        onChange={(e) => handleChange(e, issuerInfo, setIssuerInfo)}
                                         required
                                     />
                                 </div>
@@ -452,102 +496,58 @@ const AddReport = () => {
                                 {/* Issuer qualification */}
                                 <div>
                                     <label className="block text-gray-700 text-md font-bold mb-2">
-                                        Issuer qualification</label>
+                                        Inspector qualification</label>
                                     <input
                                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         type="text"
-                                        placeholder="Issuer qualification"
+                                        placeholder="Inspector qualification"
                                         name="qualification"
-                                        onChange={handleChange}
+                                        onChange={(e) => handleChange(e, issuerInfo, setIssuerInfo)}
                                         required
                                     />
                                 </div>
 
                             </div>
 
-                            <h3 className="font-bold mb-4">Quality Control</h3>
+                            <h3 className="font-bold mb-4">Reviewed by</h3>
                             <div className="mb-10 grid grid-cols-1 md:grid-cols-2 gap-4">
-                                {/* Issuer name */}
+                                {/* Reviewed name */}
                                 <div>
                                     <label className="block text-gray-700 text-md font-bold mb-2">
-                                        Quality Controller name:</label>
+                                        Reviewer name:</label>
                                     <input
                                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         type="text"
-                                        placeholder="Quality Controller name"
+                                        placeholder="Reviewer name"
                                         name="name"
-                                        onChange={handleChange}
+                                        onChange={(e) => handleChange(e, reviewerInfo, setReviewrInfo)}
                                         required
                                     />
                                 </div>
 
-                                {/* Issue date */}
+                                {/* Review date */}
                                 <div>
-                                    <label className="block text-gray-700 text-md font-bold mb-2">Control date:</label>
+                                    <label className="block text-gray-700 text-md font-bold mb-2">Review date:</label>
                                     <input
                                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         type="date"
-                                        placeholder="Quality Control date"
+                                        placeholder="Review date"
                                         name="date"
-                                        onChange={handleChange}
+                                        onChange={(e) => handleChange(e, reviewerInfo, setReviewrInfo)}
                                         required
                                     />
                                 </div>
 
-                                {/* Issuer qualification */}
+                                {/* Reviewer qualification */}
                                 <div>
                                     <label className="block text-gray-700 text-md font-bold mb-2">
-                                        Quality Controller qualification</label>
+                                        Reviewer qualification</label>
                                     <input
                                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         type="text"
-                                        placeholder="Quality Controller qualification"
+                                        placeholder="Reviewer qualification"
                                         name="qualification"
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                </div>
-
-                            </div>
-
-                            <h3 className="font-bold mb-4">Acceptor</h3>
-                            <div className="mb-10 grid grid-cols-1 md:grid-cols-2 gap-4">
-                                {/* Issuer name */}
-                                <div>
-                                    <label className="block text-gray-700 text-md font-bold mb-2">Issuer name:</label>
-                                    <input
-                                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                        type="text"
-                                        placeholder="Issuer name"
-                                        name="name"
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                </div>
-
-                                {/* Issue date */}
-                                <div>
-                                    <label className="block text-gray-700 text-md font-bold mb-2">Issue date:</label>
-                                    <input
-                                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                        type="date"
-                                        placeholder="Issue date"
-                                        name="date"
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                </div>
-
-                                {/* Issuer qualification */}
-                                <div>
-                                    <label className="block text-gray-700 text-md font-bold mb-2">
-                                        Issuer qualification</label>
-                                    <input
-                                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                        type="text"
-                                        placeholder="Issuer qualification"
-                                        name="qualification"
-                                        onChange={handleChange}
+                                        onChange={(e) => handleChange(e, reviewerInfo, setReviewrInfo)}
                                         required
                                     />
                                 </div>
@@ -707,14 +707,44 @@ const AddReport = () => {
                                 </button>
                             </div>
 
+                            <div className="mb-4 flex items-center justify-start">
+                                <div>
+                                    <p className="text-left">Select Dimension Details to show</p>
+                                </div>
+                                <div className="ml-12">
+                                    <input
+                                        type="checkbox"
+                                        className='mr-2'
+                                        checked={showSections.dimensionOne}
+                                        onClick={() => setShowSections({
+                                            ...showSections,
+                                            dimensionOne: !showSections.dimensionOne
+                                        })}
+                                    />
+                                    <label>Dimension 1 Details</label>
+                                </div>
+                                <div className="ml-12">
+                                    <input
+                                        type="checkbox"
+                                        className='mr-2'
+                                        checked={showSections.dimensionTwo}
+                                        onClick={() => setShowSections({
+                                            ...showSections,
+                                            dimensionTwo: !showSections.dimensionTwo
+                                        })}
+                                    />
+                                    <label>Dimension 2 Details</label>
+                                </div>
+                            </div>
+
                             {/* Dimension 1 Details */}
-                            <div className="mb-4">
+                            {showSections.dimensionOne && <div className="mb-4">
                                 <label className="block text-gray-700 text-md font-bold mb-2">Dimension 1:</label>
                                 <div>
                                     <label className="block text-gray-700 text-md font-bold mb-2">Type:</label>
                                     <select
                                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                        name="invoice_type"
+                                        name="dimension_one_name"
                                         onChange={handleChange}
                                         required
                                     >
@@ -799,16 +829,16 @@ const AddReport = () => {
                                 >
                                     <IoMdAddCircleOutline/>
                                 </button>
-                            </div>
+                            </div> }
 
                             {/* Dimension 2 Details */}
-                            <div className="mb-10">
+                            {showSections.dimensionTwo && <div className="mb-10">
                                 <label className="block text-gray-700 text-md font-bold mb-2">Dimension 2:</label>
                                 <div>
                                     <label className="block text-gray-700 text-md font-bold mb-2">Type:</label>
                                     <select
                                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                        name="invoice_type"
+                                        name="dimension_two_name"
                                         onChange={handleChange}
                                         required
                                     >
@@ -891,7 +921,7 @@ const AddReport = () => {
                                 >
                                     <IoMdAddCircleOutline/>
                                 </button>
-                            </div>
+                            </div>}
 
                             <h3 className="font-bold mb-4">Body / Blade Details</h3>
                             <div className="mb-4 flex items-center justify-start">
@@ -1004,7 +1034,8 @@ const AddReport = () => {
                             </div>}
 
                             {/* Blade Details */}
-                            {showSections.bladeDetails === true && <div className="mb-4">
+                            {showSections.bladeDetails === true &&
+                            <div className="mb-4">
                                 <label className="block text-gray-700 text-md font-bold mb-2">Blade Details</label>
                                 <table className="w-full border">
                                     <thead>
@@ -1098,11 +1129,108 @@ const AddReport = () => {
                             {/* Report Type Data */}
                             <div className="mb-4">
                                 <label className="block text-gray-700 text-md font-bold mb-2">Report Type Data</label>
+                                <table className="w-full border">
+                                    <thead>
+                                    <tr>
+                                        <th className="border p-2">Title</th>
+                                        <th className="border p-2">Value</th>
+                                        <th className="border p-2"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {reportTypeData.map((dimension, index) => (
+                                        <tr key={index}>
+                                            <td className="border p-2">
+                                                <input
+                                                    type="text"
+                                                    className="w-full p-1"
+                                                    placeholder="Property"
+                                                    value={dimension.property}
+                                                    required
+                                                    onChange={(e) =>
+                                                        handleTableItemChange(
+                                                            index,
+                                                            'property',
+                                                            e.target.value,
+                                                            reportTypeData,
+                                                            setReportTypeData
+                                                        )}/>
+                                            </td>
+                                            <td className="border p-2">
+                                                <input
+                                                    type="text"
+                                                    className="w-full p-1"
+                                                    placeholder="Value"
+                                                    value={dimension.value}
+                                                    required
+                                                    onChange={(e) =>
+                                                        handleTableItemChange(
+                                                            index,
+                                                            'value',
+                                                            e.target.value,
+                                                            reportTypeData,
+                                                            setReportTypeData
+                                                        )}/>
+                                            </td>
+                                            <td className="border p-2">
+                                                <button
+                                                    type="button"
+                                                    className="remove-btn rounded p-1"
+                                                    onClick={() =>
+                                                        handleRemoveTableItems(
+                                                            index,
+                                                            bodyDetails,
+                                                            setReportTypeData
+                                                        )}
+                                                >
+                                                    <FiTrash2/>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    ))}
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            {/* Consumables */}
+                            <div className="mb-4">
+                                <label className="block text-gray-700 text-md font-bold mb-2">Consumables</label>
                                 <ResponsibilityTable
-                                    column1="Values"
-                                    initalItems={reportTypeDataInitial}
-                                    responsibilities={reportTypeData}
-                                    setResponsibilities={setReportTypeData}
+                                    column1="Responsibilities"
+                                    initalItems={consumablesInitial}
+                                    responsibilities={consumablesData}
+                                    setResponsibilities={setConsumablesData}
+                                />
+                            </div>
+
+                            {/* Inspector's Comment */}
+                            <div className="mb-3">
+                                <label className="block text-gray-700 text-md font-bold mb-2">Inspector&apos;s Comment:</label>
+                                <textarea
+                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    placeholder="Inspector's Comment"
+                                    name="comments"
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
+
+                            {/* Keys */}
+                            <div className="mb-3">
+                                <label className="block text-gray-700 text-md font-bold mb-2">Key</label>
+                                <MultiSelect
+                                    options={keyItems}
+                                    selectedOptions={selectedOptions}
+                                    onChange={handleMultiSelectChange}
+                                />
+                            </div>
+
+                            {/* Images */}
+                            <div className="mb-3">
+                                <label className="block text-gray-700 text-md font-bold mb-2">Images</label>
+                                <MultiSelectFile
+                                    onFilesSelect={(files) => handleFilesSelect(files)}
+                                    initialFilenames={[]}
                                 />
                             </div>
 

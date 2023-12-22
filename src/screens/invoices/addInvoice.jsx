@@ -216,8 +216,6 @@ const AddJobQuotationsPage = () => {
                 formData.append(key, value);
             });
 
-            // Add signature image
-            // formData.append('signature', signature);
             const response = await axiosClient.post(
                 '/invoices/add-invoice/',
                 formData
