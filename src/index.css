@@ -97,14 +97,14 @@ li.font-bold {
 .header-cell {
     /*background-color: #fff;*/
     color: #000;
-    padding: 10px;
+    padding: 6px;
     text-align: left;
     font-size: 20px;
 }
 
 .data-cell {
     border: 1px solid #ccc;
-    padding: 10px;
+    padding: 6px;
 }
 
 .preview-sticker {
@@ -295,4 +295,58 @@ li.font-bold {
     max-width: 200px;
     max-height: 130px;
     margin-right: 20px;
+}
+
+.report-page-head {
+    border: 1px solid #000;
+}
+
+.left-section {
+    border: 1px solid #000;
+    width: 100%;
+}
+
+.right-section {
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    border-right: 1px solid #000;
+    width: 100%;
+}
+
+.section-table {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.section-table td {
+    font-size: 14px;
+}
+
+.section-table td:first-child {
+    text-align: right;
+}
+
+.section-table p {
+    margin-left: 10px;
+}
+
+.asset-details-table {
+    width: 100%;
+}
+
+.asset-details-table th {
+    background-color: #D8D8D8;
+    padding-bottom: 10px;
+    font-size: 14px;
+}
+
+.asset-details-table td {
+    padding-left: 5px;
+    font-size: 14px;
+}
+
+.asset-details-table th,
+.asset-details-table td {
+    border: 1px solid #000;
 }

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 
 const TableWithHeader = ({ data }) => {
     return (
@@ -31,6 +32,16 @@ const TableWithHeader = ({ data }) => {
             </table>
         </div>
     );
+};
+
+TableWithHeader.propTypes = {
+    data: PropTypes.shape({
+        invoice_date: PropTypes.string,
+        invoice_name: PropTypes.string,
+        quote_number: PropTypes.string,
+        client_name: PropTypes.string,
+        prepared_by: PropTypes.string,
+    }).isRequired,
 };
 
 export default TableWithHeader;

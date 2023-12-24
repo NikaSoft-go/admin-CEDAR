@@ -5,9 +5,9 @@ import {Link, useNavigate} from "react-router-dom";
 import {axiosClient} from "../../libs/axiosClient.js";
 import {IoEyeOutline} from "react-icons/io5";
 import {useDispatch} from "react-redux";
-import {setInvoiceData} from "../../redux/slices/invoiceSlice.js";
 import {BsTrash} from "react-icons/bs";
 import {toast} from "react-toastify";
+import {setReportData} from "../../redux/slices/reportSlice.js";
 
 const Reports = () => {
     const [reports, setReports] = useState([]);
@@ -15,9 +15,9 @@ const Reports = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const previewInvoice = (e, id) => {
+    const previewReport = (e, id) => {
         e.stopPropagation()
-        navigate(`/preview-job-quotation/${id}`);
+        navigate(`/preview-report/${id}`);
     }
 
     const deleteReport = async (e, id) => {
@@ -36,7 +36,7 @@ const Reports = () => {
             const response = await axiosClient.get('/reports/get-reports/');
             const data = response.data.data;
             setReports(data);
-            dispatch(setInvoiceData(data));
+            dispatch(setReportData(data));
         } catch (error) {
             console.error(error);
         }
@@ -76,7 +76,7 @@ const Reports = () => {
                                     <div className="flex justify-between items-center cursor-pointer">
                                         <h2 className="text-lg font-semibold mb-2">{report?.work_order}</h2>
                                         <div className="flex">
-                                            <p onClick={(e) => previewInvoice(e, report?.id)}>
+                                            <p onClick={(e) => previewReport(e, report?.id)}>
                                                 <IoEyeOutline size={16} fill="#288068
                                                 " />
                                             </p>

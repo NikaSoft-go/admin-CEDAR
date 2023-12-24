@@ -4,10 +4,12 @@ import {combineReducers} from "redux";
 import {FLUSH, PAUSE, PERSIST, persistReducer, PURGE, REGISTER, REHYDRATE,} from "redux-persist";
 import userReducer from "./slices/userSlice";
 import invoiceReducer from "./slices/invoiceSlice";
+import reportReducer from "./slices/reportSlice";
 
 const reducers = combineReducers({
     user: userReducer,
-    invoice: invoiceReducer
+    invoice: invoiceReducer,
+    report: reportReducer
 });
 
 const persistConfig = {

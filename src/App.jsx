@@ -9,6 +9,7 @@ import PDFPages from "./screens/invoices/previewInvoice.jsx";
 import EditJobQuotationsPage from "./screens/invoices/editInvoice.jsx";
 import Reports from "./screens/reports/index.jsx";
 import AddReport from "./screens/reports/addReport.jsx";
+import PreviewReport from "./screens/reports/previewReport.jsx";
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
         <Route path="/job-quotation/update/:id" element={<EditJobQuotationsPage/>}/>
         <Route path="/reports" element={<Reports/>}/>
         <Route path="/add-report" element={<AddReport/>}/>
+        <Route path="/preview-report/:id" element={<PreviewReport/>}/>
       </Routes>
   )
 }
