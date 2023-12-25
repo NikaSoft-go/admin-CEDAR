@@ -344,9 +344,61 @@ li.font-bold {
 .asset-details-table td {
     padding-left: 5px;
     font-size: 14px;
+    padding-bottom: 10px;
 }
 
 .asset-details-table th,
 .asset-details-table td {
     border: 1px solid #000;
+}
+
+.dimension-table-cover {
+    border: 1px solid #000;
+    width: 100%;
+}
+
+.dimension-table-cover table {
+    width: 100%;
+}
+
+.dimension-table-cover tr {
+    border-bottom: 1px solid #000;
+    width: 100%;
+}
+
+.dimension-table-cover tr:last-child {
+    border-bottom: none;
+}
+
+.dimension-table-cover td:first-child {
+    text-align: right;
+    border-right: 1px solid #000;
+}
+
+.dimension-table-cover td {
+    font-size: 14px;
+}
+
+.dimension-one {
+    width: 31%;
+    margin-right: 3%;
+}
+
+.dimension-body {
+    width: 31%;
+    margin-right: 3%;
+}
+
+.dimension-two {
+    width: 31%;
+}
+
+.dimension-table-cover table p {
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.visual-text {
+    border: 1px solid #000;
+    padding-left: 8px;
 }

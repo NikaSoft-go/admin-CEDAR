@@ -1499,6 +1499,26 @@ li.font-bold {
   margin-left: 10px;
 }
 
+.asset-details-table {
+  width: 100%;
+}
+
+.asset-details-table th {
+  background-color: #D8D8D8;
+  padding-bottom: 10px;
+  font-size: 14px;
+}
+
+.asset-details-table td {
+  padding-left: 5px;
+  font-size: 14px;
+}
+
+.asset-details-table th,
+.asset-details-table td {
+  border: 1px solid #000;
+}
+
 .hover\:border-\[1\.5px\]:hover {
   border-width: 1.5px;
 }
