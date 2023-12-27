@@ -10,3 +10,22 @@ export const formatDate = (date) => {
 
     return inputDate.toLocaleDateString('en-GB', options);
 }
+
+export const groupByIndices = (arrays) => {
+    const result = [];
+    console.log("arrays", arrays);
+    arrays.forEach((array, arrayIndex) => {
+        console.log("index", array, arrayIndex);
+        const currentArr = [];
+        array.forEach((element, elementIndex) => {
+           if (elementIndex === arrayIndex) {
+               currentArr.push(element);
+           }
+        });
+        result.push(currentArr);
+    });
+
+    console.log("result: ", result);
+
+    return result
+};

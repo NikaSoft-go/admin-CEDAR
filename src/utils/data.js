@@ -393,3 +393,46 @@ export const consumablesInitial = [
         ],
     },
 ]
+
+export const equipmentsInitial = [
+    {
+        category: "Type",
+        values: [
+            "DC Coil",
+            "UV Lamp",
+            "Black light Meter"
+        ],
+    },
+    {
+        category: "Description",
+        values: [
+            "C1030, NAV341, DC Coil",
+            "VU-3-150, nav278, UV Lamp",
+            "S744746, NAV321, UV Meter"
+        ],
+    },
+    {
+        category: "Certification Date",
+        values: [
+            "03-Aug-2023",
+            "03-Aug-2023",
+            "14-June-2023"
+        ],
+    },
+    {
+        category: "Expiry Date",
+        values: [
+            "03-Feb-2024",
+            "03-Feb-2024",
+            "13-Dec-2023"
+        ],
+    },
+    {
+        category: "Services",
+        values: [
+            "UV Light Inspection",
+            "UV Light Inspection",
+            "UV Light Inspection"
+        ],
+    },
+]

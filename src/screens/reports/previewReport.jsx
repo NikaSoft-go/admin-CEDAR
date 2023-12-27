@@ -5,6 +5,7 @@ import {useNavigate, useParams} from "react-router-dom";
 import {useSelector} from "react-redux";
 import PageOne from "./pageOne.jsx";
 import PageTwo from "./pageTwo.jsx";
+import PageThree from "./pageThree.jsx";
 
 
 export default function PreviewReport() {
@@ -24,6 +25,7 @@ export default function PreviewReport() {
         body: JSON.parse(report.body || "{}"),
         blade: JSON.parse(report.blade || "{}"),
         asset_details: JSON.parse(report.asset_details || "{}"),
+        equipments: JSON.parse(report.equipments || "{}"),
     }
     // Function to generate a single PDF by combining the content of all pages
     const generateCombinedPDF = () => {
@@ -66,6 +68,9 @@ export default function PreviewReport() {
                     </div>
                     <div id="pdf-content-page-2">
                         <PageTwo data={report}/>
+                    </div>
+                    <div id="pdf-content-page-3">
+                        <PageThree data={report}/>
                     </div>
                 </main>
             </div>

@@ -10,12 +10,11 @@ import {useNavigate, useParams} from "react-router-dom";
 import {
     bladeDetailInitial, bodyDetailInitial,
     consumablesInitial, emptyAssetsDetails,
-    emptyDimensionDetails,
+    emptyDimensionDetails, equipmentsInitial,
     returnAssetsData, returnReportDataType,
 } from "../../utils/data.js";
 import MultiSelect from "../../components/multiSelect/index.jsx";
 import MultiSelectFile from "../../components/multiFileSelect/index.jsx";
-// import SignatureUpload from "../../components/signatureUpload/index.jsx";
 
 const EditReport = () => {
     const { id } = useParams();
@@ -32,6 +31,7 @@ const EditReport = () => {
     const [images, setImages] = useState([]);
     const [reportTypeData, setReportTypeData] = useState([]);
     const [consumablesData, setConsumablesData] = useState(consumablesInitial);
+    const [equipmentsData, setEquipmentsData] = useState(equipmentsInitial);
     const [assetDetails, setAssetsDetails] = useState([]);
     const [dimensionOneDetails, setDimensionOneDetails] = useState([]);
     const [dimensionTwoDetails, setDimensionTwoDetails] = useState([]);
@@ -62,6 +62,7 @@ const EditReport = () => {
         report_type_data: JSON.stringify(reportTypeData),
         consumables: JSON.stringify(consumablesData),
         keys: JSON.stringify(selectedOptions),
+        equipments: JSON.stringify(equipmentsData),
     }
 
     const handleChange = (e, items=state, setItems=setState) => {
@@ -129,10 +130,6 @@ const EditReport = () => {
     };
 
     useEffect(() => {
-        console.log(dimensionOneDetails);
-    }, [dimensionOneDetails]);
-
-    useEffect(() => {
         if (state.report_type) {
             setReportTypeData(returnReportDataType(state.report_type, "data"));
             setAssetsDetails(returnAssetsData(state.report_type))
@@ -156,6 +153,7 @@ const EditReport = () => {
                         report_type_data,
                         consumables,
                         keys,
+                        equipments,
                         ...otherValues
                     }  = response.data.data;
                     setState({
@@ -165,13 +163,13 @@ const EditReport = () => {
                     setAssetsDetails(JSON.parse(asset_details));
                     setDimensionTwoDetails(JSON.parse(dimension_two));
                     setDimensionOneDetails(JSON.parse(dimension_one));
-                    console.log(JSON.parse(dimension_one));
                     setReviewrInfo(JSON.parse(quality_controller));
                     setIssuerInfo(JSON.parse(issuer));
                     setBodyDetails(JSON.parse(body));
                     setBladeDetails(JSON.parse(blade));
                     setReportTypeData(JSON.parse(report_type_data));
                     setConsumablesData(JSON.parse(consumables));
+                    setEquipmentsData(JSON.parse(equipments));
                     setSelectedOptions(JSON.parse(keys));
                     setShowSections({
                         bodyDetails: JSON.parse(body)?.length > 0,
@@ -194,7 +192,7 @@ const EditReport = () => {
             <div className="flex-1 flex flex-col overflow-hidden">
                 <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
                     <div className="p-4">
-                        <h1 className="text-2xl font-semibold mb-4">Add Report</h1>
+                        <h1 className="text-2xl font-semibold mb-4">Edit Report</h1>
                         {/* Add Invoice Form (Example) */}
                         <form onSubmit={handleAddReport}>
                             <h3 className="font-bold mb-4">Client Details</h3>
@@ -1271,6 +1269,17 @@ const EditReport = () => {
                                     initalItems={consumablesInitial}
                                     responsibilities={consumablesData}
                                     setResponsibilities={setConsumablesData}
+                                />
+                            </div>
+
+                            {/* Equipments */}
+                            <div className="mb-4">
+                                <label className="block text-gray-700 text-md font-bold mb-2">Equipments</label>
+                                <ResponsibilityTable
+                                    column1="Responsibilities"
+                                    initalItems={equipmentsInitial}
+                                    responsibilities={equipmentsData}
+                                    setResponsibilities={setEquipmentsData}
                                 />
                             </div>
 

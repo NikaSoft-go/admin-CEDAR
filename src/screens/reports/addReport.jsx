@@ -10,7 +10,7 @@ import {useNavigate} from "react-router-dom";
 import {
     bladeDetailInitial, bodyDetailInitial,
     consumablesInitial, emptyAssetsDetails,
-    emptyDimensionDetails, getDimensionData,
+    emptyDimensionDetails, equipmentsInitial, getDimensionData,
     returnAssetsData, returnReportDataType,
 } from "../../utils/data.js";
 import MultiSelect from "../../components/multiSelect/index.jsx";
@@ -32,6 +32,7 @@ const AddReport = () => {
     const [images, setImages] = useState([]);
     const [reportTypeData, setReportTypeData] = useState([]);
     const [consumablesData, setConsumablesData] = useState(consumablesInitial);
+    const [equipmentsData, setEquipmentsData] = useState(equipmentsInitial);
     const [assetDetails, setAssetsDetails] = useState([]);
     const [dimensionOneDetails, setDimensionOneDetails] = useState([]);
     const [dimensionTwoDetails, setDimensionTwoDetails] = useState([]);
@@ -62,6 +63,7 @@ const AddReport = () => {
         report_type_data: JSON.stringify(reportTypeData),
         consumables: JSON.stringify(consumablesData),
         keys: JSON.stringify(selectedOptions),
+        equipments: JSON.stringify(equipmentsData)
     }
 
     const handleChange = (e, items=state, setItems=setState) => {
@@ -1200,6 +1202,17 @@ const AddReport = () => {
                                     initalItems={consumablesInitial}
                                     responsibilities={consumablesData}
                                     setResponsibilities={setConsumablesData}
+                                />
+                            </div>
+
+                            {/* Equipments */}
+                            <div className="mb-4">
+                                <label className="block text-gray-700 text-md font-bold mb-2">Equipments</label>
+                                <ResponsibilityTable
+                                    column1="Responsibilities"
+                                    initalItems={equipmentsInitial}
+                                    responsibilities={equipmentsData}
+                                    setResponsibilities={setEquipmentsData}
                                 />
                             </div>
 
