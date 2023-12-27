@@ -13,19 +13,14 @@ export const formatDate = (date) => {
 
 export const groupByIndices = (arrays) => {
     const result = [];
-    console.log("arrays", arrays);
-    arrays.forEach((array, arrayIndex) => {
-        console.log("index", array, arrayIndex);
+    const firstItem = arrays.length ? arrays[0] : [];
+    firstItem.forEach((array, arrayIndex) => {
         const currentArr = [];
-        array.forEach((element, elementIndex) => {
-           if (elementIndex === arrayIndex) {
-               currentArr.push(element);
-           }
+        arrays.forEach((element) => {
+            currentArr.push(element[arrayIndex]);
         });
         result.push(currentArr);
     });
-
-    console.log("result: ", result);
 
     return result
 };

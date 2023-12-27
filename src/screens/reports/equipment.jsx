@@ -2,32 +2,25 @@ import {groupByIndices} from "../../utils/index.js";
 
 
 const EquipmentSection = ({ data }) => {
-    console.log(data?.equipments);
-    const headers = data?.equipments?.map((elt) => elt?.category);
-    console.log("headers", headers);
-    const tableItems = groupByIndices(data?.equipments?.map((elt) => elt?.values));
-    console.log("tableItems", tableItems);
+    const headers = data?.map((elt) => elt?.category);
+    const tableItems = groupByIndices(data?.map((elt) => elt?.values));
 
-    const getValue = (value, newElt) => {
-        console.log(value, newElt);
-        return "man"
-    }
     return (
         <div className="mt-3">
             <p className="text-[14px] font-bold mb-2">Equipment</p>
-            <table>
+            <table className="equipment_table w-[100%]">
                 <thead>
                     <tr>
                         {headers?.map((elt, index) =>
-                            <th key={index}>{elt}</th>
+                            <th className="text-left" key={index}>{elt}</th>
                         )}
                     </tr>
                 </thead>
                 <tbody>
-                    {data?.equipments?.map((elt, index) =>
+                    {tableItems?.map((elt, index) =>
                         <tr key={index}>
-                            {headers?.map((innerElt, index) =>
-                                {getValue(elt, innerElt)}
+                            {elt?.map((innerElt, index) =>
+                                <td key={index}>{innerElt}</td>
                             )}
                         </tr>
                     )}
