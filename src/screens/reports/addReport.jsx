@@ -14,8 +14,7 @@ import {
     returnAssetsData, returnReportDataType,
 } from "../../utils/data.js";
 import MultiSelect from "../../components/multiSelect/index.jsx";
-import MultiSelectFile from "../../components/multiFileSelect/index.jsx";
-// import SignatureUpload from "../../components/signatureUpload/index.jsx";
+import FileUploadComponent from "../../components/imagesSelect/index.jsx";
 
 const AddReport = () => {
     // const [signature, setSignature] = useState(null);
@@ -74,7 +73,13 @@ const AddReport = () => {
     }
 
     const handleFilesSelect = (files) => {
-        setImages(files);
+        const updatedFiles = files?.map((elt) => {
+            return {
+                name: elt.name,
+                file: elt.rawFile
+            }
+        })
+        setImages(updatedFiles);
     };
 
 
@@ -110,9 +115,16 @@ const AddReport = () => {
                 formData.append(key, value);
             });
 
+            const imageFiles = images?.map((elt) => elt?.file);
+            const imageNames = images?.map((elt) => elt.name);
+
             // Add signature image
-            images.forEach(function(image) {
+            imageFiles.forEach(function(image) {
                 formData.append('images[]', image);
+            });
+
+            imageNames.forEach(function(imageName) {
+                formData.append('file_names[]', imageName);
             });
             const response = await axiosClient.post(
                 '/reports/add-report/',
@@ -572,7 +584,7 @@ const AddReport = () => {
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    {assetDetails.map((asset, index) => (
+                                    {assetDetails?.map((asset, index) => (
                                         <tr key={index}>
                                             <td className="border p-2">
                                                 <input
@@ -764,7 +776,7 @@ const AddReport = () => {
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    {dimensionOneDetails.map((dimension, index) => (
+                                    {dimensionOneDetails?.map((dimension, index) => (
                                         <tr key={index}>
                                             <td className="border p-2">
                                                 <input
@@ -858,7 +870,7 @@ const AddReport = () => {
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    {dimensionTwoDetails.map((dimension, index) => (
+                                    {dimensionTwoDetails?.map((dimension, index) => (
                                         <tr key={index}>
                                             <td className="border p-2">
                                                 <input
@@ -968,7 +980,7 @@ const AddReport = () => {
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    {bodyDetails.map((dimension, index) => (
+                                    {bodyDetails?.map((dimension, index) => (
                                         <tr key={index}>
                                             <td className="border p-2">
                                                 <input
@@ -1048,7 +1060,7 @@ const AddReport = () => {
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    {bladeDetails.map((dimension, index) => (
+                                    {bladeDetails?.map((dimension, index) => (
                                         <tr key={index}>
                                             <td className="border p-2">
                                                 <input
@@ -1140,7 +1152,7 @@ const AddReport = () => {
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    {reportTypeData.map((dimension, index) => (
+                                    {reportTypeData?.map((dimension, index) => (
                                         <tr key={index}>
                                             <td className="border p-2">
                                                 <input
@@ -1241,10 +1253,7 @@ const AddReport = () => {
                             {/* Images */}
                             <div className="mb-3">
                                 <label className="block text-gray-700 text-md font-bold mb-2">Images</label>
-                                <MultiSelectFile
-                                    onFilesSelect={(files) => handleFilesSelect(files)}
-                                    initialFilenames={[]}
-                                />
+                                <FileUploadComponent setImages={handleFilesSelect} />
                             </div>
 
                             <Button>Add Report</Button>

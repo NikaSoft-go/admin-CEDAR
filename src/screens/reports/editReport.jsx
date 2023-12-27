@@ -14,7 +14,8 @@ import {
     returnAssetsData, returnReportDataType,
 } from "../../utils/data.js";
 import MultiSelect from "../../components/multiSelect/index.jsx";
-import MultiSelectFile from "../../components/multiFileSelect/index.jsx";
+import FileUploadComponent from "../../components/imagesSelect/index.jsx";
+import {getImageFullPath} from "../../utils/index.js";
 
 const EditReport = () => {
     const { id } = useParams();
@@ -30,6 +31,7 @@ const EditReport = () => {
     const [selectedOptions, setSelectedOptions] = useState([]);
     const [images, setImages] = useState([]);
     const [reportTypeData, setReportTypeData] = useState([]);
+    const [imageLinks, setImageLinks] = useState([]);
     const [consumablesData, setConsumablesData] = useState(consumablesInitial);
     const [equipmentsData, setEquipmentsData] = useState(equipmentsInitial);
     const [assetDetails, setAssetsDetails] = useState([]);
@@ -73,7 +75,13 @@ const EditReport = () => {
     }
 
     const handleFilesSelect = (files) => {
-        setImages(files);
+        const updatedFiles = files?.map((elt) => {
+            return {
+                name: elt.name,
+                file: elt.rawFile
+            }
+        })
+        setImages(updatedFiles);
     };
 
 
@@ -109,9 +117,16 @@ const EditReport = () => {
                 formData.append(key, value);
             });
 
+            const imageFiles = images?.map((elt) => elt?.file);
+            const imageNames = images?.map((elt) => elt.name);
+
             // Add signature image
-            images.forEach(function(image) {
+            imageFiles.forEach(function(image) {
                 formData.append('images[]', image);
+            });
+
+            imageNames.forEach(function(imageName) {
+                formData.append('file_names[]', imageName);
             });
             const response = await axiosClient.patch(
                 `/reports/update-report/${id}/`,
@@ -154,12 +169,19 @@ const EditReport = () => {
                         consumables,
                         keys,
                         equipments,
+                        images,
                         ...otherValues
                     }  = response.data.data;
                     setState({
                         ...state,
                         ...otherValues
                     });
+                    setImageLinks(images?.map((image) => {
+                        return {
+                            link: getImageFullPath(image.file),
+                            name: image.name
+                        }
+                    }))
                     setAssetsDetails(JSON.parse(asset_details));
                     setDimensionTwoDetails(JSON.parse(dimension_two));
                     setDimensionOneDetails(JSON.parse(dimension_one));
@@ -1309,10 +1331,7 @@ const EditReport = () => {
                             {/* Images */}
                             <div className="mb-3">
                                 <label className="block text-gray-700 text-md font-bold mb-2">Images</label>
-                                <MultiSelectFile
-                                    onFilesSelect={(files) => handleFilesSelect(files)}
-                                    initialFilenames={[]}
-                                />
+                                <FileUploadComponent setImages={handleFilesSelect} selectedLinks={imageLinks} />
                             </div>
 
                             <Button>Update Report</Button>
