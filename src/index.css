@@ -402,3 +402,78 @@ li.font-bold {
     border: 1px solid #000;
     padding-left: 8px;
 }
+
+.report_type_data table {
+    width: 100%;
+}
+
+.report_type_data th,
+.report_type_data td {
+    border: 1px solid #000;
+    border-bottom: none;
+}
+
+.report_type_data table:last-child td {
+    border: 1px solid #000;
+}
+
+.report_type_data th {
+    background-color: #D8D8D8;
+}
+
+.pdf_bottom table {
+    border-bottom: 1px solid #000;
+    margin-top: 50px;
+}
+
+.pdf_bottom th {
+    text-align: left;
+    background-color: #D8D8D8;
+    border-left: 1px solid #000;
+    border-top: 1px solid #000;
+    border-right: 1px solid #000;
+    padding: 5px;
+}
+
+.pdf_bottom th:first-child {
+    background-color: inherit;
+    border: none;
+}
+
+.pdf_bottom tbody tr:first-child div {
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pdf_bottom tbody tr:first-child {
+    border: 1px solid #000;
+}
+
+.pdf_bottom tbody tr:first-child td:nth-child(1){
+    border-right: 1px solid #000;
+}
+
+.pdf_bottom tbody tr:first-child td:nth-child(2),
+.pdf_bottom tbody tr:first-child td:nth-child(3){
+    border: none;
+    border-right: 1px solid #000;
+}
+
+.pdf_bottom tbody tr:nth-child(2) td,
+.pdf_bottom tbody tr:nth-child(3) td,
+.pdf_bottom tbody tr:nth-child(4) td {
+    border-right: 1px solid #000;
+    padding-left: 5px;
+}
+
+.pdf_bottom tbody tr:nth-child(2) td:first-child,
+.pdf_bottom tbody tr:nth-child(3) td:first-child,
+.pdf_bottom tbody tr:nth-child(4) td:first-child {
+    padding-right: 5px;
+    text-align: right;
+    border: 1px solid #000;
+    border-top: none;
+    border-bottom: none;
+}

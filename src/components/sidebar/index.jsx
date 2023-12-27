@@ -24,7 +24,7 @@ const Sidebar = () => {
         {
             id: 'reports',
             route: '/reports',
-            subRoutes: ['/reports', '/add-report'],
+            subRoutes: ['/reports', '/add-report', '/edit-report', '/preview-report'],
             name: 'Reports',
             icon: <FiUser size={24} />,
         },
@@ -49,7 +49,7 @@ const Sidebar = () => {
         routes.unshift({
             id: "job-quotation",
             route: '/job-quotation',
-            subRoutes: ['/job-quotation', '/add-quotation'],
+            subRoutes: ['/job-quotation', '/add-quotation', '/preview-invoice', '/edit-report'],
             name: 'Job Quotation',
             icon: <FiFileText size={24} />,
         })

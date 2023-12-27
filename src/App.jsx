@@ -10,6 +10,7 @@ import EditJobQuotationsPage from "./screens/invoices/editInvoice.jsx";
 import Reports from "./screens/reports/index.jsx";
 import AddReport from "./screens/reports/addReport.jsx";
 import PreviewReport from "./screens/reports/previewReport.jsx";
+import EditReport from "./screens/reports/editReport.jsx";
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
         <Route path="/reports" element={<Reports/>}/>
         <Route path="/add-report" element={<AddReport/>}/>
         <Route path="/preview-report/:id" element={<PreviewReport/>}/>
+        <Route path="/report/update/:id" element={<EditReport/>}/>
       </Routes>
   )
 }

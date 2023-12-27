@@ -19,7 +19,7 @@ const dimensionDetails = ({ data }) => {
                     </table>
                 </div>
                 <div className=" dimension-body">
-                    {data?.body?.length && <div className="dimension-table-cover mb-4">
+                    {data?.body?.length > 0 && <div className="dimension-table-cover mb-4">
                         <p className="bg-[#D8D8D8] font-bold text-[14px] pl-2">Body</p>
                         <table>
                             <tbody>
@@ -32,7 +32,7 @@ const dimensionDetails = ({ data }) => {
                             </tbody>
                         </table>
                     </div>}
-                    {data?.blade?.length && <div className="dimension-table-cover">
+                    {data?.blade?.length > 0 && <div className="dimension-table-cover">
                         <p className="bg-[#D8D8D8] font-bold text-[14px] pl-2">Blade</p>
                         <table>
                             <tbody>
