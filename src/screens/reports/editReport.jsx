@@ -21,6 +21,8 @@ const EditReport = () => {
     const { id } = useParams();
     const keyItems = [
         "ACP - Accept",
+        "MPI - Magnetic Particle Inspection",
+        "VT - Visual Inspection",
         "DPI - Dye Penetrant Inspection",
         "DIM - Dimensional",
         "PT - Pitted Thread",
@@ -522,11 +524,13 @@ const EditReport = () => {
                                         required
                                     >
                                         <option>Select a report type</option>
-                                        <option value="MPI">MPI</option>
+                                        <option value="MPI without connections">MPI without connections</option>
+                                        <option value="MPI with connections">MPI with connections</option>
                                         <option value="DPI without connections">DPI without connections</option>
                                         <option value="DPI with connections">DPI with connections</option>
                                         <option value="Ultrasonic Inspection">Ultrasonic Thickness</option>
                                         <option value="Lifting Inspection">Lifting Inspection</option>
+                                        <option value="Welding">Welding</option>
                                     </select>
                                 </div>
 
@@ -658,7 +662,7 @@ const EditReport = () => {
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    {assetDetails.map((asset, index) => (
+                                    {assetDetails?.map((asset, index) => (
                                         <tr key={index}>
                                             <td className="border p-2">
                                                 <input
@@ -1229,7 +1233,7 @@ const EditReport = () => {
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    {reportTypeData.map((dimension, index) => (
+                                    {reportTypeData?.map((dimension, index) => (
                                         <tr key={index}>
                                             <td className="border p-2">
                                                 <input

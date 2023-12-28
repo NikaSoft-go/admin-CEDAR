@@ -34,7 +34,8 @@ export const MPIAssetsData = [
 
 export const returnAssetsData = (type) => {
     const assets = {
-        "MPI": MPIAssetsData,
+        "MPI without connections": MPIAssetsData,
+        "MPI with connections": MPIAssetsData,
         "DPI with connections": DPIWithConnectionsData,
         "DPI without connections": DPIWithoutConnectionsData,
         "Ultrasonic Thickness": [],
@@ -320,7 +321,7 @@ export const MPIReportTypeDataInitial = [
 
 export const returnReportDataType = (type, keyType) => {
     const reportTypes = {
-        "MPI": ["Visual Inspection MPI", "MPI"],
+        "MPI": ["MPI", "MPI with connections", "MPI without connections"],
         "DPI": ["DPI", "DPI with connections", "DPI without connections"],
         "Lifting Inspection": ["Lifting Inspection"],
         "Ultrasonic Thickness": ["Ultrasonic Thickness"]
@@ -338,7 +339,6 @@ export const returnReportDataType = (type, keyType) => {
     if (keyType === "type") {
         return key;
     } else {
-        console.log("key", key);
         return initialData[key];
     }
 }
