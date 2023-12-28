@@ -2,7 +2,6 @@
 
 
 const KeySection = ({ data }) => {
-    console.log(data);
     return (
         <div className="mt-3">
             <p className="text-[14px] font-bold mb-2">Key</p>

@@ -489,3 +489,21 @@ li.font-bold {
 .equipment_table th {
     background-color: #D8D8D8;
 }
+
+.image-card {
+    border: 1px solid #000;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.image-card .image-wrapper {
+    width: 250px;
+    height: 250px;
+}
+
+.image-card img {
+    object-fit: cover;
+}
