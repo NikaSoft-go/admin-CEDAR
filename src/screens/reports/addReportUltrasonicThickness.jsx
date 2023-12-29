@@ -290,7 +290,7 @@ const AddReportUltrasonicThickness = (props) => {
                     </tr>
                     </thead>
                     <tbody>
-                    {props.equipmentConsumables?.map((dimension, index) => (
+                    {props.equipmentMethod?.map((dimension, index) => (
                         <tr key={index}>
                             <td className="border p-2">
                                 <input
@@ -304,8 +304,8 @@ const AddReportUltrasonicThickness = (props) => {
                                             index,
                                             'property',
                                             e.target.value,
-                                            props.equipmentConsumables,
-                                            props.setEquipmentConsumables
+                                            props.equipmentMethod,
+                                            props.setEquipmentMethod
                                         )}
                                 />
                             </td>
@@ -321,8 +321,8 @@ const AddReportUltrasonicThickness = (props) => {
                                             index,
                                             'value',
                                             e.target.value,
-                                            props.equipmentConsumables,
-                                            props.setEquipmentConsumables
+                                            props.equipmentMethod,
+                                            props.setEquipmentMethod
                                         )}
                                 />
                             </td>
@@ -333,74 +333,8 @@ const AddReportUltrasonicThickness = (props) => {
                                     onClick={() =>
                                         props.handleRemoveTableItems(
                                             index,
-                                            props.equipmentConsumables,
-                                            props.setEquipmentConsumables
-                                        )}
-                                >
-                                    <FiTrash2/>
-                                </button>
-                            </td>
-                        </tr>
-                    ))}
-                    </tbody>
-                </table>
-            </div>
-
-            <div className="my-4">
-                <table className="w-full border">
-                    <thead>
-                    <tr>
-                        <th className="border p-2">Property</th>
-                        <th className="border p-2">Value</th>
-                        <th className="border p-2"></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {props.otherWeldingProps?.map((dimension, index) => (
-                        <tr key={index}>
-                            <td className="border p-2">
-                                <input
-                                    type="text"
-                                    className="w-full p-1"
-                                    placeholder="Property"
-                                    value={dimension.property}
-                                    required
-                                    onChange={(e) =>
-                                        props.handleTableItemChange(
-                                            index,
-                                            'property',
-                                            e.target.value,
-                                            props.otherWeldingProps,
-                                            props.setOtherWeldingProps
-                                        )}
-                                />
-                            </td>
-                            <td className="border p-2">
-                                <input
-                                    type="text"
-                                    className="w-full p-1"
-                                    placeholder="Value"
-                                    value={dimension.value}
-                                    required
-                                    onChange={(e) =>
-                                        props.handleTableItemChange(
-                                            index,
-                                            'value',
-                                            e.target.value,
-                                            props.otherWeldingProps,
-                                            props.setOtherWeldingProps
-                                        )}
-                                />
-                            </td>
-                            <td className="border p-2">
-                                <button
-                                    type="button"
-                                    className="remove-btn rounded p-1"
-                                    onClick={() =>
-                                        props.handleRemoveTableItems(
-                                            index,
-                                            props.otherWeldingProps,
-                                            props.setOtherWeldingProps
+                                            props.equipmentMethod,
+                                            props.setEquipmentMethod
                                         )}
                                 >
                                     <FiTrash2/>
@@ -418,48 +352,48 @@ const AddReportUltrasonicThickness = (props) => {
                 <table className="w-full border">
                     <thead>
                     <tr>
-                        <th className="border p-2">Joint Number</th>
-                        <th className="border p-2">Welder Stamp</th>
-                        <th className="border p-2">Size</th>
-                        <th className="border p-2">Thickness</th>
-                        <th className="border p-2">Remarks</th>
-                        <th className="border p-2">Indications</th>
-                        <th className="border p-2">Acc</th>
-                        <th className="border p-2">Rej</th>
+                        <th className="border p-2">Probe Serial No</th>
+                        <th className="border p-2">Type</th>
+                        <th className="border p-2">Angle°</th>
+                        <th className="border p-2">Crystal Size (mm)</th>
+                        <th className="border p-2">Frequency (MHz)</th>
+                        <th className="border p-2">Basic Sensitivity (Db)</th>
+                        <th className="border p-2">Transfer Correction (Db)</th>
+                        <th className="border p-2">Scanning Sensitivity (Db)</th>
                         <th className="border p-2"></th>
                     </tr>
                     </thead>
                     <tbody>
-                    {props.weldingTableData.map((cost, index) => (
+                    {props.utTableData.map((cost, index) => (
                         <tr key={index}>
                             <td className="border p-2">
                                 <input
                                     type="text"
                                     className="w-full p-1"
-                                    placeholder="Joint Number"
-                                    value={cost.joint_number}
+                                    placeholder="Probe Serial No"
+                                    value={cost.probe_serial_number}
                                     required
-                                    onChange={(e) => props.handleWeldingTableItemChange(index, 'joint_number', e.target.value)}
+                                    onChange={(e) => props.handleUTTableItemChange(index, 'probe_serial_number', e.target.value)}
                                 />
                             </td>
                             <td className="border p-2">
                                 <input
                                     type="text"
                                     className="w-full p-1"
-                                    placeholder="Scope"
-                                    value={cost.welder_stamp}
+                                    placeholder="Type"
+                                    value={cost.type}
                                     required
-                                    onChange={(e) => props.handleWeldingTableItemChange(index, 'welder_stamp', e.target.value)}
+                                    onChange={(e) => props.handleUTTableItemChange(index, 'type', e.target.value)}
                                 />
                             </td>
                             <td className="border p-2">
                                 <input
                                     type="text"
                                     className="w-full p-1"
-                                    placeholder="Quantity"
-                                    value={cost.size}
+                                    placeholder="Angle"
+                                    value={cost.angle}
                                     onChange={(e) =>
-                                        props.handleWeldingTableItemChange(index, 'size', e.target.value)
+                                        props.handleUTTableItemChange(index, 'angle', e.target.value)
                                     }
                                     required
                                 />
@@ -468,10 +402,10 @@ const AddReportUltrasonicThickness = (props) => {
                                 <input
                                     type="text"
                                     className="w-full p-1"
-                                    placeholder="Unit Price"
-                                    value={cost.thickness}
+                                    placeholder="Crystal Size"
+                                    value={cost.crystal_size}
                                     onChange={(e) =>
-                                        props.handleWeldingTableItemChange(index, 'thickness', e.target.value)
+                                        props.handleUTTableItemChange(index, 'crystal_size', e.target.value)
                                     }
                                     required
                                 />
@@ -480,10 +414,10 @@ const AddReportUltrasonicThickness = (props) => {
                                 <input
                                     type="text"
                                     className="w-full p-1"
-                                    placeholder="Total Cost"
-                                    value={cost.remarks}
+                                    placeholder="Frequency"
+                                    value={cost.frequency}
                                     onChange={(e) =>
-                                        props.handleWeldingTableItemChange(index, 'remarks', e.target.value)
+                                        props.handleUTTableItemChange(index, 'frequency', e.target.value)
                                     }
                                     required
                                 />
@@ -492,37 +426,34 @@ const AddReportUltrasonicThickness = (props) => {
                                 <input
                                     type="text"
                                     className="w-full p-1"
-                                    placeholder="Total Cost"
-                                    value={cost.indications}
+                                    placeholder="Basic Sensitivity"
+                                    value={cost.basic_sensitivity}
                                     onChange={(e) =>
-                                        props.handleWeldingTableItemChange(index, 'indications', e.target.value)
+                                        props.handleUTTableItemChange(index, 'basic_sensitivity', e.target.value)
                                     }
                                     required
                                 />
                             </td>
                             <td className="border p-2">
-                                <select
+                                <input
+                                    type="text"
                                     className="w-full p-1"
-                                    placeholder="Total Cost"
-                                    value={cost.acc}
+                                    placeholder="Transfer Correction"
+                                    value={cost.transfer_correction}
                                     onChange={(e) =>
-                                        props.handleWeldingTableItemChange(index, 'acc', e.target.value)
+                                        props.handleUTTableItemChange(index, 'transfer_correction', e.target.value)
                                     }
                                     required
-                                >
-                                    <option value="">Select state</option>
-                                    <option value="correct">Accepted</option>
-                                    <option value="wrong">Rejected</option>
-                                </select>
+                                />
                             </td>
                             <td className="border p-2">
                                 <input
                                     type="text"
                                     className="w-full p-1"
-                                    placeholder="Total Cost"
-                                    value={cost.rej}
+                                    placeholder="Scanning Sensitivity"
+                                    value={cost.scanning_sensitivity}
                                     onChange={(e) =>
-                                        props.handleWeldingTableItemChange(index, 'rej', e.target.value)
+                                        props.handleUTTableItemChange(index, 'scanning_sensitivity', e.target.value)
                                     }
                                     required
                                 />
@@ -531,7 +462,7 @@ const AddReportUltrasonicThickness = (props) => {
                                 <button
                                     type="button"
                                     className="remove-btn rounded p-1"
-                                    onClick={() => props.handleRemoveWeldingTableItem(index)}
+                                    onClick={() => props.handleRemoveUTTableItem(index)}
                                 >
                                     <FiTrash2 />
                                 </button>
@@ -543,58 +474,36 @@ const AddReportUltrasonicThickness = (props) => {
                 <button
                     type="button"
                     className="add-item-btn text-white rounded px-2 py-1"
-                    onClick={props.handleAddWeldingTableItem}
+                    onClick={props.handleAddUTTableItem}
                 >
                     <IoMdAddCircleOutline />
                 </button>
             </div>
 
-            {/* Item Tested */}
-            <div className="mb-3">
-                <label className="block text-gray-700 text-md font-bold mb-2">Item Tested</label>
-                <textarea
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    placeholder="Item Tested"
-                    name="item_tested"
-                    onChange={props.handleChange}
-                    required
-                />
-            </div>
-
-            {/* Method of Test */}
-            <div className="mb-3">
-                <label className="block text-gray-700 text-md font-bold mb-2">Method of Test</label>
-                <textarea
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    placeholder="Method of Test"
-                    name="test_method"
-                    onChange={props.handleChange}
-                    required
-                />
-            </div>
-
-            {/* Results */}
-            <div className="mb-3">
-                <label className="block text-gray-700 text-md font-bold mb-2">Results</label>
-                <textarea
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    placeholder="Results"
-                    name="results"
-                    onChange={props.handleChange}
-                    required
-                />
-            </div>
-
-            {/* Limitations */}
-            <div className="mb-3">
-                <label className="block text-gray-700 text-md font-bold mb-2">Limitations</label>
-                <textarea
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    placeholder="Limitations"
-                    name="limitations"
-                    onChange={props.handleChange}
-                    required
-                />
+            <label className="block text-gray-700 text-md font-bold mb-2">Drawing:</label>
+            <div className="mb-6 flex justify-start w-[100%]">
+                <div className="w-[100%]">
+                    <label className="block text-gray-700 text-md font-bold mb-2">Image 1:</label>
+                    <input
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        type="file"
+                        placeholder="Acceptance Criteria"
+                        name="acceptance_criteria"
+                        onChange={props.handleChange}
+                        required
+                    />
+                </div>
+                <div className="w-[100%]">
+                    <label className="block text-gray-700 text-md font-bold mb-2">Image 2:</label>
+                    <input
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        type="file"
+                        placeholder="Acceptance Criteria"
+                        name="acceptance_criteria"
+                        onChange={props.handleChange}
+                        required
+                    />
+                </div>
             </div>
 
             <h3 className="font-bold mb-4">Inspected by</h3>

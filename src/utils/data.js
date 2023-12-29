@@ -386,6 +386,37 @@ export const equipmentConsumablesInitial = [
     },
 ]
 
+export const equipmentTechniqueInitial = [
+    {
+        property: "Couplant",
+        value: '',
+    },
+    {
+        property: "Equipment Manufacturer",
+        value: '',
+    },
+    {
+        property: "Model",
+        value: '',
+    },
+    {
+        property: "Serial Number",
+        value: '',
+    },
+    {
+        property: "Calibration Block Number",
+        value: '',
+    },
+    {
+        property: "Reject Level",
+        value: '',
+    },
+    {
+        property: "Time base Range(s)",
+        value: '',
+    },
+]
+
 export const otherEquipmentsProps = [
     {
         property: "Lighting Conditions",
@@ -711,5 +742,18 @@ export const weldingTableInitial = [
         indications: 'Non Relevant Information',
         acc: 'correct',
         rej: '',
+    },
+]
+
+export const utTableInitial = [
+    {
+        probe_serial_number: 'AN00233',
+        type: 'Cygnus T5A-MSW',
+        angle: '0',
+        crystal_size: '5',
+        frequency: '5',
+        basic_sensitivity: 'N/A',
+        transfer_correction: 'N/A',
+        scanning_sensitivity: 'N/A',
     },
 ]

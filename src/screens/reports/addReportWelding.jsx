@@ -434,7 +434,7 @@ const AddReportWelding = (props) => {
                                 <input
                                     type="text"
                                     className="w-full p-1"
-                                    placeholder="Scope"
+                                    placeholder="Welder Stamp"
                                     value={cost.welder_stamp}
                                     required
                                     onChange={(e) => props.handleWeldingTableItemChange(index, 'welder_stamp', e.target.value)}
@@ -444,7 +444,7 @@ const AddReportWelding = (props) => {
                                 <input
                                     type="text"
                                     className="w-full p-1"
-                                    placeholder="Quantity"
+                                    placeholder="Size"
                                     value={cost.size}
                                     onChange={(e) =>
                                         props.handleWeldingTableItemChange(index, 'size', e.target.value)
@@ -456,7 +456,7 @@ const AddReportWelding = (props) => {
                                 <input
                                     type="text"
                                     className="w-full p-1"
-                                    placeholder="Unit Price"
+                                    placeholder="Thickness"
                                     value={cost.thickness}
                                     onChange={(e) =>
                                         props.handleWeldingTableItemChange(index, 'thickness', e.target.value)
@@ -468,7 +468,7 @@ const AddReportWelding = (props) => {
                                 <input
                                     type="text"
                                     className="w-full p-1"
-                                    placeholder="Total Cost"
+                                    placeholder="Remarks"
                                     value={cost.remarks}
                                     onChange={(e) =>
                                         props.handleWeldingTableItemChange(index, 'remarks', e.target.value)
@@ -480,7 +480,7 @@ const AddReportWelding = (props) => {
                                 <input
                                     type="text"
                                     className="w-full p-1"
-                                    placeholder="Total Cost"
+                                    placeholder="Indications"
                                     value={cost.indications}
                                     onChange={(e) =>
                                         props.handleWeldingTableItemChange(index, 'indications', e.target.value)
@@ -491,7 +491,7 @@ const AddReportWelding = (props) => {
                             <td className="border p-2">
                                 <select
                                     className="w-full p-1"
-                                    placeholder="Total Cost"
+                                        placeholder="Acc"
                                     value={cost.acc}
                                     onChange={(e) =>
                                         props.handleWeldingTableItemChange(index, 'acc', e.target.value)
@@ -507,7 +507,7 @@ const AddReportWelding = (props) => {
                                 <input
                                     type="text"
                                     className="w-full p-1"
-                                    placeholder="Total Cost"
+                                    placeholder="Rej"
                                     value={cost.rej}
                                     onChange={(e) =>
                                         props.handleWeldingTableItemChange(index, 'rej', e.target.value)
