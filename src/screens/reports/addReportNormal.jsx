@@ -655,8 +655,8 @@ const AddReportNormal = ({
                                             index,
                                             'property',
                                             e.target.value,
-                                            assetDetails,
-                                            setAssetsDetails
+                                            dimensionOneDetails,
+                                            setDimensionOneDetails
                                         )}
                                 />
                             </td>
@@ -672,8 +672,8 @@ const AddReportNormal = ({
                                             index,
                                             'value',
                                             e.target.value,
-                                            assetDetails,
-                                            setAssetsDetails
+                                            dimensionOneDetails,
+                                            setDimensionOneDetails
                                         )}
                                 />
                             </td>
@@ -749,8 +749,8 @@ const AddReportNormal = ({
                                             index,
                                             'property',
                                             e.target.value,
-                                            assetDetails,
-                                            setAssetsDetails
+                                            dimensionTwoDetails,
+                                            setDimensionTwoDetails
                                         )}/>
                             </td>
                             <td className="border p-2">
@@ -765,8 +765,8 @@ const AddReportNormal = ({
                                             index,
                                             'value',
                                             e.target.value,
-                                            assetDetails,
-                                            setAssetsDetails
+                                            dimensionTwoDetails,
+                                            setDimensionTwoDetails
                                         )}/>
                             </td>
                             <td className="border p-2">
@@ -859,8 +859,8 @@ const AddReportNormal = ({
                                             index,
                                             'property',
                                             e.target.value,
-                                            assetDetails,
-                                            setAssetsDetails
+                                            bodyDetails,
+                                            setBodyDetails
                                         )}/>
                             </td>
                             <td className="border p-2">
@@ -875,8 +875,8 @@ const AddReportNormal = ({
                                             index,
                                             'value',
                                             e.target.value,
-                                            assetDetails,
-                                            setAssetsDetails
+                                            bodyDetails,
+                                            setBodyDetails
                                         )}/>
                             </td>
                             <td className="border p-2">
@@ -939,8 +939,8 @@ const AddReportNormal = ({
                                                 index,
                                                 'property',
                                                 e.target.value,
-                                                assetDetails,
-                                                setAssetsDetails
+                                                bladeDetails,
+                                                setBladeDetails
                                             )}/>
                                 </td>
                                 <td className="border p-2">
@@ -955,8 +955,8 @@ const AddReportNormal = ({
                                                 index,
                                                 'value',
                                                 e.target.value,
-                                                assetDetails,
-                                                setAssetsDetails
+                                                bladeDetails,
+                                                setBladeDetails
                                             )}/>
                                 </td>
                                 <td className="border p-2">

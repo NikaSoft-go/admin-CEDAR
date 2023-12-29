@@ -319,6 +319,140 @@ export const MPIReportTypeDataInitial = [
     },
 ]
 
+export const equipmentConsumablesInitial = [
+    {
+        property: "Make",
+        value: '',
+    },
+    {
+        property: "Yoke Serial ",
+        value: '',
+    },
+    {
+        property: "Current",
+        value: '',
+    },
+    {
+        property: "Flux Indicator",
+        value: '',
+    },
+    {
+        property: "Yoke Type",
+        value: '',
+    },
+    {
+        property: "Lift weight Serial No",
+        value: '',
+    },
+    {
+        property: "Prod Spacing",
+        value: '',
+    },
+    {
+        property: "Consumable Manufacturer",
+        value: '',
+    },
+    {
+        property: "Black Ink Product code",
+        value: '',
+    },
+    {
+        property: "Contrast Paint Product code",
+        value: '',
+    },
+    {
+        property: "Fluorescent ink Product code",
+        value: '',
+    },
+    {
+        property: "Lift weight original conformance date",
+        value: '',
+    },
+    {
+        property: "Black Ink batch no",
+        value: '',
+    },
+    {
+        property: "Contrast Paint batch no",
+        value: '',
+    },
+    {
+        property: "Dry Powder batch no",
+        value: '',
+    },
+    {
+        property: "Fluorescence ink batch no",
+        value: '',
+    },
+]
+
+export const otherEquipmentsProps = [
+    {
+        property: "Lighting Conditions",
+        value: '',
+    },
+    {
+        property: "White Light Intensity",
+        value: '',
+    },
+    {
+        property: "UV-A Intensity",
+        value: '',
+    },
+    {
+        property: "Light Meter Manufacturer",
+        value: '',
+    },
+    {
+        property: "Calibration due",
+        value: '',
+    },
+    {
+        property: "Light Meter Serial Number",
+        value: '',
+    },
+    {
+        property: "Light measurement on the inspection surface",
+        value: '',
+    },
+    {
+        property: "Temperature Gauge Manufacturer",
+        value: '',
+    },
+    {
+        property: "Calibration due",
+        value: '',
+    },
+    {
+        property: "Temperature Gauge Serial Number",
+        value: '',
+    },
+    {
+        property: "Temperature taken on Test Sample",
+        value: '',
+    },
+    {
+        property: "UV-A Lamp Manufacturer",
+        value: '',
+    },
+    {
+        property: "Calibration due",
+        value: '',
+    },
+    {
+        property: "UV-A Radiometer Serial Number",
+        value: '',
+    },
+    {
+        property: "Calibration due",
+        value: '',
+    },
+    {
+        property: "UV-A Intensity",
+        value: '',
+    },
+]
+
 export const returnReportDataType = (type, keyType) => {
     const reportTypes = {
         "MPI": ["MPI", "MPI with connections", "MPI without connections"],
@@ -434,5 +568,148 @@ export const equipmentsInitial = [
             "UV Light Inspection",
             "UV Light Inspection"
         ],
+    },
+]
+
+export const weldingTableInitial = [
+    {
+        joint_number: 'SW#14',
+        welder_stamp: 'PW-10,W-67',
+        size: '',
+        thickness: '21.95mm',
+        remarks: 'NRI',
+        indications: 'Non Relevant Information',
+        acc: 'correct',
+        rej: '',
+    },
+    {
+        joint_number: 'SW#14',
+        welder_stamp: 'PW-10,W-67',
+        size: '',
+        thickness: '21.95mm',
+        remarks: 'NRI',
+        indications: 'Non Relevant Information',
+        acc: 'correct',
+        rej: '',
+    },
+    {
+        joint_number: 'SW#14',
+        welder_stamp: 'PW-10,W-67',
+        size: '',
+        thickness: '21.95mm',
+        remarks: 'NRI',
+        indications: 'Non Relevant Information',
+        acc: 'correct',
+        rej: '',
+    },
+    {
+        joint_number: 'SW#14',
+        welder_stamp: 'PW-10,W-67',
+        size: '',
+        thickness: '21.95mm',
+        remarks: 'NRI',
+        indications: 'Non Relevant Information',
+        acc: 'correct',
+        rej: '',
+    },
+    {
+        joint_number: 'SW#14',
+        welder_stamp: 'PW-10,W-67',
+        size: '',
+        thickness: '21.95mm',
+        remarks: 'NRI',
+        indications: 'Non Relevant Information',
+        acc: 'correct',
+        rej: '',
+    },
+    {
+        joint_number: 'SW#14',
+        welder_stamp: 'PW-10,W-67',
+        size: '',
+        thickness: '21.95mm',
+        remarks: 'NRI',
+        indications: 'Non Relevant Information',
+        acc: 'correct',
+        rej: '',
+    },
+    {
+        joint_number: 'SW#14',
+        welder_stamp: 'PW-10,W-67',
+        size: '',
+        thickness: '21.95mm',
+        remarks: 'NRI',
+        indications: 'Non Relevant Information',
+        acc: 'correct',
+        rej: '',
+    },
+    {
+        joint_number: 'SW#14',
+        welder_stamp: 'PW-10,W-67',
+        size: '',
+        thickness: '21.95mm',
+        remarks: 'NRI',
+        indications: 'Non Relevant Information',
+        acc: 'correct',
+        rej: '',
+    },
+    {
+        joint_number: 'SW#14',
+        welder_stamp: 'PW-10,W-67',
+        size: '',
+        thickness: '21.95mm',
+        remarks: 'NRI',
+        indications: 'Non Relevant Information',
+        acc: 'correct',
+        rej: '',
+    },
+    {
+        joint_number: 'SW#14',
+        welder_stamp: 'PW-10,W-67',
+        size: '',
+        thickness: '21.95mm',
+        remarks: 'NRI',
+        indications: 'Non Relevant Information',
+        acc: 'correct',
+        rej: '',
+    },
+    {
+        joint_number: 'SW#14',
+        welder_stamp: 'PW-10,W-67',
+        size: '',
+        thickness: '21.95mm',
+        remarks: 'NRI',
+        indications: 'Non Relevant Information',
+        acc: 'correct',
+        rej: '',
+    },
+    {
+        joint_number: 'SW#14',
+        welder_stamp: 'PW-10,W-67',
+        size: '',
+        thickness: '21.95mm',
+        remarks: 'NRI',
+        indications: 'Non Relevant Information',
+        acc: 'correct',
+        rej: '',
+    },
+    {
+        joint_number: 'SW#14',
+        welder_stamp: 'PW-10,W-67',
+        size: '',
+        thickness: '21.95mm',
+        remarks: 'NRI',
+        indications: 'Non Relevant Information',
+        acc: 'correct',
+        rej: '',
+    },
+    {
+        joint_number: 'SW#14',
+        welder_stamp: 'PW-10,W-67',
+        size: '',
+        thickness: '21.95mm',
+        remarks: 'NRI',
+        indications: 'Non Relevant Information',
+        acc: 'correct',
+        rej: '',
     },
 ]

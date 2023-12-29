@@ -1,19 +1,19 @@
 import {FiTrash2} from "react-icons/fi";
 import {IoMdAddCircleOutline} from "react-icons/io";
 
-const AddReportWelding = (props) => {
+const AddReportUltrasonicThickness = (props) => {
 
     return (
         <>
-            <h3 className="font-bold mb-4">Client Details</h3>
+            <h3 className="font-bold mb-4">Report Details</h3>
             <div className="mb-10 grid grid-cols-1 md:grid-cols-2 gap-4">
                 {/* Client Name */}
                 <div>
-                    <label className="block text-gray-700 text-md font-bold mb-2">Client:</label>
+                    <label className="block text-gray-700 text-md font-bold mb-2">Customer:</label>
                     <input
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         type="text"
-                        placeholder="Client"
+                        placeholder="Customer"
                         name="client_name"
                         onChange={props.handleChange}
                         required
@@ -46,13 +46,26 @@ const AddReportWelding = (props) => {
                     />
                 </div>
 
-                {/* Job Number */}
+                {/* Next Examination Date */}
                 <div>
-                    <label className="block text-gray-700 text-md font-bold mb-2">Job Number:</label>
+                    <label className="block text-gray-700 text-md font-bold mb-2">Next Examination:</label>
                     <input
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         type="text"
-                        placeholder="Job Number"
+                        placeholder="Next Examination"
+                        name="next_examination_date"
+                        onChange={props.handleChange}
+                        required
+                    />
+                </div>
+
+                {/* Work Order Number */}
+                <div>
+                    <label className="block text-gray-700 text-md font-bold mb-2">Work Order Number:</label>
+                    <input
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        type="text"
+                        placeholder="Work Order Number"
                         name="work_order"
                         onChange={props.handleChange}
                         required
@@ -72,79 +85,66 @@ const AddReportWelding = (props) => {
                     />
                 </div>
 
-                {/* Request / Document Number */}
+                {/* Request Number */}
                 <div>
-                    <label className="block text-gray-700 text-md font-bold mb-2">Request/Doc No:</label>
+                    <label className="block text-gray-700 text-md font-bold mb-2">Request No:</label>
                     <input
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         type="text"
-                        placeholder="Request/Doc No:"
+                        placeholder="Request No:"
                         name="drawing_number"
                         onChange={props.handleChange}
                         required
                     />
                 </div>
 
-                {/* Contract Name */}
+                {/* Contract Number */}
                 <div>
-                    <label className="block text-gray-700 text-md font-bold mb-2">Contract Name:</label>
+                    <label className="block text-gray-700 text-md font-bold mb-2">Contract No:</label>
                     <input
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         type="text"
-                        placeholder="Contract Name"
+                        placeholder="Contract No"
                         name="contract"
                         onChange={props.handleChange}
                         required
                     />
                 </div>
 
-                {/* Drawing Reference */}
+                {/* Serial No */}
                 <div>
-                    <label className="block text-gray-700 text-md font-bold mb-2">Drawing Reference:</label>
+                    <label className="block text-gray-700 text-md font-bold mb-2">Serial No:</label>
                     <input
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         type="text"
-                        placeholder="Drawing Reference"
-                        name="client_job_reference"
+                        placeholder="Serial No"
+                        name="serial_number"
                         onChange={props.handleChange}
                         required
                     />
                 </div>
 
-                {/* Sample Selection */}
+                {/* Operating Pressure */}
                 <div>
-                    <label className="block text-gray-700 text-md font-bold mb-2">Sample Selection:</label>
+                    <label className="block text-gray-700 text-md font-bold mb-2">Operating Pressure:</label>
                     <input
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         type="text"
-                        placeholder="Sample Selection"
-                        name="sample_selection"
+                        placeholder="Operating Pressure"
+                        name="operating_pressure"
                         onChange={props.handleChange}
                         required
                     />
                 </div>
 
-                {/* Extent of Test */}
+                {/* Test Restrictions */}
                 <div>
-                    <label className="block text-gray-700 text-md font-bold mb-2">Extent of Test:</label>
+                    <label className="block text-gray-700 text-md font-bold mb-2">Test Restrictions:</label>
                     <input
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         type="text"
-                        placeholder="Extent of Test"
-                        name="services"
-                        onChange={props.handleChange}
-                        required
-                    />
-                </div>
-
-                {/* Size */}
-                <div>
-                    <label className="block text-gray-700 text-md font-bold mb-2">Size:</label>
-                    <input
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        type="text"
-                        placeholder="Size"
-                        name="size"
+                        placeholder="Test Restrictions"
+                        name="test_restrictions"
                         onChange={props.handleChange}
                         required
                     />
@@ -163,9 +163,9 @@ const AddReportWelding = (props) => {
                     />
                 </div>
 
-                {/* Thickness */}
+                {/* Minimum Thickness */}
                 <div>
-                    <label className="block text-gray-700 text-md font-bold mb-2">Thickness:</label>
+                    <label className="block text-gray-700 text-md font-bold mb-2">Minimum Thickness:</label>
                     <input
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         type="text"
@@ -189,53 +189,53 @@ const AddReportWelding = (props) => {
                     />
                 </div>
 
-                {/* Weld Prep */}
+                {/* Diagnostic Area Surface */}
                 <div>
-                    <label className="block text-gray-700 text-md font-bold mb-2">Weld Prep:</label>
+                    <label className="block text-gray-700 text-md font-bold mb-2">Diagnostic Area Surface:</label>
                     <input
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         type="text"
-                        placeholder="Weld Prep"
-                        name="weld_prep"
+                        placeholder="Diagnostic Area Surface"
+                        name="diagnostic_area_surface"
                         onChange={props.handleChange}
                         required
                     />
                 </div>
 
-                {/* PWHT */}
+                {/* Date of Manufacturing */}
                 <div>
-                    <label className="block text-gray-700 text-md font-bold mb-2">PWHT:</label>
+                    <label className="block text-gray-700 text-md font-bold mb-2">Date of Manufacturing:</label>
                     <input
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         type="text"
-                        placeholder="PWHT"
-                        name="pwht"
+                        placeholder="Date of Manufacturing"
+                        name="date_of_manufacturing"
                         onChange={props.handleChange}
                         required
                     />
                 </div>
 
-                {/* Temperature */}
+                {/* Technique Standard */}
                 <div>
-                    <label className="block text-gray-700 text-md font-bold mb-2">Temperature:</label>
+                    <label className="block text-gray-700 text-md font-bold mb-2">Technique Standard:</label>
                     <input
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         type="text"
-                        placeholder="Temperature"
-                        name="thickness"
+                        placeholder="Technique Standard"
+                        name="technique_standard"
                         onChange={props.handleChange}
                         required
                     />
                 </div>
 
-                {/* Specification */}
+                {/* Technical Standard */}
                 <div>
-                    <label className="block text-gray-700 text-md font-bold mb-2">Specification:</label>
+                    <label className="block text-gray-700 text-md font-bold mb-2">Technical Standard:</label>
                     <input
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         type="text"
-                        placeholder="Specification"
-                        name="specification"
+                        placeholder="Technical Standard"
+                        name="standards"
                         onChange={props.handleChange}
                         required
                     />
@@ -243,7 +243,7 @@ const AddReportWelding = (props) => {
 
                 {/* Procedure */}
                 <div>
-                    <label className="block text-gray-700 text-md font-bold mb-2">Procedure:</label>
+                    <label className="block text-gray-700 text-md font-bold mb-2">Procedure No:</label>
                     <input
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         type="text"
@@ -262,6 +262,18 @@ const AddReportWelding = (props) => {
                         type="text"
                         placeholder="Acceptance Criteria"
                         name="acceptance_criteria"
+                        onChange={props.handleChange}
+                        required
+                    />
+                </div>
+
+                {/* Description */}
+                <div>
+                    <label className="block text-gray-700 text-md font-bold mb-2">Description</label>
+                    <textarea
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        placeholder="Description"
+                        name="description"
                         onChange={props.handleChange}
                         required
                     />
@@ -676,4 +688,4 @@ const AddReportWelding = (props) => {
     );
 };
 
-export default AddReportWelding;
+export default AddReportUltrasonicThickness;

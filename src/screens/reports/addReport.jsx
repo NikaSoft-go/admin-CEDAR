@@ -6,12 +6,13 @@ import {toast} from "react-toastify";
 import {useNavigate} from "react-router-dom";
 import {
     bladeDetailInitial, bodyDetailInitial,
-    consumablesInitial, equipmentsInitial,
-    getDimensionData, returnAssetsData,
-    returnReportDataType,
+    consumablesInitial, equipmentConsumablesInitial, equipmentsInitial,
+    getDimensionData, otherEquipmentsProps, returnAssetsData,
+    returnReportDataType, weldingTableInitial,
 } from "../../utils/data.js";
 import AddReportNormal from "./addReportNormal.jsx";
 import AddReportWelding from "./addReportWelding.jsx";
+import AddReportUltrasonicThickness from "./addReportUltrasonicThickness.jsx";
 
 const AddReport = () => {
     // const [signature, setSignature] = useState(null);
@@ -35,6 +36,8 @@ const AddReport = () => {
     const [equipmentsData, setEquipmentsData] = useState(equipmentsInitial);
     const [assetDetails, setAssetsDetails] = useState([]);
     const [dimensionOneDetails, setDimensionOneDetails] = useState([]);
+    const [equipmentConsumables, setEquipmentConsumables] = useState(equipmentConsumablesInitial);
+    const [otherWeldingProps, setOtherWeldingProps] = useState(otherEquipmentsProps);
     const [dimensionTwoDetails, setDimensionTwoDetails] = useState([]);
     const [bodyDetails, setBodyDetails] = useState(bodyDetailInitial);
     const [bladeDetails, setBladeDetails] = useState(bladeDetailInitial);
@@ -44,6 +47,8 @@ const AddReport = () => {
         dimensionOne: true,
         dimensionTwo: true
     });
+
+    const [weldingTableData, setWeldingTableData] = useState(weldingTableInitial);
 
     const navigate = useNavigate();
 
@@ -101,6 +106,34 @@ const AddReport = () => {
         const updatedCostItems = [...items];
         updatedCostItems[index][field] = value;
         setItems(updatedCostItems);
+    };
+
+    const handleAddWeldingTableItem = () => {
+        setWeldingTableData([
+            ...weldingTableData,
+            {
+                joint_number: '',
+                welder_stamp: '',
+                size: '',
+                thickness: '',
+                remarks: '',
+                indications: '',
+                acc: '',
+                rej: ''
+            },
+        ]);
+    };
+
+    const handleRemoveWeldingTableItem = (index) => {
+        const updatedCostItems = [...weldingTableData];
+        updatedCostItems.splice(index, 1);
+        setWeldingTableData(updatedCostItems);
+    };
+
+    const handleWeldingTableItemChange = (index, field, value) => {
+        const updatedCostItems = [...weldingTableData];
+        updatedCostItems[index][field] = value;
+        setWeldingTableData(updatedCostItems);
     };
 
     const handleAddReport = async (e) => {
@@ -175,9 +208,29 @@ const AddReport = () => {
         handleFilesSelect
     }
 
+    const weldingDependencies = {
+        handleChange,
+        equipmentConsumables,
+        setEquipmentConsumables,
+        handleRemoveTableItems,
+        handleTableItemChange,
+        setOtherWeldingProps,
+        otherWeldingProps,
+        setWeldingTableData,
+        weldingTableData,
+        handleAddWeldingTableItem,
+        handleWeldingTableItemChange,
+        handleRemoveWeldingTableItem,
+        issuerInfo,
+        setIssuerInfo,
+        reviewerInfo,
+        setReviewrInfo
+    }
+
     const reportComponents = {
         "Normal": <AddReportNormal {...normalDependencies} />,
-        "Welding": <AddReportWelding {...normalDependencies} />
+        "Welding": <AddReportWelding {...weldingDependencies} />,
+        "Ultrasonic Inspection": <AddReportUltrasonicThickness {...weldingDependencies} />,
     }
 
     const sameTypesReport = {
@@ -191,6 +244,7 @@ const AddReport = () => {
         "Lifting Inspection": ["Lifting Inspection"],
         "Welding": ["Welding"]
     }
+
 
     const getReportNormal = () => {
         let currentType = "";
