@@ -1,5 +1,8 @@
 import {FiTrash2} from "react-icons/fi";
 import {IoMdAddCircleOutline} from "react-icons/io";
+import UTTableSection from "../../components/utTableSections/index.jsx";
+import IncrementalList from "../../components/incrementalList/index.jsx";
+import FileUploadComponent from "../../components/imagesSelect/index.jsx";
 
 const AddReportUltrasonicThickness = (props) => {
 
@@ -38,7 +41,7 @@ const AddReportUltrasonicThickness = (props) => {
                     <label className="block text-gray-700 text-md font-bold mb-2">Test Date:</label>
                     <input
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        type="text"
+                        type="date"
                         placeholder="Test Date"
                         name="examination_date"
                         onChange={props.handleChange}
@@ -51,7 +54,7 @@ const AddReportUltrasonicThickness = (props) => {
                     <label className="block text-gray-700 text-md font-bold mb-2">Next Examination:</label>
                     <input
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        type="text"
+                        type="date"
                         placeholder="Next Examination"
                         name="next_examination_date"
                         onChange={props.handleChange}
@@ -207,7 +210,7 @@ const AddReportUltrasonicThickness = (props) => {
                     <label className="block text-gray-700 text-md font-bold mb-2">Date of Manufacturing:</label>
                     <input
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        type="text"
+                        type="date"
                         placeholder="Date of Manufacturing"
                         name="date_of_manufacturing"
                         onChange={props.handleChange}
@@ -487,8 +490,7 @@ const AddReportUltrasonicThickness = (props) => {
                     <input
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         type="file"
-                        placeholder="Acceptance Criteria"
-                        name="acceptance_criteria"
+                        name="drawing_image_one"
                         onChange={props.handleChange}
                         required
                     />
@@ -498,12 +500,31 @@ const AddReportUltrasonicThickness = (props) => {
                     <input
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         type="file"
-                        placeholder="Acceptance Criteria"
-                        name="acceptance_criteria"
+                        name="drawing_image_two"
                         onChange={props.handleChange}
                         required
                     />
                 </div>
+            </div>
+            <div className="mb-6 w-[100%]">
+                <label className="block text-gray-700 text-md font-bold mb-2">Drawing Note:</label>
+                <textarea
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    placeholder="Drawing Note"
+                    name="drawing_note"
+                    onChange={props.handleChange}
+                    required
+                ></textarea>
+            </div>
+
+            <div className="mb-6 w-[100%]">
+                <label className="block text-gray-700 text-md font-bold mb-2">Ultrasonic Inspection Results:</label>
+                <UTTableSection setResults={props.setUtResults} />
+            </div>
+
+            <div className="mb-6 w-[100%]">
+                <label className="block text-gray-700 text-md font-bold mb-2">Inspector&apos;s comment:</label>
+                <IncrementalList setComments={props.setComments} />
             </div>
 
             <h3 className="font-bold mb-4">Inspected by</h3>
@@ -561,7 +582,7 @@ const AddReportUltrasonicThickness = (props) => {
                         type="text"
                         placeholder="Reviewer name"
                         name="name"
-                        onChange={(e) => props.handleChange(e, props.reviewerInfo, props.setReviewrInfo)}
+                        onChange={(e) => props.handleChange(e, props.reviewerInfo, props.setReviewerInfo)}
                         required
                     />
                 </div>
@@ -574,7 +595,7 @@ const AddReportUltrasonicThickness = (props) => {
                         type="date"
                         placeholder="Review date"
                         name="date"
-                        onChange={(e) => props.handleChange(e, props.reviewerInfo, props.setReviewrInfo)}
+                        onChange={(e) => props.handleChange(e, props.reviewerInfo, props.setReviewerInfo)}
                         required
                     />
                 </div>
@@ -588,10 +609,16 @@ const AddReportUltrasonicThickness = (props) => {
                         type="text"
                         placeholder="Reviewer qualification"
                         name="qualification"
-                        onChange={(e) => props.handleChange(e, props.reviewerInfo, props.setReviewrInfo)}
+                        onChange={(e) => props.handleChange(e, props.reviewerInfo, props.setReviewerInfo)}
                         required
                     />
                 </div>
+            </div>
+
+            {/* Images */}
+            <div className="mb-3">
+                <label className="block text-gray-700 text-md font-bold mb-2">Images</label>
+                <FileUploadComponent setImages={props.handleFilesSelect}/>
             </div>
         </>
     );

@@ -6,37 +6,7 @@ import MultiSelect from "../../components/multiSelect/index.jsx";
 import FileUploadComponent from "../../components/imagesSelect/index.jsx";
 
 
-const AddReportNormal = ({
-                             handleChange,
-                             issuerInfo,
-                             setIssuerInfo,
-                             reviewerInfo,
-                             setReviewrInfo,
-                             assetDetails,
-                             handleTableItemChange,
-                             setAssetsDetails,
-                             handleRemoveTableItems,
-                             handleAddTableItem,
-                             showSections,
-                             setShowSections,
-                             dimensionOneDetails,
-                             setDimensionOneDetails,
-                             bodyDetails,
-                             setBodyDetails,
-                             dimensionTwoDetails,
-                             setDimensionTwoDetails,
-                             bladeDetails,
-                             setBladeDetails,
-                             reportTypeData,
-                             setReportTypeData,
-                             consumablesData,
-                             setConsumablesData,
-                             equipmentsData,
-                             setEquipmentsData,
-                             selectedOptions,
-                             handleMultiSelectChange,
-                             handleFilesSelect
-                         }) => {
+const AddReportNormal = (props) => {
     const keyItems = [
         "ACP - Accept",
         "MPI - Magnetic Particle Inspection",
@@ -60,7 +30,7 @@ const AddReportNormal = ({
                         type="text"
                         placeholder="Client Name"
                         name="client_name"
-                        onChange={handleChange}
+                        onChange={props.handleChange}
                         required
                     />
                 </div>
@@ -74,7 +44,7 @@ const AddReportNormal = ({
                         type="text"
                         placeholder="Client Address"
                         name="client_address"
-                        onChange={handleChange}
+                        onChange={props.handleChange}
                         required
                     />
                 </div>
@@ -87,7 +57,7 @@ const AddReportNormal = ({
                         type="text"
                         placeholder="Client City"
                         name="client_city"
-                        onChange={handleChange}
+                        onChange={props.handleChange}
                         required
                     />
                 </div>
@@ -101,7 +71,7 @@ const AddReportNormal = ({
                         type="text"
                         placeholder="Client Country"
                         name="client_country"
-                        onChange={handleChange}
+                        onChange={props.handleChange}
                         required
                     />
                 </div>
@@ -115,7 +85,7 @@ const AddReportNormal = ({
                         type="text"
                         placeholder="Examination Location"
                         name="examination_location"
-                        onChange={handleChange}
+                        onChange={props.handleChange}
                         required
                     />
                 </div>
@@ -131,7 +101,7 @@ const AddReportNormal = ({
                         type="text"
                         placeholder="Contract"
                         name="contract"
-                        onChange={handleChange}
+                        onChange={props.handleChange}
                     />
                 </div>
 
@@ -143,7 +113,7 @@ const AddReportNormal = ({
                         type="text"
                         placeholder="Work Order"
                         name="work_order"
-                        onChange={handleChange}
+                        onChange={props.handleChange}
                     />
                 </div>
 
@@ -156,7 +126,7 @@ const AddReportNormal = ({
                         type="text"
                         placeholder="Purchase Order"
                         name="purchase_order"
-                        onChange={handleChange}
+                        onChange={props.handleChange}
                     />
                 </div>
 
@@ -169,7 +139,7 @@ const AddReportNormal = ({
                         type="text"
                         placeholder="Client Job Reference"
                         name="client_job_reference"
-                        onChange={handleChange}
+                        onChange={props.handleChange}
                         required
                     />
                 </div>
@@ -182,7 +152,7 @@ const AddReportNormal = ({
                         type="text"
                         placeholder="Rig"
                         name="rig"
-                        onChange={handleChange}
+                        onChange={props.handleChange}
                     />
                 </div>
             </div>
@@ -197,7 +167,7 @@ const AddReportNormal = ({
                         type="text"
                         placeholder="Report Number"
                         name="report_number"
-                        onChange={handleChange}
+                        onChange={props.handleChange}
                         required
                     />
                 </div>
@@ -211,7 +181,7 @@ const AddReportNormal = ({
                         type="date"
                         placeholder="Date of examination"
                         name="examination_date"
-                        onChange={handleChange}
+                        onChange={props.handleChange}
                         required
                     />
                 </div>
@@ -225,7 +195,7 @@ const AddReportNormal = ({
                         type="date"
                         placeholder="Date of Next Examination"
                         name="next_examination_date"
-                        onChange={handleChange}
+                        onChange={props.handleChange}
                     />
                 </div>
 
@@ -238,7 +208,7 @@ const AddReportNormal = ({
                         type="text"
                         placeholder="Area of Examination"
                         name="examination_area"
-                        onChange={handleChange}
+                        onChange={props.handleChange}
                         required
                     />
                 </div>
@@ -251,7 +221,7 @@ const AddReportNormal = ({
                         type="text"
                         placeholder="Services"
                         name="services"
-                        onChange={handleChange}
+                        onChange={props.handleChange}
                         required
                     />
                 </div>
@@ -264,7 +234,7 @@ const AddReportNormal = ({
                         type="text"
                         placeholder="Standards"
                         name="standards"
-                        onChange={handleChange}
+                        onChange={props.handleChange}
                         required
                     />
                 </div>
@@ -278,7 +248,7 @@ const AddReportNormal = ({
                         type="text"
                         placeholder="Local Procedure Number"
                         name="local_procedure_number"
-                        onChange={handleChange}
+                        onChange={props.handleChange}
                         required
                     />
                 </div>
@@ -292,7 +262,7 @@ const AddReportNormal = ({
                         type="text"
                         placeholder="Drawing Number"
                         name="drawing_number"
-                        onChange={handleChange}
+                        onChange={props.handleChange}
                     />
                 </div>
 
@@ -305,7 +275,7 @@ const AddReportNormal = ({
                         type="text"
                         placeholder="Test Restrictions"
                         name="test_restrictions"
-                        onChange={handleChange}
+                        onChange={props.handleChange}
                         required
                     />
                 </div>
@@ -319,7 +289,7 @@ const AddReportNormal = ({
                         type="text"
                         placeholder="Surface Condition"
                         name="surface_condition"
-                        onChange={handleChange}
+                        onChange={props.handleChange}
                         required
                     />
                 </div>
@@ -330,7 +300,7 @@ const AddReportNormal = ({
                     <select
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         name="report_status"
-                        onChange={handleChange}
+                        onChange={props.handleChange}
                         required
                     >
                         <option>Select a report status</option>
@@ -350,7 +320,7 @@ const AddReportNormal = ({
                         type="text"
                         placeholder="Inspector"
                         name="name"
-                        onChange={(e) => handleChange(e, issuerInfo, setIssuerInfo)}
+                        onChange={(e) => props.handleChange(e, props.issuerInfo, props.setIssuerInfo)}
                         required
                     />
                 </div>
@@ -363,7 +333,7 @@ const AddReportNormal = ({
                         type="date"
                         placeholder="Inspection date"
                         name="date"
-                        onChange={(e) => handleChange(e, issuerInfo, setIssuerInfo)}
+                        onChange={(e) => props.handleChange(e, props.issuerInfo, props.setIssuerInfo)}
                         required
                     />
                 </div>
@@ -377,7 +347,7 @@ const AddReportNormal = ({
                         type="text"
                         placeholder="Inspector qualification"
                         name="qualification"
-                        onChange={(e) => handleChange(e, issuerInfo, setIssuerInfo)}
+                        onChange={(e) => props.handleChange(e, props.issuerInfo, props.setIssuerInfo)}
                         required
                     />
                 </div>
@@ -395,7 +365,7 @@ const AddReportNormal = ({
                         type="text"
                         placeholder="Reviewer name"
                         name="name"
-                        onChange={(e) => handleChange(e, reviewerInfo, setReviewrInfo)}
+                        onChange={(e) => props.handleChange(e, props.reviewerInfo, props.setReviewerInfo)}
                         required
                     />
                 </div>
@@ -408,7 +378,7 @@ const AddReportNormal = ({
                         type="date"
                         placeholder="Review date"
                         name="date"
-                        onChange={(e) => handleChange(e, reviewerInfo, setReviewrInfo)}
+                        onChange={(e) => props.handleChange(e, props.reviewerInfo, props.setReviewerInfo)}
                         required
                     />
                 </div>
@@ -422,7 +392,7 @@ const AddReportNormal = ({
                         type="text"
                         placeholder="Reviewer qualification"
                         name="qualification"
-                        onChange={(e) => handleChange(e, reviewerInfo, setReviewrInfo)}
+                        onChange={(e) => props.handleChange(e, props.reviewerInfo, props.setReviewerInfo)}
                         required
                     />
                 </div>
@@ -444,7 +414,7 @@ const AddReportNormal = ({
                     </tr>
                     </thead>
                     <tbody>
-                    {assetDetails?.map((asset, index) => (
+                    {props.assetDetails?.map((asset, index) => (
                         <tr key={index}>
                             <td className="border p-2">
                                 <input
@@ -454,12 +424,12 @@ const AddReportNormal = ({
                                     value={asset.type}
                                     required
                                     onChange={(e) =>
-                                        handleTableItemChange(
+                                        props.handleTableItemChange(
                                             index,
                                             'type',
                                             e.target.value,
-                                            assetDetails,
-                                            setAssetsDetails
+                                            props.assetDetails,
+                                            props.setAssetsDetails
                                         )}
                                 />
                             </td>
@@ -471,12 +441,12 @@ const AddReportNormal = ({
                                     value={asset.serial_number}
                                     required
                                     onChange={(e) =>
-                                        handleTableItemChange(
+                                        props.handleTableItemChange(
                                             index,
                                             'serial_number',
                                             e.target.value,
-                                            assetDetails,
-                                            setAssetsDetails
+                                            props.assetDetails,
+                                            props.setAssetsDetails
                                         )}
                                 />
                             </td>
@@ -487,12 +457,12 @@ const AddReportNormal = ({
                                     placeholder="Model"
                                     value={asset.model}
                                     onChange={(e) =>
-                                        handleTableItemChange(
+                                        props.handleTableItemChange(
                                             index,
                                             'model',
                                             e.target.value,
-                                            assetDetails,
-                                            setAssetsDetails
+                                            props.assetDetails,
+                                            props.setAssetsDetails
                                         )
                                     }
                                     required
@@ -505,12 +475,12 @@ const AddReportNormal = ({
                                     placeholder="Description"
                                     value={asset.description}
                                     onChange={(e) =>
-                                        handleTableItemChange(
+                                        props.handleTableItemChange(
                                             index,
                                             'description',
                                             e.target.value,
-                                            assetDetails,
-                                            setAssetsDetails
+                                            props.assetDetails,
+                                            props.setAssetsDetails
                                         )
                                     }
                                     required
@@ -523,12 +493,12 @@ const AddReportNormal = ({
                                     placeholder="Size"
                                     value={asset.size}
                                     onChange={(e) =>
-                                        handleTableItemChange(
+                                        props.handleTableItemChange(
                                             index,
                                             'size',
                                             e.target.value,
-                                            assetDetails,
-                                            setAssetsDetails
+                                            props.assetDetails,
+                                            props.setAssetsDetails
                                         )
                                     }
                                     required
@@ -541,12 +511,12 @@ const AddReportNormal = ({
                                     placeholder="Material"
                                     value={asset.material}
                                     onChange={(e) =>
-                                        handleTableItemChange(
+                                        props.handleTableItemChange(
                                             index,
                                             'material',
                                             e.target.value,
-                                            assetDetails,
-                                            setAssetsDetails
+                                            props.assetDetails,
+                                            props.setAssetsDetails
                                         )
                                     }
                                     required
@@ -557,10 +527,10 @@ const AddReportNormal = ({
                                     type="button"
                                     className="remove-btn rounded p-1"
                                     onClick={() =>
-                                        handleRemoveTableItems(
+                                        props.handleRemoveTableItems(
                                             index,
-                                            assetDetails,
-                                            setAssetsDetails
+                                            props.assetDetails,
+                                            props.setAssetsDetails
                                         )
                                     }
                                 >
@@ -575,9 +545,9 @@ const AddReportNormal = ({
                     type="button"
                     className="add-item-btn text-white rounded px-2 py-1"
                     onClick={() =>
-                        handleAddTableItem(
-                            setAssetsDetails,
-                            assetDetails,
+                        props.handleAddTableItem(
+                            props.setAssetsDetails,
+                            props.assetDetails,
                             emptyAssetsDetails
                         )
                     }
@@ -594,10 +564,10 @@ const AddReportNormal = ({
                     <input
                         type="checkbox"
                         className='mr-2'
-                        checked={showSections.dimensionOne}
-                        onClick={() => setShowSections({
-                            ...showSections,
-                            dimensionOne: !showSections.dimensionOne
+                        checked={props.showSections.dimensionOne}
+                        onClick={() => props.setShowSections({
+                            ...props.showSections,
+                            dimensionOne: !props.showSections.dimensionOne
                         })}
                     />
                     <label>Dimension 1 Details</label>
@@ -606,10 +576,10 @@ const AddReportNormal = ({
                     <input
                         type="checkbox"
                         className='mr-2'
-                        checked={showSections.dimensionTwo}
-                        onClick={() => setShowSections({
-                            ...showSections,
-                            dimensionTwo: !showSections.dimensionTwo
+                        checked={props.showSections.dimensionTwo}
+                        onClick={() => props.setShowSections({
+                            ...props.showSections,
+                            dimensionTwo: !props.showSections.dimensionTwo
                         })}
                     />
                     <label>Dimension 2 Details</label>
@@ -617,14 +587,14 @@ const AddReportNormal = ({
             </div>
 
             {/* Dimension 1 Details */}
-            {showSections.dimensionOne && <div className="mb-4">
+            {props.showSections.dimensionOne && <div className="mb-4">
                 <label className="block text-gray-700 text-md font-bold mb-2">Dimension 1:</label>
                 <div>
                     <label className="block text-gray-700 text-md font-bold mb-2">Type:</label>
                     <select
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         name="dimension_one_name"
-                        onChange={handleChange}
+                        onChange={props.handleChange}
                         required
                     >
                         <option>Select a type</option>
@@ -641,7 +611,7 @@ const AddReportNormal = ({
                     </tr>
                     </thead>
                     <tbody>
-                    {dimensionOneDetails?.map((dimension, index) => (
+                    {props.dimensionOneDetails?.map((dimension, index) => (
                         <tr key={index}>
                             <td className="border p-2">
                                 <input
@@ -651,12 +621,12 @@ const AddReportNormal = ({
                                     value={dimension.property}
                                     required
                                     onChange={(e) =>
-                                        handleTableItemChange(
+                                        props.handleTableItemChange(
                                             index,
                                             'property',
                                             e.target.value,
-                                            dimensionOneDetails,
-                                            setDimensionOneDetails
+                                            props.dimensionOneDetails,
+                                            props.setDimensionOneDetails
                                         )}
                                 />
                             </td>
@@ -668,12 +638,12 @@ const AddReportNormal = ({
                                     value={dimension.value}
                                     required
                                     onChange={(e) =>
-                                        handleTableItemChange(
+                                        props.handleTableItemChange(
                                             index,
                                             'value',
                                             e.target.value,
-                                            dimensionOneDetails,
-                                            setDimensionOneDetails
+                                            props.dimensionOneDetails,
+                                            props.setDimensionOneDetails
                                         )}
                                 />
                             </td>
@@ -682,10 +652,10 @@ const AddReportNormal = ({
                                     type="button"
                                     className="remove-btn rounded p-1"
                                     onClick={() =>
-                                        handleRemoveTableItems(
+                                        props.handleRemoveTableItems(
                                             index,
-                                            dimensionOneDetails,
-                                            setDimensionOneDetails
+                                            props.dimensionOneDetails,
+                                            props.setDimensionOneDetails
                                         )}
                                 >
                                     <FiTrash2/>
@@ -699,9 +669,9 @@ const AddReportNormal = ({
                     type="button"
                     className="add-item-btn text-white rounded px-2 py-1"
                     onClick={() =>
-                        handleAddTableItem(
-                            setDimensionOneDetails,
-                            dimensionOneDetails,
+                        props.handleAddTableItem(
+                            props.setDimensionOneDetails,
+                            props.dimensionOneDetails,
                             emptyDimensionDetails
                         )
                     }
@@ -711,14 +681,14 @@ const AddReportNormal = ({
             </div>}
 
             {/* Dimension 2 Details */}
-            {showSections.dimensionTwo && <div className="mb-10">
+            {props.showSections.dimensionTwo && <div className="mb-10">
                 <label className="block text-gray-700 text-md font-bold mb-2">Dimension 2:</label>
                 <div>
                     <label className="block text-gray-700 text-md font-bold mb-2">Type:</label>
                     <select
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         name="dimension_two_name"
-                        onChange={handleChange}
+                        onChange={props.handleChange}
                         required
                     >
                         <option>Select a type</option>
@@ -735,7 +705,7 @@ const AddReportNormal = ({
                     </tr>
                     </thead>
                     <tbody>
-                    {dimensionTwoDetails?.map((dimension, index) => (
+                    {props.dimensionTwoDetails?.map((dimension, index) => (
                         <tr key={index}>
                             <td className="border p-2">
                                 <input
@@ -745,12 +715,12 @@ const AddReportNormal = ({
                                     value={dimension.property}
                                     required
                                     onChange={(e) =>
-                                        handleTableItemChange(
+                                        props.handleTableItemChange(
                                             index,
                                             'property',
                                             e.target.value,
-                                            dimensionTwoDetails,
-                                            setDimensionTwoDetails
+                                            props.dimensionTwoDetails,
+                                            props.setDimensionTwoDetails
                                         )}/>
                             </td>
                             <td className="border p-2">
@@ -761,12 +731,12 @@ const AddReportNormal = ({
                                     value={dimension.value}
                                     required
                                     onChange={(e) =>
-                                        handleTableItemChange(
+                                        props.handleTableItemChange(
                                             index,
                                             'value',
                                             e.target.value,
-                                            dimensionTwoDetails,
-                                            setDimensionTwoDetails
+                                            props.dimensionTwoDetails,
+                                            props.setDimensionTwoDetails
                                         )}/>
                             </td>
                             <td className="border p-2">
@@ -774,10 +744,10 @@ const AddReportNormal = ({
                                     type="button"
                                     className="remove-btn rounded p-1"
                                     onClick={() =>
-                                        handleRemoveTableItems(
+                                        props.handleRemoveTableItems(
                                             index,
-                                            dimensionTwoDetails,
-                                            setDimensionTwoDetails
+                                            props.dimensionTwoDetails,
+                                            props.setDimensionTwoDetails
                                         )}
                                 >
                                     <FiTrash2/>
@@ -791,9 +761,9 @@ const AddReportNormal = ({
                     type="button"
                     className="add-item-btn text-white rounded px-2 py-1"
                     onClick={() =>
-                        handleAddTableItem(
-                            setDimensionTwoDetails,
-                            dimensionTwoDetails,
+                        props.handleAddTableItem(
+                            props.setDimensionTwoDetails,
+                            props.dimensionTwoDetails,
                             emptyDimensionDetails
                         )
                     }
@@ -811,10 +781,10 @@ const AddReportNormal = ({
                     <input
                         type="checkbox"
                         className='mr-2'
-                        checked={showSections.bodyDetails}
-                        onClick={() => setShowSections({
-                            ...showSections,
-                            bodyDetails: !showSections.bodyDetails
+                        checked={props.showSections.bodyDetails}
+                        onClick={() => props.setShowSections({
+                            ...props.showSections,
+                            bodyDetails: !props.showSections.bodyDetails
                         })}
                     />
                     <label>Body Details</label>
@@ -823,10 +793,10 @@ const AddReportNormal = ({
                     <input
                         type="checkbox"
                         className='mr-2'
-                        checked={showSections.bladeDetails}
-                        onClick={() => setShowSections({
-                            ...showSections,
-                            bladeDetails: !showSections.bladeDetails
+                        checked={props.showSections.bladeDetails}
+                        onClick={() => props.setShowSections({
+                            ...props.showSections,
+                            bladeDetails: !props.showSections.bladeDetails
                         })}
                     />
                     <label>Blade Details</label>
@@ -834,7 +804,7 @@ const AddReportNormal = ({
             </div>
 
             {/* Body Details */}
-            {showSections.bodyDetails === true && <div className="mb-4">
+            {props.showSections.bodyDetails === true && <div className="mb-4">
                 <label className="block text-gray-700 text-md font-bold mb-2">Body Details</label>
                 <table className="w-full border">
                     <thead>
@@ -845,7 +815,7 @@ const AddReportNormal = ({
                     </tr>
                     </thead>
                     <tbody>
-                    {bodyDetails?.map((dimension, index) => (
+                    {props.bodyDetails?.map((dimension, index) => (
                         <tr key={index}>
                             <td className="border p-2">
                                 <input
@@ -855,12 +825,12 @@ const AddReportNormal = ({
                                     value={dimension.property}
                                     required
                                     onChange={(e) =>
-                                        handleTableItemChange(
+                                        props.handleTableItemChange(
                                             index,
                                             'property',
                                             e.target.value,
-                                            bodyDetails,
-                                            setBodyDetails
+                                            props.bodyDetails,
+                                            props.setBodyDetails
                                         )}/>
                             </td>
                             <td className="border p-2">
@@ -871,12 +841,12 @@ const AddReportNormal = ({
                                     value={dimension.value}
                                     required
                                     onChange={(e) =>
-                                        handleTableItemChange(
+                                        props.handleTableItemChange(
                                             index,
                                             'value',
                                             e.target.value,
-                                            bodyDetails,
-                                            setBodyDetails
+                                            props.bodyDetails,
+                                            props.setBodyDetails
                                         )}/>
                             </td>
                             <td className="border p-2">
@@ -884,10 +854,10 @@ const AddReportNormal = ({
                                     type="button"
                                     className="remove-btn rounded p-1"
                                     onClick={() =>
-                                        handleRemoveTableItems(
+                                        props.handleRemoveTableItems(
                                             index,
-                                            bodyDetails,
-                                            setBodyDetails
+                                            props.bodyDetails,
+                                            props.setBodyDetails
                                         )}
                                 >
                                     <FiTrash2/>
@@ -901,9 +871,9 @@ const AddReportNormal = ({
                     type="button"
                     className="add-item-btn text-white rounded px-2 py-1"
                     onClick={() =>
-                        handleAddTableItem(
-                            setDimensionTwoDetails,
-                            dimensionTwoDetails,
+                        props.handleAddTableItem(
+                            props.setDimensionTwoDetails,
+                            props.dimensionTwoDetails,
                             emptyDimensionDetails
                         )
                     }
@@ -913,7 +883,7 @@ const AddReportNormal = ({
             </div>}
 
             {/* Blade Details */}
-            {showSections.bladeDetails === true &&
+            {props.showSections.bladeDetails === true &&
                 <div className="mb-4">
                     <label className="block text-gray-700 text-md font-bold mb-2">Blade Details</label>
                     <table className="w-full border">
@@ -925,7 +895,7 @@ const AddReportNormal = ({
                         </tr>
                         </thead>
                         <tbody>
-                        {bladeDetails?.map((dimension, index) => (
+                        {props.bladeDetails?.map((dimension, index) => (
                             <tr key={index}>
                                 <td className="border p-2">
                                     <input
@@ -935,12 +905,12 @@ const AddReportNormal = ({
                                         value={dimension.property}
                                         required
                                         onChange={(e) =>
-                                            handleTableItemChange(
+                                            props.handleTableItemChange(
                                                 index,
                                                 'property',
                                                 e.target.value,
-                                                bladeDetails,
-                                                setBladeDetails
+                                                props.bladeDetails,
+                                                props.setBladeDetails
                                             )}/>
                                 </td>
                                 <td className="border p-2">
@@ -951,12 +921,12 @@ const AddReportNormal = ({
                                         value={dimension.value}
                                         required
                                         onChange={(e) =>
-                                            handleTableItemChange(
+                                            props.handleTableItemChange(
                                                 index,
                                                 'value',
                                                 e.target.value,
-                                                bladeDetails,
-                                                setBladeDetails
+                                                props.bladeDetails,
+                                                props.setBladeDetails
                                             )}/>
                                 </td>
                                 <td className="border p-2">
@@ -964,10 +934,10 @@ const AddReportNormal = ({
                                         type="button"
                                         className="remove-btn rounded p-1"
                                         onClick={() =>
-                                            handleRemoveTableItems(
+                                            props.handleRemoveTableItems(
                                                 index,
-                                                bladeDetails,
-                                                setBladeDetails
+                                                props.bladeDetails,
+                                                props.setBladeDetails
                                             )}
                                     >
                                         <FiTrash2/>
@@ -981,9 +951,9 @@ const AddReportNormal = ({
                         type="button"
                         className="add-item-btn text-white rounded px-2 py-1"
                         onClick={() =>
-                            handleAddTableItem(
-                                setDimensionTwoDetails,
-                                dimensionTwoDetails,
+                            props.handleAddTableItem(
+                                props.setDimensionTwoDetails,
+                                props.dimensionTwoDetails,
                                 emptyDimensionDetails
                             )
                         }
@@ -1000,7 +970,7 @@ const AddReportNormal = ({
                     type="text"
                     placeholder="Visual"
                     name="visual"
-                    onChange={handleChange}
+                    onChange={props.handleChange}
                     required
                 />
             </div>
@@ -1017,7 +987,7 @@ const AddReportNormal = ({
                     </tr>
                     </thead>
                     <tbody>
-                    {reportTypeData?.map((dimension, index) => (
+                    {props.reportTypeData?.map((dimension, index) => (
                         <tr key={index}>
                             <td className="border p-2">
                                 <input
@@ -1027,12 +997,12 @@ const AddReportNormal = ({
                                     value={dimension.property}
                                     required
                                     onChange={(e) =>
-                                        handleTableItemChange(
+                                        props.handleTableItemChange(
                                             index,
                                             'property',
                                             e.target.value,
-                                            reportTypeData,
-                                            setReportTypeData
+                                            props.reportTypeData,
+                                            props.setReportTypeData
                                         )}/>
                             </td>
                             <td className="border p-2">
@@ -1043,12 +1013,12 @@ const AddReportNormal = ({
                                     value={dimension.value}
                                     required
                                     onChange={(e) =>
-                                        handleTableItemChange(
+                                        props.handleTableItemChange(
                                             index,
                                             'value',
                                             e.target.value,
-                                            reportTypeData,
-                                            setReportTypeData
+                                            props.reportTypeData,
+                                            props.setReportTypeData
                                         )}/>
                             </td>
                             <td className="border p-2">
@@ -1056,10 +1026,10 @@ const AddReportNormal = ({
                                     type="button"
                                     className="remove-btn rounded p-1"
                                     onClick={() =>
-                                        handleRemoveTableItems(
+                                        props.handleRemoveTableItems(
                                             index,
-                                            bodyDetails,
-                                            setReportTypeData
+                                            props.reportTypeData,
+                                            props.setReportTypeData
                                         )}
                                 >
                                     <FiTrash2/>
@@ -1077,8 +1047,8 @@ const AddReportNormal = ({
                 <ResponsibilityTable
                     column1="Responsibilities"
                     initalItems={consumablesInitial}
-                    responsibilities={consumablesData}
-                    setResponsibilities={setConsumablesData}
+                    responsibilities={props.consumablesData}
+                    setResponsibilities={props.setConsumablesData}
                 />
             </div>
 
@@ -1088,8 +1058,8 @@ const AddReportNormal = ({
                 <ResponsibilityTable
                     column1="Responsibilities"
                     initalItems={equipmentsInitial}
-                    responsibilities={equipmentsData}
-                    setResponsibilities={setEquipmentsData}
+                    responsibilities={props.equipmentsData}
+                    setResponsibilities={props.setEquipmentsData}
                 />
             </div>
 
@@ -1100,7 +1070,7 @@ const AddReportNormal = ({
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     placeholder="Inspector's Comment"
                     name="comments"
-                    onChange={handleChange}
+                    onChange={props.handleChange}
                     required
                 />
             </div>
@@ -1110,15 +1080,15 @@ const AddReportNormal = ({
                 <label className="block text-gray-700 text-md font-bold mb-2">Key</label>
                 <MultiSelect
                     options={keyItems}
-                    selectedOptions={selectedOptions}
-                    onChange={handleMultiSelectChange}
+                    selectedOptions={props.selectedOptions}
+                    onChange={props.handleMultiSelectChange}
                 />
             </div>
 
             {/* Images */}
             <div className="mb-3">
                 <label className="block text-gray-700 text-md font-bold mb-2">Images</label>
-                <FileUploadComponent setImages={handleFilesSelect}/>
+                <FileUploadComponent setImages={props.handleFilesSelect}/>
             </div>
         </>
     )

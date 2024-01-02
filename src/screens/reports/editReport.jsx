@@ -52,7 +52,7 @@ const EditReport = () => {
 
     const [state, setState] = useState({});
     const [issuerInfo, setIssuerInfo] = useState({});
-    const [reviewerInfo, setReviewrInfo] = useState({});
+    const [reviewerInfo, setReviewerInfo] = useState({});
 
     const reportData = {
         ...state,
@@ -187,7 +187,7 @@ const EditReport = () => {
                     setAssetsDetails(JSON.parse(asset_details));
                     setDimensionTwoDetails(JSON.parse(dimension_two));
                     setDimensionOneDetails(JSON.parse(dimension_one));
-                    setReviewrInfo(JSON.parse(quality_controller));
+                    setReviewerInfo(JSON.parse(quality_controller));
                     setIssuerInfo(JSON.parse(issuer));
                     setBodyDetails(JSON.parse(body));
                     setBladeDetails(JSON.parse(blade));
@@ -610,7 +610,7 @@ const EditReport = () => {
                                         placeholder="Reviewer name"
                                         name="name"
                                         value={reviewerInfo.name}
-                                        onChange={(e) => handleChange(e, reviewerInfo, setReviewrInfo)}
+                                        onChange={(e) => handleChange(e, reviewerInfo, setReviewerInfo)}
                                         required
                                     />
                                 </div>
@@ -624,7 +624,7 @@ const EditReport = () => {
                                         placeholder="Review date"
                                         name="date"
                                         value={reviewerInfo.date}
-                                        onChange={(e) => handleChange(e, reviewerInfo, setReviewrInfo)}
+                                        onChange={(e) => handleChange(e, reviewerInfo, setReviewerInfo)}
                                         required
                                     />
                                 </div>
@@ -639,7 +639,7 @@ const EditReport = () => {
                                         placeholder="Reviewer qualification"
                                         name="qualification"
                                         value={reviewerInfo.qualification}
-                                        onChange={(e) => handleChange(e, reviewerInfo, setReviewrInfo)}
+                                        onChange={(e) => handleChange(e, reviewerInfo, setReviewerInfo)}
                                         required
                                     />
                                 </div>

@@ -1,5 +1,6 @@
 import {FiTrash2} from "react-icons/fi";
 import {IoMdAddCircleOutline} from "react-icons/io";
+import FileUploadComponent from "../../components/imagesSelect/index.jsx";
 
 const AddReportWelding = (props) => {
 
@@ -38,7 +39,7 @@ const AddReportWelding = (props) => {
                     <label className="block text-gray-700 text-md font-bold mb-2">Test Date:</label>
                     <input
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        type="text"
+                        type="date"
                         placeholder="Test Date"
                         name="examination_date"
                         onChange={props.handleChange}
@@ -222,7 +223,7 @@ const AddReportWelding = (props) => {
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         type="text"
                         placeholder="Temperature"
-                        name="thickness"
+                        name="temperature"
                         onChange={props.handleChange}
                         required
                     />
@@ -640,7 +641,7 @@ const AddReportWelding = (props) => {
                         type="text"
                         placeholder="Reviewer name"
                         name="name"
-                        onChange={(e) => props.handleChange(e, props.reviewerInfo, props.setReviewrInfo)}
+                        onChange={(e) => props.handleChange(e, props.reviewerInfo, props.setReviewerInfo)}
                         required
                     />
                 </div>
@@ -653,7 +654,7 @@ const AddReportWelding = (props) => {
                         type="date"
                         placeholder="Review date"
                         name="date"
-                        onChange={(e) => props.handleChange(e, props.reviewerInfo, props.setReviewrInfo)}
+                        onChange={(e) => props.handleChange(e, props.reviewerInfo, props.setReviewerInfo)}
                         required
                     />
                 </div>
@@ -667,10 +668,16 @@ const AddReportWelding = (props) => {
                         type="text"
                         placeholder="Reviewer qualification"
                         name="qualification"
-                        onChange={(e) => props.handleChange(e, props.reviewerInfo, props.setReviewrInfo)}
+                        onChange={(e) => props.handleChange(e, props.reviewerInfo, props.setReviewerInfo)}
                         required
                     />
                 </div>
+            </div>
+
+            {/* Images */}
+            <div className="mb-3">
+                <label className="block text-gray-700 text-md font-bold mb-2">Images</label>
+                <FileUploadComponent setImages={props.handleFilesSelect}/>
             </div>
         </>
     );

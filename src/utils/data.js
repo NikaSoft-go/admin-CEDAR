@@ -757,3 +757,60 @@ export const utTableInitial = [
         scanning_sensitivity: 'N/A',
     },
 ]
+
+export const utTableResults = [
+    {
+        rowName: 'COVER / SHELL A (mm)',
+        degrees: {
+            '0': { value1: '11.4', value2: '11.5' },
+            '90': { value1: '11.4', value2: '11.3' },
+            '180': { value1: '11.5', value2: '11.2' },
+            '270': { value1: '11.3', value2: '11.3' },
+        },
+    },
+    {
+        rowName: 'SHELL B (mm)',
+        degrees: {
+            '0': { value1: '11.4', value2: '11.5' },
+            '90': { value1: '11.4', value2: '11.3' },
+            '180': { value1: '11.5', value2: '11.2' },
+            '270': { value1: '11.3', value2: '11.3' },
+        },
+    },
+    {
+        rowName: 'SHELL C (mm)',
+        degrees: {
+            '0': { value1: '11.4', value2: '11.5' },
+            '90': { value1: '11.4', value2: '11.3' },
+            '180': { value1: '11.5', value2: '11.2' },
+            '270': { value1: '11.3', value2: '11.3' },
+        },
+    },
+    {
+        rowName: 'BOTTOM / SHELL D (mm)',
+        degrees: {
+            '0': { value1: '11.4', value2: '11.5' },
+            '90': { value1: '11.4', value2: '11.3' },
+            '180': { value1: '11.5', value2: '11.2' },
+            '270': { value1: '11.3', value2: '11.3' },
+        },
+    },
+]
+
+
+export const commentsInitial = [
+    {
+        id: 1,
+        value: 'Ultrasonic thickness measurements were taken circumferentially at each shell',
+    },
+    {
+        id: 2,
+        value: 'Corrosion found at entire bottom (Shell D) with average pitting depth of about 2.7mm.' +
+            ' see attachment',
+    },
+    {
+        id: 3,
+        value: 'Spot Corrosion found on cover (Shell A) with average pitting depth of about 4.8mm.' +
+            ' see attachment',
+    },
+]

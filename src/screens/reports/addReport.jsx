@@ -8,33 +8,22 @@ import {
     bladeDetailInitial, bodyDetailInitial,
     consumablesInitial, equipmentConsumablesInitial, equipmentsInitial, equipmentTechniqueInitial,
     getDimensionData, otherEquipmentsProps, returnAssetsData,
-    returnReportDataType, utTableInitial, weldingTableInitial,
+    returnReportDataType, utTableInitial, utTableResults, weldingTableInitial,
 } from "../../utils/data.js";
 import AddReportNormal from "./addReportNormal.jsx";
 import AddReportWelding from "./addReportWelding.jsx";
 import AddReportUltrasonicThickness from "./addReportUltrasonicThickness.jsx";
 
 const AddReport = () => {
-    // const [signature, setSignature] = useState(null);
-    // const keyItems = [
-    //     "ACP - Accept",
-    //     "MPI - Magnetic Particle Inspection",
-    //     "VT - Visual Inspection",
-    //     "DPI - Dye Penetrant Inspection",
-    //     "DIM - Dimensional",
-    //     "PT - Pitted Thread",
-    //     "GT - Galled Thread",
-    //     "SD - Seal Damaged",
-    // ];
-    //
-    // const excludedTypes = ["Welding", "Lifting Inspection", "Ultrasonic Inspection"];
-    const [currentTypeComp, setCurrentTypeComp] = useState(null);
+    const [currentTypeComp, setCurrentTypeComp] = useState("");
     const [selectedOptions, setSelectedOptions] = useState([]);
     const [images, setImages] = useState([]);
     const [reportTypeData, setReportTypeData] = useState([]);
     const [consumablesData, setConsumablesData] = useState(consumablesInitial);
     const [equipmentsData, setEquipmentsData] = useState(equipmentsInitial);
     const [assetDetails, setAssetsDetails] = useState([]);
+    const [utResults, setUtResults] = useState([]);
+    const [comments, setComments] = useState([]);
     const [dimensionOneDetails, setDimensionOneDetails] = useState([]);
     const [equipmentConsumables, setEquipmentConsumables] = useState(equipmentConsumablesInitial);
     const [equipmentMethod, setEquipmentMethod] = useState(equipmentTechniqueInitial);
@@ -58,26 +47,14 @@ const AddReport = () => {
     const [issuerInfo, setIssuerInfo] = useState({});
     const [reviewerInfo, setReviewerInfo] = useState({});
 
-    const reportData = {
-        ...state,
-        issuer: JSON.stringify(issuerInfo),
-        quality_controller: JSON.stringify(reviewerInfo),
-        asset_details: JSON.stringify(assetDetails),
-        dimension_one: JSON.stringify(dimensionOneDetails),
-        dimension_two: JSON.stringify(dimensionTwoDetails),
-        body: JSON.stringify(bodyDetails),
-        blade: JSON.stringify(bladeDetails),
-        report_type_data: JSON.stringify(reportTypeData),
-        consumables: JSON.stringify(consumablesData),
-        keys: JSON.stringify(selectedOptions),
-        equipments: JSON.stringify(equipmentsData)
-    }
-
     const handleChange = (e, items=state, setItems=setState) => {
+        const value = e.target?.files ? e.target.files[0] : e.target.value;
+        console.log(value);
         setItems({
             ...items,
-            [e.target.name]: e.target.value
+            [e.target.name]: value
         })
+
     }
 
     const handleFilesSelect = (files) => {
@@ -168,11 +145,34 @@ const AddReport = () => {
 
     const handleAddReport = async (e) => {
         e.preventDefault();
+        const reportData = {
+            ...state,
+            issuer: JSON.stringify(issuerInfo),
+            quality_controller: JSON.stringify(reviewerInfo),
+            asset_details: JSON.stringify(assetDetails),
+            dimension_one: JSON.stringify(dimensionOneDetails),
+            dimension_two: JSON.stringify(dimensionTwoDetails),
+            body: JSON.stringify(bodyDetails),
+            blade: JSON.stringify(bladeDetails),
+            report_type_data: JSON.stringify(reportTypeData),
+            consumables: JSON.stringify(consumablesData),
+            keys: JSON.stringify(selectedOptions),
+            equipments: JSON.stringify(equipmentsData),
+            equipment_consumables: JSON.stringify(equipmentConsumables),
+            other_welding_props: JSON.stringify(otherWeldingProps),
+            welding_table_data: JSON.stringify(weldingTableData),
+            equipment_method: JSON.stringify(equipmentMethod),
+            ut_results: JSON.stringify(utTableResults),
+            ut_table_data: JSON.stringify(utTableData),
+            inspector_comments: JSON.stringify(comments)
+        }
+
         if (!reportData.report_type) {
             toast.error("Report type is required")
             return;
         }
         try {
+            console.log(reportData);
             const formData = new FormData();
             // create form-data
             Object.entries(reportData).forEach(([key, value]) => {
@@ -254,7 +254,8 @@ const AddReport = () => {
         issuerInfo,
         setIssuerInfo,
         reviewerInfo,
-        setReviewerInfo
+        setReviewerInfo,
+        handleFilesSelect
     }
 
     const utReportDependencies = {
@@ -263,19 +264,20 @@ const AddReport = () => {
         setEquipmentMethod,
         setUtTableData,
         utTableData,
+        handleTableItemChange,
+        handleRemoveTableItems,
         handleUTTableItemChange,
         handleRemoveUTTableItem,
         handleAddUTTableItem,
         issuerInfo,
         setIssuerInfo,
         reviewerInfo,
-        setReviewerInfo
-    }
-
-    const reportComponents = {
-        "Normal": <AddReportNormal {...normalDependencies} />,
-        "Welding": <AddReportWelding {...weldingDependencies} />,
-        "Ultrasonic Inspection": <AddReportUltrasonicThickness {...utReportDependencies} />,
+        setReviewerInfo,
+        setUtResults,
+        utResults,
+        comments,
+        setComments,
+        handleFilesSelect,
     }
 
     const sameTypesReport = {
@@ -301,8 +303,12 @@ const AddReport = () => {
             }
         }
 
-        setCurrentTypeComp(reportComponents[currentType]);
+        setCurrentTypeComp(currentType);
     }
+
+    useEffect(() => {
+        console.log(state)
+    }, [state]);
 
     useEffect(() => {
         if (state.report_type) {
@@ -354,7 +360,11 @@ const AddReport = () => {
                                 </select>
                             </div>
 
-                            <>{currentTypeComp}</>
+                            {currentTypeComp === "Normal" && <AddReportNormal {...normalDependencies} />}
+
+                            {currentTypeComp === "Welding" && <AddReportWelding {...weldingDependencies} />}
+
+                            {currentTypeComp === "Ultrasonic Inspection" && <AddReportUltrasonicThickness {...utReportDependencies} />}
 
                             <div className="mt-8"></div>
                             <Button>Add Report</Button>
