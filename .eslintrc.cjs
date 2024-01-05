@@ -17,7 +17,7 @@ module.exports = {
       { allowConstantExport: true },
     ],
     'react/prop-types': [
-      'ignore',
+      'off',
     ],
   },
 }
