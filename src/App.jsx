@@ -14,6 +14,7 @@ import EditReport from "./screens/reports/editReport.jsx";
 import Invoices from "./screens/jobInvoices/index.jsx";
 import AddJobInvoice from "./screens/jobInvoices/addJobInvoice.jsx";
 import EditInvoice from "./screens/jobInvoices/editJobInvoice.jsx";
+import PreviewJobInvoice from "./screens/jobInvoices/previewJobInvoice.jsx";
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
         <Route path="/invoices" element={<Invoices/>}/>
         <Route path="/add-invoice" element={<AddJobInvoice/>}/>
        <Route path="/invoice/update/:id" element={<EditInvoice/>}/>
+       <Route path="/preview-invoice/:id" element={<PreviewJobInvoice/>}/>
       </Routes>
   )
 }

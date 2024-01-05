@@ -6,7 +6,6 @@ import {IoLocationSharp} from "react-icons/io5";
 import {LuPenLine} from "react-icons/lu";
 
 const PageTwo = ({ data }) => {
-    console.log(data);
     return (
         <div className="mb-6">
             <div className="page-head">

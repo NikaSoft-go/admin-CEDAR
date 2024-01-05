@@ -5,9 +5,9 @@ import {Link, useNavigate} from "react-router-dom";
 import {axiosClient} from "../../libs/axiosClient.js";
 import {IoEyeOutline} from "react-icons/io5";
 import {useDispatch} from "react-redux";
-import {setInvoiceData} from "../../redux/slices/invoiceSlice.js";
 import {BsTrash} from "react-icons/bs";
 import {toast} from "react-toastify";
+import {setJobInvoiceData} from "../../redux/slices/jobInvoiceSlice.js";
 
 const Invoices = () => {
     const [invoices, setInvoices] = useState([]);
@@ -17,7 +17,7 @@ const Invoices = () => {
 
     const previewInvoice = (e, id) => {
         e.stopPropagation()
-        navigate(`/preview-job-quotation/${id}`);
+        navigate(`/preview-invoice/${id}`);
     }
 
     const deleteInvoice = async (e, id) => {
@@ -36,7 +36,7 @@ const Invoices = () => {
             const response = await axiosClient.get('/job-invoices/get-job-invoices/');
             const data = response.data.data;
             setInvoices(data);
-            dispatch(setInvoiceData(data));
+            dispatch(setJobInvoiceData(data));
         } catch (error) {
             console.error(error);
         }
