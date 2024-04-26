@@ -440,13 +440,13 @@ const EditReport = () => {
                                     />
                                 </div>
 
-                                {/* Standards */}
+                                {/* Procedure */}
                                 <div>
-                                    <label className="block text-gray-700 text-md font-bold mb-2">Standards:</label>
+                                    <label className="block text-gray-700 text-md font-bold mb-2">Procedure:</label>
                                     <input
                                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         type="text"
-                                        placeholder="Standards"
+                                        placeholder="Procedure"
                                         name="standards"
                                         value={state.standards}
                                         onChange={handleChange}
@@ -454,14 +454,15 @@ const EditReport = () => {
                                     />
                                 </div>
 
-                                {/* Local Procedure Number */}
+                                {/* Specification */}
                                 <div>
-                                    <label className="block text-gray-700 text-md font-bold mb-2">Local Procedure
-                                        Number:</label>
+                                    <label className="block text-gray-700 text-md font-bold mb-2">
+                                        Specification:
+                                    </label>
                                     <input
                                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         type="text"
-                                        placeholder="Local Procedure Number"
+                                        placeholder="Specification"
                                         name="local_procedure_number"
                                         value={state.local_procedure_number}
                                         onChange={handleChange}
@@ -469,14 +470,15 @@ const EditReport = () => {
                                     />
                                 </div>
 
-                                {/* Drawing Number */}
+                                {/* Acceptance Criteria */}
                                 <div>
-                                    <label className="block text-gray-700 text-md font-bold mb-2">Drawing
-                                        Number:</label>
+                                    <label className="block text-gray-700 text-md font-bold mb-2">
+                                        Acceptance Criteria:
+                                    </label>
                                     <input
                                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         type="text"
-                                        placeholder="Drawing Number"
+                                        placeholder="Acceptance Criteria"
                                         name="drawing_number"
                                         value={state.drawing_number}
                                         onChange={handleChange}

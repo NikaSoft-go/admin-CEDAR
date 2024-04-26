@@ -13,7 +13,7 @@ export const PdfHead = () => {
                     <p>Takoradi, Ghana</p>
                 </div>
             </div>
-            <div className="bg-[#D8D8D8] text-center font-bold">
+            <div className="bg-[#D8D8D8] font-bold text-[14px] text-center pb-2 pl-2">
                 Inspection Report
             </div>
         </div>

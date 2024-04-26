@@ -4,7 +4,7 @@
         <div className="mt-3 flex justify-start w-100">
             <div className="left-section">
                 <div>
-                    <p className="bg-[#D8D8D8] font-bold text-[14px] text-left pb-2 pl-2">Client Details</p>
+                    <p className="bg-[#D8D8D8] font-bold text-[12px] text-left pb-2 pl-2">Client Details</p>
                     <table className="section-table">
                         <tbody>
                             <tr>
@@ -27,7 +27,7 @@
                     </table>
                 </div>
                 <div>
-                    <p className="bg-[#D8D8D8] font-bold text-[14px] text-left pb-2 pl-2">Job Details</p>
+                    <p className="bg-[#D8D8D8] font-bold text-[12px] text-left pb-2 pl-2">Job Details</p>
                     <table className="section-table">
                         <tbody>
                             <tr>
@@ -56,7 +56,7 @@
                 </div>
             </div>
             <div className="right-section">
-                <p className="bg-[#D8D8D8] font-bold text-left text-[14px] pb-2 pl-2">Report Details</p>
+                <p className="bg-[#D8D8D8] font-bold text-left text-[12px] pb-2 pl-2">Report Details</p>
                 <table className="section-table">
                     <tbody>
                         <tr>
@@ -80,15 +80,15 @@
                             <td><p>{data?.services}</p></td>
                         </tr>
                         <tr>
-                            <td>Standards: </td>
+                            <td>Procedure: </td>
                             <td><p>{data?.standards}</p></td>
                         </tr>
                         <tr>
-                            <td>Local Procedure Number: </td>
+                            <td>Specification: </td>
                             <td><p>{data?.local_procedure_number}</p></td>
                         </tr>
                         <tr>
-                            <td>Drawing Number: </td>
+                            <td>Acceptance Criteria: </td>
                             <td><p>{data?.drawing_number}</p></td>
                         </tr>
                         <tr>

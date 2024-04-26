@@ -1,7 +1,7 @@
 const ReportDataType = ({data}) => {
     return (
         <div className="mt-3 report_type_data">
-            <p className="text-[14px] font-bold mb-2">{data?.report_type}</p>
+            <p className="text-[12px] font-bold mb-2">{data?.report_type}</p>
             <div>
                 <table>
                     <thead>
