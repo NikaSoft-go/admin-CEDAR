@@ -317,6 +317,14 @@ export const MPIReportTypeDataInitial = [
         property: "Post Test Cleaning",
         value: 'Yes',
     },
+    {
+        property: "Preparation of surface before examination",
+        value: '-',
+    },
+    {
+        property: "Emulsification Time",
+        value: '-',
+    },
 ]
 
 export const equipmentConsumablesInitial = [

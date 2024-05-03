@@ -80,10 +80,6 @@
                             <td><p>{data?.services}</p></td>
                         </tr>
                         <tr>
-                            <td>Procedure: </td>
-                            <td><p>{data?.standards}</p></td>
-                        </tr>
-                        <tr>
                             <td>Specification: </td>
                             <td><p>{data?.local_procedure_number}</p></td>
                         </tr>

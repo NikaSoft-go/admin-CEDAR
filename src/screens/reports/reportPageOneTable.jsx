@@ -28,10 +28,6 @@ const ReportPageOneTable = ({ data }) => {
                     <td className="data-cell">Inspector Name and Qualification</td>
                     <td className="data-cell">{data?.issuer?.name} ({data?.issuer?.qualification})</td>
                 </tr>
-                <tr>
-                    <td className="data-cell">Inspector Certificate Number</td>
-                    <td className="data-cell">{data?.issuer?.name} ({data?.issuer?.qualification})</td>
-                </tr>
                 </tbody>
             </table>
         </div>

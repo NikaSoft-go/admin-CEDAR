@@ -428,6 +428,9 @@ li.font-bold {
 
 .report_type_data th {
     background-color: #D8D8D8;
+    font-weight: 600;
+    text-align: left;
+    width: 120px;
 }
 
 .report_type_data td {
@@ -509,6 +512,7 @@ li.font-bold {
 
 .equipment_table th {
     background-color: #D8D8D8;
+    font-weight: 600;
 }
 
 .image-card {

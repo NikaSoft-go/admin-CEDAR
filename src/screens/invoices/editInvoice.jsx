@@ -197,8 +197,11 @@ const EditJobQuotationsPage = () => {
                                         required
                                     >
                                         <option>Select an invoice type</option>
-                                        <option value="NDT">NDT</option>
-                                        <option value="DPI">DPI</option>
+                                        <option value="UT - Ultrasonic Testing">UT - Ultrasonic Testing</option>
+                                        <option value="DPI - Dye Penetrate Inspection">DPI - Dye Penetrate Inspection</option>
+                                        <option value="MPI - Magnetic Particle Inspection">MPI - Magnetic Particle Inspection</option>
+                                        <option value="VT - Visual Inspection">VT - Visual Inspection</option>
+                                        <option value="Lifting Inspection">Lifting Inspection</option>
                                     </select>
                                 </div>
 
@@ -396,7 +399,6 @@ const EditJobQuotationsPage = () => {
                                         <th className="border p-2">Item</th>
                                         <th className="border p-2">Scope</th>
                                         <th className="border p-2">Quantity</th>
-                                        <th className="border p-2">Unit Price</th>
                                         <th className="border p-2">Total Cost</th>
                                         <th className="border p-2"></th>
                                     </tr>
@@ -432,18 +434,6 @@ const EditJobQuotationsPage = () => {
                                                     value={cost.quantity}
                                                     onChange={(e) =>
                                                         handleCostItemChange(index, 'quantity', e.target.value)
-                                                    }
-                                                    required
-                                                />
-                                            </td>
-                                            <td className="border p-2">
-                                                <input
-                                                    type="text"
-                                                    className="w-full p-1"
-                                                    placeholder="Unit Price"
-                                                    value={cost.unitPrice}
-                                                    onChange={(e) =>
-                                                        handleCostItemChange(index, 'unitPrice', e.target.value)
                                                     }
                                                     required
                                                 />

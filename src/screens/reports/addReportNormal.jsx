@@ -16,6 +16,14 @@ const AddReportNormal = (props) => {
         "PT - Pitted Thread",
         "GT - Galled Thread",
         "SD - Seal Damaged",
+        "Corr - Corrosion",
+        "Por - Porosity",
+        "UC - Undercut",
+        "Cra - Crack",
+        "LOP - Lack of Penetration",
+        "LOF - Lack of Fusion",
+        "Mis - Misalignment",
+        "OL - Overlap"
     ];
 
     return (

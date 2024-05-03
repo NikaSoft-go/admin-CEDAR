@@ -1,6 +1,5 @@
 import LogoImage from "../../assets/logo.png";
 import {GoDotFill} from "react-icons/go";
-import {GiRotaryPhone} from "react-icons/gi";
 import {FaGlobe} from "react-icons/fa";
 import {IoLocationSharp} from "react-icons/io5";
 import {LuPenLine} from "react-icons/lu";
@@ -115,10 +114,6 @@ const PageTwo = ({ data }) => {
                                     <p className="bg-[#288068] h-[5px]"></p>
                                 </th>
                                 <th>
-                                    <p className="mb-1">UNIT PRICE</p>
-                                    <p className="bg-[#288068] h-[5px]"></p>
-                                </th>
-                                <th>
                                     <p className="mb-1">COST</p>
                                     <p className="bg-[#288068] h-[5px]"></p>
                                 </th>
@@ -130,7 +125,6 @@ const PageTwo = ({ data }) => {
                                     <td>{elt?.item}</td>
                                     <td>{elt?.scope}</td>
                                     <td>{elt?.quantity}</td>
-                                    <td>{elt?.unitPrice}</td>
                                     <td>{elt?.totalCost}</td>
                                 </tr>
                             )}
@@ -151,21 +145,21 @@ const PageTwo = ({ data }) => {
                 </div>
             </div>
             <div className="mt-2 mx-5 mb-3 flex justify-between w-[100%]">
-                <div className="flex justify-start items-center">
-                    <div className="circle">
-                        <GiRotaryPhone size={18} fill="#288068"/>
-                    </div>
-                    <div className="ml-2">
-                        <p className="text-[11px]">+233 (0) 54 279 5320</p>
-                        <p className="text-[11px]">+233 (0) 54 307 1604</p>
-                    </div>
-                </div>
+                {/*<div className="flex justify-start items-center">*/}
+                {/*    <div className="circle">*/}
+                {/*        <GiRotaryPhone size={18} fill="#288068"/>*/}
+                {/*    </div>*/}
+                {/*    <div className="ml-2">*/}
+                {/*        <p className="text-[11px]">+233 (0) 54 279 5320</p>*/}
+                {/*        <p className="text-[11px]">+233 (0) 54 307 1604</p>*/}
+                {/*    </div>*/}
+                {/*</div>*/}
                 <div className="flex justify-start items-center">
                     <div className="circle">
                         <FaGlobe size={18} fill="#288068"/>
                     </div>
                     <div className="ml-2">
-                        <p className="text-[11px]">https://www.cedarinspectionventures.com</p>
+                        <p className="text-[11px]">cedarinspectionventures.com</p>
                     </div>
                 </div>
                 <div className="flex justify-start items-center">
@@ -174,6 +168,7 @@ const PageTwo = ({ data }) => {
                     </div>
                     <div className="ml-2">
                         <p className="text-[11px]">West-Tanakrom, Western region</p>
+                        <p className="text-[11px]">Tema Commununity 1, Greater Accra</p>
                         <p className="text-[11px]">Ghana, West Africa</p>
                     </div>
                 </div>
@@ -182,8 +177,8 @@ const PageTwo = ({ data }) => {
                         <LuPenLine size={18} fill="#288068"/>
                     </div>
                     <div className="ml-2">
-                        <p className="text-[11px]">Reg No.</p>
-                        <p className="text-[11px]">Tin: </p>
+                        <p className="text-[11px]">Reg No.: BN161481223</p>
+                        <p className="text-[11px]">Tin: P0059386088</p>
                     </div>
                 </div>
             </div>
