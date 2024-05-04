@@ -15,7 +15,8 @@ const PdfBottom = ({ data }) => {
                 <tbody>
                     <tr>
                         <td><div style={{
-                            color: data?.report_status === 'Accepted' ? 'green' : 'red'
+                            color: data?.report_status === 'Accepted' ? 'green' : 'red',
+                            fontSize: 25
                         }}><b>{data?.report_status}</b></div></td>
                         <td><div></div></td>
                         <td><div></div></td>

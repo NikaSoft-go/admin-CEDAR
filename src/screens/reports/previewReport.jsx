@@ -49,7 +49,7 @@ export default function PreviewReport() {
         html2pdf(combinedElement, {
             filename: 'combined_pages.pdf',
             image: {type: 'jpeg', quality: 0.98},
-            html2canvas: {dpi: 20, letterRendering: true, useCORS: true},
+            html2canvas: {dpi: 20, letterRendering: true, useCORS: true, scale: 2},
             jsPDF: {unit: 'pt', format: "a4", orientation: 'portrait'},
         });
     };
