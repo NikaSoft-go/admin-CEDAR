@@ -9,7 +9,7 @@ const PageOne = ({ data }) => {
             <img src={PDFCoverImage} alt="" className="pdf-image"/>
             <img src={BannerCard} alt="" className="banner-image"/>
             <TableWithHeader data={data}/>
-            <div className="cover-bottom mt-[25px]">
+            <div className="cover-bottom" style={{ marginTop: 60}}>
                 <div className="cover-bottom-header w-[100%] h-[8px]"></div>
                 <div className="cover-bottom-content px-3 flex items-center">
                     <img src={LogoImage} className="pdf-logo" alt=""/>
