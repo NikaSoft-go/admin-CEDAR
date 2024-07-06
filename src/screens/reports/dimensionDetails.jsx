@@ -5,7 +5,7 @@ const dimensionDetails = ({ data }) => {
         <div className="mt-3">
             <p className="text-[14px] font-bold mb-2">Dimension Details</p>
             <div className="flex justify-start w-100">
-                <div className="dimension-table-cover dimension-one">
+                {data?.dimension_one?.length > 0 && <div className="dimension-table-cover dimension-one">
                     <p className="bg-[#D8D8D8] text-[12px] pb-2 pl-2" style={{ fontWeight: 600}}>Connection 1: {data?.dimension_one_name}</p>
                     <table>
                         <tbody>
@@ -17,7 +17,7 @@ const dimensionDetails = ({ data }) => {
                         )}
                         </tbody>
                     </table>
-                </div>
+                </div>}
                 <div className=" dimension-body">
                     {data?.body?.length > 0 && <div className="dimension-table-cover mb-4">
                         <p className="bg-[#D8D8D8] text-[12px] pb-2 pl-2" style={{ fontWeight: 600}}>Body</p>
@@ -46,7 +46,7 @@ const dimensionDetails = ({ data }) => {
                         </table>
                     </div>}
                 </div>
-                <div className="dimension-table-cover dimension-two">
+                {data?.dimension_two?.length > 0 && <div className="dimension-table-cover dimension-two">
                     <p className="bg-[#D8D8D8] font-bold text-[12px] pb-2 pl-2">Connection 2: {data?.dimension_two_name}</p>
                     <table>
                         <tbody>
@@ -59,6 +59,7 @@ const dimensionDetails = ({ data }) => {
                         </tbody>
                     </table>
                 </div>
+                }
             </div>
         </div>
     )
