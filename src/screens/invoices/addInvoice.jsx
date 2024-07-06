@@ -404,6 +404,17 @@ const AddJobQuotationsPage = () => {
                             {/* Scope */}
                             <div className="mb-4">
                                 <label className="block text-gray-700 text-md font-bold mb-2">Scope:</label>
+                                <div>
+                                    <label className="block text-gray-700 text-md font-bold mb-2">Scope Header Text</label>
+                                    <input
+                                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        type="text"
+                                        placeholder="Scope Header Text"
+                                        name="scope_header_text"
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                </div>
                                 <ResponsibilityTable
                                     column1="Scope"
                                     initalItems={scopeInitials}

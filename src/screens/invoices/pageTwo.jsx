@@ -42,7 +42,7 @@ const PageTwo = ({ data }) => {
                         <p className="bg-[#288068] h-[5px]"></p>
                     </div>
                     <p className="text-left mt-1 mb-3 text-[13px] font-bold">
-                        Scope: NDT & LT on fabricated suction Piles
+                        Scope: {data?.scope_header_text}
                     </p>
                     <div className="flex justify-between">
                         {data?.scope?.map((elt, index) =>
@@ -135,7 +135,7 @@ const PageTwo = ({ data }) => {
             </div>
             <div className="cover-bottom">
                 <div className="cover-bottom-content px-3 flex items-center">
-                    <img src={LogoImage} className="pdf-logo"/>
+                    <img src={LogoImage} className="pdf-logo" alt={""}/>
                     <div className="ml-12 flex justify-evenly w-[100%]">
                         <p className="text-white text-[13px]">Integrity Management</p>
                         <p className="text-white text-[13px]">NDT Inspection</p>

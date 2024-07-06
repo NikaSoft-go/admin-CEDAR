@@ -28,6 +28,7 @@ const EditJobQuotationsPage = () => {
         client_name: "",
         invoice_name: "",
         requirements: "",
+        scope_header_text: "",
         prepared_by: "",
         mobile_phone_one: "",
         mobile_phone_two: "",
@@ -131,7 +132,8 @@ const EditJobQuotationsPage = () => {
                         responsibilities,
                         // signature,
                         presenter_role,
-                        presenter_phone
+                        presenter_phone,
+                        scope_header_text
                     }  = response.data.data;
                     setState({
                         invoice_name,
@@ -145,7 +147,8 @@ const EditJobQuotationsPage = () => {
                         last_words,
                         email,
                         presenter_role,
-                        presenter_phone
+                        presenter_phone,
+                        scope_header_text
                     });
                     setScopeItems(JSON.parse(scope));
                     setResourceItems(JSON.parse(resources));
@@ -348,6 +351,18 @@ const EditJobQuotationsPage = () => {
                             {/* Scope */}
                             <div className="mb-4">
                                 <label className="block text-gray-700 text-md font-bold mb-2">Scope:</label>
+                                <div>
+                                    <label className="block text-gray-700 text-md font-bold mb-2">Scope Header Text</label>
+                                    <input
+                                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        type="text"
+                                        placeholder="Scope Header Text"
+                                        name="scope_header_text"
+                                        value={state.scope_header_text}
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                </div>
                                 <ResponsibilityTable
                                     column1="Scope"
                                     responsibilities={scopeItems}
