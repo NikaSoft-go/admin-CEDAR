@@ -19,10 +19,22 @@ const PdfBottom = ({ data }) => {
                             fontSize: 25
                         }}><b>{data?.report_status}</b></div></td>
                         <td>
-                            <div><img src={generateImageUrl(data?.inspector_signature_url)} alt={"inspector_signature"}/></div>
+                            <div>
+                                <img
+                                    src={generateImageUrl(data?.inspector_signature_url)}
+                                    alt={"inspector_signature"}
+                                    style={{ width: 60 }}
+                                />
+                            </div>
                         </td>
                         <td>
-                            <div><img src={generateImageUrl(data?.reviewer_signature_url)} alt={"reviewer_signature"} /></div>
+                            <div>
+                                <img
+                                    src={generateImageUrl(data?.reviewer_signature_url)}
+                                    alt={"reviewer_signature"}
+                                    style={{ width: 60 }}
+                                />
+                            </div>
                         </td>
                     </tr>
                     <tr>
