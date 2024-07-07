@@ -1,4 +1,4 @@
-import {formatDate} from "../../utils/index.js";
+import {formatDate, generateImageUrl} from "../../utils/index.js";
 
 
 const PdfBottom = ({ data }) => {
@@ -18,8 +18,12 @@ const PdfBottom = ({ data }) => {
                             color: data?.report_status === 'Accepted' ? 'green' : 'red',
                             fontSize: 25
                         }}><b>{data?.report_status}</b></div></td>
-                        <td><div></div></td>
-                        <td><div></div></td>
+                        <td>
+                            <div><img src={generateImageUrl(data?.inspector_signature_url)} alt={"inspector_signature"}/></div>
+                        </td>
+                        <td>
+                            <div><img src={generateImageUrl(data?.reviewer_signature_url)} alt={"reviewer_signature"} /></div>
+                        </td>
                     </tr>
                     <tr>
                         <td>Name</td>

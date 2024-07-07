@@ -17,7 +17,7 @@ const ReportPageOneTable = ({ data }) => {
                     <td className="data-cell">{data?.client_name}</td>
                 </tr>
                 <tr>
-                    <td className="data-cell">Job Description</td>
+                    <td className="data-cell">Asset Name</td>
                     <td className="data-cell">{data?.services}</td>
                 </tr>
                 <tr>

@@ -615,6 +615,30 @@ const AddReportUltrasonicThickness = (props) => {
                 </div>
             </div>
 
+            <label className="block text-gray-700 text-md font-bold mb-2">Stamp Files:</label>
+            <div className="mb-6 flex justify-start w-[100%]">
+                <div className="w-[100%]">
+                    <label className="block text-gray-700 text-md font-bold mb-2">Inspector Signature:</label>
+                    <input
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        type="file"
+                        name="inspector_signature"
+                        onChange={props.handleChange}
+                        required
+                    />
+                </div>
+                <div className="w-[100%]">
+                    <label className="block text-gray-700 text-md font-bold mb-2">Reviewer Signature:</label>
+                    <input
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        type="file"
+                        name="reviewer_signature"
+                        onChange={props.handleChange}
+                        required
+                    />
+                </div>
+            </div>
+
             {/* Images */}
             <div className="mb-3">
                 <label className="block text-gray-700 text-md font-bold mb-2">Images</label>

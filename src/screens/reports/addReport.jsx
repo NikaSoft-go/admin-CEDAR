@@ -49,7 +49,6 @@ const AddReport = () => {
 
     const handleChange = (e, items=state, setItems=setState) => {
         const value = e.target?.files ? e.target.files[0] : e.target.value;
-        console.log(value);
         setItems({
             ...items,
             [e.target.name]: value
@@ -172,7 +171,6 @@ const AddReport = () => {
             return;
         }
         try {
-            console.log(reportData);
             const formData = new FormData();
             // create form-data
             Object.entries(reportData).forEach(([key, value]) => {
