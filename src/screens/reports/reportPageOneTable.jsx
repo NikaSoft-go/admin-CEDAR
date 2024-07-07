@@ -7,7 +7,7 @@ const ReportPageOneTable = ({ data }) => {
                 <thead>
                 <tr>
                     <th colSpan="2" className="header-cell">
-                        {data?.client_job_reference}
+                        {data?.report_title}
                     </th>
                 </tr>
                 </thead>

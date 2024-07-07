@@ -340,6 +340,16 @@ const AddReport = () => {
                         <form onSubmit={handleAddReport}>
                             {/* Report Type */}
                             <div className="mb-5">
+                                <label className="block text-gray-700 text-md font-bold mb-2">Report Title:</label>
+                                <input
+                                    className="mb-5 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    type="text"
+                                    placeholder="Report Title"
+                                    name="report_title"
+                                    onChange={handleChange}
+                                    required
+                                />
+
                                 <label className="block text-gray-700 text-md font-bold mb-2">Report Type:</label>
                                 <select
                                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"

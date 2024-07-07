@@ -221,7 +221,18 @@ const EditReport = () => {
                         <form onSubmit={handleAddReport}>
                             <h3 className="font-bold mb-4">Client Details</h3>
                             <div className="mb-10 grid grid-cols-1 md:grid-cols-2 gap-4">
-                                {/* Client Name */}
+                                {/* Report Title */}
+                                <div className={"mb-3"}>
+                                    <label className="block text-gray-700 text-md font-bold mb-2">Report Title:</label>
+                                    <input
+                                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        type="text"
+                                        placeholder="Report Title"
+                                        name="report_title"
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                </div>
                                 <div>
                                     <label className="block text-gray-700 text-md font-bold mb-2">Client Name:</label>
                                     <input

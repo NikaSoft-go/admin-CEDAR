@@ -1104,7 +1104,6 @@ const AddReportNormal = (props) => {
                         type="file"
                         name="inspector_signature"
                         onChange={props.handleChange}
-                        required
                     />
                 </div>
                 <div className="w-[100%]">
@@ -1114,7 +1113,6 @@ const AddReportNormal = (props) => {
                         type="file"
                         name="reviewer_signature"
                         onChange={props.handleChange}
-                        required
                     />
                 </div>
             </div>
