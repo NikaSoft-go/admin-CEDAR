@@ -20,20 +20,20 @@ const PdfBottom = ({ data }) => {
                         }}><b>{data?.report_status}</b></div></td>
                         <td>
                             <div>
-                                <img
+                                {data?.inspector_signature_url && <img
                                     src={generateImageUrl(data?.inspector_signature_url)}
                                     alt={"inspector_signature"}
                                     style={{ width: 150 }}
-                                />
+                                />}
                             </div>
                         </td>
                         <td>
                             <div>
-                                <img
+                                {data?.reviewer_signature_url && <img
                                     src={generateImageUrl(data?.reviewer_signature_url)}
                                     alt={"reviewer_signature"}
                                     style={{ width: 150 }}
-                                />
+                                />}
                             </div>
                         </td>
                     </tr>

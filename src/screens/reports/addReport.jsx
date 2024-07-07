@@ -148,7 +148,7 @@ const AddReport = () => {
             ...state,
             issuer: JSON.stringify(issuerInfo),
             quality_controller: JSON.stringify(reviewerInfo),
-            asset_details: JSON.stringify(assetDetails),
+            asset_details: JSON.stringify(assetDetails || []),
             dimension_one: JSON.stringify(dimensionOneDetails),
             dimension_two: JSON.stringify(dimensionTwoDetails),
             body: JSON.stringify(bodyDetails),
@@ -280,7 +280,7 @@ const AddReport = () => {
 
     const sameTypesReport = {
         "Normal": [
-            "MPI without connections",
+            "MPI",
             "MPI with connections",
             "DPI without connections",
             "DPI with connections",
@@ -358,7 +358,7 @@ const AddReport = () => {
                                     required
                                 >
                                     <option>Select a report type</option>
-                                    <option value="MPI without connections">Magnetic Particle
+                                    <option value="MPI">Magnetic Particle
                                         Inspection</option>
                                     <option value="MPI with connections">MPI with connections</option>
                                     <option value="DPI without connections">DYE Penetrant

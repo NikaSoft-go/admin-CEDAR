@@ -192,20 +192,15 @@ const EditJobQuotationsPage = () => {
                                 {/* Invoice Type */}
                                 <div>
                                     <label className="block text-gray-700 text-md font-bold mb-2">Job Quotation Type:</label>
-                                    <select
+                                    <input
                                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        type="text"
+                                        placeholder="Job Quotation Type"
                                         name="invoice_type"
                                         value={state.invoice_type}
                                         onChange={handleChange}
                                         required
-                                    >
-                                        <option>Select an invoice type</option>
-                                        <option value="UT - Ultrasonic Testing">UT - Ultrasonic Testing</option>
-                                        <option value="DPI - Dye Penetrate Inspection">DPI - Dye Penetrate Inspection</option>
-                                        <option value="MPI - Magnetic Particle Inspection">MPI - Magnetic Particle Inspection</option>
-                                        <option value="VT - Visual Inspection">VT - Visual Inspection</option>
-                                        <option value="Lifting Inspection">Lifting Inspection</option>
-                                    </select>
+                                    />
                                 </div>
 
                                 {/* Date */}

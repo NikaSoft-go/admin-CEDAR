@@ -494,7 +494,7 @@ export const otherEquipmentsProps = [
 
 export const returnReportDataType = (type, keyType) => {
     const reportTypes = {
-        "MPI": ["MPI", "MPI with connections", "MPI without connections"],
+        "MPI": ["MPI", "MPI with connections"],
         "DPI": ["DPI", "DPI with connections", "DPI without connections"],
         "Lifting Inspection": ["Lifting Inspection"],
         "Ultrasonic Thickness": ["Ultrasonic Thickness"]
@@ -822,3 +822,23 @@ export const commentsInitial = [
             ' see attachment',
     },
 ]
+
+export const keyItems = [
+    "ACP - Accept",
+    "MPI - Magnetic Particle Inspection",
+    "VT - Visual Inspection",
+    "DPI - Dye Penetrant Inspection",
+    "DIM - Dimensional",
+    "PT - Pitted Thread",
+    "GT - Galled Thread",
+    "SD - Seal Damaged",
+    "Corr - Corrosion",
+    "Por - Porosity",
+    "UC - Undercut",
+    "Cra - Crack",
+    "LOP - Lack of Penetration",
+    "LOF - Lack of Fusion",
+    "Mis - Misalignment",
+    "OL - Overlap",
+    "CBM - Clean to bear metal",
+];

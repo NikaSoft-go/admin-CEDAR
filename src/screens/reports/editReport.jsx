@@ -10,7 +10,7 @@ import {useNavigate, useParams} from "react-router-dom";
 import {
     bladeDetailInitial, bodyDetailInitial,
     consumablesInitial, emptyAssetsDetails,
-    emptyDimensionDetails, equipmentsInitial,
+    emptyDimensionDetails, equipmentsInitial, keyItems,
     returnAssetsData, returnReportDataType,
 } from "../../utils/data.js";
 import MultiSelect from "../../components/multiSelect/index.jsx";
@@ -19,16 +19,6 @@ import {getImageFullPath} from "../../utils/index.js";
 
 const EditReport = () => {
     const { id } = useParams();
-    const keyItems = [
-        "ACP - Accept",
-        "MPI - Magnetic Particle Inspection",
-        "VT - Visual Inspection",
-        "DPI - Dye Penetrant Inspection",
-        "DIM - Dimensional",
-        "PT - Pitted Thread",
-        "GT - Galled Thread",
-        "SD - Seal Damaged",
-    ];
 
     const [selectedOptions, setSelectedOptions] = useState([]);
     const [images, setImages] = useState([]);

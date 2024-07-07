@@ -13,6 +13,7 @@ export default function PreviewReport() {
     const reports = useSelector(store => store.report);
     const { id } = useParams();
     let report = reports.data?.find(invoice => invoice.id === Number(id));
+    console.log("report", report);
     report = {
         ...report,
         consumables: JSON.parse(report.consumables || "{}"),

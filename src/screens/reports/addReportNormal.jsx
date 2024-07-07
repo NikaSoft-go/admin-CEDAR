@@ -1,5 +1,11 @@
 import {FiTrash2} from "react-icons/fi";
-import {consumablesInitial, emptyAssetsDetails, emptyDimensionDetails, equipmentsInitial} from "../../utils/data.js";
+import {
+    consumablesInitial,
+    emptyAssetsDetails,
+    emptyDimensionDetails,
+    equipmentsInitial,
+    keyItems
+} from "../../utils/data.js";
 import {IoMdAddCircleOutline} from "react-icons/io";
 import ResponsibilityTable from "../../components/invoices/tableA.jsx";
 import MultiSelect from "../../components/multiSelect/index.jsx";
@@ -7,24 +13,6 @@ import FileUploadComponent from "../../components/imagesSelect/index.jsx";
 
 
 const AddReportNormal = (props) => {
-    const keyItems = [
-        "ACP - Accept",
-        "MPI - Magnetic Particle Inspection",
-        "VT - Visual Inspection",
-        "DPI - Dye Penetrant Inspection",
-        "DIM - Dimensional",
-        "PT - Pitted Thread",
-        "GT - Galled Thread",
-        "SD - Seal Damaged",
-        "Corr - Corrosion",
-        "Por - Porosity",
-        "UC - Undercut",
-        "Cra - Crack",
-        "LOP - Lack of Penetration",
-        "LOF - Lack of Fusion",
-        "Mis - Misalignment",
-        "OL - Overlap"
-    ];
 
     return (
         <>
