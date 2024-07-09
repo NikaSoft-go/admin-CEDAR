@@ -144,6 +144,10 @@ const AddReport = () => {
 
     const handleAddReport = async (e) => {
         e.preventDefault();
+        const bodyData = showSections?.bodyDetails
+        ? (bodyDetails || []) : []
+        const bladeData = showSections?.bladeDetails
+            ? (bladeDetails || []) : []
         const reportData = {
             ...state,
             issuer: JSON.stringify(issuerInfo),
@@ -151,19 +155,19 @@ const AddReport = () => {
             asset_details: JSON.stringify(assetDetails || []),
             dimension_one: JSON.stringify(dimensionOneDetails),
             dimension_two: JSON.stringify(dimensionTwoDetails),
-            body: JSON.stringify(bodyDetails),
-            blade: JSON.stringify(bladeDetails),
-            report_type_data: JSON.stringify(reportTypeData),
-            consumables: JSON.stringify(consumablesData),
-            keys: JSON.stringify(selectedOptions),
-            equipments: JSON.stringify(equipmentsData),
-            equipment_consumables: JSON.stringify(equipmentConsumables),
-            other_welding_props: JSON.stringify(otherWeldingProps),
-            welding_table_data: JSON.stringify(weldingTableData),
-            equipment_method: JSON.stringify(equipmentMethod),
-            ut_results: JSON.stringify(utTableResults),
-            ut_table_data: JSON.stringify(utTableData),
-            inspector_comments: JSON.stringify(comments)
+            body: JSON.stringify(bodyData),
+            blade: JSON.stringify(bladeData),
+            report_type_data: JSON.stringify(reportTypeData || []),
+            consumables: JSON.stringify(consumablesData || []),
+            keys: JSON.stringify(selectedOptions || []),
+            equipments: JSON.stringify(equipmentsData || []),
+            equipment_consumables: JSON.stringify(equipmentConsumables || []),
+            other_welding_props: JSON.stringify(otherWeldingProps || []),
+            welding_table_data: JSON.stringify(weldingTableData || []),
+            equipment_method: JSON.stringify(equipmentMethod || []),
+            ut_results: JSON.stringify(utTableResults || []),
+            ut_table_data: JSON.stringify(utTableData || []),
+            inspector_comments: JSON.stringify(comments || [])
         }
 
         if (!reportData.report_type) {
@@ -282,7 +286,7 @@ const AddReport = () => {
         "Normal": [
             "MPI",
             "MPI with connections",
-            "DPI without connections",
+            "DPI",
             "DPI with connections",
         ],
         "Ultrasonic Inspection": ["Ultrasonic Inspection"],
@@ -303,10 +307,6 @@ const AddReport = () => {
 
         setCurrentTypeComp(currentType);
     }
-
-    useEffect(() => {
-        console.log(state)
-    }, [state]);
 
     useEffect(() => {
         if (state.report_type) {
@@ -361,7 +361,7 @@ const AddReport = () => {
                                     <option value="MPI">Magnetic Particle
                                         Inspection</option>
                                     <option value="MPI with connections">MPI with connections</option>
-                                    <option value="DPI without connections">DYE Penetrant
+                                    <option value="DPI">DYE Penetrant
                                         Inspection</option>
                                     <option value="DPI with connections">DPI with connections</option>
                                     <option value="Ultrasonic Inspection">Ultrasonic Thickness</option>

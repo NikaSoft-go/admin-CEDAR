@@ -527,9 +527,9 @@ const EditReport = () => {
                                         required
                                     >
                                         <option>Select a report type</option>
-                                        <option value="MPI without connections">MPI without connections</option>
+                                        <option value="MPI">MPI</option>
                                         <option value="MPI with connections">MPI with connections</option>
-                                        <option value="DPI without connections">DPI without connections</option>
+                                        <option value="DPI">DPI</option>
                                         <option value="DPI with connections">DPI with connections</option>
                                         <option value="Ultrasonic Inspection">Ultrasonic Thickness</option>
                                         <option value="Lifting Inspection">Lifting Inspection</option>

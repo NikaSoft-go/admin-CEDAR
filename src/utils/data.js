@@ -34,10 +34,10 @@ export const MPIAssetsData = [
 
 export const returnAssetsData = (type) => {
     const assets = {
-        "MPI without connections": MPIAssetsData,
+        "MPI": MPIAssetsData,
         "MPI with connections": MPIAssetsData,
         "DPI with connections": DPIWithConnectionsData,
-        "DPI without connections": DPIWithoutConnectionsData,
+        "DPI": DPIWithoutConnectionsData,
         "Ultrasonic Thickness": [],
         "Lifting Inspection": []
     }
@@ -495,7 +495,7 @@ export const otherEquipmentsProps = [
 export const returnReportDataType = (type, keyType) => {
     const reportTypes = {
         "MPI": ["MPI", "MPI with connections"],
-        "DPI": ["DPI", "DPI with connections", "DPI without connections"],
+        "DPI": ["DPI", "DPI with connections", "DPI"],
         "Lifting Inspection": ["Lifting Inspection"],
         "Ultrasonic Thickness": ["Ultrasonic Thickness"]
     };
