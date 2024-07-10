@@ -186,11 +186,11 @@ const AddReport = () => {
 
             // Add signature image
             imageFiles.forEach(function(image) {
-                formData.append('images[]', image);
+                formData.append('images', image);
             });
 
             imageNames.forEach(function(imageName) {
-                formData.append('file_names[]', imageName);
+                formData.append('file_names', imageName);
             });
             const response = await axiosClient.post(
                 '/reports/add-report/',
