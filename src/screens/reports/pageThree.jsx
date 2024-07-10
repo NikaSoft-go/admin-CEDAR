@@ -9,11 +9,11 @@ import PdfBottom from "./pdfBottom.jsx";
 const PageThree = ({ data }) => {
     return (
         <div className="mx-6 mt-5 mb-6">
-            <EquipmentSection data={data?.equipments} />
-            <ConsumablesSection data={data?.consumables} />
+            {data?.equipments?.length && <EquipmentSection data={data?.equipments} />}
+            {data?.consumables?.length && <ConsumablesSection data={data?.consumables} />}
             <Visual data={data?.comments} title="Inspector's Comment: " />
-            <KeySection data={data?.keys} />
-            <ImageSection data={data?.images} />
+            {data?.keys?.length && <KeySection data={data?.keys} />}
+            {data?.images?.length && <ImageSection data={data?.images} />}
             <PdfBottom data={data} />
         </div>
     )

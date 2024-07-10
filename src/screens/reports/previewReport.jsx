@@ -61,7 +61,7 @@ export default function PreviewReport() {
             <div className="flex-1 flex flex-col overflow-hidden">
                 <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
                     <div className="preview-sticker flex justify-start">
-                        <FaChevronLeft size={20} className="cursor-pointer" onClick={() => navigate('/job-quotation')}/>
+                        <FaChevronLeft size={20} className="cursor-pointer" onClick={() => navigate('/reports')}/>
                         <FaDownload size={20} className="ml-2 cursor-pointer" onClick={generateCombinedPDF}/>
                     </div>
                     <div id="pdf-content-page-1">
