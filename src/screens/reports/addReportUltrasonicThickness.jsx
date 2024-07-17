@@ -12,6 +12,18 @@ const AddReportUltrasonicThickness = (props) => {
             <div className="mb-10 grid grid-cols-1 md:grid-cols-2 gap-4">
                 {/* Client Name */}
                 <div>
+                    <label className="block text-gray-700 text-md font-bold mb-2">Asset Name:</label>
+                    <input
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        type="text"
+                        placeholder="Asset Name"
+                        name="services"
+                        onChange={props.handleChange}
+                        required
+                    />
+                </div>
+
+                <div>
                     <label className="block text-gray-700 text-md font-bold mb-2">Customer:</label>
                     <input
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"

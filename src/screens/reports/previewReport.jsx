@@ -4,8 +4,8 @@ import {FaChevronLeft, FaDownload} from "react-icons/fa";
 import {useNavigate, useParams} from "react-router-dom";
 import {useSelector} from "react-redux";
 import PageOne from "./pageOne.jsx";
-import PageTwo from "./pageTwo.jsx";
-import PageThree from "./pageThree.jsx";
+import PreviewReportNormal from "./previewReportNormal.jsx";
+import PreviewReportUltrasonicInspection from "./previewReportUltrasonicInspection.jsx";
 
 
 export default function PreviewReport() {
@@ -13,7 +13,6 @@ export default function PreviewReport() {
     const reports = useSelector(store => store.report);
     const { id } = useParams();
     let report = reports.data?.find(invoice => invoice.id === Number(id));
-    console.log("report", report);
     report = {
         ...report,
         consumables: JSON.parse(report.consumables || "{}"),
@@ -55,6 +54,13 @@ export default function PreviewReport() {
         });
     };
 
+    const normalReportTypes = [
+        "MPI",
+        "MPI with connections",
+        "DPI",
+        "DPI with connections",
+    ]
+
     return (
         <div className="flex h-screen bg-gray-100">
             <Sidebar/>
@@ -67,12 +73,9 @@ export default function PreviewReport() {
                     <div id="pdf-content-page-1">
                         <PageOne data={report}/>
                     </div>
-                    <div id="pdf-content-page-2">
-                        <PageTwo data={report}/>
-                    </div>
-                    <div id="pdf-content-page-3">
-                        <PageThree data={report}/>
-                    </div>
+
+                    {normalReportTypes.includes(report?.report_type) && <PreviewReportNormal report={report} />}
+                    {report?.report_type === "Ultrasonic Inspection" && <PreviewReportUltrasonicInspection report={report} />}
                 </main>
             </div>
         </div>

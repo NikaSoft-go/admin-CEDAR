@@ -548,3 +548,83 @@ li.font-bold {
     border: 1px solid #000;
     padding: 5px;
 }
+
+.report-section-head {
+    background-color: #999999;
+    padding: 2px 0 10px 0;
+}
+
+.equipment_table.report th {
+    text-align: left;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.drawing-images {
+    border: 1px solid #000;
+}
+
+.drawing-image-one {
+    padding: 10px 10px 20px;
+}
+
+.drawing-image-two {
+    border-left: 1px solid #000;
+    border-bottom: 1px solid #000;
+    padding: 10px 10px 20px;
+}
+
+.drawing-note {
+    border-left: 1px solid #000;
+}
+
+.report-page-two tr td {
+    border-bottom: none;
+    border-left: none;
+    padding: 2px 0 10px 5px;
+    vertical-align: top;
+}
+
+.report-page-two tr th {
+    border-bottom: none;
+    border-left: none;
+    padding: 2px 5px 10px 5px;
+    vertical-align: top;
+}
+
+.report-page-two tr td:nth-child(1),
+.report-page-two tr th:nth-child(1),
+.report-page-three tr td:nth-child(1) {
+    border-left: 1px solid #000;
+}
+
+.report-page-two tr:nth-child(1) td{
+    border-bottom: none;
+}
+
+.report-page-two tr:last-child td,
+.report-page-three tr:last-child td{
+    border-bottom: 1px solid #000;
+}
+
+.report-page-three th {
+    border: 1px solid #000;
+    border-bottom: none;
+    border-left: none;
+    padding: 5px;
+    font-size: 12px;
+}
+
+.report-page-three tr:nth-child(1) th:nth-child(1) {
+    border-left: 1px solid #000;
+}
+
+.report-page-three tr td {
+    border-bottom: none;
+    border-left: none;
+    border-top: 1px solid #000;
+    border-right: 1px solid #000;
+    padding: 2px 0 10px 5px;
+    vertical-align: top;
+    font-size: 12px;
+}

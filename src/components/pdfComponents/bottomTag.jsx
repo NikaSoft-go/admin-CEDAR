@@ -3,7 +3,7 @@ import LogoImage from "../../assets/logo.png";
 
 export const BottomTag = () => {
     return (
-        <div className="cover-bottom" style={{ marginTop: 65}}>
+        <div className="cover-bottom" style={{ marginTop: 100}}>
             <div className="cover-bottom-header w-[100%] h-[8px]"></div>
             <div className="cover-bottom-content px-3 flex items-center">
                 <img src={LogoImage} className="pdf-logo" alt=""/>
