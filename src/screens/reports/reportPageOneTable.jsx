@@ -21,8 +21,12 @@ const ReportPageOneTable = ({ data }) => {
                     <td className="data-cell">{data?.services}</td>
                 </tr>
                 <tr>
-                    <td className="data-cell">Serial number</td>
+                    <td className="data-cell">Asset Serial number</td>
                     <td className="data-cell">{data?.serial_number}</td>
+                </tr>
+                <tr>
+                    <td className="data-cell">Asset Model</td>
+                    <td className="data-cell">{data?.asset_model}</td>
                 </tr>
                 </tbody>
             </table>

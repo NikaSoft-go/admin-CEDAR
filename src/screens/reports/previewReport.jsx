@@ -26,7 +26,9 @@ export default function PreviewReport() {
         blade: JSON.parse(report.blade || "{}"),
         asset_details: JSON.parse(report.asset_details || "{}"),
         equipments: JSON.parse(report.equipments || "{}"),
+        inspector_comments: JSON.parse(report.inspector_comments || "[]"),
     }
+    console.log("report", report);
     // Function to generate a single PDF by combining the content of all pages
     const generateCombinedPDF = () => {
         const combinedContent = [];

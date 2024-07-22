@@ -293,6 +293,34 @@ const AddReportUltrasonicThickness = (props) => {
                         required
                     />
                 </div>
+
+                {/* Report Status */}
+                <div>
+                    <label className="block text-gray-700 text-md font-bold mb-2">Report Status:</label>
+                    <select
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        name="report_status"
+                        onChange={props.handleChange}
+                        required
+                    >
+                        <option>Select a report status</option>
+                        <option value="Accepted">Accepted</option>
+                        <option value="Rejected">Rejected</option>
+                    </select>
+                </div>
+
+                {/* Asset Model */}
+                <div>
+                    <label className="block text-gray-700 text-md font-bold mb-2">Asset Model:</label>
+                    <input
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        type="text"
+                        placeholder="Asset Model"
+                        name="asset_model"
+                        onChange={props.handleChange}
+                        required
+                    />
+                </div>
             </div>
 
             <div className="my-4">

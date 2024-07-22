@@ -306,6 +306,19 @@ const AddReportNormal = (props) => {
                         <option value="Rejected">Rejected</option>
                     </select>
                 </div>
+
+                {/* Asset Model */}
+                <div>
+                    <label className="block text-gray-700 text-md font-bold mb-2">Asset Model:</label>
+                    <input
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        type="text"
+                        placeholder="Asset Model"
+                        name="asset_model"
+                        onChange={props.handleChange}
+                        required
+                    />
+                </div>
             </div>
 
             <h3 className="font-bold mb-4">Inspected by</h3>

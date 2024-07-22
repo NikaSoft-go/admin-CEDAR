@@ -13,7 +13,12 @@ const UTImageSection = ({ data }) => {
                         <div className="image-wrapper mb-5 p-2">
                             <img src={getImageFullPath(elt?.file)} alt="" style={{ width: 200, height: 200}}/>
                         </div>
-                        <p className={"w-[100%] text-center"} style={{ borderTop: "1px solid #000"}}>{elt?.name}</p>
+                        <div
+                            className={"w-[100%] text-center"}
+                            style={{ borderTop: "1px solid #000", padding: "5px 0 10px 0"}}
+                        >
+                            <p>{elt?.name}</p>
+                        </div>
                     </div>
                 )}
             </div>

@@ -20,7 +20,7 @@ const UTPageThree = ({ data }) => {
                         </tr>
                         <tr>
                             {Object.keys(utResults[0]?.degrees || "{}")?.map((elt, index) =>
-                                <th colSpan={2} key={index}>{elt}</th>)}
+                                <th colSpan={2} key={index}>{elt}°</th>)}
                         </tr>
                         </thead>
                         <tbody>
@@ -28,7 +28,8 @@ const UTPageThree = ({ data }) => {
                             <tr key={index}>
                                 <td><b>{elt?.rowName}</b></td>
                                 {Object.entries(elt?.degrees)?.map((innerElt) => {
-                                    return Object.values(innerElt[1] || "{}").map((degree, index) => <td key={index}>{degree}</td>)
+                                    return Object.values(innerElt[1] || "{}").map((degree, index) =>
+                                        <td key={index}>{degree}</td>)
                                 })}
                             </tr>
                         )}
@@ -39,8 +40,10 @@ const UTPageThree = ({ data }) => {
                     <div style={{ width: "30%", backgroundColor: "#999999", padding: 10}}>
                         <p className={"uppercase"} style={{ fontSize: 12 }}><b>Inspector&apos;s Comment: </b></p>
                     </div>
-                    <div style={{ width: "70%" }}>
-                        <p>{data?.comments}</p>
+                    <div style={{ width: "70%", padding: "10px" }}>
+                        {data?.inspector_comments?.map((elt, index) =>
+                            <p className={"mb-1"} key={index} style={{ fontSize: 13 }}>{elt?.id}. {elt?.value}</p>
+                        )}
                     </div>
                 </div>
             </div>
