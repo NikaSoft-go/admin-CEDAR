@@ -9,7 +9,7 @@ const UTPageTwo = ({ data }) => {
             <div className="mx-6 mt-3 mb-6 report-page-two">
                 <div className="mt-5">
                     <div className="report-section-head">
-                        <p className={"text-[14px] font-bold text-center uppercase"}>Ultrasonic Thickness Inspection Report</p>
+                        <p className={"text-[14px] font-bold text-center uppercase"}>Report Details</p>
                     </div>
                     <table className="equipment_table w-[100%]">
                         <tbody>

@@ -43,14 +43,14 @@ const PdfBottom = ({ data }) => {
                         <td>{data?.quality_controller?.name}</td>
                     </tr>
                     <tr>
-                        <td>Date</td>
-                        <td>{formatDate(data?.issuer?.date)}</td>
-                        <td>{formatDate(data?.quality_controller?.date)}</td>
-                    </tr>
-                    <tr>
                         <td>Qualification</td>
                         <td>{data?.issuer?.qualification}</td>
                         <td>{data?.quality_controller?.qualification}</td>
+                    </tr>
+                    <tr>
+                        <td>Date</td>
+                        <td>{formatDate(data?.issuer?.date)}</td>
+                        <td>{formatDate(data?.quality_controller?.date)}</td>
                     </tr>
                 </tbody>
             </table>
