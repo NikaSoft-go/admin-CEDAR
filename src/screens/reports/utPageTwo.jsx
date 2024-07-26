@@ -34,7 +34,6 @@ const UTPageTwo = ({ data }) => {
                             <td><b>Operating Pressure: </b>{data?.operating_pressure}</td>
                         </tr>
                         <tr>
-                            <td><b>Procedure No: </b>{data?.local_procedure_number}</td>
                             <td><b>Technique Standard: </b>{data?.technique_standard}</td>
                             <td><b>Material: </b>{data?.material}</td>
                         </tr>

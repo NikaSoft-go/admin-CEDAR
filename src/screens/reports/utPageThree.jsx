@@ -2,7 +2,7 @@ import PdfBottom from "./pdfBottom.jsx";
 import UTImageSection from "./utImageSection.jsx";
 
 const UTPageThree = ({ data }) => {
-    const utResults = JSON.parse(data?.ut_results || "[]");
+    const utResults = data?.ut_results;
     return (
         <div className={"mx-6 mt-3 mb-6"}>
             <div className="report-page-three">

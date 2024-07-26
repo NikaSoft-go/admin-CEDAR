@@ -8,7 +8,7 @@ import {
     bladeDetailInitial, bodyDetailInitial,
     consumablesInitial, equipmentConsumablesInitial, equipmentsInitial, equipmentTechniqueInitial,
     getDimensionData, otherEquipmentsProps, returnAssetsData,
-    returnReportDataType, utTableInitial, utTableResults, weldingTableInitial,
+    returnReportDataType, utTableInitial, weldingTableInitial,
 } from "../../utils/data.js";
 import AddReportNormal from "./addReportNormal.jsx";
 import AddReportWelding from "./addReportWelding.jsx";
@@ -37,6 +37,8 @@ const AddReport = () => {
         dimensionOne: true,
         dimensionTwo: true
     });
+
+    console.log("results", utResults);
 
     const [weldingTableData, setWeldingTableData] = useState(weldingTableInitial);
     const [utTableData, setUtTableData] = useState(utTableInitial);
@@ -165,7 +167,7 @@ const AddReport = () => {
             other_welding_props: JSON.stringify(otherWeldingProps || []),
             welding_table_data: JSON.stringify(weldingTableData || []),
             equipment_method: JSON.stringify(equipmentMethod || []),
-            ut_results: JSON.stringify(utTableResults || []),
+            ut_results: JSON.stringify(utResults || []),
             ut_table_data: JSON.stringify(utTableData || []),
             inspector_comments: JSON.stringify(comments || [])
         }

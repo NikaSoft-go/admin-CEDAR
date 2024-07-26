@@ -26,6 +26,7 @@ export default function PreviewReport() {
         blade: JSON.parse(report.blade || "{}"),
         asset_details: JSON.parse(report.asset_details || "{}"),
         equipments: JSON.parse(report.equipments || "{}"),
+        ut_results: JSON.parse(report.ut_results || "{}")?.rows || [],
         inspector_comments: JSON.parse(report.inspector_comments || "[]"),
     }
     console.log("report", report);

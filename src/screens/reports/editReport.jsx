@@ -442,18 +442,18 @@ const EditReport = () => {
                                 </div>
 
                                 {/* Procedure */}
-                                <div>
-                                    <label className="block text-gray-700 text-md font-bold mb-2">Procedure:</label>
-                                    <input
-                                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                        type="text"
-                                        placeholder="Procedure"
-                                        name="standards"
-                                        value={state.standards}
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                </div>
+                                {/*<div>*/}
+                                {/*    <label className="block text-gray-700 text-md font-bold mb-2">Procedure:</label>*/}
+                                {/*    <input*/}
+                                {/*        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"*/}
+                                {/*        type="text"*/}
+                                {/*        placeholder="Procedure"*/}
+                                {/*        name="standards"*/}
+                                {/*        value={state.standards}*/}
+                                {/*        onChange={handleChange}*/}
+                                {/*        required*/}
+                                {/*    />*/}
+                                {/*</div>*/}
 
                                 {/* Specification */}
                                 <div>
