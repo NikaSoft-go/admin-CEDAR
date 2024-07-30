@@ -8,6 +8,33 @@ const AddReportWelding = (props) => {
         <>
             <h3 className="font-bold mb-4">Client Details</h3>
             <div className="mb-10 grid grid-cols-1 md:grid-cols-2 gap-4">
+                {/* Asset Name */}
+                <div>
+                    <label className="block text-gray-700 text-md font-bold mb-2">Asset Name:</label>
+                    <input
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        type="text"
+                        placeholder="Asset Name"
+                        name="services"
+                        onChange={props.handleChange}
+                        required
+                    />
+                </div>
+
+                {/* Asset Serial Number */}
+                <div>
+                    <label className="block text-gray-700 text-md font-bold mb-2">Asset
+                        Serial Number:</label>
+                    <input
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        type="text"
+                        placeholder="Asset Serial Number"
+                        name="serial_number"
+                        onChange={props.handleChange}
+                        required
+                    />
+                </div>
+
                 {/* Client Name */}
                 <div>
                     <label className="block text-gray-700 text-md font-bold mb-2">Client:</label>
@@ -132,7 +159,7 @@ const AddReportWelding = (props) => {
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         type="text"
                         placeholder="Extent of Test"
-                        name="services"
+                        name="extent_test"
                         onChange={props.handleChange}
                         required
                     />
@@ -203,6 +230,18 @@ const AddReportWelding = (props) => {
                     />
                 </div>
 
+                {/* Weld Process */}
+                <div>
+                    <label className="block text-gray-700 text-md font-bold mb-2">Weld Process:</label>
+                    <input
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        type="text"
+                        placeholder="Weld Process"
+                        name="weld_process"
+                        onChange={props.handleChange}
+                    />
+                </div>
+
                 {/* PWHT */}
                 <div>
                     <label className="block text-gray-700 text-md font-bold mb-2">PWHT:</label>
@@ -242,18 +281,18 @@ const AddReportWelding = (props) => {
                     />
                 </div>
 
-                {/* Procedure */}
-                {/*<div>*/}
-                {/*    <label className="block text-gray-700 text-md font-bold mb-2">Procedure:</label>*/}
-                {/*    <input*/}
-                {/*        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"*/}
-                {/*        type="text"*/}
-                {/*        placeholder="Procedure"*/}
-                {/*        name="local_procedure_number"*/}
-                {/*        onChange={props.handleChange}*/}
-                {/*        required*/}
-                {/*    />*/}
-                {/*</div>*/}
+                 {/* Asset Model */}
+                <div>
+                    <label className="block text-gray-700 text-md font-bold mb-2">Asset Model:</label>
+                    <input
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        type="text"
+                        placeholder="Asset Model"
+                        name="asset_model"
+                        onChange={props.handleChange}
+                        required
+                    />
+                </div>
 
                 {/* Acceptance Criteria */}
                 <div>
@@ -450,7 +489,6 @@ const AddReportWelding = (props) => {
                                     onChange={(e) =>
                                         props.handleWeldingTableItemChange(index, 'size', e.target.value)
                                     }
-                                    required
                                 />
                             </td>
                             <td className="border p-2">
@@ -462,7 +500,6 @@ const AddReportWelding = (props) => {
                                     onChange={(e) =>
                                         props.handleWeldingTableItemChange(index, 'thickness', e.target.value)
                                     }
-                                    required
                                 />
                             </td>
                             <td className="border p-2">
@@ -474,7 +511,6 @@ const AddReportWelding = (props) => {
                                     onChange={(e) =>
                                         props.handleWeldingTableItemChange(index, 'remarks', e.target.value)
                                     }
-                                    required
                                 />
                             </td>
                             <td className="border p-2">
@@ -486,7 +522,6 @@ const AddReportWelding = (props) => {
                                     onChange={(e) =>
                                         props.handleWeldingTableItemChange(index, 'indications', e.target.value)
                                     }
-                                    required
                                 />
                             </td>
                             <td className="border p-2">
@@ -497,7 +532,6 @@ const AddReportWelding = (props) => {
                                     onChange={(e) =>
                                         props.handleWeldingTableItemChange(index, 'acc', e.target.value)
                                     }
-                                    required
                                 >
                                     <option value="">Select state</option>
                                     <option value="correct">Accepted</option>
@@ -513,7 +547,6 @@ const AddReportWelding = (props) => {
                                     onChange={(e) =>
                                         props.handleWeldingTableItemChange(index, 'rej', e.target.value)
                                     }
-                                    required
                                 />
                             </td>
                             <td className="border p-2">
@@ -670,6 +703,28 @@ const AddReportWelding = (props) => {
                         name="qualification"
                         onChange={(e) => props.handleChange(e, props.reviewerInfo, props.setReviewerInfo)}
                         required
+                    />
+                </div>
+            </div>
+
+            <label className="block text-gray-700 text-md font-bold mb-2">Stamp Files:</label>
+            <div className="mb-6 flex justify-start w-[100%]">
+                <div className="w-[100%]">
+                    <label className="block text-gray-700 text-md font-bold mb-2">Inspector Signature:</label>
+                    <input
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        type="file"
+                        name="inspector_signature"
+                        onChange={props.handleChange}
+                    />
+                </div>
+                <div className="w-[100%]">
+                    <label className="block text-gray-700 text-md font-bold mb-2">Reviewer Signature:</label>
+                    <input
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        type="file"
+                        name="reviewer_signature"
+                        onChange={props.handleChange}
                     />
                 </div>
             </div>

@@ -12,14 +12,6 @@
                                 <td><p>{data?.client_name}</p></td>
                             </tr>
                             <tr>
-                                <td></td>
-                                <td><p>{data?.client_address}</p></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td><p>{data?.client_city}, {data?.client_country}</p></td>
-                            </tr>
-                            <tr>
                                 <td>Location of Examination: </td>
                                 <td><p>{data?.examination_location}</p></td>
                             </tr>
@@ -31,24 +23,48 @@
                     <table className="section-table">
                         <tbody>
                             <tr>
-                                <td>Contract: </td>
+                                <td>Contract Name: </td>
                                 <td><p>{data?.contract || '-'}</p></td>
                             </tr>
                             <tr>
-                                <td>Work Order: </td>
-                                <td><p>{data?.work_order}</p></td>
+                                <td>Sample Selection: </td>
+                                <td><p>{data?.sample_selection}</p></td>
                             </tr>
                             <tr>
-                                <td>Purchase Order</td>
-                                <td><p>{data?.purchase_order || '-'}</p></td>
+                                <td>Drawing Reference</td>
+                                <td><p>{data?.client_job_reference || '-'}</p></td>
                             </tr>
                             <tr>
-                                <td>Client Job Reference: </td>
-                                <td><p>{data?.client_job_reference}</p></td>
+                                <td>Extend of Test: </td>
+                                <td><p>{data?.extent_test}</p></td>
                             </tr>
                             <tr>
-                                <td>Rig: </td>
-                                <td><p>{data?.rig}</p></td>
+                                <td>Size: </td>
+                                <td><p>{data?.size}</p></td>
+                            </tr>
+                            <tr>
+                                <td>Material: </td>
+                                <td><p>{data?.material}</p></td>
+                            </tr>
+                            <tr>
+                                <td>Thickness: </td>
+                                <td><p>{data?.thickness}</p></td>
+                            </tr>
+                            <tr>
+                                <td>Weld Prep: </td>
+                                <td><p>{data?.weld_prep}</p></td>
+                            </tr>
+                            <tr>
+                                <td>Weld Process: </td>
+                                <td><p>{data?.weld_process}</p></td>
+                            </tr>
+                            <tr>
+                                <td>PWHT: </td>
+                                <td><p>{data?.pwht}</p></td>
+                            </tr>
+                            <tr>
+                                <td>Temperature: </td>
+                                <td><p>{data?.temperature}°C</p></td>
                             </tr>
                         </tbody>
                     </table>
@@ -60,32 +76,12 @@
                 <table className="section-table">
                     <tbody>
                         <tr>
-                            <td>Report Number:</td>
-                            <td><p>{data?.report_number}</p></td>
-                        </tr>
-                        <tr>
-                            <td>Date of Examination</td>
-                            <td><p>{data?.examination_date}</p></td>
-                        </tr>
-                        <tr>
-                            <td>Date of Next Examination</td>
-                            <td><p>{data?.next_examination_date || '-'}</p></td>
-                        </tr>
-                        <tr>
-                            <td>Area of Examination: </td>
-                            <td><p>{data?.examination_area}</p></td>
-                        </tr>
-                        <tr>
-                            <td>Services: </td>
-                            <td><p>{data?.services}</p></td>
-                        </tr>
-                        <tr>
                             <td>Specification: </td>
-                            <td><p>{data?.local_procedure_number}</p></td>
+                            <td><p>{data?.specification}</p></td>
                         </tr>
                         <tr>
                             <td>Acceptance Criteria: </td>
-                            <td><p>{data?.drawing_number}</p></td>
+                            <td><p>{data?.acceptance_criteria}</p></td>
                         </tr>
                         <tr>
                             <td>Test Restrictions: </td>

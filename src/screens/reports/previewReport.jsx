@@ -6,6 +6,7 @@ import {useSelector} from "react-redux";
 import PageOne from "./pageOne.jsx";
 import PreviewReportNormal from "./previewReportNormal.jsx";
 import PreviewReportUltrasonicInspection from "./previewReportUltrasonicInspection.jsx";
+import PreviewReportWeldingInspection from "./previewReportWelding.jsx";
 
 
 export default function PreviewReport() {
@@ -79,6 +80,7 @@ export default function PreviewReport() {
 
                     {normalReportTypes.includes(report?.report_type) && <PreviewReportNormal report={report} />}
                     {report?.report_type === "Ultrasonic Inspection" && <PreviewReportUltrasonicInspection report={report} />}
+                    {report?.report_type === "Welding" && <PreviewReportWeldingInspection report={report} />}
                 </main>
             </div>
         </div>
