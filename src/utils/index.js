@@ -28,3 +28,21 @@ export const groupByIndices = (arrays) => {
 
     return result
 };
+
+export const titleCase = (str) => {
+    return str
+        .toLowerCase()
+        .split(' ')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
+}
+
+export const cleanHeaders = (data) => {
+    const firstItem = data.length ? data[0] : {};
+    return Object.keys(firstItem).map((header) => {
+        return header
+            .split("_")
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' ');
+    })
+}

@@ -636,3 +636,7 @@ li.font-bold {
     vertical-align: top;
     font-size: 12px;
 }
+
+.cell-bold {
+    font-weight: 500;
+}

@@ -6,7 +6,7 @@ import {useSelector} from "react-redux";
 import PageOne from "./pageOne.jsx";
 import PreviewReportNormal from "./previewReportNormal.jsx";
 import PreviewReportUltrasonicInspection from "./previewReportUltrasonicInspection.jsx";
-import PreviewReportWeldingInspection from "./previewReportWelding.jsx";
+import PreviewReportWeldingInspection from "./weldingReport/previewReportWelding.jsx";
 
 
 export default function PreviewReport() {
@@ -29,8 +29,10 @@ export default function PreviewReport() {
         equipments: JSON.parse(report.equipments || "{}"),
         ut_results: JSON.parse(report.ut_results || "{}")?.rows || [],
         inspector_comments: JSON.parse(report.inspector_comments || "[]"),
+        equipment_consumables: JSON.parse(report.equipment_consumables || "[]"),
+        other_welding_props: JSON.parse(report.other_welding_props || "[]"),
+        welding_table_data: JSON.parse(report.welding_table_data || "[]"),
     }
-    console.log("report", report);
     // Function to generate a single PDF by combining the content of all pages
     const generateCombinedPDF = () => {
         const combinedContent = [];
