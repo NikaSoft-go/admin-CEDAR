@@ -74,7 +74,7 @@ const Reports = () => {
                                     onClick={() => navigate(`/report/update/${report?.id}`)}
                                 >
                                     <div className="flex justify-between items-center cursor-pointer">
-                                        <h2 className="text-lg font-semibold mb-2">{report?.work_order}</h2>
+                                        <h2 className="text-lg font-semibold mb-2">{report?.report_type} - {report?.work_order}</h2>
                                         <div className="flex">
                                             <p onClick={(e) => previewReport(e, report?.id)}>
                                                 <IoEyeOutline size={16} fill="#288068

@@ -319,6 +319,31 @@ const AddReportNormal = (props) => {
                         required
                     />
                 </div>
+
+                {/* Asset Serial Number */}
+                <div>
+                    <label className="block text-gray-700 text-md font-bold mb-2">Asset Serial Number:</label>
+                    <input
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        type="text"
+                        placeholder="Asset Serial Number"
+                        name="serial_number"
+                        onChange={props.handleChange}
+                        required
+                    />
+                </div>
+                {/* Asset Name */}
+                <div>
+                    <label className="block text-gray-700 text-md font-bold mb-2">Asset Name:</label>
+                    <input
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        type="text"
+                        placeholder="Asset Name"
+                        name="asset_name"
+                        onChange={props.handleChange}
+                        required
+                    />
+                </div>
             </div>
 
             <h3 className="font-bold mb-4">Inspected by</h3>

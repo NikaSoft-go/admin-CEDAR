@@ -306,6 +306,10 @@ export const MPIReportTypeDataInitial = [
         value: '2300+',
     },
     {
+        property: "Pull Test",
+        value: 'Yes',
+    },
+    {
         property: "Initial Demagnetisation",
         value: '-',
     },
@@ -319,10 +323,6 @@ export const MPIReportTypeDataInitial = [
     },
     {
         property: "Preparation of surface before examination",
-        value: '-',
-    },
-    {
-        property: "Emulsification Time",
         value: '-',
     },
 ]
