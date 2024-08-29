@@ -83,11 +83,6 @@ export default function PreviewReport() {
                     {normalReportTypes.includes(report?.report_type) && <PreviewReportNormal report={report} />}
                     {report?.report_type === "Ultrasonic Inspection" && <PreviewReportUltrasonicInspection report={report} />}
                     {report?.report_type === "Welding" && <PreviewReportWeldingInspection report={report} />}
-
-                    <p style={{ fontSize: 14, margin: "30px 20px 20px", fontWeight: 700 }}>
-                        <i>Copyright of this report is owned by the Cedar Inspection Ventures (CIV) and may not be reproduced,
-                            distributed or communicated with any third party except with the prior written approval of CIV.</i>
-                    </p>
                 </main>
             </div>
         </div>
