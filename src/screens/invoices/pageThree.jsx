@@ -56,7 +56,7 @@ const PageThree = ({ data }) => {
             </div>
             <div className="cover-bottom">
                 <div className="cover-bottom-content px-3 flex items-center">
-                    <img src={LogoImage} className="pdf-logo"/>
+                    <img src={LogoImage} className="pdf-logo" alt={"logo-image"}/>
                     <div className="ml-12 flex justify-evenly w-[100%]">
                         <p className="text-white text-[13px]">Integrity Management</p>
                         <p className="text-white text-[13px]">NDT Inspection</p>
@@ -88,7 +88,7 @@ const PageThree = ({ data }) => {
                         <IoLocationSharp size={18} fill="#288068"/>
                     </div>
                     <div className="ml-2">
-                        <p className="text-[11px]">West-Tanakrom, Western region</p>
+                        <p className="text-[11px]">P.O.Box SQ 516</p>
                         <p className="text-[11px]">Tema Commununity 1, Greater Accra</p>
                         <p className="text-[11px]">Ghana, West Africa</p>
                     </div>

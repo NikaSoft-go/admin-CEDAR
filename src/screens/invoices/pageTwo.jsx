@@ -167,7 +167,7 @@ const PageTwo = ({ data }) => {
                         <IoLocationSharp size={18} fill="#288068"/>
                     </div>
                     <div className="ml-2">
-                        <p className="text-[11px]">West-Tanakrom, Western region</p>
+                        <p className="text-[11px]">P.O.Box SQ 516</p>
                         <p className="text-[11px]">Tema Commununity 1, Greater Accra</p>
                         <p className="text-[11px]">Ghana, West Africa</p>
                     </div>

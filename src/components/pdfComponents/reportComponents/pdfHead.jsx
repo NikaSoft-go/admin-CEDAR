@@ -9,8 +9,8 @@ export const PdfHead = () => {
                 </div>
                 <div>
                     <p>Cedar Inspection Ventures</p>
-                    <p>West-Tanokrom</p>
-                    <p>Takoradi, Ghana</p>
+                    <p>Tema Community 1, Greater Accra</p>
+                    <p>Ghana, West-Africa</p>
                 </div>
             </div>
             <div className="bg-[#D8D8D8] font-bold text-[14px] text-center pb-2 pl-2">
