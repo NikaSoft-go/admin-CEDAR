@@ -12,6 +12,7 @@ export const BottomTag = () => {
                     <p className="text-white text-[13px] font-bold">NDT Inspection</p>
                     <p className="text-white text-[13px] font-bold">OCTG Inspection</p>
                     <p className="text-white text-[13px] font-bold">Lifting Inspection</p>
+                    <p className="text-white text-[13px] font-bold">Factory Inspection</p>
                 </div>
             </div>
         </div>

@@ -564,14 +564,6 @@ li.font-bold {
     border: 1px solid #000;
 }
 
-.drawing-image-one {
-    padding: 10px 10px 20px;
-}
-
-.drawing-image-one img {
-    max-height: 280px;
-}
-
 .drawing-image-two {
     border-left: 1px solid #000;
     border-bottom: 1px solid #000;
@@ -584,6 +576,11 @@ li.font-bold {
 
 .drawing-note {
     border-left: 1px solid #000;
+}
+
+.drawing-image-one .drawing-image-two,
+.drawing-image-one .drawing-note{
+    border-left: none;
 }
 
 .report-page-two tr td {

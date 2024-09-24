@@ -507,7 +507,7 @@ const AddReportUltrasonicThickness = (props) => {
                                     className="remove-btn rounded p-1"
                                     onClick={() => props.handleRemoveUTTableItem(index)}
                                 >
-                                    <FiTrash2 />
+                                    <FiTrash2/>
                                 </button>
                             </td>
                         </tr>
@@ -519,7 +519,7 @@ const AddReportUltrasonicThickness = (props) => {
                     className="add-item-btn text-white rounded px-2 py-1"
                     onClick={props.handleAddUTTableItem}
                 >
-                    <IoMdAddCircleOutline />
+                    <IoMdAddCircleOutline/>
                 </button>
             </div>
 
@@ -546,25 +546,36 @@ const AddReportUltrasonicThickness = (props) => {
                     />
                 </div>
             </div>
-            <div className="mb-6 w-[100%]">
-                <label className="block text-gray-700 text-md font-bold mb-2">Drawing Note:</label>
-                <textarea
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    placeholder="Drawing Note"
-                    name="drawing_note"
-                    onChange={props.handleChange}
-                    required
-                ></textarea>
+            <div className={"flex justify-start"}>
+                <div className="mb-6 w-[100%]">
+                    <label className="block text-gray-700 text-md font-bold mb-2">Drawing Note 1:</label>
+                    <textarea
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        placeholder="Drawing Note 1"
+                        name="drawing_note_one"
+                        onChange={props.handleChange}
+                        required
+                    ></textarea>
+                </div>
+                <div className="ml-2 mb-6 w-[100%]">
+                    <label className="block text-gray-700 text-md font-bold mb-2">Drawing Note 2:</label>
+                    <textarea
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        placeholder="Drawing Note 2"
+                        name="drawing_note"
+                        onChange={props.handleChange}
+                        required
+                    ></textarea>
+                </div>
             </div>
-
             <div className="mb-6 w-[100%]">
                 <label className="block text-gray-700 text-md font-bold mb-2">Ultrasonic Inspection Results:</label>
-                <UTTableSection setResults={props.setUtResults} />
+                <UTTableSection setResults={props.setUtResults}/>
             </div>
 
             <div className="mb-6 w-[100%]">
                 <label className="block text-gray-700 text-md font-bold mb-2">Inspector&apos;s comment:</label>
-                <IncrementalList setComments={props.setComments} />
+                <IncrementalList setComments={props.setComments}/>
             </div>
 
             <h3 className="font-bold mb-4">Inspected by</h3>

@@ -141,6 +141,7 @@ const PageTwo = ({ data }) => {
                         <p className="text-white text-[13px]">NDT Inspection</p>
                         <p className="text-white text-[13px]">OCTG Inspection</p>
                         <p className="text-white text-[13px]">Lifting Inspection</p>
+                        <p className="text-white text-[13px] font-bold">Factory Inspection</p>
                     </div>
                 </div>
             </div>

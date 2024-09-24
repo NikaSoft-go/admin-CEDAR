@@ -423,6 +423,10 @@ export const equipmentTechniqueInitial = [
         property: "Time base Range(s)",
         value: '',
     },
+    {
+        property: "Velocity",
+        value: '',
+    },
 ]
 
 export const otherEquipmentsProps = [

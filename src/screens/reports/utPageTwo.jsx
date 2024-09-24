@@ -65,7 +65,7 @@ const UTPageTwo = ({ data }) => {
                         </tr>
                         <tr>
                             {equipmentMethods?.slice(4,8).map((elt, index) =>
-                                <td style={{ borderBottom: 0}} key={index} colSpan={index === 1 ? 2 : 1}><b>{elt?.property}: </b>{elt?.value}</td>
+                                <td style={{ borderBottom: 0}} key={index}><b>{elt?.property}: </b>{elt?.value}</td>
                             )}
                         </tr>
                         </tbody>
@@ -105,17 +105,22 @@ const UTPageTwo = ({ data }) => {
                     <div className="report-section-head">
                         <p className={"text-[14px] font-bold text-center uppercase"}>Drawing</p>
                     </div>
-                    <div className={"flex justify-between drawing-images"} style={{ height: 300 }}>
-                        <div className={"drawing-image-one"}>
-                            {data?.drawing_image_one_url &&
-                                <img
-                                    src={generateImageUrl(data?.drawing_image_one_url)}
-                                    alt={"drawing image one"}
-                                />
-                            }
+                    <div className={"flex justify-between drawing-images"} style={{height: 300}}>
+                        <div className={"flex flex-col justify-between drawing-image-one"}>
+                            <div className={"drawing-image-two"} style={{height: '70%'}}>
+                                {data?.drawing_image_one_url &&
+                                    <img
+                                        src={generateImageUrl(data?.drawing_image_one_url)}
+                                        alt={"drawing image one"}
+                                    />
+                                }
+                            </div>
+                            <div className={"drawing-note p-2"} style={{height: '30%'}}>
+                                {data?.drawing_note_one}
+                            </div>
                         </div>
                         <div className={"flex flex-col justify-between"}>
-                            <div className={"drawing-image-two"} style={{ height: '70%'}}>
+                            <div className={"drawing-image-two"} style={{height: '70%'}}>
                                 {data?.drawing_image_two_url &&
                                     <img
                                         src={generateImageUrl(data?.drawing_image_two_url)}
@@ -123,14 +128,14 @@ const UTPageTwo = ({ data }) => {
                                     />
                                 }
                             </div>
-                            <div className={"drawing-note p-2"} style={{ height: '30%'}}>
+                            <div className={"drawing-note p-2"} style={{height: '30%'}}>
                                 {data?.drawing_note}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <BottomTag />
+            <BottomTag/>
         </div>
     )
 }
