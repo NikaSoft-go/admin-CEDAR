@@ -57,7 +57,7 @@ const Invoices = () => {
                         <h1 className="text-2xl font-semibold mb-4">Job Quotations</h1>
                         <div className="mb-4 flex justify-between items-center">
                             <p className="text-gray-600">
-                                Total Job Quotations: <span className="font-bold">{totalInvoices}</span>
+                                Total Invoices: <span className="font-bold">{totalInvoices}</span>
                             </p>
                             <Link
                                 to="/add-invoice"

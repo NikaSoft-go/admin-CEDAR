@@ -74,7 +74,7 @@ const JobQuotations = () => {
                                     onClick={() => navigate(`/job-quotation/update/${invoice?.id}`)}
                                 >
                                     <div className="flex justify-between items-center cursor-pointer">
-                                        <h2 className="text-lg font-semibold mb-2">{invoice?.quote_number}</h2>
+                                        <h2 className="text-lg font-semibold mb-2">{invoice?.invoice_type} - {invoice?.invoice_name}</h2>
                                         <div className="flex">
                                             <p onClick={(e) => previewInvoice(e, invoice?.id)}>
                                                 <IoEyeOutline size={16} fill="#288068
