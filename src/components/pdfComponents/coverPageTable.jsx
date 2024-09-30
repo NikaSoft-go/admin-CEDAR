@@ -18,7 +18,7 @@ const TableWithHeader = ({ data }) => {
                 </tr>
                 <tr>
                     <td className="data-cell">Quote Number</td>
-                    <td className="data-cell">{data?.quote_number}</td>
+                    <td className="data-cell">{data?.invoice_type}</td>
                 </tr>
                 <tr>
                     <td className="data-cell">Client</td>
