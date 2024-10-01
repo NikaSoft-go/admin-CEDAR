@@ -11,7 +11,7 @@ const FormComponent = ({ setResults }) => {
     const handleChange = (event, rowIndex, degree, valueKey) => {
         const { name, value } = event.target;
 
-        if (name === 'rowName') {
+        if (name === `rowName_${rowIndex}`) {
             setFormData((prevData) => ({
                 ...prevData,
                 rows: prevData.rows.map((row, index) =>

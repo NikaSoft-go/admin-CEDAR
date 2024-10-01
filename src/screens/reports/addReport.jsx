@@ -38,8 +38,6 @@ const AddReport = () => {
         dimensionTwo: true
     });
 
-    console.log("results", utResults);
-
     const [weldingTableData, setWeldingTableData] = useState(weldingTableInitial);
     const [utTableData, setUtTableData] = useState(utTableInitial);
 
