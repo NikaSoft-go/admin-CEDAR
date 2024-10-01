@@ -39,6 +39,15 @@ const FormComponent = ({ setResults }) => {
         }
     };
 
+    const createDegrees = (degrees) => {
+        return degrees.reduce((acc, curr) => {
+            return {
+                ...acc,
+                [curr]: { value1: '', value2: '' },
+            }
+        }, {});
+    }
+
     const handleAddRow = () => {
         setFormData((prevData) => ({
             ...prevData,
@@ -46,10 +55,7 @@ const FormComponent = ({ setResults }) => {
                 ...prevData.rows,
                 {
                     rowName: '',
-                    degrees: {
-                        '0': { value1: '', value2: '' },
-                        '90': { value1: '', value2: '' },
-                    },
+                    degrees: createDegrees(Object.keys(prevData.rows[0].degrees)),
                 },
             ],
         }));
