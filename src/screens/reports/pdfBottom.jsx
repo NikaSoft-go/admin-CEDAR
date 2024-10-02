@@ -1,4 +1,4 @@
-import {formatDate, generateImageUrl} from "../../utils/index.js";
+import {generateImageUrl} from "../../utils/index.js";
 
 
 const PdfBottom = ({ data }) => {
@@ -51,8 +51,8 @@ const PdfBottom = ({ data }) => {
                 </tr>
                 <tr>
                     <td>Date</td>
-                    <td>{formatDate(data?.issuer?.date)}</td>
-                    <td>{formatDate(data?.quality_controller?.date)}</td>
+                    <td>{data?.issuer?.date}</td>
+                    <td>{data?.quality_controller?.date}</td>
                 </tr>
                 </tbody>
             </table>
