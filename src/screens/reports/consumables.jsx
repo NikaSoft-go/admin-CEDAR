@@ -6,7 +6,7 @@ const ConsumablesSection = ({ data }) => {
     const tableItems = groupByIndices(data?.map((elt) => elt?.values));
 
     return (
-        <div className="mt-12">
+        <div style={{ marginTop: 140 }}>
             <p className="text-[14px] font-bold mb-2">Consumables</p>
             <table className="equipment_table w-[100%]">
                 <thead>

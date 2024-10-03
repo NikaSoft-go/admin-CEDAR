@@ -3,7 +3,7 @@ import {generateImageUrl} from "../../utils/index.js";
 
 const PdfBottom = ({ data }) => {
     return (
-        <div className="mt-3 pdf_bottom">
+        <div className="mt-2 pdf_bottom">
             <table className="w-[100%]">
                 <thead>
                 <tr>
@@ -56,7 +56,7 @@ const PdfBottom = ({ data }) => {
                 </tr>
                 </tbody>
             </table>
-            <p style={{fontSize: 14, margin: "30px 20px 20px", fontWeight: 700}}>
+            <p style={{fontSize: 14, margin: "15px 20px 20px", fontWeight: 700}}>
                 <i>Copyright of this report is owned by the Cedar Inspection Ventures (CIV) and may not be reproduced,
                     distributed or communicated with any third party except with the prior written approval of CIV.</i>
             </p>

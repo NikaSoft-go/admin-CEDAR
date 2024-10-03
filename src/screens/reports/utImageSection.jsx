@@ -11,7 +11,7 @@ const UTImageSection = ({ data }) => {
                 {data?.map((elt, index) =>
                     <div key={index} className="image-card" style={{ padding: 0}}>
                         <div className="image-wrapper mb-5 p-2">
-                            <img src={getImageFullPath(elt?.file)} alt="" style={{ width: 200, height: 200}}/>
+                            <img src={getImageFullPath(elt?.file)} alt="" style={{ width: 160, height: 160}}/>
                         </div>
                         <div
                             className={"w-[100%] text-center"}

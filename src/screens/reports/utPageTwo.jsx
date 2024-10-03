@@ -1,5 +1,4 @@
 import {generateImageUrl} from "../../utils/index.js";
-import {BottomTag} from "../../components/pdfComponents/bottomTag.jsx";
 
 const UTPageTwo = ({ data }) => {
     const equipmentMethods = JSON.parse(data?.equipment_method || "[]");
@@ -7,7 +6,7 @@ const UTPageTwo = ({ data }) => {
     return (
         <div>
             <div className="mx-6 mt-3 mb-6 report-page-two">
-                <div className="mt-5">
+                <div className="mt-3">
                     <div className="report-section-head">
                         <p className={"text-[14px] font-bold text-center uppercase"}>Report Details</p>
                     </div>
@@ -52,7 +51,7 @@ const UTPageTwo = ({ data }) => {
                     </table>
                 </div>
 
-                <div className={"mt-10"}>
+                <div className={"mt-3"}>
                     <div className="report-section-head">
                         <p className={"text-[14px] font-bold text-center uppercase"}>Equipment, Technique & Application Method</p>
                     </div>
@@ -101,7 +100,7 @@ const UTPageTwo = ({ data }) => {
                         </tbody>
                     </table>
                 </div>
-                <div className={"mt-10"} style={{ marginBottom: 228 }}>
+                <div className={"mt-3"} style={{ marginBottom: 40 }}>
                     <div className="report-section-head">
                         <p className={"text-[14px] font-bold text-center uppercase"}>Drawing</p>
                     </div>
@@ -135,7 +134,7 @@ const UTPageTwo = ({ data }) => {
                     </div>
                 </div>
             </div>
-            <BottomTag/>
+            {/*<BottomTag/>*/}
         </div>
     )
 }

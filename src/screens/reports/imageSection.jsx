@@ -10,7 +10,7 @@ const ImageSection = ({ data }) => {
                 {data?.map((elt, index) =>
                     <div key={index} className="image-card">
                         <div className="image-wrapper">
-                            <img src={getImageFullPath(elt?.file)} alt="" style={{ width: 200, height: 200}}/>
+                            <img src={getImageFullPath(elt?.file)} alt="" style={{ width: 160, height: 160}}/>
                         </div>
                         <p>{elt?.name}</p>
                     </div>

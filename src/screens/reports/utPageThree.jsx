@@ -36,7 +36,7 @@ const UTPageThree = ({ data }) => {
                         </tbody>
                     </table>
                 </div>
-                <div className={"mt-8 flex justify-between"} style={{ border: "1px solid #000"}}>
+                <div className={"mt-5 flex justify-between"} style={{ border: "1px solid #000"}}>
                     <div style={{ width: "30%", backgroundColor: "#999999", padding: 10}}>
                         <p className={"uppercase"} style={{ fontSize: 12 }}><b>Inspector&apos;s Comment: </b></p>
                     </div>
