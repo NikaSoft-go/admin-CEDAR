@@ -105,7 +105,7 @@ const UTPageTwo = ({ data }) => {
                     <div className="report-section-head">
                         <p className={"text-[14px] font-bold text-center uppercase"}>Drawing</p>
                     </div>
-                    <div className={"flex justify-between drawing-images"} style={{height: 300}}>
+                    <div className={"flex justify-between drawing-images"}>
                         <div className={"flex flex-col justify-between drawing-image-one"}>
                             <div className={"drawing-image-two"} style={{height: '70%'}}>
                                 {data?.drawing_image_one_url &&
@@ -115,7 +115,7 @@ const UTPageTwo = ({ data }) => {
                                     />
                                 }
                             </div>
-                            <div className={"drawing-note p-2"} style={{height: '30%'}}>
+                            <div className={"drawing-note p-2"}>
                                 {data?.drawing_note_one}
                             </div>
                         </div>
@@ -128,7 +128,7 @@ const UTPageTwo = ({ data }) => {
                                     />
                                 }
                             </div>
-                            <div className={"drawing-note p-2"} style={{height: '30%'}}>
+                            <div className={"drawing-note p-2"}>
                                 {data?.drawing_note}
                             </div>
                         </div>
