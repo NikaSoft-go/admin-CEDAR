@@ -422,6 +422,20 @@ const EditInvoice = () => {
                                         required
                                     />
                                 </div>
+
+                                {/* Approver Contact */}
+                                <div>
+                                    <label className="block text-gray-700 text-md font-bold mb-2">Approver Contact:</label>
+                                    <input
+                                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        type="text"
+                                        placeholder="Approver Contact"
+                                        name="approver_contact"
+                                        value={state.approver_contact}
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                </div>
                             </div>
 
                             <Button>Update Invoice</Button>

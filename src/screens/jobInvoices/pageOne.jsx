@@ -91,13 +91,27 @@ const JobInvoicePreviewPageOne = ({ data }) => {
                         </div>
                     </div>
                     <div>
-                        <div className="mt-5 mb-6">
-                            <p className="text-[#8B8989]">Approved By</p>
-                            <p>{data?.approver}</p>
-                            <p className="text-[#8B8989] mt-3">Date</p>
-                            <p style={{marginTop: 20}}>______________</p>
-                            <p className="text-[#8B8989] mt-3">Signature</p>
-                            <p style={{marginTop: 30}}>________________</p>
+                        <div className="mt-5 mb-6 flex flex-col">
+                            <div className={'flex justify-between'}>
+                                <div>
+                                    <p className="text-[#8B8989]">Approved By:</p>
+                                    <p>{data?.approver}</p>
+                                </div>
+                                <div style={{marginLeft: 10}}>
+                                    <p className="text-[#8B8989]">Contact:</p>
+                                    <p>{data?.approver_contact}</p>
+                                </div>
+                            </div>
+                            <div className={'flex justify-between'}>
+                                <div>
+                                    <p className="text-[#8B8989] mt-3">Date:</p>
+                                    <p style={{marginTop: 30}}>________________</p>
+                                </div>
+                                <div style={{marginLeft: 10}}>
+                                    <p className="text-[#8B8989] mt-3">Signature:</p>
+                                    <p style={{marginTop: 30}}>_____________________</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
