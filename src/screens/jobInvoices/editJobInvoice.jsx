@@ -72,7 +72,8 @@ const EditInvoice = () => {
     const getInvoice = async (id) => {
         try {
             const resp = await axiosClient.get(`/job-invoices/get-job-invoice/${id}/`);
-            const {invoice_number: _, invoice_data, ...otherData} = resp.data.data;
+            // eslint-disable-next-line no-unused-vars
+            const {invoice_number, invoice_data, ...otherData} = resp.data.data;
             setState(otherData);
             setCostItems(JSON.parse(invoice_data));
         } catch (err) {
@@ -255,13 +256,27 @@ const EditInvoice = () => {
                             </div>
 
                             <div className="mb-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-                                {/* NHL */}
+                                {/* NHL % */}
                                 <div>
                                     <label className="block text-gray-700 text-md font-bold mb-2">NHL (%):</label>
                                     <input
                                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         type="text"
-                                        placeholder="NHL"
+                                        placeholder="NHL Percent"
+                                        name="nhl_percent"
+                                        value={state.nhl_percent}
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                </div>
+
+                                {/* NHL Amount */}
+                                <div>
+                                    <label className="block text-gray-700 text-md font-bold mb-2">NHL Amount:</label>
+                                    <input
+                                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        type="text"
+                                        placeholder="NHL Amount"
                                         name="nhl"
                                         value={state.nhl}
                                         onChange={handleChange}
@@ -269,13 +284,27 @@ const EditInvoice = () => {
                                     />
                                 </div>
 
-                                {/* GETFL */}
+                                {/* GETFL % */}
                                 <div>
-                                    <label className="block text-gray-700 text-md font-bold mb-2">GETFL (%)</label>
+                                    <label className="block text-gray-700 text-md font-bold mb-2">GETFL (%):</label>
                                     <input
                                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         type="text"
-                                        placeholder="GETFL"
+                                        placeholder="GETFL Percent"
+                                        name="getfl_percent"
+                                        value={state.getfl_percent}
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                </div>
+
+                                {/* GETFL Amount*/}
+                                <div>
+                                    <label className="block text-gray-700 text-md font-bold mb-2">GETFL Amount:</label>
+                                    <input
+                                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        type="text"
+                                        placeholder="GETFL Amount"
                                         name="getfl"
                                         value={state.getfl}
                                         onChange={handleChange}
@@ -283,13 +312,27 @@ const EditInvoice = () => {
                                     />
                                 </div>
 
-                                {/* COVID */}
+                                {/* COVID % */}
                                 <div>
                                     <label className="block text-gray-700 text-md font-bold mb-2">COVID (%):</label>
                                     <input
                                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         type="text"
-                                        placeholder="COVID"
+                                        placeholder="COVID Percent"
+                                        name="covid_percent"
+                                        value={state.covid_percent}
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                </div>
+
+                                {/* COVID Amount */}
+                                <div>
+                                    <label className="block text-gray-700 text-md font-bold mb-2">COVID Amount:</label>
+                                    <input
+                                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        type="text"
+                                        placeholder="COVID Amount"
                                         name="covid"
                                         value={state.covid}
                                         onChange={handleChange}
@@ -297,13 +340,27 @@ const EditInvoice = () => {
                                     />
                                 </div>
 
-                                {/* VAT */}
+                                {/* VAT % */}
                                 <div>
-                                    <label className="block text-gray-700 text-md font-bold mb-2">VAT:</label>
+                                    <label className="block text-gray-700 text-md font-bold mb-2">VAT (%):</label>
                                     <input
                                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         type="text"
-                                        placeholder="VAT"
+                                        placeholder="VAT Percent"
+                                        name="vat_percent"
+                                        value={state.vat_percent}
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                </div>
+
+                                {/* VAT Amount */}
+                                <div>
+                                    <label className="block text-gray-700 text-md font-bold mb-2">VAT Amount:</label>
+                                    <input
+                                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        type="text"
+                                        placeholder="VAT Amount"
                                         name="vat"
                                         value={state.vat}
                                         onChange={handleChange}
@@ -347,6 +404,20 @@ const EditInvoice = () => {
                                         placeholder="Total amount"
                                         name="total_amount"
                                         value={state.total_amount}
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                </div>
+
+                                {/* Approved by */}
+                                <div>
+                                    <label className="block text-gray-700 text-md font-bold mb-2">Approved By:</label>
+                                    <input
+                                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        type="text"
+                                        placeholder="Approved By"
+                                        name="approver"
+                                        value={state.approver}
                                         onChange={handleChange}
                                         required
                                     />
