@@ -87,7 +87,7 @@ const JobInvoicePreviewPageOne = ({ data }) => {
                         <div className="mt-5 mb-6">
                             <p>Name of Bank: {data?.bank_name}</p>
                             <p>Account number: {data?.account_number}</p>
-                            <p>Routing: {data?.routing}</p>
+                            <p>Swift code / sort code: {data?.routing}</p>
                         </div>
                     </div>
                     <div>
