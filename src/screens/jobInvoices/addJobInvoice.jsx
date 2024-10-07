@@ -399,6 +399,43 @@ const AddJobInvoice = () => {
                                         required
                                     />
                                 </div>
+
+                                {/* Account Number */}
+                                <div>
+                                    <label className="block text-gray-700 text-md font-bold mb-2">Account Number:</label>
+                                    <input
+                                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        type="text"
+                                        placeholder="Account Number"
+                                        name="account_number"
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                </div>
+
+                               {/* Bank Name */}
+                                <div>
+                                    <label className="block text-gray-700 text-md font-bold mb-2">Bank Name:</label>
+                                    <input
+                                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        type="text"
+                                        placeholder="Bank Name"
+                                        name="bank_name"
+                                        onChange={handleChange}
+                                    />
+                                </div>
+                                
+                                {/* Routing */}
+                                <div>
+                                    <label className="block text-gray-700 text-md font-bold mb-2">Swift code / sort code:</label>
+                                    <input
+                                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        type="text"
+                                        placeholder="Swift code / sort code"
+                                        name="routing"
+                                        onChange={handleChange}
+                                    />
+                                </div>
                             </div>
 
                             <Button>Add Invoice</Button>
