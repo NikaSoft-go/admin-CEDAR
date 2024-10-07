@@ -23,7 +23,7 @@ const Invoices = () => {
     const deleteInvoice = async (e, id) => {
         e.stopPropagation()
         try {
-            const response = await axiosClient.delete(`/invoices/delete-invoice/${id}`);
+            const response = await axiosClient.delete(`/invoices/delete-job-invoice/${id}`);
             toast.success(response.data?.message);
             getAllInvoices();
         } catch (e) {
