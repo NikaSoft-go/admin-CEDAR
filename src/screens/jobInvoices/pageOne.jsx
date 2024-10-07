@@ -57,7 +57,7 @@ const JobInvoicePreviewPageOne = ({ data }) => {
                                 <td>{elt.quantity}</td>
                                 <td>{elt.description}</td>
                                 <td className="text-right">{elt.unitPrice}</td>
-                                <td className="text-right">{data?.currency} {parseFloat(elt.totalCost)?.toLocaleString()}</td>
+                                <td className="text-right">{data?.currency} {elt.totalCost}</td>
                             </tr>
                         )}
                     </tbody>
@@ -65,13 +65,13 @@ const JobInvoicePreviewPageOne = ({ data }) => {
                 <div className="mt-6">
                     <table className="w-[100%] flex justify-end">
                         <tbody>
-                            <tr><td><span className="text-[#8B8989] mr-3">Subtotal:</span> {data?.currency} {parseFloat(data?.subtotal)?.toLocaleString()}</td></tr>
-                            <tr><td><span className="text-[#8B8989] mr-3">NHL ({data?.nhl_percent}%):</span>{data?.currency} {data?.nhl?.toLocaleString()}</td></tr>
-                            <tr><td><span className="text-[#8B8989] mr-3">GETFL ({data?.getfl_percent}%):</span>{data?.currency} {data?.getfl?.toLocaleString()}</td></tr>
-                            <tr><td><span className="text-[#8B8989] mr-3">COVID ({data?.covid_percent}%):</span>{data?.currency} {data?.covid?.toLocaleString()}</td></tr>
+                            <tr><td><span className="text-[#8B8989] mr-3">Subtotal:</span> {data?.currency} {data?.subtotal}</td></tr>
+                            <tr><td><span className="text-[#8B8989] mr-3">NHL ({data?.nhl_percent}%):</span>{data?.currency} {data?.nhl}</td></tr>
+                            <tr><td><span className="text-[#8B8989] mr-3">GETFL ({data?.getfl_percent}%):</span>{data?.currency} {data?.getfl}</td></tr>
+                            <tr><td><span className="text-[#8B8989] mr-3">COVID ({data?.covid_percent}%):</span>{data?.currency} {data?.covid}</td></tr>
                             <tr><td><span className="text-[#8B8989] mr-3">Total Before tax:</span> {data?.currency} {data?.total_before_tax}</td></tr>
-                            <tr><td><span className="text-[#8B8989] mr-3">VAT ({data?.vat_percent}%):</span>{data?.currency} {data?.vat?.toLocaleString()}</td></tr>
-                            <tr><td><span className="text-[#8B8989] mr-3">Total Amount:</span> <span className="font-bold">{data?.currency} {data?.total_amount?.toLocaleString()}</span></td></tr>
+                            <tr><td><span className="text-[#8B8989] mr-3">VAT ({data?.vat_percent}%):</span>{data?.currency} {data?.vat}</td></tr>
+                            <tr><td><span className="text-[#8B8989] mr-3">Total Amount:</span> <span className="font-bold">{data?.currency} {data?.total_amount}</span></td></tr>
                         </tbody>
 
                     </table>
