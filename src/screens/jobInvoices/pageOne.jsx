@@ -85,9 +85,9 @@ const JobInvoicePreviewPageOne = ({ data }) => {
                             <p>Payment is due within 15 days</p>
                         </div>
                         <div className="mt-5 mb-6">
-                            <p>Name of Bank</p>
-                            <p>Account number: 12346382322</p>
-                            <p>Routing: 727387282</p>
+                            <p>Name of Bank: {data?.bank_name}</p>
+                            <p>Account number: {data?.account_number}</p>
+                            <p>Routing: {data?.routing}</p>
                         </div>
                     </div>
                     <div>
