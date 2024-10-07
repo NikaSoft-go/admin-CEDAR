@@ -130,7 +130,7 @@ const EditInvoice = () => {
                                     <label className="block text-gray-700 text-md font-bold mb-2">Invoice Date:</label>
                                     <input
                                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                        type="date"
+                                        type="text"
                                         placeholder="Invoice Date"
                                         name="invoice_date"
                                         value={state.invoice_date}
@@ -144,7 +144,7 @@ const EditInvoice = () => {
                                     <label className="block text-gray-700 text-md font-bold mb-2">Due date:</label>
                                     <input
                                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                        type="date"
+                                        type="text"
                                         placeholder="Due date"
                                         name="due_date"
                                         value={state.due_date}
