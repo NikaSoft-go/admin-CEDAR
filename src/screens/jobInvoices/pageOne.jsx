@@ -1,4 +1,3 @@
-import {formatDate} from "../../utils/index.js";
 import LogoImage from "../../assets/logo.png";
 import {FaGlobe} from "react-icons/fa";
 import {IoLocationSharp} from "react-icons/io5";
@@ -28,13 +27,13 @@ const JobInvoicePreviewPageOne = ({ data }) => {
                          <tr>
                              <td className="uppercase text-[#8B8989] font-bold text-right text-[15px]">Invoice Date</td>
                              <td className="text-[15px]">
-                                 <p className="ml-2">{formatDate(data?.invoice_date)}</p>
+                                 <p className="ml-2">{data?.invoice_date}</p>
                              </td>
                          </tr>
                          <tr>
                              <td className="uppercase text-[#8B8989] font-bold text-right text-[15px]">Due Date</td>
                              <td className="text-[15px]">
-                                 <p className="ml-2">{formatDate(data?.due_date)}</p>
+                                 <p className="ml-2">{data?.due_date}</p>
                              </td>
                          </tr>
                       </tbody>
@@ -82,7 +81,7 @@ const JobInvoicePreviewPageOne = ({ data }) => {
                     <div>
                         <div className="mt-8">
                             <p className="text-[#8B8989]">Terms & Conditions</p>
-                            <p>Payment is due within 15 days</p>
+                            <p>{data?.terms_and_conditions}</p>
                         </div>
                         <div className="mt-5 mb-6">
                             <p>Name of Bank: {data?.bank_name}</p>
