@@ -26,7 +26,7 @@ const EditInvoice = () => {
     const handleChange = (e) => {
         setState({
             ...state,
-            [e.target.name]: e.target.value
+            [e.target.name]: e.target.files ? e.target.files[0] : e.target.value
         })
     }
 
@@ -486,6 +486,18 @@ const EditInvoice = () => {
                                         placeholder="Terms and Conditions"
                                         name="terms_and_conditions"
                                         value={state.terms_and_conditions}
+                                        onChange={handleChange}
+                                    />
+                                </div>
+
+                                {/* Company logo */}
+                                <div>
+                                    <label className="block text-gray-700 text-md font-bold mb-2">Company Logo:</label>
+                                    <input
+                                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        type="file"
+                                        placeholder="Company Logo"
+                                        name="company_logo"
                                         onChange={handleChange}
                                     />
                                 </div>

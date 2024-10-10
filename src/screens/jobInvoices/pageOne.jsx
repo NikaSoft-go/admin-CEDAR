@@ -2,11 +2,19 @@ import LogoImage from "../../assets/logo.png";
 import {FaGlobe} from "react-icons/fa";
 import {IoLocationSharp} from "react-icons/io5";
 import {LuPenLine} from "react-icons/lu";
+import {getInvoiceImageFullPath} from "../../utils/index.js";
 
 
 const JobInvoicePreviewPageOne = ({ data }) => {
     return (
         <div className="mx-6 mt-3 mb-6">
+            <div className={"flex justify-center mb-5"}>
+                <img
+                    src={getInvoiceImageFullPath(data?.company_logo)}
+                    alt=""
+                    style={{width: 200, height: 100}}
+                />
+            </div>
             <div className="w-[100%] bg-[#288068] h-[40px]"></div>
             <div className="px-4 py-2">
               <h3 className="uppercase text-[20px] font-bold">Invoice</h3>

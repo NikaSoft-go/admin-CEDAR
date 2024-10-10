@@ -4,6 +4,10 @@ export const getImageFullPath = (fileName) => {
     return `${import.meta.env.VITE_APP_API_URL}/invoices/media/${fileName}`
 }
 
+export const getInvoiceImageFullPath = (fileName) => {
+    return `${import.meta.env.VITE_APP_API_URL}/media/${fileName}`
+}
+
 export const generateImageUrl = (dbUrl) => {
     return `${import.meta.env.VITE_APP_API_URL}${dbUrl}`
 }
