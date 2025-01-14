@@ -46,7 +46,7 @@ const AddJobQuotationsPage = () => {
             ]
         },
         {
-            category: "APEX Responsibilities",
+            category: "CIV's Responsibilities",
             values: [
                 'Provide Component Personnel for specified task(s).',
                 'Provide Flights, Visas, Accommodation, Transfers and Equipment logistics at cost +5% to client.',
@@ -93,7 +93,7 @@ const AddJobQuotationsPage = () => {
                 'Estimated duration for the proposed scope in: 5 days working (excluding Load Testing). ' +
                 'Note: Estimated durations are a best guess based on previous experience in the field ' +
                 'and do not take into account any operational or weather delays. Should there be an ' +
-                'extension of the proposed scope duration due to delays outside of APEX control, then ' +
+                'extension of the proposed scope duration due to delays outside of CIV control, then ' +
                 'the team & equipment day rate of USD 1,124.50 shall apply (excluding Load Testing). ' +
                 'These days will be verified on the timesheets',
             ]

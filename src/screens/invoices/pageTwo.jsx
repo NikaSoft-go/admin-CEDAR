@@ -178,8 +178,8 @@ const PageTwo = ({ data }) => {
                         <LuPenLine size={18} fill="#288068"/>
                     </div>
                     <div className="ml-2">
-                        <p className="text-[11px]">Reg No.: BN161481223</p>
-                        <p className="text-[11px]">Tin: P0059386088</p>
+                        <p className="text-[11px]">Reg No.: CS183851124</p>
+                        <p className="text-[11px]">Tin: C0064790371</p>
                     </div>
                 </div>
             </div>
