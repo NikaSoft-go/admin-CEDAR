@@ -106,7 +106,7 @@ const PageTwo = ({ data }) => {
                                     <p className="bg-[#288068] h-[5px]"></p>
                                 </th>
                                 <th>
-                                    <p className="mb-1">SCOPE</p>
+                                    <p className="mb-1">SCOPE / ITEM DESCRIPTION</p>
                                     <p className="bg-[#288068] h-[5px]"></p>
                                 </th>
                                 <th>
