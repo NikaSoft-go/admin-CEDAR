@@ -20,6 +20,21 @@ const EditInvoice = () => {
 
     const navigate = useNavigate();
 
+    const [termsAndConditions, setTermsAndConditions] = useState(['']);
+
+     const handleAddTermsAndConditions = () => {
+        setTermsAndConditions([
+            ...termsAndConditions,
+            "",
+        ]);
+    };
+
+    const handleRemoveTermsAndConditions = (index) => {
+        const updatedTermsAndConditions = [...termsAndConditions];
+        updatedTermsAndConditions.splice(index, 1);
+        setTermsAndConditions(updatedTermsAndConditions);
+    };
+
     const [state, setState] = useState({});
     const {id} = useParams();
 
@@ -33,7 +48,7 @@ const EditInvoice = () => {
     const handleAddCostItem = () => {
         setCostItems([
             ...costItems,
-            { item: '', scope: '', quantity: '', unitPrice: '', totalCost: '' },
+            {item: '', scope: '', quantity: '', unitPrice: '', totalCost: ''},
         ]);
     };
 
@@ -54,6 +69,7 @@ const EditInvoice = () => {
         try {
             const payload = {
                 ...state,
+                terms_and_conditions: JSON.stringify(termsAndConditions),
                 invoice_data: JSON.stringify(costItems),
             }
 
@@ -73,13 +89,21 @@ const EditInvoice = () => {
         try {
             const resp = await axiosClient.get(`/job-invoices/get-job-invoice/${id}/`);
             // eslint-disable-next-line no-unused-vars
-            const {invoice_number, invoice_data, ...otherData} = resp.data.data;
+            const {invoice_number, invoice_data, terms_and_conditions, ...otherData} = resp.data.data;
             setState(otherData);
             setCostItems(JSON.parse(invoice_data));
+
+            try {
+                setTermsAndConditions(JSON.parse(terms_and_conditions || "[]"));
+            } catch (err){
+                setTermsAndConditions([terms_and_conditions || ""]);
+            }
         } catch (err) {
             console.log(err);
         }
     }
+
+    console.log("log", termsAndConditions)
 
     useEffect(() => {
         if (id) {
@@ -89,7 +113,7 @@ const EditInvoice = () => {
 
     return (
         <div className="flex h-screen bg-gray-100">
-            <Sidebar />
+            <Sidebar/>
             <div className="flex-1 flex flex-col overflow-hidden">
                 <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
                     <div className="p-4">
@@ -113,7 +137,8 @@ const EditInvoice = () => {
 
                                 {/* Receiver Address */}
                                 <div>
-                                    <label className="block text-gray-700 text-md font-bold mb-2">Receiver Address:</label>
+                                    <label className="block text-gray-700 text-md font-bold mb-2">Receiver
+                                        Address:</label>
                                     <input
                                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         type="text"
@@ -176,74 +201,74 @@ const EditInvoice = () => {
                                 <label className="block text-gray-700 text-md font-bold mb-2">Cost:</label>
                                 <table className="w-full border">
                                     <thead>
-                                        <tr>
-                                            <th className="border p-2">Quantity</th>
-                                            <th className="border p-2">Description</th>
-                                            <th className="border p-2">Unit Price</th>
-                                            <th className="border p-2">Total Cost</th>
-                                            <th className="border p-2"></th>
-                                        </tr>
+                                    <tr>
+                                        <th className="border p-2">Quantity</th>
+                                        <th className="border p-2">Description</th>
+                                        <th className="border p-2">Unit Price</th>
+                                        <th className="border p-2">Total Cost</th>
+                                        <th className="border p-2"></th>
+                                    </tr>
                                     </thead>
                                     <tbody>
-                                        {costItems.map((cost, index) => (
-                                            <tr key={index}>
-                                                <td className="border p-2">
-                                                    <input
-                                                        type="text"
-                                                        className="w-full p-1"
-                                                        placeholder="Quantity"
-                                                        value={cost.quantity}
-                                                        required
-                                                        onChange={(e) => handleCostItemChange(index, 'quantity', e.target.value)}
-                                                    />
-                                                </td>
-                                                <td className="border p-2">
-                                                    <input
-                                                        type="text"
-                                                        className="w-full p-1"
-                                                        placeholder="Description"
-                                                        value={cost.description}
-                                                        onChange={(e) =>
-                                                            handleCostItemChange(index, 'description', e.target.value)
-                                                        }
-                                                        required
-                                                    />
-                                                </td>
-                                                <td className="border p-2">
-                                                    <input
-                                                        type="text"
-                                                        className="w-full p-1"
-                                                        placeholder="Unit Price"
-                                                        value={cost.unitPrice}
-                                                        onChange={(e) =>
-                                                            handleCostItemChange(index, 'unitPrice', e.target.value)
-                                                        }
-                                                        required
-                                                    />
-                                                </td>
-                                                <td className="border p-2">
-                                                    <input
-                                                        type="text"
-                                                        className="w-full p-1"
-                                                        placeholder="Total Cost"
-                                                        value={cost.totalCost}
-                                                        onChange={(e) =>
-                                                            handleCostItemChange(index, 'totalCost', e.target.value)
-                                                        }
-                                                        required
-                                                    />
-                                                </td>
-                                                <td className="border p-2">
-                                                    <button
-                                                        type="button"
-                                                        className="remove-btn rounded p-1"
-                                                        onClick={() => handleRemoveCostItem(index)}
-                                                    >
-                                                        <FiTrash2 />
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        ))}
+                                    {costItems.map((cost, index) => (
+                                        <tr key={index}>
+                                            <td className="border p-2">
+                                                <input
+                                                    type="text"
+                                                    className="w-full p-1"
+                                                    placeholder="Quantity"
+                                                    value={cost.quantity}
+                                                    required
+                                                    onChange={(e) => handleCostItemChange(index, 'quantity', e.target.value)}
+                                                />
+                                            </td>
+                                            <td className="border p-2">
+                                                <input
+                                                    type="text"
+                                                    className="w-full p-1"
+                                                    placeholder="Description"
+                                                    value={cost.description}
+                                                    onChange={(e) =>
+                                                        handleCostItemChange(index, 'description', e.target.value)
+                                                    }
+                                                    required
+                                                />
+                                            </td>
+                                            <td className="border p-2">
+                                                <input
+                                                    type="text"
+                                                    className="w-full p-1"
+                                                    placeholder="Unit Price"
+                                                    value={cost.unitPrice}
+                                                    onChange={(e) =>
+                                                        handleCostItemChange(index, 'unitPrice', e.target.value)
+                                                    }
+                                                    required
+                                                />
+                                            </td>
+                                            <td className="border p-2">
+                                                <input
+                                                    type="text"
+                                                    className="w-full p-1"
+                                                    placeholder="Total Cost"
+                                                    value={cost.totalCost}
+                                                    onChange={(e) =>
+                                                        handleCostItemChange(index, 'totalCost', e.target.value)
+                                                    }
+                                                    required
+                                                />
+                                            </td>
+                                            <td className="border p-2">
+                                                <button
+                                                    type="button"
+                                                    className="remove-btn rounded p-1"
+                                                    onClick={() => handleRemoveCostItem(index)}
+                                                >
+                                                    <FiTrash2/>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    ))}
                                     </tbody>
                                 </table>
                                 <button
@@ -251,7 +276,7 @@ const EditInvoice = () => {
                                     className="add-item-btn text-white rounded px-2 py-1"
                                     onClick={handleAddCostItem}
                                 >
-                                    <IoMdAddCircleOutline />
+                                    <IoMdAddCircleOutline/>
                                 </button>
                             </div>
 
@@ -383,7 +408,8 @@ const EditInvoice = () => {
 
                                 {/* Total before tax */}
                                 <div>
-                                    <label className="block text-gray-700 text-md font-bold mb-2">Total Before Tax:</label>
+                                    <label className="block text-gray-700 text-md font-bold mb-2">Total Before
+                                        Tax:</label>
                                     <input
                                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         type="text"
@@ -425,7 +451,8 @@ const EditInvoice = () => {
 
                                 {/* Approver Contact */}
                                 <div>
-                                    <label className="block text-gray-700 text-md font-bold mb-2">Approver Contact:</label>
+                                    <label className="block text-gray-700 text-md font-bold mb-2">Approver
+                                        Contact:</label>
                                     <input
                                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         type="text"
@@ -439,7 +466,8 @@ const EditInvoice = () => {
 
                                 {/* Account Number */}
                                 <div>
-                                    <label className="block text-gray-700 text-md font-bold mb-2">Account Number:</label>
+                                    <label className="block text-gray-700 text-md font-bold mb-2">Account
+                                        Number:</label>
                                     <input
                                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         type="text"
@@ -466,7 +494,8 @@ const EditInvoice = () => {
 
                                 {/* Routing */}
                                 <div>
-                                    <label className="block text-gray-700 text-md font-bold mb-2">Swift code / sort code:</label>
+                                    <label className="block text-gray-700 text-md font-bold mb-2">Swift code / sort
+                                        code:</label>
                                     <input
                                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         type="text"
@@ -477,19 +506,45 @@ const EditInvoice = () => {
                                     />
                                 </div>
 
-                               {/* Terms and Conditions */}
+                                {/* Terms and Conditions */}
                                 <div>
-                                    <label className="block text-gray-700 text-md font-bold mb-2">Terms and Conditions:</label>
-                                    <input
-                                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                        type="text"
-                                        placeholder="Terms and Conditions"
-                                        name="terms_and_conditions"
-                                        value={state.terms_and_conditions}
-                                        onChange={handleChange}
-                                    />
+                                    <label className="block text-gray-700 text-md font-bold mb-2">Terms and
+                                        Conditions:</label>
+                                    <div className={"mb-3"}>
+                                        {
+                                            termsAndConditions.map((item, index) => (
+                                                <div className={"flex space-x-2 mb-3 items-center"} key={index}>
+                                                    <input
+                                                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                                        type="text"
+                                                        placeholder="Terms and Conditions"
+                                                        name="terms_and_conditions"
+                                                        onChange={(e) => {
+                                                            const updatedTermsAndConditions = [...termsAndConditions];
+                                                            updatedTermsAndConditions[index] = e.target.value;
+                                                            setTermsAndConditions(updatedTermsAndConditions);
+                                                        }}
+                                                        value={item}
+                                                    />
+                                                    {index !== 0 && <button
+                                                        type="button"
+                                                        className="remove-btn rounded p-1"
+                                                        onClick={() => handleRemoveTermsAndConditions(index)}
+                                                    >
+                                                        <FiTrash2/>
+                                                    </button>}
+                                                </div>
+                                            ))
+                                        }
+                                    </div>
+                                    <button
+                                        type="button"
+                                        className="add-item-btn text-white rounded px-2 py-1"
+                                        onClick={handleAddTermsAndConditions}
+                                    >
+                                        <IoMdAddCircleOutline/>
+                                    </button>
                                 </div>
-
                                 {/* Company logo */}
                                 <div>
                                     <label className="block text-gray-700 text-md font-bold mb-2">Company Logo:</label>

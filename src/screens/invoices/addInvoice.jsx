@@ -533,6 +533,154 @@ const AddJobQuotationsPage = () => {
                                 >
                                     <IoMdAddCircleOutline />
                                 </button>
+                                <div className="mb-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-gray-700 text-sm font-bold mb-2">NHL (%):</label>
+                                        <input
+                                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                            type="text"
+                                            placeholder="NHL Percent"
+                                            name="nhl_percent"
+                                            onChange={handleChange}
+                                            required
+                                        />
+                                    </div>
+
+                                    {/* NHL Amount */}
+                                    <div>
+                                        <label className="block text-gray-700 text-sm font-bold mb-2">NHL
+                                            Amount:</label>
+                                        <input
+                                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                            type="text"
+                                            placeholder="NHL Amount"
+                                            name="nhl"
+                                            onChange={handleChange}
+                                            required
+                                        />
+                                    </div>
+
+                                    {/* GETFL % */}
+                                    <div>
+                                        <label className="block text-gray-700 text-sm font-bold mb-2">GETFL (%)</label>
+                                        <input
+                                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                            type="text"
+                                            placeholder="GETFL Percent"
+                                            name="getfl_percent"
+                                            onChange={handleChange}
+                                            required
+                                        />
+                                    </div>
+
+                                    {/* GETFL Amount */}
+                                    <div>
+                                        <label className="block text-gray-700 text-sm font-bold mb-2">GETFL
+                                            Amount:</label>
+                                        <input
+                                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                            type="text"
+                                            placeholder="GETFL Amount"
+                                            name="getfl"
+                                            onChange={handleChange}
+                                            required
+                                        />
+                                    </div>
+
+                                    {/* COVID % */}
+                                    <div>
+                                        <label className="block text-gray-700 text-sm font-bold mb-2">COVID (%):</label>
+                                        <input
+                                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                            type="text"
+                                            placeholder="COVID Percent"
+                                            name="covid_percent"
+                                            onChange={handleChange}
+                                            required
+                                        />
+                                    </div>
+
+                                    {/* COVID Amount */}
+                                    <div>
+                                        <label className="block text-gray-700 text-sm font-bold mb-2">COVID
+                                            Amount:</label>
+                                        <input
+                                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                            type="text"
+                                            placeholder="COVID Amount"
+                                            name="covid"
+                                            onChange={handleChange}
+                                            required
+                                        />
+                                    </div>
+
+                                    {/* VAT % */}
+                                    <div>
+                                        <label className="block text-gray-700 text-sm font-bold mb-2">VAT(%):</label>
+                                        <input
+                                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                            type="text"
+                                            placeholder="VAT Percent"
+                                            name="vat_percent"
+                                            onChange={handleChange}
+                                            required
+                                        />
+                                    </div>
+
+                                    {/* VAT Amount */}
+                                    <div>
+                                        <label className="block text-gray-700 text-sm font-bold mb-2">VAT
+                                            Amount:</label>
+                                        <input
+                                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                            type="text"
+                                            placeholder="VAT Amount"
+                                            name="vat"
+                                            onChange={handleChange}
+                                            required
+                                        />
+                                    </div>
+
+                                    {/* Subtotal */}
+                                    <div>
+                                        <label className="block text-gray-700 text-sm font-bold mb-2">Subtotal:</label>
+                                        <input
+                                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                            type="text"
+                                            placeholder="Subtotal"
+                                            name="subtotal"
+                                            onChange={handleChange}
+                                        />
+                                    </div>
+
+                                    {/* Total before tax */}
+                                    <div>
+                                        <label className="block text-gray-700 text-sm font-bold mb-2">Total Before
+                                            Tax:</label>
+                                        <input
+                                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                            type="text"
+                                            placeholder="Total before tax"
+                                            name="total_before_tax"
+                                            onChange={handleChange}
+                                            required
+                                        />
+                                    </div>
+
+                                    {/* Total amount */}
+                                    <div>
+                                        <label className="block text-gray-700 text-sm font-bold mb-2">Total
+                                            amount:</label>
+                                        <input
+                                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                            type="text"
+                                            placeholder="Total amount"
+                                            name="total_amount"
+                                            onChange={handleChange}
+                                            required
+                                        />
+                                    </div>
+                                </div>
                             </div>
 
                             {/* Responsibility */}

@@ -6,6 +6,13 @@ import {getInvoiceImageFullPath} from "../../utils/index.js";
 
 
 const JobInvoicePreviewPageOne = ({ data }) => {
+    let termsAndConditions = [];
+    try {
+        termsAndConditions = JSON.parse(data?.terms_and_conditions || "[]")
+    } catch (err){
+        termsAndConditions = [data?.terms_and_conditions || ""]
+    }
+
     return (
         <div className="mx-6 mt-3 mb-6">
             <div className={"flex justify-center mb-5"}>
@@ -89,7 +96,9 @@ const JobInvoicePreviewPageOne = ({ data }) => {
                     <div>
                         <div className="mt-8">
                             <p className="text-[#8B8989]">Terms & Conditions</p>
-                            <p>{data?.terms_and_conditions}</p>
+                            {termsAndConditions?.map((term, index) =>
+                                <p key={index} className={"mb-1 mt-2 text-sm"}>{term}</p>
+                            )}
                         </div>
                         <div className="mt-5 mb-6">
                             <p>Name of Bank: {data?.bank_name}</p>

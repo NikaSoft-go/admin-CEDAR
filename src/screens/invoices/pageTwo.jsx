@@ -4,7 +4,7 @@ import {FaGlobe} from "react-icons/fa";
 import {IoLocationSharp} from "react-icons/io5";
 import {LuPenLine} from "react-icons/lu";
 
-const PageTwo = ({ data }) => {
+const PageTwo = ({data}) => {
     return (
         <div className="mb-6">
             <div className="page-head">
@@ -47,18 +47,18 @@ const PageTwo = ({ data }) => {
                     <div className="flex justify-between">
                         {data?.scope?.map((elt, index) =>
                             <div className="bg-[#DCDDDF] w-[49.2%] py-2 px-3" key={index}>
-                            <div className="flex items-start">
-                                <div className="h-[100%] mr-2">
-                                    <GoDotFill size={10} className="mt-1"/>
-                                </div>
-                                <div>
-                                    <ul className="text-[11.5px]"><b>{elt?.category}</b></ul>
-                                    {elt?.values?.map((innerElt, index) =>
-                                        <li className="text-[11.5px]" key={index}>{innerElt}</li>
-                                    )}
+                                <div className="flex items-start">
+                                    <div className="h-[100%] mr-2">
+                                        <GoDotFill size={10} className="mt-1"/>
+                                    </div>
+                                    <div>
+                                        <ul className="text-[11.5px]"><b>{elt?.category}</b></ul>
+                                        {elt?.values?.map((innerElt, index) =>
+                                            <li className="text-[11.5px]" key={index}>{innerElt}</li>
+                                        )}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         )}
                     </div>
                 </div>
@@ -70,24 +70,24 @@ const PageTwo = ({ data }) => {
                     <div>
                         <table className="resources-table">
                             <thead>
-                                <tr>
-                                    <th>
-                                        <p className="mb-1">Ref</p>
-                                        <p className="bg-[#329f81] h-[5px]"></p>
-                                    </th>
-                                    <th>
-                                        <p className="mb-1">Resource/Equipment</p>
-                                        <p className="bg-[#329f81] h-[5px]"></p>
-                                    </th>
-                                </tr>
+                            <tr>
+                                <th>
+                                    <p className="mb-1">Ref</p>
+                                    <p className="bg-[#329f81] h-[5px]"></p>
+                                </th>
+                                <th>
+                                    <p className="mb-1">Resource/Equipment</p>
+                                    <p className="bg-[#329f81] h-[5px]"></p>
+                                </th>
+                            </tr>
                             </thead>
                             <tbody>
-                                {data?.resources?.map((elt, index) =>
-                                    <tr key={index}>
-                                        <td>{index + 1}</td>
-                                        <td>{elt}</td>
-                                    </tr>
-                                )}
+                            {data?.resources?.map((elt, index) =>
+                                <tr key={index}>
+                                    <td>{index + 1}</td>
+                                    <td>{elt}</td>
+                                </tr>
+                            )}
                             </tbody>
                         </table>
                     </div>
@@ -130,6 +130,47 @@ const PageTwo = ({ data }) => {
                             )}
                             </tbody>
                         </table>
+                        <div className="mt-3" style={{marginBottom: 35}}>
+                            <table className="w-[100%] flex justify-end">
+                                <tbody>
+                                <tr>
+                                    <td><span
+                                        className="text-[#8B8989] mr-3 text-sm">Subtotal:</span> <span className={"text-sm"}>{data?.subtotal}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span
+                                        className="text-[#8B8989] mr-3 text-sm">NHL ({data?.nhl_percent}%):</span> <span className={"text-sm"}>{data?.nhl}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span
+                                        className="text-[#8B8989] mr-3 text-sm">GETFL ({data?.getfl_percent}%):</span> <span className={"text-sm"}>{data?.getfl}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span
+                                        className="text-[#8B8989] mr-3 text-sm">COVID ({data?.covid_percent}%):</span> <span className={"text-sm"}>{data?.covid}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span
+                                        className="text-[#8B8989] mr-3 text-sm">Total Before tax:</span> <span className={"text-sm"}>{data?.total_before_tax}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span
+                                        className="text-[#8B8989] mr-3 text-sm">VAT ({data?.vat_percent}%):</span> <span className={"text-sm"}>{data?.vat}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span className="text-[#8B8989] mr-3 text-sm">Total Amount:</span> <span
+                                        className="font-bold text-sm">{data?.currency} {data?.total_amount}</span></td>
+                                </tr>
+                                </tbody>
+
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

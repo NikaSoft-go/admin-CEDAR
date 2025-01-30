@@ -10,7 +10,7 @@ import {useNavigate, useParams} from "react-router-dom";
 // import SignatureUpload from "../../components/signatureUpload/index.jsx";
 
 const EditJobQuotationsPage = () => {
-    const { id } = useParams();
+    const {id} = useParams();
     // Your form logic goes here
 
     const [scopeItems, setScopeItems] = useState([]);
@@ -67,7 +67,7 @@ const EditJobQuotationsPage = () => {
     const handleAddCostItem = () => {
         setCostItems([
             ...costItems,
-            { item: '', scope: '', quantity: '', unitPrice: '', totalCost: '' },
+            {item: '', scope: '', quantity: '', unitPrice: '', totalCost: ''},
         ]);
     };
 
@@ -133,14 +133,25 @@ const EditJobQuotationsPage = () => {
                         // signature,
                         presenter_role,
                         presenter_phone,
-                        scope_header_text
-                    }  = response.data.data;
+                        scope_header_text,
+                        subtotal,
+                        nhl,
+                        nhl_percent,
+                        getfl,
+                        getfl_percent,
+                        covid,
+                        covid_percent,
+                        vat,
+                        vat_percent,
+                        total_before_tax,
+                        total_amount
+                    } = response.data.data;
                     setState({
                         invoice_name,
                         invoice_type,
                         invoice_date,
                         prepared_by,
-                        client_name ,
+                        client_name,
                         requirements,
                         mobile_phone_one,
                         mobile_phone_two,
@@ -148,7 +159,18 @@ const EditJobQuotationsPage = () => {
                         email,
                         presenter_role,
                         presenter_phone,
-                        scope_header_text
+                        scope_header_text,
+                        subtotal,
+                        nhl,
+                        nhl_percent,
+                        getfl,
+                        getfl_percent,
+                        covid,
+                        covid_percent,
+                        vat,
+                        vat_percent,
+                        total_before_tax,
+                        total_amount
                     });
                     setScopeItems(JSON.parse(scope));
                     setResourceItems(JSON.parse(resources));
@@ -167,7 +189,7 @@ const EditJobQuotationsPage = () => {
 
     return (
         <div className="flex h-screen bg-gray-100">
-            <Sidebar />
+            <Sidebar/>
             <div className="flex-1 flex flex-col overflow-hidden">
                 <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
                     <div className="p-4">
@@ -177,7 +199,8 @@ const EditJobQuotationsPage = () => {
                             <div className="mb-4 grid grid-cols-1 md:grid-cols-2 gap-4">
                                 {/* Invoice Name */}
                                 <div>
-                                    <label className="block text-gray-700 text-md font-bold mb-2">Job Quotation Name:</label>
+                                    <label className="block text-gray-700 text-md font-bold mb-2">Job Quotation
+                                        Name:</label>
                                     <input
                                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         type="text"
@@ -191,7 +214,8 @@ const EditJobQuotationsPage = () => {
 
                                 {/* Invoice Type */}
                                 <div>
-                                    <label className="block text-gray-700 text-md font-bold mb-2">Job Quotation Type:</label>
+                                    <label className="block text-gray-700 text-md font-bold mb-2">Job Quotation
+                                        Type:</label>
                                     <input
                                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         type="text"
@@ -262,7 +286,8 @@ const EditJobQuotationsPage = () => {
 
                                 {/* Mobile One */}
                                 <div>
-                                    <label className="block text-gray-700 text-md font-bold mb-2">Mobile Phone 1:</label>
+                                    <label className="block text-gray-700 text-md font-bold mb-2">Mobile Phone
+                                        1:</label>
                                     <input
                                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         type="text"
@@ -276,7 +301,8 @@ const EditJobQuotationsPage = () => {
 
                                 {/* Mobile Two */}
                                 <div>
-                                    <label className="block text-gray-700 text-md font-bold mb-2">Mobile Phone 2:</label>
+                                    <label className="block text-gray-700 text-md font-bold mb-2">Mobile Phone
+                                        2:</label>
                                     <input
                                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         type="text"
@@ -304,7 +330,8 @@ const EditJobQuotationsPage = () => {
 
                                 {/* Presenter Phone */}
                                 <div>
-                                    <label className="block text-gray-700 text-md font-bold mb-2">Presenter Phone</label>
+                                    <label className="block text-gray-700 text-md font-bold mb-2">Presenter
+                                        Phone</label>
                                     <input
                                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         type="text"
@@ -347,7 +374,8 @@ const EditJobQuotationsPage = () => {
                             <div className="mb-4">
                                 <label className="block text-gray-700 text-md font-bold mb-2">Scope:</label>
                                 <div>
-                                    <label className="block text-gray-700 text-md font-bold mb-2">Scope Header Text</label>
+                                    <label className="block text-gray-700 text-md font-bold mb-2">Scope Header
+                                        Text</label>
                                     <input
                                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         type="text"
@@ -387,7 +415,7 @@ const EditJobQuotationsPage = () => {
                                             className="remove-btn rounded px-2 py-1"
                                             onClick={() => handleRemoveResource(index)}
                                         >
-                                            <FiTrash2 />
+                                            <FiTrash2/>
                                         </button>
                                     </div>
                                 ))}
@@ -396,7 +424,7 @@ const EditJobQuotationsPage = () => {
                                     className="add-item-btn text-white rounded px-2 py-1"
                                     onClick={handleAddResource}
                                 >
-                                    <IoMdAddCircleOutline />
+                                    <IoMdAddCircleOutline/>
                                 </button>
                             </div>
 
@@ -466,7 +494,7 @@ const EditJobQuotationsPage = () => {
                                                     className="remove-btn rounded p-1"
                                                     onClick={() => handleRemoveCostItem(index)}
                                                 >
-                                                    <FiTrash2 />
+                                                    <FiTrash2/>
                                                 </button>
                                             </td>
                                         </tr>
@@ -478,8 +506,167 @@ const EditJobQuotationsPage = () => {
                                     className="add-item-btn text-white rounded px-2 py-1"
                                     onClick={handleAddCostItem}
                                 >
-                                    <IoMdAddCircleOutline />
+                                    <IoMdAddCircleOutline/>
                                 </button>
+                                <div className="mb-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-gray-700 text-sm font-bold mb-2">NHL (%):</label>
+                                        <input
+                                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                            type="text"
+                                            placeholder="NHL Percent"
+                                            name="nhl_percent"
+                                            value={state.nhl_percent}
+                                            onChange={handleChange}
+                                            required
+                                        />
+                                    </div>
+
+                                    {/* NHL Amount */}
+                                    <div>
+                                        <label className="block text-gray-700 text-sm font-bold mb-2">NHL
+                                            Amount:</label>
+                                        <input
+                                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                            type="text"
+                                            placeholder="NHL Amount"
+                                            name="nhl"
+                                            value={state.nhl}
+                                            onChange={handleChange}
+                                            required
+                                        />
+                                    </div>
+
+                                    {/* GETFL % */}
+                                    <div>
+                                        <label className="block text-gray-700 text-sm font-bold mb-2">GETFL (%)</label>
+                                        <input
+                                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                            type="text"
+                                            placeholder="GETFL Percent"
+                                            name="getfl_percent"
+                                            onChange={handleChange}
+                                            value={state.getfl_percent}
+                                            required
+                                        />
+                                    </div>
+
+                                    {/* GETFL Amount */}
+                                    <div>
+                                        <label className="block text-gray-700 text-sm font-bold mb-2">GETFL
+                                            Amount:</label>
+                                        <input
+                                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                            type="text"
+                                            placeholder="GETFL Amount"
+                                            name="getfl"
+                                            onChange={handleChange}
+                                            value={state.getfl}
+                                            required
+                                        />
+                                    </div>
+
+                                    {/* COVID % */}
+                                    <div>
+                                        <label className="block text-gray-700 text-sm font-bold mb-2">COVID (%):</label>
+                                        <input
+                                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                            type="text"
+                                            placeholder="COVID Percent"
+                                            name="covid_percent"
+                                            onChange={handleChange}
+                                            value={state.covid_percent}
+                                            required
+                                        />
+                                    </div>
+
+                                    {/* COVID Amount */}
+                                    <div>
+                                        <label className="block text-gray-700 text-sm font-bold mb-2">COVID
+                                            Amount:</label>
+                                        <input
+                                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                            type="text"
+                                            placeholder="COVID Amount"
+                                            name="covid"
+                                            onChange={handleChange}
+                                            value={state.covid}
+                                            required
+                                        />
+                                    </div>
+
+                                    {/* VAT % */}
+                                    <div>
+                                        <label className="block text-gray-700 text-sm font-bold mb-2">VAT(%):</label>
+                                        <input
+                                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                            type="text"
+                                            placeholder="VAT Percent"
+                                            name="vat_percent"
+                                            onChange={handleChange}
+                                            value={state.vat_percent}
+                                            required
+                                        />
+                                    </div>
+
+                                    {/* VAT Amount */}
+                                    <div>
+                                        <label className="block text-gray-700 text-sm font-bold mb-2">VAT
+                                            Amount:</label>
+                                        <input
+                                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                            type="text"
+                                            placeholder="VAT Amount"
+                                            name="vat"
+                                            onChange={handleChange}
+                                            value={state.vat}
+                                            required
+                                        />
+                                    </div>
+
+                                    {/* Subtotal */}
+                                    <div>
+                                        <label className="block text-gray-700 text-sm font-bold mb-2">Subtotal:</label>
+                                        <input
+                                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                            type="text"
+                                            placeholder="Subtotal"
+                                            name="subtotal"
+                                            value={state.subtotal}
+                                            onChange={handleChange}
+                                        />
+                                    </div>
+
+                                    {/* Total before tax */}
+                                    <div>
+                                        <label className="block text-gray-700 text-sm font-bold mb-2">Total Before
+                                            Tax:</label>
+                                        <input
+                                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                            type="text"
+                                            placeholder="Total before tax"
+                                            name="total_before_tax"
+                                            onChange={handleChange}
+                                            value={state.total_before_tax}
+                                            required
+                                        />
+                                    </div>
+
+                                    {/* Total amount */}
+                                    <div>
+                                        <label className="block text-gray-700 text-sm font-bold mb-2">Total
+                                            amount:</label>
+                                        <input
+                                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                            type="text"
+                                            placeholder="Total amount"
+                                            name="total_amount"
+                                            onChange={handleChange}
+                                            value={state.total_amount}
+                                            required
+                                        />
+                                    </div>
+                                </div>
                             </div>
 
                             {/* Responsibility */}

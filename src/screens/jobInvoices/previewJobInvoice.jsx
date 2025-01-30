@@ -14,7 +14,6 @@ export default function PreviewJobInvoice() {
         ...invoice,
         invoice_data: JSON.parse(invoice.invoice_data),
     }
-    console.log(invoice);
     // Function to generate a single PDF by combining the content of all pages
     const generateCombinedPDF = () => {
         const combinedContent = [];

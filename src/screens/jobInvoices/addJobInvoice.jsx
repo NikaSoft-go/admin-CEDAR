@@ -22,6 +22,8 @@ const AddJobInvoice = () => {
 
     const [state, setState] = useState({});
 
+    const [termsAndConditions, setTermsAndConditions] = useState(['']);
+
     const handleChange = (e) => {
         setState({
             ...state,
@@ -48,11 +50,25 @@ const AddJobInvoice = () => {
         setCostItems(updatedCostItems);
     };
 
+    const handleAddTermsAndConditions = () => {
+        setTermsAndConditions([
+            ...termsAndConditions,
+            "",
+        ]);
+    };
+
+    const handleRemoveTermsAndConditions = (index) => {
+        const updatedTermsAndConditions = [...termsAndConditions];
+        updatedTermsAndConditions.splice(index, 1);
+        setTermsAndConditions(updatedTermsAndConditions);
+    };
+
     const handleAddInvoice = async (e) => {
         e.preventDefault();
         try {
             const payload = {
                 ...state,
+                terms_and_conditions: JSON.stringify(termsAndConditions),
                 invoice_data: JSON.stringify(costItems),
             }
 
@@ -445,14 +461,41 @@ const AddJobInvoice = () => {
 
                                {/* Terms and Conditions */}
                                 <div>
-                                    <label className="block text-gray-700 text-md font-bold mb-2">Terms and Conditions:</label>
-                                    <input
-                                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                        type="text"
-                                        placeholder="Terms and Conditions"
-                                        name="terms_and_conditions"
-                                        onChange={handleChange}
-                                    />
+                                    <label className="block text-gray-700 text-md font-bold mb-2">Terms and
+                                        Conditions:</label>
+                                    <div className={"mb-3"}>
+                                        {
+                                            termsAndConditions.map((item, index) => (
+                                                <div className={"flex space-x-2 mb-3 items-center"} key={index}>
+                                                    <input
+                                                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                                        type="text"
+                                                        placeholder="Terms and Conditions"
+                                                        name="terms_and_conditions"
+                                                        onChange={(e) => {
+                                                            const updatedTermsAndConditions = [...termsAndConditions];
+                                                            updatedTermsAndConditions[index] = e.target.value;
+                                                            setTermsAndConditions(updatedTermsAndConditions);
+                                                        }}
+                                                    />
+                                                    {index !== 0 && <button
+                                                        type="button"
+                                                        className="remove-btn rounded p-1"
+                                                        onClick={() => handleRemoveTermsAndConditions(index)}
+                                                    >
+                                                        <FiTrash2/>
+                                                    </button>}
+                                                </div>
+                                            ))
+                                        }
+                                    </div>
+                                    <button
+                                        type="button"
+                                        className="add-item-btn text-white rounded px-2 py-1"
+                                        onClick={handleAddTermsAndConditions}
+                                    >
+                                        <IoMdAddCircleOutline/>
+                                    </button>
                                 </div>
                                 {/* Company logo */}
                                 <div>
