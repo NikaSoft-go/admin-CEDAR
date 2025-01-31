@@ -492,6 +492,18 @@ const EditInvoice = () => {
                                     />
                                 </div>
 
+                                <div>
+                                    <label className="block text-gray-700 text-md font-bold mb-2">Account Name:</label>
+                                    <input
+                                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        type="text"
+                                        placeholder="Account Name"
+                                        name="account_name"
+                                        value={state.account_name}
+                                        onChange={handleChange}
+                                    />
+                                </div>
+
                                 {/* Routing */}
                                 <div>
                                     <label className="block text-gray-700 text-md font-bold mb-2">Swift code / sort

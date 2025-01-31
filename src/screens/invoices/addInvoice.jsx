@@ -461,6 +461,7 @@ const AddJobQuotationsPage = () => {
                                     <tr>
                                         <th className="border p-2">Item</th>
                                         <th className="border p-2">Scope</th>
+                                        <th className="border p-2">Unit Price</th>
                                         <th className="border p-2">Quantity</th>
                                         <th className="border p-2">Total Cost</th>
                                         <th className="border p-2"></th>
@@ -493,6 +494,16 @@ const AddJobQuotationsPage = () => {
                                                 <input
                                                     type="text"
                                                     className="w-full p-1"
+                                                    placeholder="Unit Price"
+                                                    value={cost.unitPrice}
+                                                    required
+                                                    onChange={(e) => handleCostItemChange(index, 'unitPrice', e.target.value)}
+                                                />
+                                            </td>
+                                            <td className="border p-2">
+                                                <input
+                                                    type="text"
+                                                    className="w-full p-1"
                                                     placeholder="Quantity"
                                                     value={cost.quantity}
                                                     onChange={(e) =>
@@ -519,7 +530,7 @@ const AddJobQuotationsPage = () => {
                                                     className="remove-btn rounded p-1"
                                                     onClick={() => handleRemoveCostItem(index)}
                                                 >
-                                                    <FiTrash2 />
+                                                    <FiTrash2/>
                                                 </button>
                                             </td>
                                         </tr>
@@ -531,11 +542,11 @@ const AddJobQuotationsPage = () => {
                                     className="add-item-btn text-white rounded px-2 py-1"
                                     onClick={handleAddCostItem}
                                 >
-                                    <IoMdAddCircleOutline />
+                                    <IoMdAddCircleOutline/>
                                 </button>
                                 <div className="mb-6 grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
-                                        <label className="block text-gray-700 text-sm font-bold mb-2">NHL (%):</label>
+                                    <label className="block text-gray-700 text-sm font-bold mb-2">NHL (%):</label>
                                         <input
                                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                             type="text"

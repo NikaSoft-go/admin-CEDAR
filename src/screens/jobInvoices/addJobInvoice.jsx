@@ -372,7 +372,8 @@ const AddJobInvoice = () => {
 
                                 {/* Total before tax */}
                                 <div>
-                                    <label className="block text-gray-700 text-md font-bold mb-2">Total Before Tax:</label>
+                                    <label className="block text-gray-700 text-md font-bold mb-2">Total Before
+                                        Tax:</label>
                                     <input
                                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         type="text"
@@ -411,7 +412,8 @@ const AddJobInvoice = () => {
 
                                 {/* Approver Contact */}
                                 <div>
-                                    <label className="block text-gray-700 text-md font-bold mb-2">Approver Contact:</label>
+                                    <label className="block text-gray-700 text-md font-bold mb-2">Approver
+                                        Contact:</label>
                                     <input
                                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         type="text"
@@ -424,7 +426,8 @@ const AddJobInvoice = () => {
 
                                 {/* Account Number */}
                                 <div>
-                                    <label className="block text-gray-700 text-md font-bold mb-2">Account Number:</label>
+                                    <label className="block text-gray-700 text-md font-bold mb-2">Account
+                                        Number:</label>
                                     <input
                                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         type="text"
@@ -435,7 +438,7 @@ const AddJobInvoice = () => {
                                     />
                                 </div>
 
-                               {/* Bank Name */}
+                                {/* Bank Name */}
                                 <div>
                                     <label className="block text-gray-700 text-md font-bold mb-2">Bank Name:</label>
                                     <input
@@ -446,10 +449,23 @@ const AddJobInvoice = () => {
                                         onChange={handleChange}
                                     />
                                 </div>
-                                
+
+                                {/* Account Name */}
+                                <div>
+                                        <label className="block text-gray-700 text-md font-bold mb-2">Account Name:</label>
+                                    <input
+                                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        type="text"
+                                        placeholder="Account Name"
+                                        name="account_name"
+                                        onChange={handleChange}
+                                    />
+                                </div>
+
                                 {/* Routing */}
                                 <div>
-                                    <label className="block text-gray-700 text-md font-bold mb-2">Swift code / sort code:</label>
+                                    <label className="block text-gray-700 text-md font-bold mb-2">Swift code / sort
+                                        code:</label>
                                     <input
                                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                         type="text"
@@ -459,7 +475,7 @@ const AddJobInvoice = () => {
                                     />
                                 </div>
 
-                               {/* Terms and Conditions */}
+                                {/* Terms and Conditions */}
                                 <div>
                                     <label className="block text-gray-700 text-md font-bold mb-2">Terms and
                                         Conditions:</label>

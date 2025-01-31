@@ -33,19 +33,19 @@ const UTPageTwo = ({ data }) => {
                             <td><b>Operating Pressure: </b>{data?.operating_pressure}</td>
                         </tr>
                         <tr>
-                            <td><b>Technique Standard: </b>{data?.technique_standard}</td>
+                            <td><b>Procedure Number: </b>{data?.local_procedure_number}</td>
                             <td><b>Material: </b>{data?.material}</td>
                             <td><b>Acceptance Criteria: </b>{data?.acceptance_criteria}</td>
                         </tr>
                         <tr>
+                            <td><b>Technique Standard: </b>{data?.technique_standard}</td>
                             <td><b>Technical Standard: </b>{data?.standards}</td>
                             <td><b>Date of Manufacturing: </b>{data?.date_of_manufacturing}</td>
-                            <td><b>Diagnostic Area Surface: </b>{data?.diagnostic_area_surface}</td>
                         </tr>
                         <tr>
+                            <td><b>Diagnostic Area Surface: </b>{data?.diagnostic_area_surface}</td>
                             <td><b>Surface Condition: </b>{data?.surface_condition}</td>
                             <td><b>Minimum thickness: </b>{data?.thickness}</td>
-                            <td></td>
                         </tr>
                         </tbody>
                     </table>

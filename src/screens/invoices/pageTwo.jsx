@@ -110,6 +110,10 @@ const PageTwo = ({data}) => {
                                     <p className="bg-[#288068] h-[5px]"></p>
                                 </th>
                                 <th>
+                                    <p className="mb-1">UNIT PRICE</p>
+                                    <p className="bg-[#288068] h-[5px]"></p>
+                                </th>
+                                <th>
                                     <p className="mb-1">QTY</p>
                                     <p className="bg-[#288068] h-[5px]"></p>
                                 </th>
@@ -124,6 +128,7 @@ const PageTwo = ({data}) => {
                                 <tr key={index}>
                                     <td>{elt?.item}</td>
                                     <td>{elt?.scope}</td>
+                                    <td>{elt?.unitPrice}</td>
                                     <td>{elt?.quantity}</td>
                                     <td>{elt?.totalCost}</td>
                                 </tr>

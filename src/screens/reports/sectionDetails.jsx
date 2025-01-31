@@ -58,47 +58,51 @@
                 <p className="bg-[#D8D8D8] font-bold text-left text-[12px] pb-2 pl-2">Report Details</p>
                 <table className="section-table">
                     <tbody>
-                        <tr>
-                            <td>Report Number:</td>
-                            <td><p>{data?.report_number}</p></td>
-                        </tr>
-                        <tr>
-                            <td>Date of Examination</td>
-                            <td><p>{data?.examination_date}</p></td>
-                        </tr>
-                        <tr>
-                            <td>Date of Next Examination</td>
-                            <td><p>{data?.next_examination_date || '-'}</p></td>
-                        </tr>
-                        <tr>
-                            <td>Area of Examination: </td>
-                            <td><p>{data?.examination_area}</p></td>
-                        </tr>
-                        <tr>
-                            <td>Services: </td>
-                            <td><p>{data?.services}</p></td>
-                        </tr>
-                        <tr>
-                            <td>Specification: </td>
-                            <td><p>{data?.local_procedure_number}</p></td>
-                        </tr>
-                        <tr>
-                            <td>Acceptance Criteria: </td>
-                            <td><p>{data?.drawing_number}</p></td>
-                        </tr>
-                        <tr>
-                            <td>Test Restrictions: </td>
-                            <td><p>{data?.test_restrictions}</p></td>
-                        </tr>
-                        <tr>
-                            <td>Surface Condition: </td>
-                            <td><p>{data?.surface_condition}</p></td>
-                        </tr>
+                    <tr>
+                        <td>Report Number:</td>
+                        <td><p>{data?.report_number}</p></td>
+                    </tr>
+                    <tr>
+                        <td>Date of Examination</td>
+                        <td><p>{data?.examination_date}</p></td>
+                    </tr>
+                    <tr>
+                        <td>Date of Next Examination</td>
+                        <td><p>{data?.next_examination_date || '-'}</p></td>
+                    </tr>
+                    <tr>
+                        <td>Area of Examination:</td>
+                        <td><p>{data?.examination_area}</p></td>
+                    </tr>
+                    <tr>
+                        <td>Services:</td>
+                        <td><p>{data?.services}</p></td>
+                    </tr>
+                    <tr>
+                        <td>Procedure Number:</td>
+                        <td><p>{data?.standards}</p></td>
+                    </tr>
+                    <tr>
+                        <td>Specification:</td>
+                        <td><p>{data?.local_procedure_number}</p></td>
+                    </tr>
+                    <tr>
+                        <td>Acceptance Criteria:</td>
+                        <td><p>{data?.drawing_number}</p></td>
+                    </tr>
+                    <tr>
+                        <td>Test Restrictions:</td>
+                        <td><p>{data?.test_restrictions}</p></td>
+                    </tr>
+                    <tr>
+                        <td>Surface Condition:</td>
+                        <td><p>{data?.surface_condition}</p></td>
+                    </tr>
                     </tbody>
                 </table>
             </div>
         </div>
     )
-}
+ }
 
-export default sectionDetails;
+ export default sectionDetails;
