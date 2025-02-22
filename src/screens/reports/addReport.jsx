@@ -8,11 +8,12 @@ import {
     bladeDetailInitial, bodyDetailInitial,
     consumablesInitial, equipmentConsumablesInitial, equipmentsInitial, equipmentTechniqueInitial,
     getDimensionData, otherEquipmentsProps, returnAssetsData,
-    returnReportDataType, utTableInitial, weldingTableInitial,
+    returnReportDataType, utSteelWaveTableInitial, utTableInitial, weldingTableInitial,
 } from "../../utils/data.js";
 import AddReportNormal from "./addReportNormal.jsx";
 import AddReportWelding from "./addReportWelding.jsx";
 import AddReportUltrasonicThickness from "./addReportUltrasonicThickness.jsx";
+import AddReportUltrasonicThicknessSteelWave from "./addReportUltrasonicThicknessSteelWave.jsx";
 
 const AddReport = () => {
     const [currentTypeComp, setCurrentTypeComp] = useState("");
@@ -40,6 +41,7 @@ const AddReport = () => {
 
     const [weldingTableData, setWeldingTableData] = useState(weldingTableInitial);
     const [utTableData, setUtTableData] = useState(utTableInitial);
+    const [utSteelWaveTableData, setUtSteelWaveTableData] = useState(utSteelWaveTableInitial);
 
     const navigate = useNavigate();
 
@@ -144,6 +146,15 @@ const AddReport = () => {
 
     const handleAddReport = async (e) => {
         e.preventDefault();
+
+        let utTableDataFinal = [];
+
+        if (currentTypeComp === "Ultrasonic Inspection (Steel Wave)"){
+            utTableDataFinal = utSteelWaveTableInitial
+        } else {
+            utTableDataFinal = utTableData
+        }
+
         const bodyData = showSections?.bodyDetails
         ? (bodyDetails || []) : []
         const bladeData = showSections?.bladeDetails
@@ -166,7 +177,7 @@ const AddReport = () => {
             welding_table_data: JSON.stringify(weldingTableData || []),
             equipment_method: JSON.stringify(equipmentMethod || []),
             ut_results: JSON.stringify(utResults || []),
-            ut_table_data: JSON.stringify(utTableData || []),
+            ut_table_data: JSON.stringify(utTableDataFinal),
             inspector_comments: JSON.stringify(comments || [])
         }
 
@@ -282,6 +293,28 @@ const AddReport = () => {
         handleFilesSelect,
     }
 
+    const utSteelWaveReportDependencies = {
+        handleChange,
+        equipmentMethod,
+        setEquipmentMethod,
+        setUtSteelWaveTableData,
+        utSteelWaveTableData,
+        handleTableItemChange,
+        handleRemoveTableItems,
+        handleUTTableItemChange,
+        handleRemoveUTTableItem,
+        handleAddUTTableItem,
+        issuerInfo,
+        setIssuerInfo,
+        reviewerInfo,
+        setReviewerInfo,
+        setUtResults,
+        utResults,
+        comments,
+        setComments,
+        handleFilesSelect,
+    }
+
     const sameTypesReport = {
         "Normal": [
             "MPI",
@@ -290,6 +323,7 @@ const AddReport = () => {
             "DPI with connections",
         ],
         "Ultrasonic Inspection": ["Ultrasonic Inspection"],
+        "Ultrasonic Inspection (Steel Wave)": ["Ultrasonic Inspection (Steel Wave)"],
         "Lifting Inspection": ["Lifting Inspection"],
         "Welding": ["Welding"]
     }
@@ -365,6 +399,7 @@ const AddReport = () => {
                                         Inspection</option>
                                     <option value="DPI with connections">DPI with connections</option>
                                     <option value="Ultrasonic Inspection">Ultrasonic Thickness</option>
+                                    <option value="Ultrasonic Inspection (Steel Wave)">Ultrasonic Inspection (Steel Wave)</option>
                                     <option value="Lifting Inspection">Lifting Inspection</option>
                                     <option value="Welding">Welding</option>
                                 </select>
@@ -375,6 +410,8 @@ const AddReport = () => {
                             {currentTypeComp === "Welding" && <AddReportWelding {...weldingDependencies} />}
 
                             {currentTypeComp === "Ultrasonic Inspection" && <AddReportUltrasonicThickness {...utReportDependencies} />}
+
+                            {currentTypeComp === "Ultrasonic Inspection (Steel Wave)" && <AddReportUltrasonicThicknessSteelWave {...utSteelWaveReportDependencies} />}
 
                             <div className="mt-8"></div>
                             <Button>Add Report</Button>

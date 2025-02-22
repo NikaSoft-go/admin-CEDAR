@@ -770,6 +770,44 @@ export const utTableInitial = [
     },
 ]
 
+export const utSteelWaveTableInitial = [
+    {
+        type: '0° Single crystal',
+        angle: 'DOPPLER',
+        frequency: '2 MHz',
+        crystal_size: '10mm.',
+        probe_serial_number: 'HKA341',
+    },
+    {
+        type: '45° Single crystal',
+        angle: 'DOPPLER',
+        frequency: '2 MHz',
+        crystal_size: '8X9mm.',
+        probe_serial_number: 'HKA325',
+    },
+    {
+        type: '60° Single crystal',
+        angle: 'DOPPLER',
+        frequency: '2 MHz',
+        crystal_size: '8X9mm.',
+        probe_serial_number: 'HKA314',
+    },
+    {
+        type: '70° Single crystal',
+        angle: 'DOPPLER',
+        frequency: '2 MHz',
+        crystal_size: '8X9mm.',
+        probe_serial_number: 'HKA643',
+    },
+    {
+        type: 'Other',
+        angle: 'DOPPLER',
+        frequency: '2 MHz',
+        crystal_size: '10mm.',
+        probe_serial_number: 'N/A',
+    },
+]
+
 export const utTableResults = [
     {
         rowName: 'COVER / SHELL A (mm)',
