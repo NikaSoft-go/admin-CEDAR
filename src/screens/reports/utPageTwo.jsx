@@ -100,13 +100,13 @@ const UTPageTwo = ({ data }) => {
                         </tbody>
                     </table>
                 </div>
-                <div className={"mt-3"} style={{ marginBottom: 40 }}>
+                <div className={"mt-3"} style={{ marginBottom: 70 }}>
                     <div className="report-section-head">
                         <p className={"text-[14px] font-bold text-center uppercase"}>Drawing</p>
                     </div>
                     <div className={"flex justify-between drawing-images"}>
-                        <div className={"flex flex-col justify-between drawing-image-one"}>
-                            <div className={"drawing-image-two"} style={{height: '70%'}}>
+                        <div className={"flex flex-col drawing-image-one"}>
+                            <div className={"drawing-image-two"}>
                                 {data?.drawing_image_one_url &&
                                     <img
                                         src={generateImageUrl(data?.drawing_image_one_url)}
@@ -118,8 +118,8 @@ const UTPageTwo = ({ data }) => {
                                 {data?.drawing_note_one}
                             </div>
                         </div>
-                        <div className={"flex flex-col justify-between"}>
-                            <div className={"drawing-image-two"} style={{height: '70%'}}>
+                        <div className={"flex flex-col"}>
+                            <div className={"drawing-image-two"}>
                                 {data?.drawing_image_two_url &&
                                     <img
                                         src={generateImageUrl(data?.drawing_image_two_url)}

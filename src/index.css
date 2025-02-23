@@ -126,7 +126,7 @@ li.font-bold {
 }
 
 .banner-image {
-    height: 250px;
+    height: 280px;
     width: 100%;
 }
 
@@ -572,9 +572,13 @@ li.font-bold {
     justify-content: center;
 }
 
-/*.drawing-image-two img {*/
-/*    max-height: 190px;*/
-/*}*/
+.drawing-image-two img {
+    height: 300px;
+}
+
+.drawing-image-one img {
+    height: 300px;
+}
 
 /*.drawing-note {*/
 /*    border-left: 1px solid #000;*/
