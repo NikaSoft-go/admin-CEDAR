@@ -1,4 +1,3 @@
-// src/components/IncrementalList.js
 
 import {useEffect, useState} from 'react';
 import {commentsInitial} from "../../utils/data.js";

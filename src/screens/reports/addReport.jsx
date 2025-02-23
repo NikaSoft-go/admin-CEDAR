@@ -7,7 +7,7 @@ import {useNavigate} from "react-router-dom";
 import {
     bladeDetailInitial, bodyDetailInitial,
     consumablesInitial, equipmentConsumablesInitial, equipmentsInitial, equipmentTechniqueInitial,
-    getDimensionData, otherEquipmentsProps, returnAssetsData,
+    getDimensionData, otherEquipmentsProps, qualityCheckRecord, returnAssetsData,
     returnReportDataType, utSteelWaveTableInitial, utTableInitial, weldingTableInitial,
 } from "../../utils/data.js";
 import AddReportNormal from "./addReportNormal.jsx";
@@ -25,6 +25,8 @@ const AddReport = () => {
     const [assetDetails, setAssetsDetails] = useState([]);
     const [utResults, setUtResults] = useState([]);
     const [comments, setComments] = useState([]);
+    const [scanningSensitivity, setScanningSensitivity] = useState([]);
+    console.log("scanningSensitivity", scanningSensitivity)
     const [dimensionOneDetails, setDimensionOneDetails] = useState([]);
     const [equipmentConsumables, setEquipmentConsumables] = useState(equipmentConsumablesInitial);
     const [equipmentMethod, setEquipmentMethod] = useState(equipmentTechniqueInitial);
@@ -40,6 +42,8 @@ const AddReport = () => {
     });
 
     const [weldingTableData, setWeldingTableData] = useState(weldingTableInitial);
+    const [utQualityCheckRecordData, setUtQualityCheckRecordData] = useState(qualityCheckRecord);
+    const [abbreviationsUsed, setAbbreviationsUsed] = useState([]);
     const [utTableData, setUtTableData] = useState(utTableInitial);
     const [utSteelWaveTableData, setUtSteelWaveTableData] = useState(utSteelWaveTableInitial);
 
@@ -219,6 +223,10 @@ const AddReport = () => {
         setSelectedOptions(selected);
     };
 
+    const handleAbbreviationSelectChange = (selected) => {
+        setAbbreviationsUsed(selected);
+    };
+
     const normalDependencies = {
         handleChange,
         issuerInfo,
@@ -312,7 +320,12 @@ const AddReport = () => {
         utResults,
         comments,
         setComments,
+        setScanningSensitivity,
+        utQualityCheckRecordData,
+        setUtQualityCheckRecordData,
+        abbreviationsUsed,
         handleFilesSelect,
+        handleAbbreviationSelectChange
     }
 
     const sameTypesReport = {

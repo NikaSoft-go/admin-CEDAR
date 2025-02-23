@@ -2,6 +2,9 @@ import {FiTrash2} from "react-icons/fi";
 import {IoMdAddCircleOutline} from "react-icons/io";
 import IncrementalList from "../../components/incrementalList/index.jsx";
 import FileUploadComponent from "../../components/imagesSelect/index.jsx";
+import FieldWithTwoFields from "../../components/fieldWithTwoFields/fieldWithTwoFields.jsx";
+import MultiSelect from "../../components/multiSelect/index.jsx";
+import {abbreviationsItems} from "../../utils/data.js";
 
 const AddReportUltrasonicThicknessSteelWave = (props) => {
 
@@ -137,14 +140,14 @@ const AddReportUltrasonicThicknessSteelWave = (props) => {
                     />
                 </div>
 
-                {/* Acceptance Criteria */}
+                {/* Acceptance Standard */}
                 <div>
                     <label className="block text-gray-700 text-md font-bold mb-2">Acceptance Standard:</label>
                     <input
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         type="text"
-                        placeholder="Acceptance Criteria"
-                        name="acceptance_criteria"
+                        placeholder="Acceptance Standard"
+                        name="standards"
                         onChange={props.handleChange}
                         required
                     />
@@ -442,7 +445,7 @@ const AddReportUltrasonicThicknessSteelWave = (props) => {
 
             <h3 className="font-bold mb-4">Application & Testing</h3>
             <h3 className="font-bold mb-4">Range calibration / reference block</h3>
-            <div className="mb-10 grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="mb-4 grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                     <label className="block text-gray-700 text-md font-bold mb-2">Material:</label>
                     <input
@@ -492,130 +495,150 @@ const AddReportUltrasonicThicknessSteelWave = (props) => {
                 </div>
             </div>
 
-            <h3 className="font-bold mb-4">0 Degree. Calibrated range</h3>
             <div className="mb-10 grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                    <label className="block text-gray-700 text-md font-bold mb-2">Length:</label>
+                    <label className="block text-gray-700 text-md font-bold mb-2">0 Degree. Calibrated range</label>
                     <input
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         type="text"
                         placeholder="100m"
-                        name="ultrasonic_flaw_detector"
+                        name="zero_degree_calibrated_range"
                         onChange={props.handleChange}
                         required
                     />
                 </div>
 
                 <div>
-                    <label className="block text-gray-700 text-md font-bold mb-2">Degree:</label>
+                    <label className="block text-gray-700 text-md font-bold mb-2">Angle beam. Calibrated range:</label>
                     <input
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         type="text"
-                        placeholder="0 Degree"
-                        name="manufacturer"
+                        placeholder="200mm"
+                        name="angle_beam_calibrated_range"
                         onChange={props.handleChange}
                         required
                     />
                 </div>
 
                 <div>
-                    <label className="block text-gray-700 text-md font-bold mb-2">Calibrated range:</label>
+                    <label className="block text-gray-700 text-md font-bold mb-2">0 Degree. Scanning
+                        Sensitivity:</label>
                     <input
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         type="text"
-                        placeholder="Scanning Sensitivity"
-                        name="serial_number"
+                        placeholder="25 dB."
+                        name="zero_degree_scanning_sensitivity"
                         onChange={props.handleChange}
                         required
                     />
                 </div>
 
-                <div>
-                    <label className="block text-gray-700 text-md font-bold mb-2">Calibrated range value:</label>
-                    <input
+            </div>
+
+            <h3 className="font-bold mb-4">Angle beam. Calibrated range</h3>
+            <FieldWithTwoFields setData={props.setScanningSensitivity}/>
+
+            {/* Report Type Data */}
+            <h3 className="font-bold mb-4">Quality checks record</h3>
+            <div className="mb-4">
+                <table className="w-full border">
+                    <thead>
+                    <tr>
+                        <th className="border p-2">Title</th>
+                        <th className="border p-2">Value</th>
+                        <th className="border p-2"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {props.utQualityCheckRecordData?.map((dimension, index) => (
+                        <tr key={index}>
+                            <td className="border p-2">
+                                <input
+                                    type="text"
+                                    className="w-full p-1"
+                                    placeholder="Property"
+                                    value={dimension.name}
+                                    required
+                                    onChange={(e) =>
+                                        props.handleTableItemChange(
+                                            index,
+                                            'property',
+                                            e.target.value,
+                                            props.utQualityCheckRecordData,
+                                            props.setUtQualityCheckRecordData
+                                        )}/>
+                            </td>
+                            <td className="border p-2">
+                                <input
+                                    type="text"
+                                    className="w-full p-1"
+                                    placeholder="Value"
+                                    value={dimension.value}
+                                    required
+                                    onChange={(e) =>
+                                        props.handleTableItemChange(
+                                            index,
+                                            'value',
+                                            e.target.value,
+                                            props.reportTypeData,
+                                            props.setReportTypeData
+                                        )}/>
+                            </td>
+                            <td className="border p-2">
+                                <button
+                                    type="button"
+                                    className="remove-btn rounded p-1"
+                                    onClick={() =>
+                                        props.handleRemoveTableItems(
+                                            index,
+                                            props.reportTypeData,
+                                            props.setReportTypeData
+                                        )}
+                                >
+                                    <FiTrash2/>
+                                </button>
+                            </td>
+                        </tr>
+                    ))}
+                    </tbody>
+                </table>
+            </div>
+
+            <div className={"grid grid-cols-1 md:grid-cols-2 gap-4"}>
+                {/* Description */}
+                <div className={"mb-6"}>
+                    <label className="block text-gray-700 text-md font-bold mb-2">Quality check record
+                        description</label>
+                    <textarea
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        type="text"
-                        placeholder="25 dB"
-                        name="next_examination_date"
+                        placeholder="Description"
+                        name="description"
+                        onChange={props.handleChange}
+                        required
+                    />
+                </div>
+
+                {/* Acceptance criteria */}
+                <div>
+                    <label className="block text-gray-700 text-md font-bold mb-2">Acceptance criteria:</label>
+                    <textarea
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        placeholder="Acceptance Criteria"
+                        name="acceptance_criteria"
                         onChange={props.handleChange}
                         required
                     />
                 </div>
             </div>
 
-            <h3 className="font-bold mb-4">Angle beam. Calibrated range</h3>
-            <div className="mb-10 grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                    <label className="block text-gray-700 text-md font-bold mb-2">Length:</label>
-                    <input
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        type="text"
-                        placeholder="200m"
-                        name="ultrasonic_flaw_detector"
-                        onChange={props.handleChange}
-                        required
-                    />
-                </div>
-
-                <div>
-                    <label className="block text-gray-700 text-md font-bold mb-2">Beam:</label>
-                    <input
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        type="text"
-                        placeholder="Angle beam"
-                        name="manufacturer"
-                        onChange={props.handleChange}
-                        required
-                    />
-                </div>
-
-                <div>
-                    <label className="block text-gray-700 text-md font-bold mb-2">Calibrated range:</label>
-                    <input
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        type="text"
-                        placeholder="Scanning Sensitivity"
-                        name="serial_number"
-                        onChange={props.handleChange}
-                        required
-                    />
-                </div>
-
-                <div>
-                    <label className="block text-gray-700 text-md font-bold mb-2">Calibrated range value1:</label>
-                    <input
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        type="text"
-                        placeholder="25 dB"
-                        name="next_examination_date"
-                        onChange={props.handleChange}
-                        required
-                    />
-                </div>
-
-                <div>
-                    <label className="block text-gray-700 text-md font-bold mb-2">Calibrated range value2:</label>
-                    <input
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        type="text"
-                        placeholder="25 dB"
-                        name="next_examination_date"
-                        onChange={props.handleChange}
-                        required
-                    />
-                </div>
-
-                <div>
-                    <label className="block text-gray-700 text-md font-bold mb-2">Calibrated range value3:</label>
-                    <input
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        type="text"
-                        placeholder="25 dB"
-                        name="next_examination_date"
-                        onChange={props.handleChange}
-                        required
-                    />
-                </div>
+            {/* Keys */}
+            <div className="mb-10">
+                <label className="block text-gray-700 text-md font-bold mb-2">Abbreviations Used</label>
+                <MultiSelect
+                    options={abbreviationsItems}
+                    selectedOptions={props.abbreviationsUsed}
+                    onChange={props.handleAbbreviationSelectChange}
+                />
             </div>
 
             <div className="mb-6 w-[100%]">

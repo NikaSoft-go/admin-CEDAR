@@ -520,6 +520,29 @@ export const returnReportDataType = (type, keyType) => {
     }
 }
 
+export const qualityCheckRecord = [
+    {
+        name: "Time base linearity:",
+        value: "Within 2% accuracy",
+    },
+    {
+        name: "Amplitude linearity:",
+        value: "Within 5% accuracy",
+    },
+    {
+        name: "Probe index verified:",
+        value: "Measured from front of probe",
+    },
+    {
+        name: "Probe angle verified:",
+        value: "Within 2° from indicated angle",
+    },
+    {
+        name: "Probe squint:",
+        value: "Within 2° from dead ahead",
+    },
+]
+
 export const consumablesInitial = [
     {
         category: "Type",
@@ -865,6 +888,24 @@ export const commentsInitial = [
     },
 ]
 
+export const scanningSensitivity = [
+    {
+        id: 1,
+        value1: '',
+        value2: '',
+    },
+    {
+        id: 2,
+        value1: '',
+        value2: '',
+    },
+    {
+        id: 3,
+        value1: '',
+        value2: '',
+    },
+]
+
 export const keyItems = [
     "ACP - Accept",
     "MPI - Magnetic Particle Inspection",
@@ -883,4 +924,13 @@ export const keyItems = [
     "Mis - Misalignment",
     "OL - Overlap",
     "CBM - Clean to bear metal",
+];
+
+export const abbreviationsItems = [
+    "MMAW = Manual metal arc welding",
+    "FSH = Full screen height",
+    "N/A = Not Applicable",
+    "SDH = Side Drilled Hole",
+    "DAC = Distance Amplitude Correction",
+    "BWE = Back wall Echo",
 ];
