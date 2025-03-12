@@ -1,5 +1,15 @@
 // Reports
 export const emptyAssetsDetails = {type: '', serial_number: '', model: '', description: '', size: '', material: ''}
+export const emptyLiftingAssetsDetails = {type: '', serial_number: '', model: '', description: '', image: ''}
+export const emptyLiftingItemDetails = {
+    serial_number: '',
+    description_and_identification_equipment: '',
+    swl: '',
+    test_load_applied: '',
+    date_manufacture: '',
+    date_last_examination: '',
+    date_next_examination: '',
+}
 export const emptyDimensionDetails = {property: '', value: ''}
 export const DPIWithConnectionsData = [
     {
@@ -39,7 +49,10 @@ export const returnAssetsData = (type) => {
         "DPI with connections": DPIWithConnectionsData,
         "DPI": DPIWithoutConnectionsData,
         "Ultrasonic Thickness": [],
-        "Lifting Inspection": []
+        "Forklift Visual with MPI report": [emptyLiftingAssetsDetails],
+        "Forklift Visual report": [emptyLiftingAssetsDetails],
+        "Crane Visual with MPI report": [emptyLiftingAssetsDetails],
+        "Crane Visual report": [emptyLiftingAssetsDetails],
     }
 
     return assets[type]
@@ -501,14 +514,22 @@ export const returnReportDataType = (type, keyType) => {
         "MPI": ["MPI", "MPI with connections"],
         "DPI": ["DPI", "DPI with connections", "DPI"],
         "Lifting Inspection": ["Lifting Inspection"],
-        "Ultrasonic Thickness": ["Ultrasonic Thickness"]
+        "Ultrasonic Thickness": ["Ultrasonic Thickness"],
+        "Forklift Visual with MPI report": ["Forklift Visual with MPI report"],
+        "Forklift Visual report": ["Forklift Visual report"],
+        "Crane Visual with MPI report": ["Crane Visual with MPI report"],
+        "Crane Visual report": ["Crane Visual report"],
     };
 
     const initialData = {
         "MPI": MPIReportTypeDataInitial,
         "DPI": DPIReportTypeDataInitial,
-        "Lifting Inspection": [],
-        "Ultrasonic Thickness": []
+        "Lifting Inspection": [emptyLiftingAssetsDetails],
+        "Ultrasonic Thickness": [],
+        "Forklift Visual with MPI report": [emptyLiftingAssetsDetails],
+        "Forklift Visual report": [emptyLiftingAssetsDetails],
+        "Crane Visual with MPI report": [emptyLiftingAssetsDetails],
+        "Crane Visual report": [emptyLiftingAssetsDetails],
     }
 
     const key = Object.keys(reportTypes).find(key => reportTypes[key].includes(type));

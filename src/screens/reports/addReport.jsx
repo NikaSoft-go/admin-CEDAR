@@ -14,6 +14,7 @@ import AddReportNormal from "./addReportNormal.jsx";
 import AddReportWelding from "./addReportWelding.jsx";
 import AddReportUltrasonicThickness from "./addReportUltrasonicThickness.jsx";
 import AddReportUltrasonicThicknessSteelWave from "./addReportUltrasonicThicknessSteelWave.jsx";
+import AddReportLiftingReport from "./liftingReport/addReportLiftingReport.jsx";
 
 const AddReport = () => {
     const [currentTypeComp, setCurrentTypeComp] = useState("");
@@ -74,6 +75,7 @@ const AddReport = () => {
 
 
     const handleAddTableItem = (setFunc, items, emptyItems) => {
+        console.log("items", items);
         setFunc([
             ...items,
             emptyItems,
@@ -328,6 +330,19 @@ const AddReport = () => {
         handleAbbreviationSelectChange
     }
 
+    const liftingReportDependencies = {
+        handleChange,
+        handleAddTableItem,
+        handleTableItemChange,
+        handleRemoveTableItems,
+        assetDetails,
+        setAssetsDetails,
+        reportTypeData,
+        setReportTypeData
+    }
+
+    console.log("reportTypeData", reportTypeData)
+
     const sameTypesReport = {
         "Normal": [
             "MPI",
@@ -337,7 +352,13 @@ const AddReport = () => {
         ],
         "Ultrasonic Inspection": ["Ultrasonic Inspection"],
         "Ultrasonic Inspection (Steel Wave)": ["Ultrasonic Inspection (Steel Wave)"],
-        "Lifting Inspection": ["Lifting Inspection"],
+        "Lifting Inspection": [
+            "Forklift Visual with MPI report",
+            "Forklift Visual report",
+            "Crane Visual with MPI report",
+            "Crane Visual report",
+            "Web Sling and Shackles"
+        ],
         "Welding": ["Welding"]
     }
 
@@ -413,8 +434,11 @@ const AddReport = () => {
                                     <option value="DPI with connections">DPI with connections</option>
                                     <option value="Ultrasonic Inspection">Ultrasonic Thickness</option>
                                     <option value="Ultrasonic Inspection (Steel Wave)">Ultrasonic Inspection (Steel Wave)</option>
-                                    <option value="Lifting Inspection">Lifting Inspection</option>
                                     <option value="Welding">Welding</option>
+                                    <option value="Forklift Visual with MPI report">Forklift Visual with MPI report</option>
+                                    <option value="Forklift Visual report">Forklift Visual report</option>
+                                    <option value="Crane Visual with MPI report">Crane Visual with MPI report</option>
+                                    <option value="Crane Visual report">Crane Visual report</option>
                                 </select>
                             </div>
 
@@ -425,6 +449,8 @@ const AddReport = () => {
                             {currentTypeComp === "Ultrasonic Inspection" && <AddReportUltrasonicThickness {...utReportDependencies} />}
 
                             {currentTypeComp === "Ultrasonic Inspection (Steel Wave)" && <AddReportUltrasonicThicknessSteelWave {...utSteelWaveReportDependencies} />}
+
+                            {currentTypeComp === "Lifting Inspection" && <AddReportLiftingReport {...liftingReportDependencies} />}
 
                             <div className="mt-8"></div>
                             <Button>Add Report</Button>
