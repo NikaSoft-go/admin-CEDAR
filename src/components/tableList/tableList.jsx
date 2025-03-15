@@ -43,7 +43,6 @@ export default function TableList(
                                     className="w-full p-1"
                                     placeholder={header}
                                     value={asset[header.toLowerCase()] || ''} // Use the value from the asset object
-                                    required
                                     onChange={(e) =>
                                         handleTableItemChange(
                                             rowIndex,

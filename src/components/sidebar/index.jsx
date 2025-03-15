@@ -30,6 +30,13 @@ const Sidebar = () => {
             icon: <FiUser size={24} />,
         },
         {
+            id: 'checklists',
+            route: '/checklists',
+            subRoutes: ['/checklists', '/add-checklist', '/edit-checklist', '/preview-checklist'],
+            name: 'Checklists',
+            icon: <FiUser size={24} />,
+        },
+        {
             id: 'invoices',
             route: '/invoices',
             subRoutes: ['/invoices', '/add-invoice', '/edit-invoice', '/preview-invoice'],

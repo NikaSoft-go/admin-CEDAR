@@ -16,6 +16,10 @@ import AddJobInvoice from "./screens/jobInvoices/addJobInvoice.jsx";
 import EditInvoice from "./screens/jobInvoices/editJobInvoice.jsx";
 import PreviewJobInvoice from "./screens/jobInvoices/previewJobInvoice.jsx";
 import ConnectReports from "./screens/connectReports/connectReports.jsx";
+import Checklists from "./screens/checklists/index.jsx";
+import AddChecklist from "./screens/checklists/add-checklist.jsx";
+import PreviewChecklist from "./screens/checklists/preview-checklist.jsx";
+import ConnectChecklists from "./screens/checklists/connect-checklist.jsx";
 
 function App() {
 
@@ -27,7 +31,11 @@ function App() {
         <Route path="/preview-job-quotation/:id" element={<PDFPages/>}/>
         <Route path="/job-quotation/update/:id" element={<EditJobQuotationsPage/>}/>
         <Route path="/reports" element={<Reports/>}/>
+        <Route path="/checklists" element={<Checklists/>}/>
+        <Route path="/preview-checklist/:id" element={<PreviewChecklist/>}/>
+        <Route path="/add-checklist" element={<AddChecklist/>}/>
         <Route path="/connect-reports" element={<ConnectReports/>}/>
+        <Route path="/connect-checklists" element={<ConnectChecklists/>}/>
         <Route path="/add-report" element={<AddReport/>}/>
         <Route path="/preview-report/:id" element={<PreviewReport/>}/>
         <Route path="/report/update/:id" element={<EditReport/>}/>

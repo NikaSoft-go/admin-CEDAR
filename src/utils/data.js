@@ -999,3 +999,203 @@ export const sameTypesReport = {
     ],
     "Welding": ["Welding"]
 }
+
+
+export const craneChecklistData = [
+    {
+        "prior to starting the crane": "Is the warning and indicator light in good condition and it is operational?",
+        yes: "",
+        no: "",
+        "n/a": ""
+    },
+    {
+        "prior to starting the crane": "Is the hoist control operable and in good condition?",
+        yes: "",
+        no: "",
+        "n/a": ""
+    },
+    {
+        "prior to starting the crane": "Is the guard roller in good condition?",
+        yes: "",
+        no: "",
+        "n/a": ""
+    },
+    {
+        "prior to starting the crane": "Is the wire rope in good condition?",
+        yes: "",
+        no: "",
+        "n/a": ""
+    },
+    {
+        "prior to starting the crane": "Is the wire rope in good condition?",
+        yes: "",
+        no: "",
+        "n/a": ""
+    },
+    {
+        "prior to starting the crane": "Are the brakes working and in good condition?",
+        yes: "",
+        no: "",
+        "n/a": ""
+    },
+    {
+        "prior to starting the crane": "Are the suspension bolts in good condition?",
+        yes: "",
+        no: "",
+        "n/a": ""
+    },
+    {
+        "prior to starting the crane": "Are the drive shafts working and in good condition?",
+        yes: "",
+        no: "",
+        "n/a": ""
+    },
+    {
+        "prior to starting the crane": "Are the drive shafts working and in good condition?",
+        yes: "",
+        no: "",
+        "n/a": ""
+    },
+    {
+        "prior to starting the crane": "Is the sheave in good condition?",
+        yes: "",
+        no: "",
+        "n/a": ""
+    },
+    {
+        "prior to starting the crane": "Are the bearings in good condition?",
+        yes: "",
+        no: "",
+        "n/a": ""
+    },
+    {
+        "prior to starting the crane": "Are the wheel in good condition?",
+        yes: "",
+        no: "",
+        "n/a": ""
+    },
+    {
+        "prior to starting the crane": "Is the hook latch in good condition?",
+        yes: "",
+        no: "",
+        "n/a": ""
+    },
+    {
+        "prior to starting the crane": "Any evidence of leaking fuel,oil,or hydraulic fluid?",
+        yes: "",
+        no: "",
+        "n/a": ""
+    },
+    {
+        "prior to starting the crane": "Are the manufacture’s lables,nameplates and other markings legible?",
+        yes: "",
+        no: "",
+        "n/a": ""
+    },
+    {
+        "prior to starting the crane": "Are the rails in good condition?",
+        yes: "",
+        no: "",
+        "n/a": ""
+    },
+    {
+        "prior to starting the crane": "Does the crane have a fire extinguisher and is it full ?",
+        yes: "",
+        no: "",
+        "n/a": ""
+    },
+]
+
+
+export const forkliftChecklistData = [
+    {
+        "prior to starting the forklift": "Is the horn operable?",
+        yes: "",
+        no: "",
+        "n/a": ""
+    },
+    {
+        "prior to starting the forklift": "Is the back-up alarm operable ?",
+        yes: "",
+        no: "",
+        "n/a": ""
+    },
+    {
+        "prior to starting the forklift": "Is the overhead guard in good condition?",
+        yes: "",
+        no: "",
+        "n/a": ""
+    },
+    {
+        "prior to starting the forklift": "Are all tires properly inflated and in good condition?",
+        yes: "",
+        no: "",
+        "n/a": ""
+    },
+    {
+        "prior to starting the forklift": "Is the fuel level adequate?",
+        yes: "",
+        no: "",
+        "n/a": ""
+    },
+    {
+        "prior to starting the forklift": "Is the engine oil level adequate",
+        yes: "",
+        no: "",
+        "n/a": ""
+    },
+    {
+        "prior to starting the forklift": "Is the radiator level adequate?",
+        yes: "",
+        no: "",
+        "n/a": ""
+    },
+    {
+        "prior to starting the forklift": "Are all belts,hoses,cables and chains in good conditions?",
+        yes: "",
+        no: "",
+        "n/a": ""
+    },
+    {
+        "prior to starting the forklift": "Are the forks in good condition?",
+        yes: "",
+        no: "",
+        "n/a": ""
+    },
+    {
+        "prior to starting the forklift": "Are the forks bent?",
+        yes: "",
+        no: "",
+        "n/a": ""
+    },
+    {
+        "prior to starting the forklift": "Ensure the lateral locks on the forks are working?",
+        yes: "",
+        no: "",
+        "n/a": ""
+    },
+    {
+        "prior to starting the forklift": "Any evidence of leaking fuel,oil,or hydraulic fluid?[Be sure to check the floor]",
+        yes: "",
+        no: "",
+        "n/a": ""
+    },
+    {
+        "prior to starting the forklift": "Are the manufacture’s lables,nameplates and other markings legible?",
+        yes: "",
+        no: "",
+        "n/a": ""
+    },
+    {
+        "prior to starting the forklift": "Does the forklift have a seatbelt and is it operational ?",
+        yes: "",
+        no: "",
+        "n/a": ""
+    },
+    {
+        "prior to starting the forklift": "Does the forklift have a fire extinguisher and is it full ?",
+        yes: "",
+        no: "",
+        "n/a": ""
+    },
+]
