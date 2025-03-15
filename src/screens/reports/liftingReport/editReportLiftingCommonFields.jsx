@@ -169,7 +169,7 @@ const formData = {
     ]
 }
 
-export default function AddReportLiftingReportCommonFields(
+export default function EditReportLiftingReportCommonFields(
     props
 ) {
     return (
@@ -203,6 +203,7 @@ export default function AddReportLiftingReportCommonFields(
                                         type={field.type}
                                         placeholder={field.label}
                                         name={field.name}
+                                        value={props.state[field.name]}
                                         onChange={props.handleChange}
                                         required={field.required}
                                     />
@@ -243,6 +244,7 @@ export default function AddReportLiftingReportCommonFields(
                     <textarea
                         name={"q1_a"}
                         onChange={props.handleLiftingInfo}
+                        value={props.liftingInfo["q1_a"]}
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
                 </div>
                 <div className={"flex gap-4 mt-4"}>
@@ -252,6 +254,7 @@ export default function AddReportLiftingReportCommonFields(
                         </label>
                         <textarea
                             name={"q1_b"}
+                            value={props.liftingInfo["q1_b"]}
                             onChange={props.handleLiftingInfo}
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
                     </div>
@@ -261,6 +264,7 @@ export default function AddReportLiftingReportCommonFields(
                         </label>
                         <textarea
                             name={"q1_c"}
+                            value={props.liftingInfo["q1_c"]}
                             onChange={props.handleLiftingInfo}
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
                     </div>
@@ -275,6 +279,7 @@ export default function AddReportLiftingReportCommonFields(
                         </label>
                         <input
                             name={"q1_d"}
+                            value={props.liftingInfo["q1_d"]}
                             onChange={props.handleLiftingInfo}
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></input>
                     </div>
@@ -284,6 +289,7 @@ export default function AddReportLiftingReportCommonFields(
                         </label>
                         <input
                             name={"q1_e"}
+                            value={props.liftingInfo["q1_e"]}
                             onChange={props.handleLiftingInfo}
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></input>
                     </div>
@@ -295,6 +301,7 @@ export default function AddReportLiftingReportCommonFields(
                         </label>
                         <input
                             name={"q1_f"}
+                            value={props.liftingInfo["q1_f"]}
                             onChange={props.handleLiftingInfo}
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></input>
                     </div>
@@ -304,6 +311,7 @@ export default function AddReportLiftingReportCommonFields(
                         </label>
                         <input
                             name={"q1_g"}
+                            value={props.liftingInfo["q1_g"]}
                             onChange={props.handleLiftingInfo}
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></input>
                     </div>
@@ -312,10 +320,11 @@ export default function AddReportLiftingReportCommonFields(
             <div className={"mt-8"}>
                 <div>
                     <label className="block text-gray-700 text-md font-bold mb-2">
-                        (ii) Is it the case that equipment would be safe to operate?
+                        (ii) Is the case that equipment would be safe to operate?
                     </label>
                     <textarea
                         name={"q2_a"}
+                        value={props.liftingInfo["q2_a"]}
                         onChange={props.handleLiftingInfo}
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
                 </div>
@@ -328,6 +337,7 @@ export default function AddReportLiftingReportCommonFields(
                     </label>
                     <textarea
                         name={"q3_a"}
+                        value={props.liftingInfo["q3_a"]}
                         onChange={props.handleLiftingInfo}
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
                 </div>
@@ -339,6 +349,7 @@ export default function AddReportLiftingReportCommonFields(
                     </label>
                     <textarea
                         name={"q3_b"}
+                        value={props.liftingInfo["q3_b"]}
                         onChange={props.handleLiftingInfo}
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
                 </div>
@@ -348,6 +359,7 @@ export default function AddReportLiftingReportCommonFields(
                     </label>
                     <textarea
                         name={"q3_c"}
+                        value={props.liftingInfo["q3_c"]}
                         onChange={props.handleLiftingInfo}
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
                 </div>
@@ -357,6 +369,7 @@ export default function AddReportLiftingReportCommonFields(
                     </label>
                     <textarea
                         name={"q3_d"}
+                        value={props.liftingInfo["q3_d"]}
                         onChange={props.handleLiftingInfo}
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
                 </div>
@@ -366,6 +379,7 @@ export default function AddReportLiftingReportCommonFields(
                     </label>
                     <textarea
                         name={"q3_e"}
+                        value={props.liftingInfo["q3_e"]}
                         onChange={props.handleLiftingInfo}
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
                 </div>
@@ -375,6 +389,7 @@ export default function AddReportLiftingReportCommonFields(
                     </label>
                     <textarea
                         name={"q3_f"}
+                        value={props.liftingInfo["q3_f"]}
                         onChange={props.handleLiftingInfo}
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
                 </div>
@@ -384,6 +399,7 @@ export default function AddReportLiftingReportCommonFields(
                     </label>
                     <textarea
                         name={"q4_a"}
+                        value={props.liftingInfo["q4_a"]}
                         onChange={props.handleLiftingInfo}
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
                 </div>
@@ -394,6 +410,7 @@ export default function AddReportLiftingReportCommonFields(
                         type="text"
                         placeholder="Visual"
                         name="visual"
+                        value={props.state.visual}
                         onChange={props.handleChange}
                         required
                     />
@@ -416,6 +433,7 @@ export default function AddReportLiftingReportCommonFields(
                 handleReviewerInfoChange={props.handleReviewerInfoChange}
                 setComments={props.setComments}
                 comments={props.comments}
+                addItem={props.addComment}
                 issuerInfo={props.issuerInfo}
                 reviewerInfo={props.reviewerInfo}
                 state={props.state}

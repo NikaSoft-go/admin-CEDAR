@@ -1,4 +1,5 @@
- const sectionDetails = ({ data }) => {
+
+const sectionDetails = ({ data, isLifting }) => {
     return (
         <div className="mt-3 flex justify-start w-100">
             <div className="left-section">
@@ -62,6 +63,10 @@
                         <td>Report Number:</td>
                         <td><p>{data?.report_number}</p></td>
                     </tr>
+                    {isLifting && <tr>
+                        <td>Revision:</td>
+                        <td><p>{data?.revision}</p></td>
+                    </tr>}
                     <tr>
                         <td>Date of Examination</td>
                         <td><p>{data?.examination_date}</p></td>
@@ -78,18 +83,30 @@
                         <td>Services:</td>
                         <td><p>{data?.services}</p></td>
                     </tr>
-                    <tr>
+                    {isLifting && <tr>
+                        <td>Standards:</td>
+                        <td><p>{data?.standards}</p></td>
+                    </tr>}
+                    {!isLifting && <tr>
                         <td>Procedure Number:</td>
                         <td><p>{data?.standards}</p></td>
-                    </tr>
-                    <tr>
+                    </tr>}
+                    {isLifting && <tr>
+                        <td>Local Procedure Number:</td>
+                        <td><p>{data?.local_procedure_number}</p></td>
+                    </tr>}
+                    {!isLifting && <tr>
                         <td>Specification:</td>
                         <td><p>{data?.local_procedure_number}</p></td>
-                    </tr>
-                    <tr>
+                    </tr>}
+                    {!isLifting && <tr>
                         <td>Acceptance Criteria:</td>
                         <td><p>{data?.drawing_number}</p></td>
-                    </tr>
+                    </tr>}
+                    {isLifting && <tr>
+                        <td>Drawing Number:</td>
+                        <td><p>{data?.drawing_number}</p></td>
+                    </tr>}
                     <tr>
                         <td>Test Restrictions:</td>
                         <td><p>{data?.test_restrictions}</p></td>

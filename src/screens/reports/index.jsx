@@ -55,16 +55,24 @@ const Reports = () => {
                 <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
                     <div className="p-4">
                         <h1 className="text-2xl font-semibold mb-4">Reports</h1>
-                        <div className="mb-4 flex justify-between items-center">
+                        <div className="mb-6 flex justify-between items-center">
                             <p className="text-gray-600">
                                 Total Reports: <span className="font-bold">{totalReports}</span>
                             </p>
-                            <Link
-                                to="/add-report"
-                                className="add-invoice-btn font-bold py-2 px-4 rounded"
-                            >
-                                Add Report
-                            </Link>
+                            <div className={"space-x-2"}>
+                                <Link
+                                    to="/connect-reports"
+                                    className="add-invoice-btn font-bold py-2 px-4 rounded"
+                                >
+                                    Link two reports
+                                </Link>
+                                <Link
+                                    to="/add-report"
+                                    className="add-invoice-btn font-bold py-2 px-4 rounded"
+                                >
+                                    Add report
+                                </Link>
+                            </div>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                             {reports.map((report) => (

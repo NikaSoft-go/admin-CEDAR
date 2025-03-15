@@ -1,8 +1,6 @@
 import {FiTrash2} from "react-icons/fi";
 import {
     consumablesInitial,
-    emptyAssetsDetails,
-    emptyDimensionDetails,
     equipmentsInitial,
     keyItems
 } from "../../utils/data.js";
@@ -11,12 +9,10 @@ import ResponsibilityTable from "../../components/invoices/tableA.jsx";
 import MultiSelect from "../../components/multiSelect/index.jsx";
 import FileUploadComponent from "../../components/imagesSelect/index.jsx";
 import {getInvoiceImageFullPath} from "../../utils/index.js";
+import IncrementalList from "../../components/incrementalList/index.jsx";
 
 
 const EditReportNormal = (props) => {
-    console.log("props", props.state.images);
-    console.log("props", props.state.inspector_signature);
-    console.log("props", props.state.reviewer_signature);
     return (
         <>
             <h3 className="font-bold mb-4">Client Details</h3>
@@ -616,8 +612,6 @@ const EditReportNormal = (props) => {
                     onClick={() =>
                         props.handleAddTableItem(
                             props.setAssetsDetails,
-                            props.assetDetails,
-                            emptyAssetsDetails
                         )
                     }
                 >
@@ -741,8 +735,6 @@ const EditReportNormal = (props) => {
                 onClick={() =>
                     props.handleAddTableItem(
                         props.setDimensionOneDetails,
-                        props.dimensionOneDetails,
-                        emptyDimensionDetails
                     )
                 }
             >
@@ -833,8 +825,6 @@ const EditReportNormal = (props) => {
                 onClick={() =>
                     props.handleAddTableItem(
                         props.setDimensionTwoDetails,
-                        props.dimensionTwoDetails,
-                        emptyDimensionDetails
                     )
                 }
             >
@@ -943,8 +933,6 @@ const EditReportNormal = (props) => {
                 onClick={() =>
                     props.handleAddTableItem(
                         props.setDimensionTwoDetails,
-                        props.dimensionTwoDetails,
-                        emptyDimensionDetails
                     )
                 }
             >
@@ -1023,8 +1011,6 @@ const EditReportNormal = (props) => {
                     onClick={() =>
                         props.handleAddTableItem(
                             props.setDimensionTwoDetails,
-                            props.dimensionTwoDetails,
-                            emptyDimensionDetails
                         )
                     }
                 >
@@ -1137,13 +1123,10 @@ const EditReportNormal = (props) => {
         {/* Inspector's Comment */}
             <div className="mb-3">
                 <label className="block text-gray-700 text-md font-bold mb-2">Inspector&apos;s Comment:</label>
-                <textarea
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    placeholder="Inspector's Comment"
-                    name="comments"
-                    value={props.state.comments}
-                    onChange={props.handleChange}
-                    required
+                <IncrementalList
+                    items={props.comments}
+                    setItems={props.setComments}
+                    addItem={props.addItem}
                 />
             </div>
 
@@ -1168,10 +1151,10 @@ const EditReportNormal = (props) => {
                         onChange={props.handleChange}
                     />
                     {/* Display Uploaded Inspector Signature */}
-                    {props.state.inspector_signature && (
+                    {props.state.inspector_signature_url && (
                         <div className="mt-2 relative">
                             <img
-                                src={typeof props.state.inspector_signature === 'string' ? props.state.inspector_signature : URL.createObjectURL(props.state.inspector_signature)}
+                                src={getInvoiceImageFullPath(props.state.inspector_signature_url)}
                                 alt="Inspector Signature"
                                 className="w-32 h-32 object-cover rounded-lg shadow-md"
                             />
@@ -1193,10 +1176,10 @@ const EditReportNormal = (props) => {
                         onChange={props.handleChange}
                     />
                     {/* Display Uploaded Reviewer Signature */}
-                    {props.state.reviewer_signature && (
+                    {props.state.reviewer_signature_url && (
                         <div className="mt-2 relative">
                             <img
-                                src={typeof props.state.reviewer_signature === 'string' ? props.state.reviewer_signature : URL.createObjectURL(props.state.reviewer_signature)}
+                                src={getInvoiceImageFullPath(props.state.reviewer_signature_url)}
                                 alt="Reviewer Signature"
                                 className="w-32 h-32 object-cover rounded-lg shadow-md"
                             />

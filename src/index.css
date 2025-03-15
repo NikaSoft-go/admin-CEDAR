@@ -15,6 +15,19 @@
     border: 1px solid #38AE29;
 }
 
+.add-invoice-btn-secondary {
+  background-color: #fff;
+  color: #38AE29;
+  border: 1px solid #38AE29;
+}
+
+.add-invoice-btn-secondary:hover {
+  background-color: #38AE29;
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+
 input, textarea {
     padding: 0 5px;
 }

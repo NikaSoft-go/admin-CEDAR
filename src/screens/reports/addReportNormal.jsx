@@ -1,8 +1,6 @@
 import {FiTrash2} from "react-icons/fi";
 import {
     consumablesInitial,
-    emptyAssetsDetails,
-    emptyDimensionDetails,
     equipmentsInitial,
     keyItems
 } from "../../utils/data.js";
@@ -10,10 +8,19 @@ import {IoMdAddCircleOutline} from "react-icons/io";
 import ResponsibilityTable from "../../components/invoices/tableA.jsx";
 import MultiSelect from "../../components/multiSelect/index.jsx";
 import FileUploadComponent from "../../components/imagesSelect/index.jsx";
+import IncrementalList from "../../components/incrementalList/index.jsx";
+import TableList from "../../components/tableList/tableList.jsx";
 
 
 const AddReportNormal = (props) => {
-
+    const assetHeaders = [
+        "Type",
+        "Serial Number",
+        "Model",
+        "Description",
+        "Size",
+        "Material"
+    ]
     return (
         <>
             <h3 className="font-bold mb-4">Client Details</h3>
@@ -222,7 +229,7 @@ const AddReportNormal = (props) => {
                     />
                 </div>
 
-                 {/*Procedure */}
+                {/*Procedure */}
                 <div>
                     <label className="block text-gray-700 text-md font-bold mb-2">Procedure:</label>
                     <input
@@ -436,160 +443,14 @@ const AddReportNormal = (props) => {
 
             {/* Asset Details */}
             <div className="mb-4">
-                <label className="block text-gray-700 text-md font-bold mb-2">Assets Details:</label>
-                <table className="w-full border">
-                    <thead>
-                    <tr>
-                        <th className="border p-2">Type</th>
-                        <th className="border p-2">Serial Number</th>
-                        <th className="border p-2">Model</th>
-                        <th className="border p-2">Description</th>
-                        <th className="border p-2">Size</th>
-                        <th className="border p-2">Material</th>
-                        <th className="border p-2"></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {props.assetDetails?.map((asset, index) => (
-                        <tr key={index}>
-                            <td className="border p-2">
-                                <input
-                                    type="text"
-                                    className="w-full p-1"
-                                    placeholder="Type"
-                                    value={asset.type}
-                                    required
-                                    onChange={(e) =>
-                                        props.handleTableItemChange(
-                                            index,
-                                            'type',
-                                            e.target.value,
-                                            props.assetDetails,
-                                            props.setAssetsDetails
-                                        )}
-                                />
-                            </td>
-                            <td className="border p-2">
-                                <input
-                                    type="text"
-                                    className="w-full p-1"
-                                    placeholder="Serial Number"
-                                    value={asset.serial_number}
-                                    required
-                                    onChange={(e) =>
-                                        props.handleTableItemChange(
-                                            index,
-                                            'serial_number',
-                                            e.target.value,
-                                            props.assetDetails,
-                                            props.setAssetsDetails
-                                        )}
-                                />
-                            </td>
-                            <td className="border p-2">
-                                <input
-                                    type="text"
-                                    className="w-full p-1"
-                                    placeholder="Model"
-                                    value={asset.model}
-                                    onChange={(e) =>
-                                        props.handleTableItemChange(
-                                            index,
-                                            'model',
-                                            e.target.value,
-                                            props.assetDetails,
-                                            props.setAssetsDetails
-                                        )
-                                    }
-                                    required
-                                />
-                            </td>
-                            <td className="border p-2">
-                                <input
-                                    type="text"
-                                    className="w-full p-1"
-                                    placeholder="Description"
-                                    value={asset.description}
-                                    onChange={(e) =>
-                                        props.handleTableItemChange(
-                                            index,
-                                            'description',
-                                            e.target.value,
-                                            props.assetDetails,
-                                            props.setAssetsDetails
-                                        )
-                                    }
-                                    required
-                                />
-                            </td>
-                            <td className="border p-2">
-                                <input
-                                    type="text"
-                                    className="w-full p-1"
-                                    placeholder="Size"
-                                    value={asset.size}
-                                    onChange={(e) =>
-                                        props.handleTableItemChange(
-                                            index,
-                                            'size',
-                                            e.target.value,
-                                            props.assetDetails,
-                                            props.setAssetsDetails
-                                        )
-                                    }
-                                    required
-                                />
-                            </td>
-                            <td className="border p-2">
-                                <input
-                                    type="text"
-                                    className="w-full p-1"
-                                    placeholder="Material"
-                                    value={asset.material}
-                                    onChange={(e) =>
-                                        props.handleTableItemChange(
-                                            index,
-                                            'material',
-                                            e.target.value,
-                                            props.assetDetails,
-                                            props.setAssetsDetails
-                                        )
-                                    }
-                                    required
-                                />
-                            </td>
-                            <td className="border p-2">
-                                <button
-                                    type="button"
-                                    className="remove-btn rounded p-1"
-                                    onClick={() =>
-                                        props.handleRemoveTableItems(
-                                            index,
-                                            props.assetDetails,
-                                            props.setAssetsDetails
-                                        )
-                                    }
-                                >
-                                    <FiTrash2/>
-                                </button>
-                            </td>
-                        </tr>
-                    ))}
-                    </tbody>
-                </table>
-                <button
-                    type="button"
-                    className="add-item-btn text-white rounded px-2 py-1"
-                    onClick={() =>
-                        props.handleAddTableItem(
-                            props.setAssetsDetails,
-                            props.assetDetails,
-                            emptyAssetsDetails
-                        )
-                    }
-                >
-                    <IoMdAddCircleOutline/>
-                </button>
+                <TableList
+                    listData={props.assetDetails}
+                    setListData={props.setAssetsDetails}
+                    handleRemoveTableItems={props.handleRemoveTableItems}
+                    handleTableItemChange={props.handleAssetDataTableItemChange}
+                    tableHeaders={assetHeaders}
+                    label={"Asset Details:"}
+                />
             </div>
 
             <div className="mb-4 flex items-center justify-start">
@@ -657,29 +518,25 @@ const AddReportNormal = (props) => {
                                     value={dimension.property}
                                     required
                                     onChange={(e) =>
-                                        props.handleTableItemChange(
+                                        props.handleDimensionOneTableItemChange(
                                             index,
                                             'property',
                                             e.target.value,
-                                            props.dimensionOneDetails,
-                                            props.setDimensionOneDetails
                                         )}
                                 />
                             </td>
                             <td className="border p-2">
                                 <input
                                     type="text"
-                                    className="w-full p-1"
+                                     className="w-full p-1"
                                     placeholder="Value"
                                     value={dimension.value}
                                     required
                                     onChange={(e) =>
-                                        props.handleTableItemChange(
+                                        props.handleDimensionOneTableItemChange(
                                             index,
                                             'value',
                                             e.target.value,
-                                            props.dimensionOneDetails,
-                                            props.setDimensionOneDetails
                                         )}
                                 />
                             </td>
@@ -707,8 +564,6 @@ const AddReportNormal = (props) => {
                     onClick={() =>
                         props.handleAddTableItem(
                             props.setDimensionOneDetails,
-                            props.dimensionOneDetails,
-                            emptyDimensionDetails
                         )
                     }
                 >
@@ -751,12 +606,10 @@ const AddReportNormal = (props) => {
                                     value={dimension.property}
                                     required
                                     onChange={(e) =>
-                                        props.handleTableItemChange(
+                                        props.handleDimensionTwoTableItemChange(
                                             index,
                                             'property',
                                             e.target.value,
-                                            props.dimensionTwoDetails,
-                                            props.setDimensionTwoDetails
                                         )}/>
                             </td>
                             <td className="border p-2">
@@ -767,12 +620,10 @@ const AddReportNormal = (props) => {
                                     value={dimension.value}
                                     required
                                     onChange={(e) =>
-                                        props.handleTableItemChange(
+                                        props.handleDimensionTwoTableItemChange(
                                             index,
                                             'value',
                                             e.target.value,
-                                            props.dimensionTwoDetails,
-                                            props.setDimensionTwoDetails
                                         )}/>
                             </td>
                             <td className="border p-2">
@@ -799,8 +650,6 @@ const AddReportNormal = (props) => {
                     onClick={() =>
                         props.handleAddTableItem(
                             props.setDimensionTwoDetails,
-                            props.dimensionTwoDetails,
-                            emptyDimensionDetails
                         )
                     }
                 >
@@ -861,12 +710,10 @@ const AddReportNormal = (props) => {
                                     value={dimension.property}
                                     required
                                     onChange={(e) =>
-                                        props.handleTableItemChange(
+                                        props.handleBodyTableItemChange(
                                             index,
                                             'property',
                                             e.target.value,
-                                            props.bodyDetails,
-                                            props.setBodyDetails
                                         )}/>
                             </td>
                             <td className="border p-2">
@@ -877,12 +724,10 @@ const AddReportNormal = (props) => {
                                     value={dimension.value}
                                     required
                                     onChange={(e) =>
-                                        props.handleTableItemChange(
+                                        props.handleBodyTableItemChange(
                                             index,
                                             'value',
                                             e.target.value,
-                                            props.bodyDetails,
-                                            props.setBodyDetails
                                         )}/>
                             </td>
                             <td className="border p-2">
@@ -909,8 +754,6 @@ const AddReportNormal = (props) => {
                     onClick={() =>
                         props.handleAddTableItem(
                             props.setDimensionTwoDetails,
-                            props.dimensionTwoDetails,
-                            emptyDimensionDetails
                         )
                     }
                 >
@@ -941,12 +784,10 @@ const AddReportNormal = (props) => {
                                         value={dimension.property}
                                         required
                                         onChange={(e) =>
-                                            props.handleTableItemChange(
+                                            props.handleBladeTableItemChange(
                                                 index,
                                                 'property',
                                                 e.target.value,
-                                                props.bladeDetails,
-                                                props.setBladeDetails
                                             )}/>
                                 </td>
                                 <td className="border p-2">
@@ -957,12 +798,10 @@ const AddReportNormal = (props) => {
                                         value={dimension.value}
                                         required
                                         onChange={(e) =>
-                                            props.handleTableItemChange(
+                                            props.handleBladeTableItemChange(
                                                 index,
                                                 'value',
                                                 e.target.value,
-                                                props.bladeDetails,
-                                                props.setBladeDetails
                                             )}/>
                                 </td>
                                 <td className="border p-2">
@@ -989,8 +828,6 @@ const AddReportNormal = (props) => {
                         onClick={() =>
                             props.handleAddTableItem(
                                 props.setDimensionTwoDetails,
-                                props.dimensionTwoDetails,
-                                emptyDimensionDetails
                             )
                         }
                     >
@@ -1033,12 +870,10 @@ const AddReportNormal = (props) => {
                                     value={dimension.property}
                                     required
                                     onChange={(e) =>
-                                        props.handleTableItemChange(
+                                        props.handleReportTypeTableItemChange(
                                             index,
                                             'property',
                                             e.target.value,
-                                            props.reportTypeData,
-                                            props.setReportTypeData
                                         )}/>
                             </td>
                             <td className="border p-2">
@@ -1049,12 +884,10 @@ const AddReportNormal = (props) => {
                                     value={dimension.value}
                                     required
                                     onChange={(e) =>
-                                        props.handleTableItemChange(
+                                        props.handleReportTypeTableItemChange(
                                             index,
                                             'value',
                                             e.target.value,
-                                            props.reportTypeData,
-                                            props.setReportTypeData
                                         )}/>
                             </td>
                             <td className="border p-2">
@@ -1102,12 +935,10 @@ const AddReportNormal = (props) => {
             {/* Inspector's Comment */}
             <div className="mb-3">
                 <label className="block text-gray-700 text-md font-bold mb-2">Inspector&apos;s Comment:</label>
-                <textarea
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    placeholder="Inspector's Comment"
-                    name="comments"
-                    onChange={props.handleChange}
-                    required
+                <IncrementalList
+                    items={props.comments}
+                    setItems={props.setComments}
+                    addItem={props.addComment}
                 />
             </div>
 

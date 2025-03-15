@@ -5,29 +5,40 @@ import {axiosClient} from "../../libs/axiosClient.js";
 import {toast} from "react-toastify";
 import {useNavigate} from "react-router-dom";
 import {
-    bladeDetailInitial, bodyDetailInitial,
-    consumablesInitial, equipmentConsumablesInitial, equipmentsInitial, equipmentTechniqueInitial,
-    getDimensionData, otherEquipmentsProps, qualityCheckRecord, returnAssetsData,
-    returnReportDataType, utSteelWaveTableInitial, utTableInitial, weldingTableInitial,
+    bladeDetailInitial,
+    bodyDetailInitial,
+    consumablesInitial,
+    equipmentConsumablesInitial,
+    equipmentsInitial,
+    equipmentTechniqueInitial,
+    getDimensionData,
+    otherEquipmentsProps,
+    qualityCheckRecord,
+    returnReportDataType,
+    utSteelWaveTableInitial,
+    utTableInitial,
+    weldingTableInitial,
 } from "../../utils/data.js";
 import AddReportNormal from "./addReportNormal.jsx";
 import AddReportWelding from "./addReportWelding.jsx";
 import AddReportUltrasonicThickness from "./addReportUltrasonicThickness.jsx";
 import AddReportUltrasonicThicknessSteelWave from "./addReportUltrasonicThicknessSteelWave.jsx";
 import AddReportLiftingReport from "./liftingReport/addReportLiftingReport.jsx";
+import {getReportNormal} from "../../utils/index.js";
 
 const AddReport = () => {
     const [currentTypeComp, setCurrentTypeComp] = useState("");
     const [selectedOptions, setSelectedOptions] = useState([]);
     const [images, setImages] = useState([]);
     const [reportTypeData, setReportTypeData] = useState([]);
+    const [personnelData, setPersonnelData] = useState([]);
+    const [liftingInfo, setLiftingInfo] = useState({});
     const [consumablesData, setConsumablesData] = useState(consumablesInitial);
     const [equipmentsData, setEquipmentsData] = useState(equipmentsInitial);
     const [assetDetails, setAssetsDetails] = useState([]);
     const [utResults, setUtResults] = useState([]);
     const [comments, setComments] = useState([]);
     const [scanningSensitivity, setScanningSensitivity] = useState([]);
-    console.log("scanningSensitivity", scanningSensitivity)
     const [dimensionOneDetails, setDimensionOneDetails] = useState([]);
     const [equipmentConsumables, setEquipmentConsumables] = useState(equipmentConsumablesInitial);
     const [equipmentMethod, setEquipmentMethod] = useState(equipmentTechniqueInitial);
@@ -60,7 +71,22 @@ const AddReport = () => {
             ...items,
             [e.target.name]: value
         })
+    }
 
+    const handleIssuerInfoChange = (e) => {
+        const value = e.target?.files ? e.target.files[0] : e.target.value;
+        setIssuerInfo((items) => ({
+            ...items,
+            [e.target.name]: value
+        }))
+    }
+
+    const handleReviewerInfoChange = (e) => {
+        const value = e.target?.files ? e.target.files[0] : e.target.value;
+        setReviewerInfo((items) => ({
+            ...items,
+            [e.target.name]: value
+        }))
     }
 
     const handleFilesSelect = (files) => {
@@ -74,11 +100,11 @@ const AddReport = () => {
     };
 
 
-    const handleAddTableItem = (setFunc, items, emptyItems) => {
-        console.log("items", items);
-        setFunc([
+    const handleAddTableItem = (setFunc) => {
+        const emptyData = returnReportDataType(state.report_type, "data");
+        setFunc((items) => [
             ...items,
-            emptyItems,
+            emptyData[0],
         ]);
     };
 
@@ -88,10 +114,34 @@ const AddReport = () => {
         setItems(updatedCostItems);
     };
 
-    const handleTableItemChange = (index, field, value, items, setItems) => {
-        const updatedCostItems = [...items];
+    const handleReportTypeTableItemChange = (index, field, value) => {
+        const updatedCostItems = [...reportTypeData];
         updatedCostItems[index][field] = value;
-        setItems(updatedCostItems);
+        setReportTypeData(updatedCostItems);
+    };
+
+    const handleDimensionOneTableItemChange = (index, field, value) => {
+        const updatedCostItems = [...dimensionOneDetails];
+        updatedCostItems[index][field] = value;
+        setDimensionOneDetails(updatedCostItems);
+    };
+
+    const handleDimensionTwoTableItemChange = (index, field, value) => {
+        const updatedCostItems = [...dimensionTwoDetails];
+        updatedCostItems[index][field] = value;
+        setDimensionTwoDetails(updatedCostItems);
+    };
+
+    const handleAssetDataTableItemChange = (index, field, value) => {
+        const updatedCostItems = [...assetDetails];
+        updatedCostItems[index][field] = value;
+        setAssetsDetails(updatedCostItems);
+    };
+
+    const handlePersonnelTableItemChange = (index, field, value) => {
+        const updatedCostItems = [...personnelData];
+        updatedCostItems[index][field] = value;
+        setPersonnelData(updatedCostItems);
     };
 
     const handleAddWeldingTableItem = () => {
@@ -122,6 +172,18 @@ const AddReport = () => {
         setWeldingTableData(updatedCostItems);
     };
 
+    const handleBodyTableItemChange = (index, field, value) => {
+        const updatedCostItems = [...bodyDetails];
+        updatedCostItems[index][field] = value;
+        setBodyDetails(updatedCostItems);
+    };
+
+    const handleBladeTableItemChange = (index, field, value) => {
+        const updatedCostItems = [...bladeDetails];
+        updatedCostItems[index][field] = value;
+        setBladeDetails(updatedCostItems);
+    };
+
     const handleAddUTTableItem = () => {
         setUtTableData([
             ...utTableData,
@@ -149,6 +211,13 @@ const AddReport = () => {
         updatedCostItems[index][field] = value;
         setUtTableData(updatedCostItems);
     };
+
+    const handleImageDelete = (index) => {
+        setState((prev) => ({
+            ...prev,
+            images: [...prev.images.filter((_, itemIndex) => itemIndex !== index)]
+        }))
+    }
 
     const handleAddReport = async (e) => {
         e.preventDefault();
@@ -184,6 +253,8 @@ const AddReport = () => {
             equipment_method: JSON.stringify(equipmentMethod || []),
             ut_results: JSON.stringify(utResults || []),
             ut_table_data: JSON.stringify(utTableDataFinal),
+            personnel_data: JSON.stringify(personnelData || []),
+            lifting_data: JSON.stringify(liftingInfo || {}),
             inspector_comments: JSON.stringify(comments || [])
         }
 
@@ -229,6 +300,30 @@ const AddReport = () => {
         setAbbreviationsUsed(selected);
     };
 
+    const handleLiftingInfo = (e) => {
+        setLiftingInfo((prev) => ({
+            ...prev,
+            [e.target.name]: e.target.value
+        }))
+    }
+
+    const handleDeleteSignature = (signature) => {
+        setState((prev) => ({
+            ...prev,
+            [signature]: null
+        }))
+    }
+
+    const addComment = () => {
+        setComments((prevItems) => [
+            ...prevItems,
+            {
+                id: prevItems.length + 1,
+                value: '',
+            },
+        ]);
+    };
+
     const normalDependencies = {
         handleChange,
         issuerInfo,
@@ -236,7 +331,12 @@ const AddReport = () => {
         reviewerInfo,
         setReviewerInfo,
         assetDetails,
-        handleTableItemChange,
+        handleAssetDataTableItemChange,
+        handleReportTypeTableItemChange,
+        handleDimensionTwoTableItemChange,
+        handleDimensionOneTableItemChange,
+        handleBladeTableItemChange,
+        handleBodyTableItemChange,
         setAssetsDetails,
         handleRemoveTableItems,
         handleAddTableItem,
@@ -257,6 +357,9 @@ const AddReport = () => {
         equipmentsData,
         setEquipmentsData,
         selectedOptions,
+        comments,
+        setComments,
+        addComment,
         handleMultiSelectChange,
         handleFilesSelect
     }
@@ -266,7 +369,6 @@ const AddReport = () => {
         equipmentConsumables,
         setEquipmentConsumables,
         handleRemoveTableItems,
-        handleTableItemChange,
         setOtherWeldingProps,
         otherWeldingProps,
         setWeldingTableData,
@@ -287,7 +389,6 @@ const AddReport = () => {
         setEquipmentMethod,
         setUtTableData,
         utTableData,
-        handleTableItemChange,
         handleRemoveTableItems,
         handleUTTableItemChange,
         handleRemoveUTTableItem,
@@ -300,6 +401,7 @@ const AddReport = () => {
         utResults,
         comments,
         setComments,
+        addComment,
         handleFilesSelect,
     }
 
@@ -309,7 +411,6 @@ const AddReport = () => {
         setEquipmentMethod,
         setUtSteelWaveTableData,
         utSteelWaveTableData,
-        handleTableItemChange,
         handleRemoveTableItems,
         handleUTTableItemChange,
         handleRemoveUTTableItem,
@@ -322,6 +423,7 @@ const AddReport = () => {
         utResults,
         comments,
         setComments,
+        addComment,
         setScanningSensitivity,
         utQualityCheckRecordData,
         setUtQualityCheckRecordData,
@@ -333,54 +435,37 @@ const AddReport = () => {
     const liftingReportDependencies = {
         handleChange,
         handleAddTableItem,
-        handleTableItemChange,
+        handlePersonnelTableItemChange,
+        handleReportTypeTableItemChange,
+        handleAssetDataTableItemChange,
         handleRemoveTableItems,
+        handleFilesSelect,
+        handleLiftingInfo,
+        handleIssuerInfoChange,
+        handleReviewerInfoChange,
+        handleImageDelete,
+        handleDeleteSignature,
+        setComments,
         assetDetails,
         setAssetsDetails,
         reportTypeData,
-        setReportTypeData
-    }
-
-    console.log("reportTypeData", reportTypeData)
-
-    const sameTypesReport = {
-        "Normal": [
-            "MPI",
-            "MPI with connections",
-            "DPI",
-            "DPI with connections",
-        ],
-        "Ultrasonic Inspection": ["Ultrasonic Inspection"],
-        "Ultrasonic Inspection (Steel Wave)": ["Ultrasonic Inspection (Steel Wave)"],
-        "Lifting Inspection": [
-            "Forklift Visual with MPI report",
-            "Forklift Visual report",
-            "Crane Visual with MPI report",
-            "Crane Visual report",
-            "Web Sling and Shackles"
-        ],
-        "Welding": ["Welding"]
-    }
-
-
-    const getReportNormal = () => {
-        let currentType = "";
-        for (const reportType in sameTypesReport) {
-            const data = sameTypesReport[reportType];
-            if (data?.includes(state.report_type)) {
-                currentType = reportType;
-                break;
-            }
-        }
-
-        setCurrentTypeComp(currentType);
+        setReportTypeData,
+        personnelData,
+        setPersonnelData,
+        setLiftingInfo,
+        issuerInfo,
+        reviewerInfo,
+        state
     }
 
     useEffect(() => {
         if (state.report_type) {
-            getReportNormal();
-            setReportTypeData(returnReportDataType(state.report_type, "data"));
-            setAssetsDetails(returnAssetsData(state.report_type))
+            setCurrentTypeComp(getReportNormal(state.report_type));
+            // setReportTypeData(returnReportDataType(state.report_type, "data"));
+            // if (currentTypeComp === "Lifting Inspection") {
+            //     setPersonnelData([emptyLiftingPersonnelDetails]);
+            // }
+            // setAssetsDetails(returnAssetsData(state.report_type))
         }
     }, [state.report_type]);
 
@@ -450,7 +535,11 @@ const AddReport = () => {
 
                             {currentTypeComp === "Ultrasonic Inspection (Steel Wave)" && <AddReportUltrasonicThicknessSteelWave {...utSteelWaveReportDependencies} />}
 
-                            {currentTypeComp === "Lifting Inspection" && <AddReportLiftingReport {...liftingReportDependencies} />}
+                            {currentTypeComp === "Lifting Inspection" &&
+                                <AddReportLiftingReport
+                                    {...liftingReportDependencies}
+                                />
+                            }
 
                             <div className="mt-8"></div>
                             <Button>Add Report</Button>

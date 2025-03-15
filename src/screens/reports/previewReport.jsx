@@ -7,6 +7,7 @@ import PageOne from "./pageOne.jsx";
 import PreviewReportNormal from "./previewReportNormal.jsx";
 import PreviewReportUltrasonicInspection from "./previewReportUltrasonicInspection.jsx";
 import PreviewReportWeldingInspection from "./weldingReport/previewReportWelding.jsx";
+import PreviewReportLifting from "./previewReportLifting.jsx";
 
 
 export default function PreviewReport() {
@@ -32,6 +33,12 @@ export default function PreviewReport() {
         equipment_consumables: JSON.parse(report.equipment_consumables || "[]"),
         other_welding_props: JSON.parse(report.other_welding_props || "[]"),
         welding_table_data: JSON.parse(report.welding_table_data || "[]"),
+        lifting_data: typeof report?.lifting_data === "string"
+            ? JSON.parse(report.lifting_data)
+            : report.lifting_data,
+        personnel_data: typeof report.personnel_data === "string"
+                ? JSON.parse(report.personnel_data)
+                : report.personnel_data
     }
     // Function to generate a single PDF by combining the content of all pages
     const generateCombinedPDF = () => {
@@ -83,6 +90,7 @@ export default function PreviewReport() {
                     {normalReportTypes.includes(report?.report_type) && <PreviewReportNormal report={report} />}
                     {report?.report_type === "Ultrasonic Inspection" && <PreviewReportUltrasonicInspection report={report} />}
                     {report?.report_type === "Welding" && <PreviewReportWeldingInspection report={report} />}
+                    {report?.report_type === "Forklift Visual report" && <PreviewReportLifting report={report} />}
                 </main>
             </div>
         </div>

@@ -15,6 +15,7 @@ import Invoices from "./screens/jobInvoices/index.jsx";
 import AddJobInvoice from "./screens/jobInvoices/addJobInvoice.jsx";
 import EditInvoice from "./screens/jobInvoices/editJobInvoice.jsx";
 import PreviewJobInvoice from "./screens/jobInvoices/previewJobInvoice.jsx";
+import ConnectReports from "./screens/connectReports/connectReports.jsx";
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
         <Route path="/preview-job-quotation/:id" element={<PDFPages/>}/>
         <Route path="/job-quotation/update/:id" element={<EditJobQuotationsPage/>}/>
         <Route path="/reports" element={<Reports/>}/>
+        <Route path="/connect-reports" element={<ConnectReports/>}/>
         <Route path="/add-report" element={<AddReport/>}/>
         <Route path="/preview-report/:id" element={<PreviewReport/>}/>
         <Route path="/report/update/:id" element={<EditReport/>}/>

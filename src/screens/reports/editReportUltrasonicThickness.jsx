@@ -630,7 +630,11 @@ const EditReportUltrasonicThickness = (props) => {
 
             <div className="mb-6 w-[100%]">
                 <label className="block text-gray-700 text-md font-bold mb-2">Inspector&apos;s comment:</label>
-                <IncrementalList setComments={props.setComments}/>
+                <IncrementalList
+                    items={props.comments}
+                    setItems={props.setComments}
+                    addItem={props.addComment}
+                />
             </div>
 
             <h3 className="font-bold mb-4">Inspected by</h3>

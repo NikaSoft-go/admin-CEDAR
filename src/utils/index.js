@@ -1,3 +1,4 @@
+import {sameTypesReport} from "./data.js";
 
 
 export const getImageFullPath = (fileName) => {
@@ -49,4 +50,38 @@ export const cleanHeaders = (data) => {
             .map(word => word.charAt(0).toUpperCase() + word.slice(1))
             .join(' ');
     })
+}
+
+
+export const getReportNormal = (reportType) => {
+    let currentType = "";
+    for (const reportTypeKey in sameTypesReport) {
+        const data = sameTypesReport[reportTypeKey];
+        if (data?.includes(reportType)) {
+            currentType = reportTypeKey;
+            break;
+        }
+    }
+
+    return currentType;
+}
+
+export const isLifting = (report_type) => [
+    "Forklift Visual report"
+].includes(report_type)
+
+export const toTitleCase = (word) => {
+    const excludes = {
+        "of": "of",
+        "and": "and",
+        "swl": "SWL"
+    }
+    return word
+        .toLowerCase()
+        .split(" ")
+        .map((word) => !Object.keys(excludes).includes(word)
+            ? word.charAt(0).toUpperCase() + word.slice(1)
+            : excludes[word]
+        )
+        .join(" ");
 }

@@ -1,19 +1,7 @@
 
-import {useEffect, useState} from 'react';
-import {commentsInitial} from "../../utils/data.js";
+// import {commentsInitial} from "../../utils/data.js";
 
-const IncrementalList = ({ setComments }) => {
-    const [items, setItems] = useState(commentsInitial);
-
-    const addItem = () => {
-        setItems((prevItems) => [
-            ...prevItems,
-            {
-                id: prevItems.length + 1,
-                value: '',
-            },
-        ]);
-    };
+const IncrementalList = ({ items, setItems, addItem }) => {
 
     const handleInputChange = (id, value) => {
         setItems((prevItems) =>
@@ -23,14 +11,11 @@ const IncrementalList = ({ setComments }) => {
         );
     };
 
-    useEffect(() => {
-        setComments(items);
-    }, [items]);
 
     return (
         <div className="my-8 p-4">
             <form>
-                {items.map((item) => (
+                {items?.map((item) => (
                     <div key={item.id} className="mb-4">
                         <input
                             type="text"

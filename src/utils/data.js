@@ -1,6 +1,7 @@
 // Reports
 export const emptyAssetsDetails = {type: '', serial_number: '', model: '', description: '', size: '', material: ''}
 export const emptyLiftingAssetsDetails = {type: '', serial_number: '', model: '', description: '', image: ''}
+export const emptyLiftingPersonnelDetails = {name: '', position: '', qualification: '', services: ''}
 export const emptyLiftingItemDetails = {
     serial_number: '',
     description_and_identification_equipment: '',
@@ -856,37 +857,37 @@ export const utTableResults = [
     {
         rowName: 'COVER / SHELL A (mm)',
         degrees: {
-            '0': { value1: '11.4', value2: '11.5' },
-            '90': { value1: '11.4', value2: '11.3' },
-            '180': { value1: '11.5', value2: '11.2' },
-            '270': { value1: '11.3', value2: '11.3' },
+            '0': {value1: '11.4', value2: '11.5'},
+            '90': {value1: '11.4', value2: '11.3'},
+            '180': {value1: '11.5', value2: '11.2'},
+            '270': {value1: '11.3', value2: '11.3'},
         },
     },
     {
         rowName: 'SHELL B (mm)',
         degrees: {
-            '0': { value1: '11.4', value2: '11.5' },
-            '90': { value1: '11.4', value2: '11.3' },
-            '180': { value1: '11.5', value2: '11.2' },
-            '270': { value1: '11.3', value2: '11.3' },
+            '0': {value1: '11.4', value2: '11.5'},
+            '90': {value1: '11.4', value2: '11.3'},
+            '180': {value1: '11.5', value2: '11.2'},
+            '270': {value1: '11.3', value2: '11.3'},
         },
     },
     {
         rowName: 'SHELL C (mm)',
         degrees: {
-            '0': { value1: '11.4', value2: '11.5' },
-            '90': { value1: '11.4', value2: '11.3' },
-            '180': { value1: '11.5', value2: '11.2' },
-            '270': { value1: '11.3', value2: '11.3' },
+            '0': {value1: '11.4', value2: '11.5'},
+            '90': {value1: '11.4', value2: '11.3'},
+            '180': {value1: '11.5', value2: '11.2'},
+            '270': {value1: '11.3', value2: '11.3'},
         },
     },
     {
         rowName: 'BOTTOM / SHELL D (mm)',
         degrees: {
-            '0': { value1: '11.4', value2: '11.5' },
-            '90': { value1: '11.4', value2: '11.3' },
-            '180': { value1: '11.5', value2: '11.2' },
-            '270': { value1: '11.3', value2: '11.3' },
+            '0': {value1: '11.4', value2: '11.5'},
+            '90': {value1: '11.4', value2: '11.3'},
+            '180': {value1: '11.5', value2: '11.2'},
+            '270': {value1: '11.3', value2: '11.3'},
         },
     },
 ]
@@ -955,3 +956,46 @@ export const abbreviationsItems = [
     "DAC = Distance Amplitude Correction",
     "BWE = Back wall Echo",
 ];
+
+export const itemTableHeaders = [
+    "Serial Number",
+    "Description and Identification of Equipment",
+    "SWL",
+    "Test Load Applied",
+    "Date of Manufacture",
+    "Date of Last Examination",
+    "Date of Next Examination"
+]
+export const assetTableHeaders = [
+    "Type",
+    "Serial Number",
+    "Model",
+    "Description",
+    "Image"
+]
+export const personnelHeaders = [
+    "Name",
+    "Position",
+    "Qualification",
+    "Services"
+]
+
+
+export const sameTypesReport = {
+    "Normal": [
+        "MPI",
+        "MPI with connections",
+        "DPI",
+        "DPI with connections",
+    ],
+    "Ultrasonic Inspection": ["Ultrasonic Inspection"],
+    "Ultrasonic Inspection (Steel Wave)": ["Ultrasonic Inspection (Steel Wave)"],
+    "Lifting Inspection": [
+        "Forklift Visual with MPI report",
+        "Forklift Visual report",
+        "Crane Visual with MPI report",
+        "Crane Visual report",
+        "Web Sling and Shackles"
+    ],
+    "Welding": ["Welding"]
+}

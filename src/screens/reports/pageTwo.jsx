@@ -4,13 +4,15 @@ import AssetDetails from "./assetDetails.jsx";
 import DimensionDetails from "./dimensionDetails.jsx";
 import Visual from "./visual.jsx";
 import ReportDataType from "./reportDataType.jsx";
+import {isLifting} from "../../utils/index.js";
 
 const PageTwo = ({ data }) => {
+    const isLiftingItem = isLifting(data.report_type)
     return (
         <div className="mx-6 mt-3 mb-6">
             {/*<PdfHead />*/}
-            <SectionDetails data={data} />
-            <AssetDetails data={data?.asset_details} />
+            <SectionDetails data={data} isLifting={isLiftingItem} />
+            <AssetDetails data={data?.asset_details} isLifting={isLiftingItem} />
             <DimensionDetails data={data} />
             <Visual data={data?.visual} />
             <ReportDataType data={data} />

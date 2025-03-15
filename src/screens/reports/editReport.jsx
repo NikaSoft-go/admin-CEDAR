@@ -7,16 +7,18 @@ import {useNavigate, useParams} from "react-router-dom";
 import {
     bladeDetailInitial, bodyDetailInitial,
     consumablesInitial, equipmentConsumablesInitial, equipmentsInitial, equipmentTechniqueInitial,
-    getDimensionData, otherEquipmentsProps, qualityCheckRecord, returnAssetsData,
+    getDimensionData, otherEquipmentsProps, qualityCheckRecord,
     returnReportDataType, utSteelWaveTableInitial, utTableInitial, weldingTableInitial,
 } from "../../utils/data.js";
 import AddReportUltrasonicThicknessSteelWave from "./addReportUltrasonicThicknessSteelWave.jsx";
 import EditReportNormal from "./editReportNormal.jsx";
 import EditReportUltrasonicThickness from "./editReportUltrasonicThickness.jsx";
 import EditReportWelding from "./editReportWelding.jsx";
+import EditReportLifting from "./liftingReport/editReportLifting.jsx";
+import {getReportNormal} from "../../utils/index.js";
 
 const EditReport = () => {
-    const { id } = useParams();
+    const {id} = useParams();
     const [currentTypeComp, setCurrentTypeComp] = useState("");
     const [selectedOptions, setSelectedOptions] = useState([]);
     const [images, setImages] = useState([]);
@@ -25,9 +27,12 @@ const EditReport = () => {
     const [equipmentsData, setEquipmentsData] = useState(equipmentsInitial);
     const [assetDetails, setAssetsDetails] = useState([]);
     const [utResults, setUtResults] = useState([]);
-    const [comments, setComments] = useState([]);
+    const [comments, setComments] = useState([
+        {id: 1, value: ""}
+    ]);
+    const [liftingInfo, setLiftingInfo] = useState({});
+    const [personnelData, setPersonnelData] = useState([]);
     const [scanningSensitivity, setScanningSensitivity] = useState([]);
-    console.log("scanningSensitivity", scanningSensitivity)
     const [dimensionOneDetails, setDimensionOneDetails] = useState([]);
     const [equipmentConsumables, setEquipmentConsumables] = useState(equipmentConsumablesInitial);
     const [equipmentMethod, setEquipmentMethod] = useState(equipmentTechniqueInitial);
@@ -57,6 +62,7 @@ const EditReport = () => {
     useEffect(() => {
         const fetchReportData = async () => {
             try {
+                console.log("an")
                 const response = await axiosClient.get(`/reports/get-report/${id}/`);
                 const reportData = response.data.data;
 
@@ -80,6 +86,16 @@ const EditReport = () => {
                 setUtResults(JSON.parse(reportData.ut_results || "[]"));
                 setUtTableData(JSON.parse(reportData.ut_table_data || "[]"));
                 setComments(JSON.parse(reportData.inspector_comments || "[]"));
+                setLiftingInfo(
+                    typeof reportData?.lifting_data === "string"
+                    ? JSON.parse(reportData.lifting_data)
+                    : reportData.lifting_data
+                );
+                setPersonnelData(
+                    typeof reportData.personnel_data === "string"
+                        ? JSON.parse(reportData.personnel_data)
+                        : reportData.personnel_data
+                );
                 // setScanningSensitivity(JSON.parse(reportData.scanning_sensitivity));
                 // setUtQualityCheckRecordData(JSON.parse(reportData.ut_quality_check_record));
                 // setAbbreviationsUsed(JSON.parse(reportData.abbreviations_used));
@@ -87,7 +103,7 @@ const EditReport = () => {
                 // Set the current report type component
                 getReportNormal(reportData.report_type);
             } catch (err) {
-                console.log(err);
+                console.log("hello", err);
                 toast.error("Failed to fetch report data");
             }
         };
@@ -95,7 +111,7 @@ const EditReport = () => {
         fetchReportData();
     }, [id]);
 
-    const handleChange = (e, items=state, setItems=setState) => {
+    const handleChange = (e, items = state, setItems = setState) => {
         const value = e.target?.files ? e.target.files[0] : e.target.value;
         setItems({
             ...items,
@@ -113,10 +129,11 @@ const EditReport = () => {
         setImages(updatedFiles);
     };
 
-    const handleAddTableItem = (setFunc, items, emptyItems) => {
-        setFunc([
+    const handleAddTableItem = (setFunc) => {
+        const emptyData = returnReportDataType(state.report_type, "data");
+        setFunc((items) => [
             ...items,
-            emptyItems,
+            emptyData[0],
         ]);
     };
 
@@ -131,6 +148,13 @@ const EditReport = () => {
         updatedCostItems[index][field] = value;
         setItems(updatedCostItems);
     };
+
+    const handleLiftingInfo = (e) => {
+        setLiftingInfo((prev) => ({
+            ...prev,
+            [e.target.name]: e.target.value
+        }))
+    }
 
     const handleAddWeldingTableItem = () => {
         setWeldingTableData([
@@ -158,6 +182,24 @@ const EditReport = () => {
         const updatedCostItems = [...weldingTableData];
         updatedCostItems[index][field] = value;
         setWeldingTableData(updatedCostItems);
+    };
+
+    const handleAssetDataTableItemChange = (index, field, value) => {
+        const updatedCostItems = [...assetDetails];
+        updatedCostItems[index][field] = value;
+        setAssetsDetails(updatedCostItems);
+    };
+
+    const handlePersonnelTableItemChange = (index, field, value) => {
+        const updatedCostItems = [...personnelData];
+        updatedCostItems[index][field] = value;
+        setPersonnelData(updatedCostItems);
+    };
+
+    const handleReportTypeTableItemChange = (index, field, value) => {
+        const updatedCostItems = [...reportTypeData];
+        updatedCostItems[index][field] = value;
+        setReportTypeData(updatedCostItems);
     };
 
     const handleAddUTTableItem = () => {
@@ -193,14 +235,14 @@ const EditReport = () => {
 
         let utTableDataFinal = [];
 
-        if (currentTypeComp === "Ultrasonic Inspection (Steel Wave)"){
+        if (currentTypeComp === "Ultrasonic Inspection (Steel Wave)") {
             utTableDataFinal = utSteelWaveTableInitial
         } else {
             utTableDataFinal = utTableData
         }
 
         const bodyData = showSections?.bodyDetails
-        ? (bodyDetails || []) : []
+            ? (bodyDetails || []) : []
         const bladeData = showSections?.bladeDetails
             ? (bladeDetails || []) : []
         const reportData = {
@@ -222,7 +264,9 @@ const EditReport = () => {
             equipment_method: JSON.stringify(equipmentMethod || []),
             ut_results: JSON.stringify(utResults || []),
             ut_table_data: JSON.stringify(utTableDataFinal),
-            inspector_comments: JSON.stringify(comments || [])
+            inspector_comments: JSON.stringify(comments || []),
+            personnel_data: JSON.stringify(personnelData || []),
+            lifting_data: JSON.stringify(liftingInfo || {}),
         }
 
         if (!reportData.report_type) {
@@ -240,15 +284,18 @@ const EditReport = () => {
             const imageNames = images?.map((elt) => elt.name);
 
             // Add signature image
-            imageFiles.forEach(function(image) {
+            imageFiles.forEach(function (image) {
                 formData.append('images', image);
             });
 
-            imageNames.forEach(function(imageName) {
+            imageNames.forEach(function (imageName) {
                 formData.append('file_names', imageName);
             });
 
-            formData.delete('images');
+            if (!imageFiles.length) {
+                formData.delete('images');
+            }
+
             formData.delete('drawing_image_one_url');
             formData.delete('drawing_image_two_url');
             formData.delete('inspector_signature_url');
@@ -277,7 +324,8 @@ const EditReport = () => {
     const handleDeleteSignature = (signature) => {
         setState((prev) => ({
             ...prev,
-            [signature]: null
+            [signature]: null,
+            [`${signature}_url`]: ""
         }))
     }
 
@@ -287,6 +335,32 @@ const EditReport = () => {
             images: [...prev.images.filter((_, itemIndex) => itemIndex !== index)]
         }))
     }
+
+    const handleIssuerInfoChange = (e) => {
+        const value = e.target?.files ? e.target.files[0] : e.target.value;
+        setIssuerInfo((items) => ({
+            ...items,
+            [e.target.name]: value
+        }))
+    }
+
+    const handleReviewerInfoChange = (e) => {
+        const value = e.target?.files ? e.target.files[0] : e.target.value;
+        setReviewerInfo((items) => ({
+            ...items,
+            [e.target.name]: value
+        }))
+    }
+
+    const addComment = () => {
+        setComments((prevItems) => [
+            ...prevItems,
+            {
+                id: prevItems.length + 1,
+                value: '',
+            },
+        ]);
+    };
 
     const normalDependencies = {
         handleChange,
@@ -320,7 +394,10 @@ const EditReport = () => {
         handleFilesSelect,
         handleDeleteSignature,
         handleImageDelete,
-        state
+        state,
+        comments,
+        setComments,
+        addComment,
     }
 
     const weldingDependencies = {
@@ -365,6 +442,7 @@ const EditReport = () => {
         utResults,
         comments,
         setComments,
+        addComment,
         handleFilesSelect,
         handleDeleteSignature,
         handleImageDelete,
@@ -398,37 +476,40 @@ const EditReport = () => {
         handleAbbreviationSelectChange
     }
 
-    const sameTypesReport = {
-        "Normal": [
-            "MPI",
-            "MPI with connections",
-            "DPI",
-            "DPI with connections",
-        ],
-        "Ultrasonic Inspection": ["Ultrasonic Inspection"],
-        "Ultrasonic Inspection (Steel Wave)": ["Ultrasonic Inspection (Steel Wave)"],
-        "Lifting Inspection": ["Lifting Inspection"],
-        "Welding": ["Welding"]
-    }
-
-    const getReportNormal = (reportType) => {
-        let currentType = "";
-        for (const reportTypeKey in sameTypesReport) {
-            const data = sameTypesReport[reportTypeKey];
-            if (data?.includes(reportType)) {
-                currentType = reportTypeKey;
-                break;
-            }
-        }
-
-        setCurrentTypeComp(currentType);
+    const liftingReportDependencies = {
+        handleChange,
+        handleAddTableItem,
+        handlePersonnelTableItemChange,
+        handleReportTypeTableItemChange,
+        handleAssetDataTableItemChange,
+        handleRemoveTableItems,
+        handleFilesSelect,
+        handleLiftingInfo,
+        handleIssuerInfoChange,
+        handleReviewerInfoChange,
+        handleImageDelete,
+        handleDeleteSignature,
+        addComment,
+        setComments,
+        comments,
+        issuerInfo,
+        reviewerInfo,
+        assetDetails,
+        setAssetsDetails,
+        reportTypeData,
+        setReportTypeData,
+        personnelData,
+        setPersonnelData,
+        setLiftingInfo,
+        liftingInfo,
+        state
     }
 
     useEffect(() => {
         if (state.report_type) {
-            getReportNormal(state.report_type);
-            setReportTypeData(returnReportDataType(state.report_type, "data"));
-            setAssetsDetails(returnAssetsData(state.report_type))
+            setCurrentTypeComp(getReportNormal(state.report_type));
+            // setReportTypeData(returnReportDataType(state.report_type, "data"));
+            // setAssetsDetails(returnAssetsData(state.report_type))
         }
     }, [state.report_type]);
 
@@ -476,15 +557,24 @@ const EditReport = () => {
                                 >
                                     <option>Select a report type</option>
                                     <option value="MPI">Magnetic Particle
-                                        Inspection</option>
+                                        Inspection
+                                    </option>
                                     <option value="MPI with connections">MPI with connections</option>
                                     <option value="DPI">DYE Penetrant
-                                        Inspection</option>
+                                        Inspection
+                                    </option>
                                     <option value="DPI with connections">DPI with connections</option>
                                     <option value="Ultrasonic Inspection">Ultrasonic Thickness</option>
-                                    <option value="Ultrasonic Inspection (Steel Wave)">Ultrasonic Inspection (Steel Wave)</option>
+                                    <option value="Ultrasonic Inspection (Steel Wave)">Ultrasonic Inspection (Steel
+                                        Wave)
+                                    </option>
                                     <option value="Lifting Inspection">Lifting Inspection</option>
                                     <option value="Welding">Welding</option>
+                                    <option value="Forklift Visual with MPI report">Forklift Visual with MPI report
+                                    </option>
+                                    <option value="Forklift Visual report">Forklift Visual report</option>
+                                    <option value="Crane Visual with MPI report">Crane Visual with MPI report</option>
+                                    <option value="Crane Visual report">Crane Visual report</option>
                                 </select>
                             </div>
 
@@ -492,10 +582,17 @@ const EditReport = () => {
 
                             {currentTypeComp === "Welding" && <EditReportWelding {...weldingDependencies} />}
 
-                            {currentTypeComp === "Ultrasonic Inspection" && <EditReportUltrasonicThickness {...utReportDependencies} />}
+                            {currentTypeComp === "Ultrasonic Inspection" &&
+                                <EditReportUltrasonicThickness {...utReportDependencies} />}
 
-                            {currentTypeComp === "Ultrasonic Inspection (Steel Wave)" && <AddReportUltrasonicThicknessSteelWave {...utSteelWaveReportDependencies} />}
+                            {currentTypeComp === "Ultrasonic Inspection (Steel Wave)" &&
+                                <AddReportUltrasonicThicknessSteelWave {...utSteelWaveReportDependencies} />}
 
+                            {currentTypeComp === "Lifting Inspection" &&
+                                <EditReportLifting
+                                    {...liftingReportDependencies}
+                                />
+                            }
                             <div className="mt-8"></div>
                             <Button>Update Report</Button>
                         </form>
