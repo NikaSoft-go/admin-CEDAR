@@ -71,7 +71,7 @@ const EditReportWelding = (props) => {
                     <label className="block text-gray-700 text-md font-bold mb-2">Test Date:</label>
                     <input
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        type="date"
+                        type="text"
                         placeholder="Test Date"
                         name="examination_date"
                         value={props.values.examination_date}

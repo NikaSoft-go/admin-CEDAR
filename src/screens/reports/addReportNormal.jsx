@@ -181,7 +181,7 @@ const AddReportNormal = (props) => {
                         examination:</label>
                     <input
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        type="date"
+                        type="text"
                         placeholder="Date of examination"
                         name="examination_date"
                         onChange={props.handleChange}
@@ -195,7 +195,7 @@ const AddReportNormal = (props) => {
                         Examination:</label>
                     <input
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        type="date"
+                        type="text"
                         placeholder="Date of Next Examination"
                         name="next_examination_date"
                         onChange={props.handleChange}

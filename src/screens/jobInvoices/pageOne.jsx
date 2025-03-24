@@ -168,8 +168,8 @@ const JobInvoicePreviewPageOne = ({ data }) => {
                             <IoLocationSharp size={18} fill="#288068"/>
                         </div>
                         <div className="ml-2">
-                            <p className="text-[11px]">P.O.Box SQ 516</p>
-                            <p className="text-[11px]">Tema Commununity 1, Greater Accra</p>
+                            <p className="text-[11px]">P.O.Box SQ 516, Tema</p>
+                            <p className="text-[11px]">Community 12, Opposite witsand international sch., Greater Accra</p>
                             <p className="text-[11px]">Ghana, West Africa</p>
                         </div>
                     </div>

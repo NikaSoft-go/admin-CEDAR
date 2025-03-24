@@ -18,7 +18,7 @@ export default function PreviewChecklistPageOne(
                 <div className={"ml-3"}>
                     <p>www.cedarinspectionventures.com</p>
                     <p className={"text-blue-500 font-semibold underline"}>cedarinspectionventure@gmail.com</p>
-                    <p>P.O.BOX SQ 518 Tema comm.12, Opposite witsand int. school</p>
+                    <p>P.O.Box SQ 516, Tema comm.12, Opposite witsand int. school</p>
                     <p>Greater Accra, Ghana –West Africa</p>
                 </div>
             </div>
