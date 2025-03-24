@@ -53,7 +53,7 @@ export default function ConnectReports() {
                             onChange={(e) => setMainReport(e.target.value)}
                         >
                             <option>Select main report</option>
-                            {reports.map((report, index) => <option key={index} value={report.id}>{report.report_type} - {report.client_name}</option>)}
+                            {reports.map((report, index) => <option key={index} value={report.id}>{report.id} - {report.report_type}</option>)}
                         </select>
                     </div>
                     <div className={"flex flex-col"}>
@@ -64,7 +64,7 @@ export default function ConnectReports() {
                             onChange={(e) => setSubReport(e.target.value)}
                         >
                             <option>Select report</option>
-                            {reports.map((report, index) => <option key={index} value={report.id}>{report.report_type} - {report.client_name}</option>)}
+                            {reports.map((report, index) => <option key={index} value={report.id}>{report.id} - {report.report_type}</option>)}
                         </select>
                     </div>
                 </div>
