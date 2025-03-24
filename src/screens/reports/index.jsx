@@ -81,8 +81,8 @@ const Reports = () => {
                                     className="bg-white p-4 rounded-md shadow-md"
                                     onClick={() => navigate(`/report/update/${report?.id}`)}
                                 >
+                                    <h2 className="text-lg font-semibold mb-2">{report.id}</h2>
                                     <div className="flex justify-between items-center cursor-pointer">
-                                        <h2 className="text-lg font-semibold mb-2">{report.id}</h2>
                                         <h2 className="text-lg font-semibold mb-2">{report?.report_type} - {report?.work_order}</h2>
                                         <div className="flex">
                                             <p onClick={(e) => previewReport(e, report?.id)}>
