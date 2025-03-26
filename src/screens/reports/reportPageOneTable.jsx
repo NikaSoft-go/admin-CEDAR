@@ -1,6 +1,13 @@
 import PropTypes from 'prop-types';
 
 const ReportPageOneTable = ({ data }) => {
+    console.log(data.report_type)
+    const liftingReports = [
+        "Forklift Visual report",
+        "Forklift Visual with MPI report",
+        "Crane Visual report",
+        "Crane Visual with MPI report",
+    ]
     return (
         <div className="table-container">
             <table className="custom-table">
@@ -10,6 +17,20 @@ const ReportPageOneTable = ({ data }) => {
                         {data?.report_title}
                     </th>
                 </tr>
+                {liftingReports.includes(data.report_type) && <tr>
+                    <th
+                        colSpan="2"
+                        rowSpan={3}
+                        className="header-cell"
+                        style={{
+                            border: "none",
+                            borderTop: '1px solid #ccc',
+                            borderBottom: '1px solid #ccc',
+                            height: 22
+                        }}
+                    >
+                    </th>
+                </tr>}
                 </thead>
                 <tbody>
                 <tr>

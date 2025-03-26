@@ -281,7 +281,7 @@ const AddReportWelding = (props) => {
                     />
                 </div>
 
-                 {/* Asset Model */}
+                {/* Asset Model */}
                 <div>
                     <label className="block text-gray-700 text-md font-bold mb-2">Asset Model:</label>
                     <input
@@ -328,12 +328,10 @@ const AddReportWelding = (props) => {
                                     value={dimension.property}
                                     required
                                     onChange={(e) =>
-                                        props.handleTableItemChange(
+                                        props.handleEquipmentConsumablesItemChange(
                                             index,
                                             'property',
                                             e.target.value,
-                                            props.equipmentConsumables,
-                                            props.setEquipmentConsumables
                                         )}
                                 />
                             </td>
@@ -345,12 +343,10 @@ const AddReportWelding = (props) => {
                                     value={dimension.value}
                                     required
                                     onChange={(e) =>
-                                        props.handleTableItemChange(
+                                        props.handleEquipmentConsumablesItemChange(
                                             index,
                                             'value',
                                             e.target.value,
-                                            props.equipmentConsumables,
-                                            props.setEquipmentConsumables
                                         )}
                                 />
                             </td>
@@ -394,12 +390,10 @@ const AddReportWelding = (props) => {
                                     value={dimension.property}
                                     required
                                     onChange={(e) =>
-                                        props.handleTableItemChange(
+                                        props.handleOtherWeldingPropsItemChange(
                                             index,
                                             'property',
                                             e.target.value,
-                                            props.otherWeldingProps,
-                                            props.setOtherWeldingProps
                                         )}
                                 />
                             </td>
@@ -411,12 +405,10 @@ const AddReportWelding = (props) => {
                                     value={dimension.value}
                                     required
                                     onChange={(e) =>
-                                        props.handleTableItemChange(
+                                        props.handleOtherWeldingPropsItemChange(
                                             index,
                                             'value',
                                             e.target.value,
-                                            props.otherWeldingProps,
-                                            props.setOtherWeldingProps
                                         )}
                                 />
                             </td>
@@ -527,7 +519,7 @@ const AddReportWelding = (props) => {
                             <td className="border p-2">
                                 <select
                                     className="w-full p-1"
-                                        placeholder="Acc"
+                                    placeholder="Acc"
                                     value={cost.acc}
                                     onChange={(e) =>
                                         props.handleWeldingTableItemChange(index, 'acc', e.target.value)
@@ -555,7 +547,7 @@ const AddReportWelding = (props) => {
                                     className="remove-btn rounded p-1"
                                     onClick={() => props.handleRemoveWeldingTableItem(index)}
                                 >
-                                    <FiTrash2 />
+                                    <FiTrash2/>
                                 </button>
                             </td>
                         </tr>
@@ -567,7 +559,7 @@ const AddReportWelding = (props) => {
                     className="add-item-btn text-white rounded px-2 py-1"
                     onClick={props.handleAddWeldingTableItem}
                 >
-                    <IoMdAddCircleOutline />
+                    <IoMdAddCircleOutline/>
                 </button>
             </div>
 
@@ -616,6 +608,17 @@ const AddReportWelding = (props) => {
                     name="limitations"
                     onChange={props.handleChange}
                     required
+                />
+            </div>
+
+            {/* Disclaimer */}
+            <div className="mb-3">
+                <label className="block text-gray-700 text-md font-bold mb-2">Disclaimer</label>
+                <textarea
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    placeholder="Disclaimer"
+                    name="disclaimer"
+                    onChange={props.handleChange}
                 />
             </div>
 

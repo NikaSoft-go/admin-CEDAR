@@ -88,8 +88,8 @@ const EditReport = () => {
                 setComments(JSON.parse(reportData.inspector_comments || "[]"));
                 setLiftingInfo(
                     typeof reportData?.lifting_data === "string"
-                    ? JSON.parse(reportData.lifting_data)
-                    : reportData.lifting_data
+                        ? JSON.parse(reportData.lifting_data)
+                        : reportData.lifting_data
                 );
                 setPersonnelData(
                     typeof reportData.personnel_data === "string"
@@ -321,6 +321,18 @@ const EditReport = () => {
         setAbbreviationsUsed(selected);
     };
 
+    const handleOtherWeldingPropsItemChange = (index, field, value) => {
+        const updatedCostItems = [...otherWeldingProps];
+        updatedCostItems[index][field] = value;
+        setOtherWeldingProps(updatedCostItems);
+    };
+
+    const handleEquipmentConsumablesItemChange = (index, field, value) => {
+        const updatedCostItems = [...equipmentConsumables];
+        updatedCostItems[index][field] = value;
+        setEquipmentConsumables(updatedCostItems);
+    };
+
     const handleDeleteSignature = (signature) => {
         setState((prev) => ({
             ...prev,
@@ -404,6 +416,8 @@ const EditReport = () => {
         handleChange,
         equipmentConsumables,
         setEquipmentConsumables,
+        handleEquipmentConsumablesItemChange,
+        handleOtherWeldingPropsItemChange,
         handleRemoveTableItems,
         handleTableItemChange,
         setOtherWeldingProps,

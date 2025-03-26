@@ -17,7 +17,7 @@ const EditReportWelding = (props) => {
                         type="text"
                         placeholder="Asset Name"
                         name="asset_name"
-                        value={props.values.asset_name}
+                        value={props.state.asset_name}
                         onChange={props.handleChange}
                         required
                     />
@@ -32,7 +32,7 @@ const EditReportWelding = (props) => {
                         type="text"
                         placeholder="Asset Serial Number"
                         name="serial_number"
-                        value={props.values.serial_number}
+                        value={props.state.serial_number}
                         onChange={props.handleChange}
                         required
                     />
@@ -46,7 +46,7 @@ const EditReportWelding = (props) => {
                         type="text"
                         placeholder="Client"
                         name="client_name"
-                        value={props.values.client_name}
+                        value={props.state.client_name}
                         onChange={props.handleChange}
                         required
                     />
@@ -60,7 +60,7 @@ const EditReportWelding = (props) => {
                         type="text"
                         placeholder="Location"
                         name="examination_location"
-                        value={props.values.examination_location}
+                        value={props.state.examination_location}
                         onChange={props.handleChange}
                         required
                     />
@@ -74,7 +74,7 @@ const EditReportWelding = (props) => {
                         type="text"
                         placeholder="Test Date"
                         name="examination_date"
-                        value={props.values.examination_date}
+                        value={props.state.examination_date}
                         onChange={props.handleChange}
                         required
                     />
@@ -88,7 +88,7 @@ const EditReportWelding = (props) => {
                         type="text"
                         placeholder="Job Number"
                         name="work_order"
-                        value={props.values.work_order}
+                        value={props.state.work_order}
                         onChange={props.handleChange}
                         required
                     />
@@ -102,7 +102,7 @@ const EditReportWelding = (props) => {
                         type="text"
                         placeholder="Report Number"
                         name="report_number"
-                        value={props.values.report_number}
+                        value={props.state.report_number}
                         onChange={props.handleChange}
                         required
                     />
@@ -116,7 +116,7 @@ const EditReportWelding = (props) => {
                         type="text"
                         placeholder="Request/Doc No:"
                         name="drawing_number"
-                        value={props.values.drawing_number}
+                        value={props.state.drawing_number}
                         onChange={props.handleChange}
                         required
                     />
@@ -130,7 +130,7 @@ const EditReportWelding = (props) => {
                         type="text"
                         placeholder="Contract Name"
                         name="contract"
-                        value={props.values.contract}
+                        value={props.state.contract}
                         onChange={props.handleChange}
                         required
                     />
@@ -144,7 +144,7 @@ const EditReportWelding = (props) => {
                         type="text"
                         placeholder="Drawing Reference"
                         name="client_job_reference"
-                        value={props.values.client_job_reference}
+                        value={props.state.client_job_reference}
                         onChange={props.handleChange}
                         required
                     />
@@ -158,7 +158,7 @@ const EditReportWelding = (props) => {
                         type="text"
                         placeholder="Sample Selection"
                         name="sample_selection"
-                        value={props.values.sample_selection}
+                        value={props.state.sample_selection}
                         onChange={props.handleChange}
                         required
                     />
@@ -172,7 +172,7 @@ const EditReportWelding = (props) => {
                         type="text"
                         placeholder="Extent of Test"
                         name="extent_test"
-                        value={props.values.extent_test}
+                        value={props.state.extent_test}
                         onChange={props.handleChange}
                         required
                     />
@@ -186,7 +186,7 @@ const EditReportWelding = (props) => {
                         type="text"
                         placeholder="Size"
                         name="size"
-                        value={props.values.size}
+                        value={props.state.size}
                         onChange={props.handleChange}
                         required
                     />
@@ -200,7 +200,7 @@ const EditReportWelding = (props) => {
                         type="text"
                         placeholder="Material"
                         name="material"
-                        value={props.values.material}
+                        value={props.state.material}
                         onChange={props.handleChange}
                         required
                     />
@@ -214,7 +214,7 @@ const EditReportWelding = (props) => {
                         type="text"
                         placeholder="Thickness"
                         name="thickness"
-                        value={props.values.thickness}
+                        value={props.state.thickness}
                         onChange={props.handleChange}
                         required
                     />
@@ -228,7 +228,7 @@ const EditReportWelding = (props) => {
                         type="text"
                         placeholder="Surface Condition"
                         name="surface_condition"
-                        value={props.values.surface_condition}
+                        value={props.state.surface_condition}
                         onChange={props.handleChange}
                         required
                     />
@@ -242,7 +242,7 @@ const EditReportWelding = (props) => {
                         type="text"
                         placeholder="Weld Prep"
                         name="weld_prep"
-                        value={props.values.surface_condition}
+                        value={props.state.surface_condition}
                         onChange={props.handleChange}
                         required
                     />
@@ -256,7 +256,7 @@ const EditReportWelding = (props) => {
                         type="text"
                         placeholder="Weld Process"
                         name="weld_process"
-                        value={props.values.weld_process}
+                        value={props.state.weld_process}
                         onChange={props.handleChange}
                     />
                 </div>
@@ -269,7 +269,7 @@ const EditReportWelding = (props) => {
                         type="text"
                         placeholder="PWHT"
                         name="pwht"
-                        value={props.values.pwht}
+                        value={props.state.pwht}
                         onChange={props.handleChange}
                         required
                     />
@@ -283,7 +283,7 @@ const EditReportWelding = (props) => {
                         type="text"
                         placeholder="Temperature"
                         name="temperature"
-                        value={props.values.temperature}
+                        value={props.state.temperature}
                         onChange={props.handleChange}
                         required
                     />
@@ -297,7 +297,7 @@ const EditReportWelding = (props) => {
                         type="text"
                         placeholder="Specification"
                         name="specification"
-                        value={props.values.specification}
+                        value={props.state.specification}
                         onChange={props.handleChange}
                         required
                     />
@@ -311,7 +311,7 @@ const EditReportWelding = (props) => {
                         type="text"
                         placeholder="Asset Model"
                         name="asset_model"
-                        value={props.values.asset_model}
+                        value={props.state.asset_model}
                         onChange={props.handleChange}
                         required
                     />
@@ -325,7 +325,7 @@ const EditReportWelding = (props) => {
                         type="text"
                         placeholder="Acceptance Criteria"
                         name="acceptance_criteria"
-                        value={props.values.acceptance_criteria}
+                        value={props.state.acceptance_criteria}
                         onChange={props.handleChange}
                         required
                     />
@@ -352,12 +352,10 @@ const EditReportWelding = (props) => {
                                     value={dimension.property}
                                     required
                                     onChange={(e) =>
-                                        props.handleTableItemChange(
+                                        props.handleEquipmentConsumablesItemChange(
                                             index,
                                             'property',
                                             e.target.value,
-                                            props.equipmentConsumables,
-                                            props.setEquipmentConsumables
                                         )}
                                 />
                             </td>
@@ -369,12 +367,10 @@ const EditReportWelding = (props) => {
                                     value={dimension.value}
                                     required
                                     onChange={(e) =>
-                                        props.handleTableItemChange(
+                                        props.handleEquipmentConsumablesItemChange(
                                             index,
                                             'value',
                                             e.target.value,
-                                            props.equipmentConsumables,
-                                            props.setEquipmentConsumables
                                         )}
                                 />
                             </td>
@@ -418,12 +414,10 @@ const EditReportWelding = (props) => {
                                     value={dimension.property}
                                     required
                                     onChange={(e) =>
-                                        props.handleTableItemChange(
+                                        props.handleOtherWeldingPropsItemChange(
                                             index,
                                             'property',
                                             e.target.value,
-                                            props.otherWeldingProps,
-                                            props.setOtherWeldingProps
                                         )}
                                 />
                             </td>
@@ -435,12 +429,10 @@ const EditReportWelding = (props) => {
                                     value={dimension.value}
                                     required
                                     onChange={(e) =>
-                                        props.handleTableItemChange(
+                                        props.handleOtherWeldingPropsItemChange(
                                             index,
                                             'value',
                                             e.target.value,
-                                            props.otherWeldingProps,
-                                            props.setOtherWeldingProps
                                         )}
                                 />
                             </td>
@@ -644,6 +636,18 @@ const EditReportWelding = (props) => {
                     value={props.state.limitations}
                     onChange={props.handleChange}
                     required
+                />
+            </div>
+
+            {/* Disclaimer */}
+            <div className="mb-3">
+                <label className="block text-gray-700 text-md font-bold mb-2">Disclaimer</label>
+                <textarea
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    placeholder="Disclaimer"
+                    name="disclaimer"
+                    value={props.state.disclaimer}
+                    onChange={props.handleChange}
                 />
             </div>
 

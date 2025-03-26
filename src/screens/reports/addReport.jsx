@@ -65,7 +65,7 @@ const AddReport = () => {
     const [issuerInfo, setIssuerInfo] = useState({});
     const [reviewerInfo, setReviewerInfo] = useState({});
 
-    const handleChange = (e, items=state, setItems=setState) => {
+    const handleChange = (e, items = state, setItems = setState) => {
         const value = e.target?.files ? e.target.files[0] : e.target.value;
         setItems({
             ...items,
@@ -169,6 +169,7 @@ const AddReport = () => {
     const handleWeldingTableItemChange = (index, field, value) => {
         const updatedCostItems = [...weldingTableData];
         updatedCostItems[index][field] = value;
+        console.log(updatedCostItems);
         setWeldingTableData(updatedCostItems);
     };
 
@@ -212,6 +213,18 @@ const AddReport = () => {
         setUtTableData(updatedCostItems);
     };
 
+    const handleOtherWeldingPropsItemChange = (index, field, value) => {
+        const updatedCostItems = [...otherWeldingProps];
+        updatedCostItems[index][field] = value;
+        setOtherWeldingProps(updatedCostItems);
+    };
+
+    const handleEquipmentConsumablesItemChange = (index, field, value) => {
+        const updatedCostItems = [...equipmentConsumables];
+        updatedCostItems[index][field] = value;
+        setEquipmentConsumables(updatedCostItems);
+    };
+
     const handleImageDelete = (index) => {
         setState((prev) => ({
             ...prev,
@@ -224,14 +237,14 @@ const AddReport = () => {
 
         let utTableDataFinal = [];
 
-        if (currentTypeComp === "Ultrasonic Inspection (Steel Wave)"){
+        if (currentTypeComp === "Ultrasonic Inspection (Steel Wave)") {
             utTableDataFinal = utSteelWaveTableInitial
         } else {
             utTableDataFinal = utTableData
         }
 
         const bodyData = showSections?.bodyDetails
-        ? (bodyDetails || []) : []
+            ? (bodyDetails || []) : []
         const bladeData = showSections?.bladeDetails
             ? (bladeDetails || []) : []
         const reportData = {
@@ -273,11 +286,11 @@ const AddReport = () => {
             const imageNames = images?.map((elt) => elt.name);
 
             // Add signature image
-            imageFiles.forEach(function(image) {
+            imageFiles.forEach(function (image) {
                 formData.append('images', image);
             });
 
-            imageNames.forEach(function(imageName) {
+            imageNames.forEach(function (imageName) {
                 formData.append('file_names', imageName);
             });
             const response = await axiosClient.post(
@@ -368,9 +381,11 @@ const AddReport = () => {
         handleChange,
         equipmentConsumables,
         setEquipmentConsumables,
+        handleEquipmentConsumablesItemChange,
         handleRemoveTableItems,
-        setOtherWeldingProps,
+        handleOtherWeldingPropsItemChange,
         otherWeldingProps,
+        setOtherWeldingProps,
         setWeldingTableData,
         weldingTableData,
         handleAddWeldingTableItem,
@@ -512,15 +527,20 @@ const AddReport = () => {
                                 >
                                     <option>Select a report type</option>
                                     <option value="MPI">Magnetic Particle
-                                        Inspection</option>
+                                        Inspection
+                                    </option>
                                     <option value="MPI with connections">MPI with connections</option>
                                     <option value="DPI">DYE Penetrant
-                                        Inspection</option>
+                                        Inspection
+                                    </option>
                                     <option value="DPI with connections">DPI with connections</option>
                                     <option value="Ultrasonic Inspection">Ultrasonic Thickness</option>
-                                    <option value="Ultrasonic Inspection (Steel Wave)">Ultrasonic Inspection (Steel Wave)</option>
+                                    <option value="Ultrasonic Inspection (Steel Wave)">Ultrasonic Inspection (Steel
+                                        Wave)
+                                    </option>
                                     <option value="Welding">Welding</option>
-                                    <option value="Forklift Visual with MPI report">Forklift Visual with MPI report</option>
+                                    <option value="Forklift Visual with MPI report">Forklift Visual with MPI report
+                                    </option>
                                     <option value="Forklift Visual report">Forklift Visual report</option>
                                     <option value="Crane Visual with MPI report">Crane Visual with MPI report</option>
                                     <option value="Crane Visual report">Crane Visual report</option>
@@ -531,9 +551,11 @@ const AddReport = () => {
 
                             {currentTypeComp === "Welding" && <AddReportWelding {...weldingDependencies} />}
 
-                            {currentTypeComp === "Ultrasonic Inspection" && <AddReportUltrasonicThickness {...utReportDependencies} />}
+                            {currentTypeComp === "Ultrasonic Inspection" &&
+                                <AddReportUltrasonicThickness {...utReportDependencies} />}
 
-                            {currentTypeComp === "Ultrasonic Inspection (Steel Wave)" && <AddReportUltrasonicThicknessSteelWave {...utSteelWaveReportDependencies} />}
+                            {currentTypeComp === "Ultrasonic Inspection (Steel Wave)" &&
+                                <AddReportUltrasonicThicknessSteelWave {...utSteelWaveReportDependencies} />}
 
                             {currentTypeComp === "Lifting Inspection" &&
                                 <AddReportLiftingReport

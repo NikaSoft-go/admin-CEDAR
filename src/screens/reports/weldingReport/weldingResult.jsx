@@ -22,12 +22,7 @@ const WeldingResult = ({data}) => {
                 </tr>
                 <tr>
                     <td rowSpan={2} colSpan={2}>
-                        Disclaimer:The statement: No Relevant Indications
-                        (NRI) found, does not imply that all possible
-                        indications / defects would have been found
-                        since each NDT method has its own limitations.
-                        A defect free component may still fail when
-                        subjected to loads beyond its design criteria.
+                        Disclaimer: {data?.disclaimer}
                     </td>
                 </tr>
                 </tbody>
