@@ -7,6 +7,7 @@ import Button from "../../components/button/index.jsx";
 import {axiosClient} from "../../libs/axiosClient.js";
 import {toast} from "react-toastify";
 import {useNavigate} from "react-router-dom";
+import BottomComponent from "../../components/bottomComponent/bottomComponent.jsx";
 
 
 export default function AddChecklist() {
@@ -18,6 +19,9 @@ export default function AddChecklist() {
         "No",
         "N/A"
     ]
+
+    const [issuerInfo, setIssuerInfo] = useState({});
+    const [reviewerInfo, setReviewerInfo] = useState({});
 
     const navigate = useNavigate();
 
@@ -40,40 +44,34 @@ export default function AddChecklist() {
         setCheckListsInfo(updatedCostItems);
     };
 
-    const formData = {
-        sections: [
-            {
-                title: "Inspector",
-                fields: [
-                    {
-                        label: "Inspector's Name",
-                        type: "text",
-                        name: "inspectors_name",
-                        required: true
-                    },
-                    {
-                        label: "Qualification",
-                        type: "text",
-                        name: "qualification",
-                        required: true
-                    },
-                    {
-                        label: "Date",
-                        type: "text",
-                        name: "date",
-                        required: true
-                    },
-                ]
-            },
-        ]
-    };
+    const handleIssuerInfoChange = (e) => {
+        const value = e.target?.files ? e.target.files[0] : e.target.value;
+        setIssuerInfo((items) => ({
+            ...items,
+            [e.target.name]: value
+        }))
+    }
+
+    const handleReviewerInfoChange = (e) => {
+        const value = e.target?.files ? e.target.files[0] : e.target.value;
+        setReviewerInfo((items) => ({
+            ...items,
+            [e.target.name]: value
+        }))
+    }
 
     const addChecklist = async (e) => {
         e.stopPropagation();
         try {
             axiosClient.post("/reports/add-checklist/", {
                 ...state,
-                checklists_info: checkListsInfo
+                checklists_info: checkListsInfo,
+                inspector_name: issuerInfo.name,
+                inspector_qualification: issuerInfo.qualification,
+                inspector_date: issuerInfo.date,
+                reviewer_name: reviewerInfo.name,
+                reviewer_qualification: reviewerInfo.qualification,
+                reviewer_date: reviewerInfo.date,
             });
             toast.success("Checklist added successfully");
             navigate("/checklists");
@@ -111,44 +109,15 @@ export default function AddChecklist() {
                                 <option value={"crane"}>Crane</option>
                             </select>
                         </div>
-                        {formData.sections.map((section, sectionIndex) => (
-                            <div key={sectionIndex}>
-                                <h3 className="font-bold mb-4">{section.title}</h3>
-                                <div className="mb-10 grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    {section.fields.map((field, fieldIndex) => (
-                                        <div key={fieldIndex}>
-                                            <label className="block text-gray-700 text-md font-bold mb-2">
-                                                {field.label}:
-                                            </label>
-                                            {field.type === 'select' ? (
-                                                <select
-                                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                                    name={field.name}
-                                                    onChange={handleChange}
-                                                    required={field.required}
-                                                >
-                                                    <option>Select a {field.label.toLowerCase()}</option>
-                                                    {field.options.map((option, optionIndex) => (
-                                                        <option key={optionIndex} value={option}>
-                                                            {option}
-                                                        </option>
-                                                    ))}
-                                                </select>
-                                            ) : (
-                                                <input
-                                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                                    type={field.type}
-                                                    placeholder={field.label}
-                                                    name={field.name}
-                                                    onChange={handleChange}
-                                                    required={field.required}
-                                                />
-                                            )}
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        ))}
+                        <BottomComponent
+                            handleIssuerInfoChange={handleIssuerInfoChange}
+                            handleReviewerInfoChange={handleReviewerInfoChange}
+                            issuerInfo={issuerInfo}
+                            reviewerInfo={reviewerInfo}
+                            hasComment={false}
+                            hasImages={false}
+                            hasSignature={false}
+                        />
                         {state.checklist_type && <TableList
                             listData={checkListsInfo}
                             setListData={setCheckListsInfo}

@@ -82,7 +82,7 @@ const Checklists = () => {
                                 >
                                     <div className="flex justify-between items-center cursor-pointer">
                                         <h2 className="text-lg font-semibold mb-2">
-                                            {checklist?.inspectors_name} - {checklist?.date}
+                                            {checklist?.inspector_name} - {checklist?.inspector_date}
                                         </h2>
                                         <div className="flex">
                                             <p onClick={(e) => previewChecklist(e, checklist?.id)}>

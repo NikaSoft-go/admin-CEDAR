@@ -1,5 +1,5 @@
 import Logo from "../../assets/logo.png";
-import {toTitleCase} from "../../utils/index.js";
+import {generateImageUrl, toTitleCase} from "../../utils/index.js";
 import CustomAssetTable from "../../components/assetTable/assetTable.jsx";
 
 
@@ -31,11 +31,35 @@ export default function PreviewChecklistPageOne(
             <div className={"mt-6"}>
                 <CustomAssetTable data={checklist?.checklists_info} label={""}/>
             </div>
-            <div className={"mt-6"} style={{border: "1px solid #000", padding: 10}}>
-                <p className={"mb-3"}><b>INSPECTOR&apos;S NAME:</b> {checklist?.inspectors_name}</p>
-                <p className={"mb-3"}><b>QUALIFICATION:</b> {checklist?.qualification}</p>
-                <p><b>DATE:</b> {checklist?.date}</p>
+            <div className="mt-2 mb-6 pdf_bottom">
+                <table className="w-[100%]">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th style={{fontSize: 14}}>Inspected by</th>
+                        <th style={{fontSize: 14}}>Reviewed by</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr className={"text-lg"}>
+                        <td style={{fontSize: 14, paddingRight: 10}} className={"text-right mr-2"}>Name</td>
+                        <td style={{fontSize: 14, paddingLeft: 5}}>{checklist?.inspector_name}</td>
+                        <td  style={{fontSize: 14}}>{checklist?.reviewer_name}</td>
+                    </tr>
+                    <tr className={"text-lg"}>
+                        <td style={{fontSize: 14, paddingRight: 10}}>Qualification</td>
+                        <td style={{fontSize: 14}}>{checklist?.inspector_qualification}</td>
+                        <td style={{fontSize: 14}}>{checklist?.reviewer_qualification}</td>
+                    </tr>
+                    <tr className={"text-lg"}>
+                        <td style={{fontSize: 14, paddingRight: 10}}>Date</td>
+                        <td style={{fontSize: 14}}>{checklist?.inspector_date}</td>
+                        <td style={{fontSize: 14}}>{checklist?.reviewer_date}</td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
+
         </div>
     )
 }

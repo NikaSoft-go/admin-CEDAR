@@ -3,17 +3,24 @@ import FileUploadComponent from "../imagesSelect/index.jsx";
 import {getInvoiceImageFullPath} from "../../utils/index.js";
 
 
-export default function BottomComponent(props) {
+export default function BottomComponent(
+    {
+        hasComment = true,
+        hasImages = true,
+        hasSignature = true,
+        ...props
+    }
+) {
     return (
         <div className={"mt-6"}>
-            <div className="mb-6 w-[100%]">
+            {hasComment && <div className="mb-6 w-[100%]">
                 <label className="block text-gray-700 text-md font-bold mb-2">Inspector&apos;s comment:</label>
                 <IncrementalList
                     items={props.comments}
                     setItems={props.setComments}
                     addItem={props.addItem}
                 />
-            </div>
+            </div>}
 
             <h3 className="font-bold mb-4">Inspected by</h3>
             <div className="mb-10 grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -109,8 +116,8 @@ export default function BottomComponent(props) {
                 </div>
             </div>
 
-            <label className="block text-gray-700 text-md font-bold mb-2">Stamp Files:</label>
-            <div className="mb-6 flex justify-start w-[100%]">
+            {hasSignature && <label className="block text-gray-700 text-md font-bold mb-2">Stamp Files:</label>}
+            {hasSignature && <div className="mb-6 flex justify-start w-[100%]">
                 <div className="w-[100%]">
                     <label className="block text-gray-700 text-md font-bold mb-2">Inspector Signature:</label>
                     <input
@@ -161,10 +168,10 @@ export default function BottomComponent(props) {
                         </div>
                     )}
                 </div>
-            </div>
+            </div>}
 
             {/* Images */}
-            <div className="mb-3">
+            {hasImages && <div className="mb-3">
                 <label className="block text-gray-700 text-md font-bold mb-2">Images</label>
                 <FileUploadComponent setImages={props.handleFilesSelect}/>
                 {/* Display Uploaded Images */}
@@ -185,7 +192,7 @@ export default function BottomComponent(props) {
                         </div>
                     ))}
                 </div>
-            </div>
+            </div>}
         </div>
     )
 }

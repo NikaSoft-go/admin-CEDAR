@@ -23,7 +23,7 @@ export default function PreviewReport() {
         const combinedContent = [];
 
         // Collect the content of each page
-        for (let i = 1; i <= 6; i++) {
+        for (let i = 1; i <= 10; i++) {
             const contentId = `pdf-content-page-${i}`;
             const element = document.getElementById(contentId);
 
