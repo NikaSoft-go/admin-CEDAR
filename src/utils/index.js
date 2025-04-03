@@ -87,30 +87,50 @@ export const toTitleCase = (word) => {
 }
 
 
+export function safeJsonParse(
+    input,
+    fallback
+){
+    if (typeof input === 'undefined') {
+        return fallback;
+    }
+
+    if (typeof input !== 'string') {
+        return fallback;
+    }
+
+    try {
+        return JSON.parse(input);
+    } catch {
+        return fallback;
+    }
+}
+
+
 export const getReportFormatInfo = (report) => {
     return {
         ...report,
-        consumables: JSON.parse(report.consumables || "{}"),
-        dimension_one: JSON.parse(report.dimension_one || "{}"),
-        dimension_two: JSON.parse(report.dimension_two || "{}"),
-        issuer: JSON.parse(report.issuer || "{}"),
-        quality_controller: JSON.parse(report.quality_controller || "{}"),
-        keys: JSON.parse(report.keys || "{}"),
-        report_type_data: JSON.parse(report.report_type_data || "{}"),
-        body: JSON.parse(report.body || "{}"),
-        blade: JSON.parse(report.blade || "{}"),
-        asset_details: JSON.parse(report.asset_details || "{}"),
-        equipments: JSON.parse(report.equipments || "{}"),
-        ut_results: JSON.parse(report.ut_results || "{}")?.rows || [],
-        inspector_comments: JSON.parse(report.inspector_comments || "[]"),
-        equipment_consumables: JSON.parse(report.equipment_consumables || "[]"),
-        other_welding_props: JSON.parse(report.other_welding_props || "[]"),
-        welding_table_data: JSON.parse(report.welding_table_data || "[]"),
+        consumables: safeJsonParse(report.consumables, {}),
+        dimension_one: safeJsonParse(report.dimension_one, {}),
+        dimension_two: safeJsonParse(report.dimension_two, {}),
+        issuer: safeJsonParse(report.issuer, {}),
+        quality_controller: safeJsonParse(report.quality_controller, {}),
+        keys: safeJsonParse(report.keys, {}),
+        report_type_data: safeJsonParse(report.report_type_data, {}),
+        body: safeJsonParse(report.body, {}),
+        blade: safeJsonParse(report.blade, {}),
+        asset_details: safeJsonParse(report.asset_details, {}),
+        equipments: safeJsonParse(report.equipments, {}),
+        ut_results: safeJsonParse(report.ut_results, {})?.rows || [],
+        inspector_comments: safeJsonParse(report.inspector_comments, []),
+        equipment_consumables: safeJsonParse(report.equipment_consumables, []),
+        other_welding_props: safeJsonParse(report.other_welding_props, []),
+        welding_table_data: safeJsonParse(report.welding_table_data, []),
         lifting_data: typeof report?.lifting_data === "string"
-            ? JSON.parse(report.lifting_data)
+            ? safeJsonParse(report.lifting_data)
             : report.lifting_data,
         personnel_data: typeof report.personnel_data === "string"
-                ? JSON.parse(report.personnel_data)
+                ? safeJsonParse(report.personnel_data)
                 : report.personnel_data
     }
 }
@@ -119,6 +139,7 @@ export const getChecklistInfo = (checklist) => {
     return {
         ...checklist,
         checklists_info: typeof checklist?.checklists_info === "string"
-        ? JSON.parse(checklist?.checklists_info): checklist?.checklists_info
+        ? safeJsonParse(checklist?.checklists_info): checklist?.checklists_info
     }
 }
+
