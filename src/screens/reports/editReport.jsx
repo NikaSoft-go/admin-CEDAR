@@ -7,7 +7,7 @@ import {useNavigate, useParams} from "react-router-dom";
 import {
     bladeDetailInitial, bodyDetailInitial,
     consumablesInitial, equipmentConsumablesInitial, equipmentsInitial, equipmentTechniqueInitial,
-    getDimensionData, otherEquipmentsProps, qualityCheckRecord,
+    getDimensionData, otherEquipmentsProps, qualityCheckRecord, returnAssetsData,
     returnReportDataType, utSteelWaveTableInitial, utTableInitial, weldingTableInitial,
 } from "../../utils/data.js";
 import AddReportUltrasonicThicknessSteelWave from "./addReportUltrasonicThicknessSteelWave.jsx";
@@ -522,8 +522,8 @@ const EditReport = () => {
     useEffect(() => {
         if (state.report_type) {
             setCurrentTypeComp(getReportNormal(state.report_type));
-            // setReportTypeData(returnReportDataType(state.report_type, "data"));
-            // setAssetsDetails(returnAssetsData(state.report_type))
+            setReportTypeData(returnReportDataType(state.report_type, "data"));
+            setAssetsDetails(returnAssetsData(state.report_type))
         }
     }, [state.report_type]);
 

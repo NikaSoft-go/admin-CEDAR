@@ -13,7 +13,7 @@ import {
     equipmentTechniqueInitial,
     getDimensionData,
     otherEquipmentsProps,
-    qualityCheckRecord,
+    qualityCheckRecord, returnAssetsData,
     returnReportDataType,
     utSteelWaveTableInitial,
     utTableInitial,
@@ -476,11 +476,11 @@ const AddReport = () => {
     useEffect(() => {
         if (state.report_type) {
             setCurrentTypeComp(getReportNormal(state.report_type));
-            // setReportTypeData(returnReportDataType(state.report_type, "data"));
+            setReportTypeData(returnReportDataType(state.report_type, "data"));
             // if (currentTypeComp === "Lifting Inspection") {
             //     setPersonnelData([emptyLiftingPersonnelDetails]);
             // }
-            // setAssetsDetails(returnAssetsData(state.report_type))
+            setAssetsDetails(returnAssetsData(state.report_type))
         }
     }, [state.report_type]);
 
