@@ -20,10 +20,10 @@ const LiftingPageTwo = ({ data }) => {
             />
             <LiftingInfoView data={data} />
             <Visual data={data?.visual} />
-            <CustomAssetTable
-                data={data?.personnel_data}
-                label={"Personnel"}
-            />
+            {/*{data?.personnel_data && <CustomAssetTable*/}
+            {/*    data={data?.personnel_data}*/}
+            {/*    label={"Personnel"}*/}
+            {/*/>}*/}
         </div>
     )
 }

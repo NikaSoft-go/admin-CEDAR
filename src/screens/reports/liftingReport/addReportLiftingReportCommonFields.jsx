@@ -1,5 +1,5 @@
 import TableList from "../../../components/tableList/tableList.jsx";
-import {assetTableHeaders, itemTableHeaders, personnelHeaders} from "../../../utils/data.js";
+import {assetTableHeaders, itemTableHeaders} from "../../../utils/data.js";
 import BottomComponent from "../../../components/bottomComponent/bottomComponent.jsx";
 
 
@@ -399,16 +399,16 @@ export default function AddReportLiftingReportCommonFields(
                     />
                 </div>
             </div>
-            <div className="mt-8">
-                <TableList
-                    listData={props.personnelData}
-                    setListData={props.setPersonnelData}
-                    handleRemoveTableItems={props.handleRemoveTableItems}
-                    handleTableItemChange={props.handlePersonnelTableItemChange}
-                    tableHeaders={personnelHeaders}
-                    label={"Personnel:"}
-                />
-            </div>
+            {/*<div className="mt-8">*/}
+            {/*    <TableList*/}
+            {/*        listData={props.personnelData}*/}
+            {/*        setListData={props.setPersonnelData}*/}
+            {/*        handleRemoveTableItems={props.handleRemoveTableItems}*/}
+            {/*        handleTableItemChange={props.handlePersonnelTableItemChange}*/}
+            {/*        tableHeaders={personnelHeaders}*/}
+            {/*        label={"Personnel:"}*/}
+            {/*    />*/}
+            {/*</div>*/}
             <BottomComponent
                 handleFilesSelect={props.handleFilesSelect}
                 handleChange={props.handleChange}

@@ -416,16 +416,16 @@ export default function EditReportLiftingReportCommonFields(
                     />
                 </div>
             </div>
-            <div className="mt-8">
-                <TableList
-                    listData={props.personnelData}
-                    setListData={props.setPersonnelData}
-                    handleRemoveTableItems={props.handleRemoveTableItems}
-                    handleTableItemChange={props.handlePersonnelTableItemChange}
-                    tableHeaders={personnelHeaders}
-                    label={"Personnel:"}
-                />
-            </div>
+            {/*<div className="mt-8">*/}
+            {/*    <TableList*/}
+            {/*        listData={props.personnelData}*/}
+            {/*        setListData={props.setPersonnelData}*/}
+            {/*        handleRemoveTableItems={props.handleRemoveTableItems}*/}
+            {/*        handleTableItemChange={props.handlePersonnelTableItemChange}*/}
+            {/*        tableHeaders={personnelHeaders}*/}
+            {/*        label={"Personnel:"}*/}
+            {/*    />*/}
+            {/*</div>*/}
             <BottomComponent
                 handleFilesSelect={props.handleFilesSelect}
                 handleChange={props.handleChange}
