@@ -233,6 +233,9 @@ const EditReport = () => {
     const handleUpdateReport = async (e) => {
         e.preventDefault();
 
+        console.log(assetDetails);
+        console.log(reportTypeData);
+
         let utTableDataFinal = [];
 
         if (currentTypeComp === "Ultrasonic Inspection (Steel Wave)") {

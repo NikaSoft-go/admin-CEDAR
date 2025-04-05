@@ -1,24 +1,37 @@
 import {toTitleCase} from "../../utils/index.js";
 
-const CustomAssetTable = ({ data, label }) => {
+const CustomAssetTable = ({ data, label, headers = [], values = [] }) => {
     return (
         <div className="mt-3">
             <p className="text-[14px] font-bold mb-2">{label}</p>
             <div>
                 <table className="asset-details-table">
                     <thead>
-                        <tr>
+                    {headers.length === 0 && <tr>
                             {(data.length && data[0]) && Object.keys(data[0]).map((header, index) =>
                                 <th key={index} className={"text-left p-1"}>{toTitleCase(header)}</th>)}
                         </tr>
+                    }
+                    {headers.length > 0 && <tr>
+                        {headers.map((header, index) =>
+                            <th key={index} className={"text-left p-1"}>{header}</th>)}
+                    </tr>
+                    }
                     </thead>
-                    <tbody>
+                    {values.length  === 0 && <tbody>
                         {data?.map((item, index) =>
                             <tr key={index}>
                                 {Object.values(item).map((value, innerIndex) => <td key={innerIndex}>{value}</td>)}
                             </tr>
                         )}
-                    </tbody>
+                    </tbody>}
+                    {values.length > 0 && <tbody>
+                    {data?.map((item, index) =>
+                        <tr key={index}>
+                            {values.map((value, innerIndex) => <td key={innerIndex}>{item[value]}</td>)}
+                        </tr>
+                    )}
+                    </tbody>}
                 </table>
             </div>
         </div>
