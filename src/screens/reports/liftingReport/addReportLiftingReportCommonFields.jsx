@@ -416,6 +416,7 @@ export default function AddReportLiftingReportCommonFields(
                 handleReviewerInfoChange={props.handleReviewerInfoChange}
                 setComments={props.setComments}
                 comments={props.comments}
+                addItem={props.addComment}
                 issuerInfo={props.issuerInfo}
                 reviewerInfo={props.reviewerInfo}
                 state={props.state}

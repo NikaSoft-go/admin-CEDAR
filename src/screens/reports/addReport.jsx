@@ -461,6 +461,8 @@ const AddReport = () => {
         handleImageDelete,
         handleDeleteSignature,
         setComments,
+        comments,
+        addComment,
         assetDetails,
         setAssetsDetails,
         reportTypeData,
