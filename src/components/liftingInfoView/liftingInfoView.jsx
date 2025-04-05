@@ -42,15 +42,15 @@ export default function LiftingInfoView({ data }) {
                     </thead>
                     <tbody>
                     <tr>
-                        <td className={"text-sm pt-4"} style={{border: 0}}>Within an interval of six months {data.lifting_data?.q1_d}
+                        <td className={"text-sm pt-4"} style={{border: 0}}>Within an interval of six months? {data.lifting_data?.q1_d}
                         </td>
-                        <td className={"text-sm pt-4"} style={{borderBottom: 0, borderLeft: 0}}>Within an interval of 12 months {data.lifting_data?.q1_e}
+                        <td className={"text-sm pt-4"} style={{borderBottom: 0, borderLeft: 0}}>Within an interval of 12 months? {data.lifting_data?.q1_e}
                         </td>
                     </tr>
                     <tr>
-                        <td className={"text-sm pt-4"} style={{borderRight: 0}}>In accordance with an examination scheme {data.lifting_data?.q1_f}
+                        <td className={"text-sm pt-4"} style={{borderRight: 0}}>In accordance with an examination scheme? {data.lifting_data?.q1_f}
                         </td>
-                        <td className={"text-sm pt-4"} style={{borderLeft: 0}}>After the occurrence of exceptonal circumstances? {data.lifting_data?.q1_g}
+                        <td className={"text-sm pt-4"} style={{borderLeft: 0}}>After the occurrence of exceptional circumstances? {data.lifting_data?.q1_g}
                         </td>
                     </tr>
                     </tbody>
