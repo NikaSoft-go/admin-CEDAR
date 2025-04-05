@@ -67,7 +67,10 @@ export const getReportNormal = (reportType) => {
 }
 
 export const isLifting = (report_type) => [
-    "Forklift Visual report"
+    "Forklift Visual report",
+    "Forklift Visual with MPI report",
+    "Crane Visual report",
+    "Crane Visual with MPI report"
 ].includes(report_type)
 
 export const toTitleCase = (word) => {

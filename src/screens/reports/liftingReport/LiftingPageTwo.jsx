@@ -6,7 +6,8 @@ import LiftingInfoView from "../../../components/liftingInfoView/liftingInfoView
 import {assetTableHeaders, itemTableHeaders} from "../../../utils/data.js";
 
 const LiftingPageTwo = ({ data }) => {
-    const isLiftingItem = isLifting(data.report_type)
+    const isLiftingItem = isLifting(data.report_type);
+    console.log(isLiftingItem)
     return (
         <div className="mx-6 mt-3 mb-6">
             {/*<PdfHead />*/}
