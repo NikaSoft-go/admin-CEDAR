@@ -66,7 +66,7 @@ export default function ConnectChecklists() {
                             onChange={(e) => setReport(e.target.value)}
                         >
                             <option>Select report</option>
-                            {reports.map((report, index) => <option key={index} value={report.id}>{report.report_type} - {report.client_name}</option>)}
+                            {reports.map((report, index) => <option key={index} value={report.id}>{report.id} - {report.report_type} - {report.client_name}</option>)}
                         </select>
                     </div>
                     <div className={"flex flex-col"}>
@@ -77,7 +77,7 @@ export default function ConnectChecklists() {
                             onChange={(e) => setChecklist(e.target.value)}
                         >
                             <option>Select checklist</option>
-                            {checklists.map((checklist, index) => <option key={index} value={checklist.id}>{toTitleCase(checklist.checklist_type)} - {checklist.inspectors_name}</option>)}
+                            {checklists.map((checklist, index) => <option key={index} value={checklist.id}>{checklist.id} - {toTitleCase(checklist.checklist_type)} - {checklist.inspectors_name}</option>)}
                         </select>
                     </div>
                 </div>
