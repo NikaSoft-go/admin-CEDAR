@@ -80,6 +80,7 @@ const Checklists = () => {
                                     className="bg-white p-4 rounded-md shadow-md"
                                     onClick={() => navigate(`/checklist/update/${checklist?.id}`)}
                                 >
+                                    <p className={"font-bold text-lg"}>{checklist?.id}</p>
                                     <div className="flex justify-between items-center cursor-pointer">
                                         <h2 className="text-lg font-semibold mb-2">
                                             {checklist?.inspector_name} - {checklist?.inspector_date}
@@ -87,9 +88,10 @@ const Checklists = () => {
                                         <div className="flex">
                                             <p onClick={(e) => previewChecklist(e, checklist?.id)}>
                                                 <IoEyeOutline size={16} fill="#288068
-                                                " />
+                                                "/>
                                             </p>
-                                            <BsTrash className="ml-3" fill="red" onClick={(e) => deleteChecklist(e, checklist?.id)} />
+                                            <BsTrash className="ml-3" fill="red"
+                                                     onClick={(e) => deleteChecklist(e, checklist?.id)}/>
                                         </div>
                                     </div>
                                 </div>

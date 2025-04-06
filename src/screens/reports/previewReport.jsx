@@ -70,13 +70,13 @@ export default function PreviewReport() {
                         <PreviewReportUltrasonicInspection report={report}/>}
                     {report?.report_type === "Welding" && <PreviewReportWeldingInspection report={report}/>}
                     {report?.report_type === "Forklift Visual report" &&
-                        <PreviewReportLifting report={report} includeChecklist={true}/>}
+                        <PreviewReportLifting report={report}  includeMpi={true} includeChecklist={true}/>}
                     {report?.report_type === "Forklift Visual with MPI report" &&
-                        <PreviewReportLifting report={report} includeMpi={true}/>}
+                        <PreviewReportLifting report={report} includeMpi={true} includeChecklist={true}/>}
                     {report?.report_type === "Crane Visual report" &&
-                        <PreviewReportLifting report={report} includeChecklist={true}/>}
+                        <PreviewReportLifting report={report} includeMpi={true} includeChecklist={true}/>}
                     {report?.report_type === "Crane Visual with MPI report" &&
-                        <PreviewReportLifting report={report} includeMpi={true}/>}
+                        <PreviewReportLifting report={report} includeMpi={true} includeChecklist={true}/>}
                 </main>
             </div>
         </div>

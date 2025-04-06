@@ -20,6 +20,13 @@ export default function PreviewReportLifting(
             <div id="pdf-content-page-3">
                 <LiftingPageThree data={report}/>
             </div>
+            {(includeChecklist && report?.checklists?.length > 0) && (
+                <div className={"mt-10"}>
+                    <div id="pdf-content-page-7">
+                        <PreviewChecklistPageOne checklist={getChecklistInfo(report?.checklists[0])}/>
+                    </div>
+                </div>
+            )}
             {(includeMpi && report?.sub_reports?.length > 0) && (
                 <div className={"mt-10"}>
                     <div id="pdf-content-page-4">
@@ -30,13 +37,6 @@ export default function PreviewReportLifting(
                     </div>
                     <div id="pdf-content-page-6">
                         <PageThree data={getReportFormatInfo(report.sub_reports[0])}/>
-                    </div>
-                </div>
-            )}
-            {(includeChecklist && report?.checklists?.length > 0) && (
-                <div className={"mt-10"}>
-                    <div id="pdf-content-page-7">
-                        <PreviewChecklistPageOne checklist={getChecklistInfo(report?.checklists[0])} />
                     </div>
                 </div>
             )}
