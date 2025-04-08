@@ -1,8 +1,10 @@
 import {toTitleCase} from "../../utils/index.js";
+import DocumentSpacer from "../spacer/index.jsx";
 
-const CustomAssetTable = ({ data, label, headers = [], values = [] }) => {
+const CustomAssetTable = ({ data, label, headers = [], values = [], uniqueId="" }) => {
     return (
-        <div className="mt-3">
+        <div>
+            <DocumentSpacer name={uniqueId} defaultValue={15} />
             <p className="text-[14px] font-bold mb-2">{label}</p>
             <div>
                 <table className="asset-details-table">

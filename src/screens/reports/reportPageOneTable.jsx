@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
+import DocumentSpacer from "../../components/spacer/index.jsx";
 
 const ReportPageOneTable = ({ data }) => {
-    console.log(data.report_type)
     const liftingReports = [
         "Forklift Visual report",
         "Forklift Visual with MPI report",
@@ -10,7 +10,8 @@ const ReportPageOneTable = ({ data }) => {
     ]
     return (
         <div className="table-container">
-            <table className="custom-table">
+            <DocumentSpacer name={"page-one-bannerBottom"} defaultValue={20} />
+            <table className="custom-table" style={{marginTop: 0}}>
                 <thead>
                 <tr>
                     <th colSpan="2" className="header-cell">

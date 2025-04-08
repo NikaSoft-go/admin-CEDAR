@@ -20,6 +20,8 @@ export default function PreviewReport() {
 
     // Function to generate a single PDF by combining the content of all pages
     const generateCombinedPDF = () => {
+        document.body.classList.add('pdf-export');
+
         const combinedContent = [];
 
         // Collect the content of each page
@@ -43,6 +45,10 @@ export default function PreviewReport() {
             html2canvas: {dpi: 20, letterRendering: true, useCORS: true, scale: 2},
             jsPDF: {unit: 'pt', format: "a4", orientation: 'portrait'},
         });
+
+        setTimeout(() => {
+            document.body.classList.remove('pdf-export');
+        }, 1000);
     };
 
     const normalReportTypes = [

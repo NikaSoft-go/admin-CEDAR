@@ -1,8 +1,10 @@
+import DocumentSpacer from "../../components/spacer/index.jsx";
 
 
-const visual = ({ data, title="Visual" }) => {
+const visual = ({ data, title="Visual", uniqueId="" }) => {
     return (
-        <div className="mt-3">
+        <div>
+            <DocumentSpacer name={uniqueId} defaultValue={15} />
             <p className="text-[14px] font-bold mb-2">{title}</p>
             <div className="visual-text">
                 {data}

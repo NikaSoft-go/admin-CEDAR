@@ -3,7 +3,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import {FiChevronLeft, FiChevronRight, FiFileText, FiUser, FiLogOut} from 'react-icons/fi';
 import {useDispatch, useSelector} from "react-redux";
 import {resetUserData} from "../../redux/slices/userSlice.js";
-import {LiaFileInvoiceDollarSolid} from "react-icons/lia";
+import {LiaClipboardListSolid, LiaFileAltSolid, LiaFileInvoiceDollarSolid, LiaLinkSolid} from "react-icons/lia";
+import {clearSpacing} from "../../redux/slices/reportSpacing.js";
 
 const Sidebar = () => {
     const user = useSelector((store) => store.user);
@@ -18,6 +19,7 @@ const Sidebar = () => {
 
     const logoutUser = () => {
         dispatch(resetUserData());
+        dispatch(clearSpacing());
         navigate('/');
     }
 
@@ -27,21 +29,28 @@ const Sidebar = () => {
             route: '/reports',
             subRoutes: ['/reports', '/add-report', '/edit-report', '/preview-report'],
             name: 'Reports',
-            icon: <FiUser size={24} />,
+            icon: <LiaFileAltSolid size={20} />,
+        },
+        {
+            id: 'connected-reports',
+            route: '/connected-reports',
+            subRoutes: ['/connected-reports'],
+            name: 'Connected Reports',
+            icon: <LiaLinkSolid size={20} />,
         },
         {
             id: 'checklists',
             route: '/checklists',
             subRoutes: ['/checklists', '/add-checklist', '/edit-checklist', '/preview-checklist'],
             name: 'Checklists',
-            icon: <FiUser size={24} />,
+            icon: <LiaClipboardListSolid size={20} />,
         },
         {
             id: 'invoices',
             route: '/invoices',
             subRoutes: ['/invoices', '/add-invoice', '/edit-invoice', '/preview-invoice'],
             name: 'Invoices',
-            icon: <LiaFileInvoiceDollarSolid size={24} />,
+            icon: <LiaFileInvoiceDollarSolid size={20} />,
         },
         {
             id: 'profile',

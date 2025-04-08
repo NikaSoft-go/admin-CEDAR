@@ -1,6 +1,9 @@
+import DocumentSpacer from "../../components/spacer/index.jsx";
+
 const ReportDataType = ({data}) => {
     return (
-        <div className="mt-3 report_type_data">
+        <div className="report_type_data">
+            <DocumentSpacer name={"normal-report-data"} defaultValue={10} />
             <p className="text-[12px] font-bold mb-2">{data?.report_type}</p>
             <div>
                 <table>

@@ -1,13 +1,14 @@
 import Logo from "../../assets/logo.png";
-import {generateImageUrl, toTitleCase} from "../../utils/index.js";
+import {toTitleCase} from "../../utils/index.js";
 import CustomAssetTable from "../../components/assetTable/assetTable.jsx";
+import DocumentSpacer from "../../components/spacer/index.jsx";
 
 
 export default function PreviewChecklistPageOne(
     {checklist}
 ) {
     return (
-        <div style={{margin: "10px 25px"}}>
+        <div style={{margin: "0 25px"}}>
             <div
                 className={"flex items-center"}
                 style={{border: "1px solid #000"}}
@@ -28,10 +29,11 @@ export default function PreviewChecklistPageOne(
                     corrective action prior to using the {toTitleCase(checklist.checklist_type)}.
                 </p>
             </div>
-            <div className={"mt-6"}>
-                <CustomAssetTable data={checklist?.checklists_info} label={""}/>
+            <div>
+                <CustomAssetTable data={checklist?.checklists_info} label={""} uniqueId={"checklist-asset-table"}/>
             </div>
-            <div className="mt-2 mb-6 pdf_bottom">
+            <DocumentSpacer name={"lifting-checklists-bottom"} defaultValue={15} />
+            <div className="pdf_bottom">
                 <table className="w-[100%]">
                     <thead>
                     <tr>

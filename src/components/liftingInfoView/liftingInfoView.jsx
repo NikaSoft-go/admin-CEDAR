@@ -1,8 +1,10 @@
+import DocumentSpacer from "../spacer/index.jsx";
 
 
 export default function LiftingInfoView({ data }) {
     return (
-        <div className={"mt-3"}>
+        <div>
+            <DocumentSpacer name={"lifting-info"} defaultValue={15} />
             <p className={"font-bold text-sm"}>Lifting</p>
             <div className={"w-full mt-3"}>
                 <table style={{border: "1px solid #000"}} className={"w-full asset-details-table"}>

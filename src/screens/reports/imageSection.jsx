@@ -1,10 +1,11 @@
 import {getImageFullPath} from "../../utils/index.js";
+import DocumentSpacer from "../../components/spacer/index.jsx";
 
 
-const ImageSection = ({ data }) => {
-    console.log(data);
+const ImageSection = ({ data, uniqueId }) => {
     return (
-        <div className="mt-3">
+        <div>
+            <DocumentSpacer name={uniqueId} defaultValue={15} />
             <p className="text-[14px] font-bold mb-2">Images</p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2">
                 {data?.map((elt, index) =>
