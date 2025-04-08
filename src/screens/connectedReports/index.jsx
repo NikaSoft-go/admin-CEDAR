@@ -1,4 +1,3 @@
-// src/components/Invoices.js
 import { useState, useEffect } from 'react';
 import Sidebar from "../../components/sidebar/index.jsx";
 import {Link, useNavigate} from "react-router-dom";
@@ -9,7 +8,7 @@ import {BsTrash} from "react-icons/bs";
 import {toast} from "react-toastify";
 import {setReportData} from "../../redux/slices/reportSlice.js";
 
-const Reports = () => {
+const ConnectedReports = () => {
     const [reports, setReports] = useState([]);
 
     const navigate = useNavigate();
@@ -33,7 +32,7 @@ const Reports = () => {
 
     const getAllReports = async () => {
         try {
-            const response = await axiosClient.get('/reports/get-reports/');
+            const response = await axiosClient.get('/reports/get-reports-connected/');
             const data = response.data.data;
             setReports(data);
             dispatch(setReportData(data));
@@ -59,20 +58,6 @@ const Reports = () => {
                             <p className="text-gray-600">
                                 Total Reports: <span className="font-bold">{totalReports}</span>
                             </p>
-                            <div className={"space-x-2"}>
-                                <Link
-                                    to="/connect-reports"
-                                    className="add-invoice-btn font-bold py-2 px-4 rounded"
-                                >
-                                    Link two reports
-                                </Link>
-                                <Link
-                                    to="/add-report"
-                                    className="add-invoice-btn font-bold py-2 px-4 rounded"
-                                >
-                                    Add report
-                                </Link>
-                            </div>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                             {reports.map((report) => (
@@ -98,8 +83,6 @@ const Reports = () => {
                                         <b>Date:</b> {report?.examination_date}
                                         <br />
                                         <b>Inspected by:</b> {JSON.parse(report?.issuer || "{}")?.name}
-                                        {report.checklists.length > 0 && <p className={"mt-3"}>Connected to checklist: {report.checklists.map((elt) => elt.id)}</p>}
-                                        {report.sub_reports.length > 0 && <p className={"mt-2"}>Connected to reports: {report.sub_reports.map((elt) => elt.id)}</p>}
                                     </p>
                                 </div>
                             ))}
@@ -111,4 +94,4 @@ const Reports = () => {
     );
 };
 
-export default Reports;
+export default ConnectedReports;

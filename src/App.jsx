@@ -20,6 +20,7 @@ import Checklists from "./screens/checklists/index.jsx";
 import AddChecklist from "./screens/checklists/add-checklist.jsx";
 import PreviewChecklist from "./screens/checklists/preview-checklist.jsx";
 import ConnectChecklists from "./screens/checklists/connect-checklist.jsx";
+import ConnectedReports from "./screens/connectedReports/index.jsx";
 
 function App() {
 
@@ -35,6 +36,7 @@ function App() {
         <Route path="/preview-checklist/:id" element={<PreviewChecklist/>}/>
         <Route path="/add-checklist" element={<AddChecklist/>}/>
         <Route path="/connect-reports" element={<ConnectReports/>}/>
+        <Route path="/connected-reports" element={<ConnectedReports/>}/>
         <Route path="/connect-checklists" element={<ConnectChecklists/>}/>
         <Route path="/add-report" element={<AddReport/>}/>
         <Route path="/preview-report/:id" element={<PreviewReport/>}/>
