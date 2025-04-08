@@ -1,9 +1,11 @@
 import {generateImageUrl} from "../../utils/index.js";
+import DocumentSpacer from "../../components/spacer/index.jsx";
 
 
-const PdfBottom = ({ data }) => {
+const PdfBottom = ({ data, uniqueId }) => {
     return (
-        <div className="mt-2 pdf_bottom">
+        <div className="pdf_bottom">
+            <DocumentSpacer name={uniqueId} defaultValue={10} />
             <table className="w-[100%]">
                 <thead>
                 <tr>

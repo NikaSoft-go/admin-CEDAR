@@ -4,6 +4,7 @@ import {FiChevronLeft, FiChevronRight, FiFileText, FiUser, FiLogOut} from 'react
 import {useDispatch, useSelector} from "react-redux";
 import {resetUserData} from "../../redux/slices/userSlice.js";
 import {LiaFileInvoiceDollarSolid} from "react-icons/lia";
+import {clearSpacing} from "../../redux/slices/reportSpacing.js";
 
 const Sidebar = () => {
     const user = useSelector((store) => store.user);
@@ -18,6 +19,7 @@ const Sidebar = () => {
 
     const logoutUser = () => {
         dispatch(resetUserData());
+        dispatch(clearSpacing());
         navigate('/');
     }
 

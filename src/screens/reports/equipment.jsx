@@ -1,4 +1,5 @@
 import {groupByIndices} from "../../utils/index.js";
+import DocumentSpacer from "../../components/spacer/index.jsx";
 
 
 const EquipmentSection = ({ data }) => {
@@ -6,7 +7,8 @@ const EquipmentSection = ({ data }) => {
     const tableItems = groupByIndices(data?.map((elt) => elt?.values));
 
     return (
-        <div className="mt-3">
+        <div>
+            <DocumentSpacer name={"normal-equipment"} defaultValue={10} />
             <p className="text-[14px] font-bold mb-2">Equipment</p>
             <table className="equipment_table w-[100%]">
                 <thead>

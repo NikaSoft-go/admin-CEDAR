@@ -4,10 +4,10 @@ import ViewComments from "../../../components/viewComments/viewComments.jsx";
 
 const LiftingPageThree = ({ data }) => {
     return (
-        <div className="mx-6 mt-5 mb-6">
-            <ViewComments comments={data?.inspector_comments} label="Comments" />
-            {data?.images?.length > 0 && <ImageSection data={data?.images} />}
-            <PdfBottom data={data} />
+        <div className="mx-6">
+            <ViewComments comments={data?.inspector_comments} label="Comments" uniqueId={"lifting-comment"} />
+            {data?.images?.length > 0 && <ImageSection data={data?.images} uniqueId={"lifting-images"} />}
+            <PdfBottom data={data} uniqueId={"lifting-bottom"} />
         </div>
     )
 }

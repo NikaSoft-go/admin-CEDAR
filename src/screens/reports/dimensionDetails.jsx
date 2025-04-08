@@ -1,3 +1,4 @@
+import DocumentSpacer from "../../components/spacer/index.jsx";
 
 
 const dimensionDetails = ({ data }) => {
@@ -7,7 +8,8 @@ const dimensionDetails = ({ data }) => {
 
     return (
         <>{showDimensions &&
-            <div className="mt-3">
+            <div>
+                <DocumentSpacer name={"normal-dimension-details"} defaultValue={10} />
                 <p className="text-[14px] font-bold mb-2">Dimension Details</p>
                 <div className="flex justify-start w-100">
                     {data?.dimension_one?.length > 0 && <div className="dimension-table-cover dimension-one">

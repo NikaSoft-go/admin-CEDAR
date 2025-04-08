@@ -48,7 +48,7 @@ const UTPageThree = ({ data }) => {
                 </div>
             </div>
             <UTImageSection data={data?.images} />
-            <PdfBottom data={data} />
+            <PdfBottom data={data} uniqueId={"ut-bottom"} />
         </div>
 
     )

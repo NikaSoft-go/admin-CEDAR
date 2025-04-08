@@ -1,10 +1,12 @@
+import DocumentSpacer from "../spacer/index.jsx";
 
 
 export default function ViewComments(
-    {comments, label}
+    {comments, label, uniqueId}
 ) {
     return (
-        <div className={"mt-5 flex flex-col"}>
+        <div className={"flex flex-col"}>
+            <DocumentSpacer name={uniqueId} defaultValue={15} />
             <p className={"font-bold text-sm mb-3"}>{label}</p>
             <div className={"p-2"} style={{border: "1px solid #000"}}>
                 {comments?.map((elt, index) =>

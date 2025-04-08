@@ -1,8 +1,10 @@
+import DocumentSpacer from "../../components/spacer/index.jsx";
 
 
 const assetDetails = ({ data, isLifting }) => {
     return (
-        <div className="mt-3">
+        <div>
+            <DocumentSpacer name={"normal-assetDetails"} defaultValue={9} />
             <p className="text-[14px] font-bold mb-2">Asset Details</p>
             <div>
                 <table className="asset-details-table">

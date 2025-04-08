@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 const TableWithHeader = ({ data }) => {
     return (
         <div className="table-container">
-            <table className="custom-table">
+            <table className="custom-table" style={{marginTop: "20px"}}>
                 <thead>
                 <tr>
                     <th colSpan="2" className="header-cell">

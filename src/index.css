@@ -104,7 +104,8 @@ li.font-bold {
     width: 96%;
     border-collapse: collapse;
     border: 1px solid #ccc;
-    margin: 20px 2% 0 2%;
+    margin-left: 2%;
+    margin-right: 2%;
 }
 
 .header-cell {
@@ -452,7 +453,7 @@ li.font-bold {
 
 .pdf_bottom table {
     border-bottom: 1px solid #000;
-    margin-top: 50px;
+    margin-top: 0;
 }
 
 .pdf_bottom th {
@@ -658,4 +659,16 @@ li.font-bold {
 
 .cell-bold {
     font-weight: 500;
+}
+
+.pdf-export .hide-on-export {
+    display: none !important;
+}
+
+.show-on-export {
+    display: none !important;
+}
+
+.pdf-export .show-on-export {
+    display: block !important;
 }
