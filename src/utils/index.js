@@ -10,7 +10,11 @@ export const getInvoiceImageFullPath = (fileName) => {
 }
 
 export const generateImageUrl = (dbUrl) => {
-    return `${import.meta.env.VITE_APP_API_URL}${dbUrl}`
+    if (dbUrl.startsWith("/media")) {
+        return `${import.meta.env.VITE_APP_API_URL}${dbUrl}`
+    } else {
+        return getInvoiceImageFullPath(dbUrl);
+    }
 }
 
 export const formatDate = (date) => {
