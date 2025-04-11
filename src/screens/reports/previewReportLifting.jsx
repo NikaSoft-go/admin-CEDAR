@@ -34,10 +34,10 @@ export default function PreviewReportLifting(
                     <div>
                         <PageOne data={getReportFormatInfo(report.sub_reports[0])}/>
                     </div>
-                    <div id="pdf-content-page-6">
+                    <div>
                         <PageTwo data={getReportFormatInfo(report.sub_reports[0])}/>
                     </div>
-                    <div id="pdf-content-page-7">
+                    <div>
                         <PageThree data={getReportFormatInfo(report.sub_reports[0])}/>
                     </div>
                 </div>
