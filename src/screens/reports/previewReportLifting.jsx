@@ -21,17 +21,17 @@ export default function PreviewReportLifting(
                 <LiftingPageThree data={report}/>
             </div>
             {(includeChecklist && report?.checklists?.length > 0) && (
-                <div>
+                <div id="pdf-content-page-4">
                     <DocumentSpacer name={"lifting-checklists"} defaultValue={15} />
-                    <div id="pdf-content-page-4">
+                    <div>
                         <PreviewChecklistPageOne checklist={getChecklistInfo(report?.checklists[0])}/>
                     </div>
                 </div>
             )}
             {(includeMpi && report?.sub_reports?.length > 0) && (
-                <div>
+                <div id="pdf-content-page-5">
                     <DocumentSpacer name={"lifting-sub-reports"} defaultValue={15} />
-                    <div id="pdf-content-page-5">
+                    <div>
                         <PageOne data={getReportFormatInfo(report.sub_reports[0])}/>
                     </div>
                     <div id="pdf-content-page-6">
