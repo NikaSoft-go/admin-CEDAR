@@ -3,43 +3,51 @@ import LogoImage from "../../assets/logo.png";
 import {FaGlobe} from "react-icons/fa";
 import {IoLocationSharp} from "react-icons/io5";
 import {LuPenLine} from "react-icons/lu";
+import DocumentSpacer from "../../components/spacer/index.jsx";
 
-const PageThree = ({ data }) => {
+const PageThree = ({data}) => {
     return (
-        <div className="mb-3">
+        <div>
             <div className="page-head">
                 <div className="pdf-logo-wrapper">
                     <img src={LogoImage} alt="" className="pdf-logo"/>
                 </div>
                 <p className="pdf-banner-text">Quote No.: {data?.quote_number}</p>
             </div>
-            <div className="page-head-spacer"></div>
-            <div className="mx-8 mb-3">
-                <div className="mt-3">
-                    <table className="responsibilities-table">
+            <DocumentSpacer name={"lifting-comment"} defaultValue={25}/>
+            <div className="mx-8">
+                <div>
+                    <table className="responsibilities-table" style={{marginTop: 0}}>
                         <thead>
-                            <tr><th colSpan="2">Responsibilities</th></tr>
+                        <tr>
+                            <th colSpan="2">Responsibilities</th>
+                        </tr>
                         </thead>
                         <tbody>
                         {data?.responsibilities?.map((elt, index) =>
                             <React.Fragment key={index}>
                                 <tr>
-                                    <td rowSpan={elt?.values?.length+1} className="bg-[#288068] text-white">
+                                    <td rowSpan={elt?.values?.length + 1} className="bg-[#288068] text-white">
                                         {elt?.category}
                                     </td>
                                 </tr>
                                 {elt?.values?.map((innerElt, index) =>
-                                    <tr key={index}><td>{innerElt}</td></tr>
+                                    <tr key={index}>
+                                        <td>{innerElt}</td>
+                                    </tr>
                                 )}
                             </React.Fragment>
                         )}
                         </tbody>
                     </table>
                 </div>
-                <div className="mt-3">
-                    <table className="responsibilities-table terms">
+                <DocumentSpacer name={"normal-comment"} defaultValue={25}/>
+                <div>
+                    <table className="responsibilities-table terms" style={{marginTop: 0}}>
                         <thead>
-                        <tr><th colSpan="2">Terms</th></tr>
+                        <tr>
+                            <th colSpan="2">Terms</th>
+                        </tr>
                         </thead>
                         <tbody>
                         {data?.terms?.map((elt, index) =>
@@ -54,6 +62,7 @@ const PageThree = ({ data }) => {
                     </table>
                 </div>
             </div>
+            <DocumentSpacer name={"lifting-images"} defaultValue={25}/>
             <div className="cover-bottom">
                 <div className="cover-bottom-content px-3 flex items-center">
                     <img src={LogoImage} className="pdf-logo" alt={"logo-image"}/>
@@ -66,7 +75,8 @@ const PageThree = ({ data }) => {
                     </div>
                 </div>
             </div>
-            <div className="mt-2 mx-5 mb-3 flex justify-between w-[100%]">
+             <DocumentSpacer name={"welding-images"} defaultValue={25}/>
+            <div className="mx-5 flex justify-between w-[100%]">
                 {/*<div className="flex justify-start items-center">*/}
                 {/*    <div className="circle">*/}
                 {/*        <GiRotaryPhone size={18} fill="#288068"/>*/}
@@ -104,6 +114,7 @@ const PageThree = ({ data }) => {
                     </div>
                 </div>
             </div>
+            <DocumentSpacer name={"normal-images"} defaultValue={25}/>
         </div>
     )
 }

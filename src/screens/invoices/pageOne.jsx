@@ -2,14 +2,17 @@ import PDFCoverImage from "../../assets/pdf_cover.jpg";
 import BannerCard from "../../assets/banner.jpg";
 import TableWithHeader from "../../components/pdfComponents/coverPageTable.jsx";
 import LogoImage from "../../assets/logo.png";
+import DocumentSpacer from "../../components/spacer/index.jsx";
 
-const PageOne = ({ data }) => {
+const PageOne = ({data}) => {
     return (
         <div>
             <img src={PDFCoverImage} alt="" className="pdf-image"/>
             <img src={BannerCard} alt="" className="banner-image"/>
+            <DocumentSpacer name={"page-one-bannerBottom"} defaultValue={15}/>
             <TableWithHeader data={data}/>
-            <div className="cover-bottom" style={{ marginTop: 60}}>
+            <DocumentSpacer name={"page-one-coverBottom"} defaultValue={25}/>
+            <div className="cover-bottom">
                 <div className="cover-bottom-header w-[100%] h-[8px]"></div>
                 <div className="cover-bottom-content px-3 flex items-center">
                     <img src={LogoImage} className="pdf-logo" alt=""/>

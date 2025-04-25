@@ -5,6 +5,7 @@ import {LuPenLine} from "react-icons/lu";
 import Signature from "../../assets/signature.png";
 import CardOneImage from "../../assets/card_1.jpg";
 import CardTwoImage from "../../assets/card_2.jpg";
+import DocumentSpacer from "../../components/spacer/index.jsx";
 
 const PageFour = ({ data }) => {
     return (
@@ -16,7 +17,8 @@ const PageFour = ({ data }) => {
                 <p className="pdf-banner-text">Quote No.: {data?.quote_number}</p>
             </div>
             <div className="page-head-spacer"></div>
-            <div className="mx-8 mt-12 mb-[570px]">
+            <DocumentSpacer name={"lifting-bottom"} defaultValue={25}/>
+            <div className="mx-8">
                 <p className="text-center text-[13px] font-bold">
                     {data?.last_words}
                 </p>
@@ -33,6 +35,7 @@ const PageFour = ({ data }) => {
                     <img src={CardTwoImage} alt="" className="bottom-card-images" />
                 </div>
             </div>
+            <DocumentSpacer name={"welding-bottom"} defaultValue={25}/>
             <div className="cover-bottom">
                 <div className="cover-bottom-content px-3 flex items-center">
                     <img src={LogoImage} className="pdf-logo" alt="" />
@@ -45,7 +48,8 @@ const PageFour = ({ data }) => {
                     </div>
                 </div>
             </div>
-            <div className="mt-2 mx-5 mb-3 flex justify-between w-[100%]">
+            <DocumentSpacer name={"normal-bottom"} defaultValue={25}/>
+            <div className="mx-5 flex justify-between w-[100%]">
                 {/*<div className="flex justify-start items-center">*/}
                 {/*    <div className="circle">*/}
                 {/*        <GiRotaryPhone size={18} fill="#288068"/>*/}

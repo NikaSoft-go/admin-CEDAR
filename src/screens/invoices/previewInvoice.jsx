@@ -12,7 +12,7 @@ import PageFour from "./pageFour.jsx";
 export default function PDFPages() {
     const navigate = useNavigate();
     const invoices = useSelector(store => store.invoice);
-    const { id } = useParams();
+    const {id} = useParams();
     let invoice = invoices.data?.find(invoice => invoice.id === Number(id));
     invoice = {
         ...invoice,
@@ -25,6 +25,8 @@ export default function PDFPages() {
     // Function to generate a single PDF by combining the content of all pages
     const generateCombinedPDF = () => {
         const combinedContent = [];
+        document.body.classList.add('pdf-export');
+
 
         // Collect the content of each page
         for (let i = 1; i <= 6; i++) {
@@ -47,6 +49,10 @@ export default function PDFPages() {
             html2canvas: {scale: 2},
             jsPDF: {unit: 'mm', format: 'a4', orientation: 'portrait'},
         });
+
+        setTimeout(() => {
+            document.body.classList.remove('pdf-export');
+        }, 1000);
     };
 
     return (

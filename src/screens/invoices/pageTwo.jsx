@@ -3,10 +3,12 @@ import {GoDotFill} from "react-icons/go";
 import {FaGlobe} from "react-icons/fa";
 import {IoLocationSharp} from "react-icons/io5";
 import {LuPenLine} from "react-icons/lu";
+import DocumentSpacer from "../../components/spacer/index.jsx";
 
 const PageTwo = ({data}) => {
     return (
         <div className="mb-6">
+            <DocumentSpacer name={"lifting-sectionDetails"} defaultValue={25} />
             <div className="page-head">
                 <div className="pdf-logo-wrapper">
                     <img src={LogoImage} alt="" className="pdf-logo"/>
@@ -29,14 +31,15 @@ const PageTwo = ({data}) => {
                     Thank you for the opportunity to provide our commercial proposal
                     and trust it meets with your requirements.
                 </p>
-                <div className="requirements mb-6">
+                <div className="requirements">
                     <div className="header-text bg-[#288068] text-center font-bold">
                         <p className="text-[12px] text-white font-bold mb-1">Requirement</p>
                         <p className="bg-[#288068] h-[10px]"></p>
                     </div>
                     <p className="text-center my-1 text-[12px]">{data?.requirements}</p>
                 </div>
-                <div className="requirements mb-3">
+                <DocumentSpacer name={"normal-sectionDetails"} defaultValue={25} />
+                <div className="requirements">
                     <div className="header-text bg-[#288068] text-center font-bold">
                         <p className="text-[12px] text-white font-bold mb-1">Scope</p>
                         <p className="bg-[#288068] h-[5px]"></p>
@@ -62,7 +65,8 @@ const PageTwo = ({data}) => {
                         )}
                     </div>
                 </div>
-                <div className="requirements mb-3">
+                <DocumentSpacer name={"checklist-asset-table"} defaultValue={25} />
+                <div className="requirements">
                     <div className="header-text bg-[#288068] text-center font-bold">
                         <p className="text-[12px] text-white font-bold mb-1">Resources</p>
                         <p className="bg-[#288068] h-[5px]"></p>
@@ -92,13 +96,15 @@ const PageTwo = ({data}) => {
                         </table>
                     </div>
                 </div>
-                <div className="requirements mt-3 mb-3">
+                <DocumentSpacer name={"lifting-items"} defaultValue={25} />
+                <div className="requirements">
                     <div className="header-text bg-[#288068] text-center font-bold">
                         <p className="text-[12px] text-white font-bold mb-1">Cost</p>
                         <p className="bg-[#288068] h-[5px]"></p>
                     </div>
+                    <DocumentSpacer name={"lifting-asset-details"} defaultValue={25} />
                     <div>
-                        <table className="cost-table">
+                        <table className="cost-table" style={{marginTop: 0}}>
                             <thead>
                             <tr>
                                 <th>
@@ -135,7 +141,8 @@ const PageTwo = ({data}) => {
                             )}
                             </tbody>
                         </table>
-                        <div className="mt-3" style={{marginBottom: 35}}>
+                        <DocumentSpacer name={"lifting-info"} defaultValue={25} />
+                        <div>
                             <table className="w-[100%] flex justify-end">
                                 <tbody>
                                 <tr>
@@ -176,6 +183,7 @@ const PageTwo = ({data}) => {
 
                             </table>
                         </div>
+                        <DocumentSpacer name={"lifting-visual"} defaultValue={25} />
                     </div>
                 </div>
             </div>
@@ -191,6 +199,7 @@ const PageTwo = ({data}) => {
                     </div>
                 </div>
             </div>
+            <DocumentSpacer name={"normal-visual"} defaultValue={25} />
             <div className="mt-2 mx-5 mb-3 flex justify-between w-[100%]">
                 {/*<div className="flex justify-start items-center">*/}
                 {/*    <div className="circle">*/}
